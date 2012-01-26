@@ -1,0 +1,49 @@
+@import "mixins";
+@import "color";
+@import "reset";
+
+html, body {
+    height:  100%;
+    margin:  0px;
+    padding: 0px;
+    border:  none;
+}
+
+.bg {
+    @include ChineseFont;
+    background: #252525 url('../img/bg.gif') repeat;
+}
+
+#playground { width: 100%; height: 100%; overflow: visible; }
+
+.container { 
+    width: 100%; 
+    height: 100%; 
+    position: absolute;
+    top: 0;
+}
+
+#skill   { left: 100%; }
+#work    { left: 200%; }
+#contact { left: 300%; }
+
+.s1 { background: url('../img/s1.gif') no-repeat; }
+.s2 { background: url('../img/s2.png') no-repeat; }
+
+.bar {
+    position: fixed;
+    width: 100%;
+    height: 8px;
+    bottom: -8px;
+    background-repeat: repeat-x;
+}
+#barSkill { background-image: url('../img/bar.gif'); }
+#barWork  { background-position: 0 -8px; }
+
+@font-face {
+  font-family: 'IcoMoon';
+  src: url('../asset/icomoon.otf') format('opentype');
+}
+
+@import "main";
+@import "contact";
