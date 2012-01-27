@@ -63,7 +63,6 @@ $rightWidth:      265px;
     line-height: 1.2em;
     position: relative;
     overflow: hidden;
-    // border-left: $introBorder;
 
     &:before, &:after {
         height: 100%;
@@ -81,13 +80,36 @@ $rightWidth:      265px;
     &:after {
         right: 0;
         border-right: $introBorder;
-        border-top: $introBorder;
+        border-top: 1px solid rgba(200,200,200, 0.1);
     }
     
 }
 
-.introContent {
+#introContent {
     margin: $introTextMargin;
+}
+
+#aboveHL {
+    //display: none;
+    width: 200%;
+    height: 100px;
+    position: absolute;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    top: -35px;
+    left: -15px;
+    z-index: -1;
+    
+    -o-transform:rotate(3deg);
+    -moz-transform:rotate(3deg);
+    -webkit-transform:rotate(3deg);
+
+    background: rgba(255,255,255,0.04);
+    background: linear-gradient(rgba(255,255,255,0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
+    background: -o-linear-gradient(rgba(255,255,255,0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
+    background: -moz-linear-gradient(rgba(255,255,255,0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
+    background: -webkit-linear-gradient(rgba(255,255,255,0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
 }
 
 .downShadow {
@@ -131,25 +153,36 @@ $rightWidth:      265px;
     ul {
         text-align: left;
         margin-left: 24px;
-        margin-top: 24px;
+        margin-top: 20px;
     }
 
     li {
-        padding-bottom: 1px;
+        padding-bottom: 3px;
         line-height: 16px;
         height: 16px;
     }
 }
 
-.scLink{
-    color: #AAA;
-    line-height: 16px;
-    margin: 0;
-    padding: 2px 4px;
+.scLink {
+    display: block;
     white-space: nowrap;
-    display: inline-block;
+    margin: 0;
+    
 
-    &:hover {
+    span {
+        color: #AAA;
+        padding: 2px 4px;
+
+        &:before {
+            padding-right: 100px;
+            font-family: IcoMoon;
+            font-size: 16px;
+            color: black;
+            @include TextEmboss(#555);
+        }
+    }
+
+    &:hover span {
         color: #FFF;
         text-shadow: 0 -1px 0 #000000;
         
@@ -157,20 +190,12 @@ $rightWidth:      265px;
         -webkit-border-radius: 3px;
         border-radius: 3px;
         background: black;
-
+        
         &:before {
-            padding-right: 2px;
+            padding-right: 5px;
             color: #FFF;
             text-shadow: none;
         }
-    }
-
-    &:before {
-        padding-right: 100px;
-        font-family: IcoMoon;
-        font-size: 16px;
-        color: black;
-        @include TextEmboss(#555);
     }
 }
 
