@@ -389,7 +389,7 @@ html, body {
   position: absolute;
   top: 92px;
   left: 7px;
-  display: none; }
+  opacity: 0; }
 
 #formSeperator {
   width: 1px;

@@ -168,12 +168,12 @@ $(function(){
     }
 
     // === Message form ===
-    configureForm({
+    var theForm = {
         $msgBox       : msgInputs[0],
         $mailInput    : msgInputs[1],
         $sendBtn      : $("#sendme"),
         $notification : $("#notification"), // A element to show the error message.
-        submitURL     : "ohnewmessage.php",
+        submitURL     : "http://lmmailserver.appspot.com",
 
         showLoading   : function()
         {
@@ -188,15 +188,20 @@ $(function(){
         },
         showComplete  : function()
         {
-            $("#stampd").show()
-                        .css({"left":"2px", "top":"87px", "width":"147px", "height":"91px"})
+            $("#stampd").css({ "left"   : "2px", 
+                               "top"    : "87px", 
+                               "width"  : "147px", 
+                               "height" : "91px",
+                               "opacity": "1"})
                         .animate({left:"7px", top:"92px", width:"137px", height:"81"}, 100);
         },
         hideComplete  : function()
         {
-            $("#stampd").hide();
+            $("#stampd").css({"opacity":"0"});
         }
-    });
+    };
+    configureForm(theForm);
+
     function configureForm(form)
     {
         // Clear notification when input changes.
@@ -224,7 +229,7 @@ $(function(){
             function(e) 
             {
                 var k = e.keyCode | e.which;
-                if(k == 13) { 
+                if(k == 13) {
                     form.$sendBtn.click();
                     return false;
                 } else if (k == 9) {
@@ -259,14 +264,15 @@ $(function(){
         
                     // send the content
                     $.ajax({  
-                        type: "POST",  
-                        url:  form.submitURL,  
-                        data: {"email": mailVal, "content": msgVal},  
+                        url:      form.submitURL,  
+                        dataType: 'jsonp',
+                        jsonp:    'jsonp',
+                        data:     {"email": mailVal, "content": msgVal},
                         success: function(data) 
                         {
-                            if(data == "Success") {
-                                form.$notification.html("发送成功。我会尽快回复你的。");
-                                showComplete();
+                            if(data.result == "success") {
+                                form.$notification.html("发送成功，我会尽快回复你的。");
+                                form.showComplete();
                             } else {
                                 onSendError();
                             }
