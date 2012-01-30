@@ -40,6 +40,69 @@ html, body {
 #barSkill { background-image: url('../img/bar.gif'); }
 #barWork  { background-position: 0 -8px; }
 
+#navButtons {
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+}
+.navbtn {
+    display: none;
+    position: relative;
+    float: left;
+    width: 33px;
+    height: 34px;
+    background: #5b5b5b;
+    margin-right: 5px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    -moz-box-shadow:    0 1px 3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.75);
+    box-shadow:         0 1px 3px rgba(0,0,0,0.75);
+
+    &.pressed, &:active {
+        margin-top: 2px;
+        height: 32px;
+    }
+
+    &:hover {
+        .btnHL:before {
+            background: #e6e6e6;
+        }
+    }
+}
+.btnHL:before {
+    width: 27px;
+    height: 15px;
+    line-height: 12px;
+    padding: 14px 2px 0 2px;
+    position: absolute;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 3px;
+    border: 1px solid #e0e0e0;
+    background: #e3e3e3;
+    background: linear-gradient(#e3e3e3 0%, #cecece 100%);
+    background: -o-linear-gradient(#e3e3e3 0%, #cecece 100%);
+    background: -moz-linear-gradient(#e3e3e3 0%, #cecece 100%);
+    background: -webkit-linear-gradient(#e3e3e3 0%, #cecece 100%);
+    font: 12px Verdana;
+
+    @include TextEmboss(#FFF);
+}
+
+#btnSpace { 
+    width: 69px;
+    .btnHL:before { 
+        width: 63px; 
+        text-align: center;
+        content: "SpaceBar";
+    }
+}
+#btnRight { .btnHL:before { text-align: right; content: "\2192" } }
+#btnLeft { .btnHL:before { content: "\2190"} }
+
 @font-face {
   font-family: 'IcoMoon';
   src: url('../asset/icomoon.otf') format('opentype');

@@ -1,8 +1,8 @@
 // +++ Variable Zone +++
-$aboutWidth:      394px;
+$aboutWidth:      395px;
 
 $introTextMargin: 32px;
-$introBorder:     1px solid rgba(200,200,200, 0.15);
+$introBorder:     1px solid rgba(200,200,200, 0.2);
 
 $middleHeight:    100px;
 $navHeight:       60px;
@@ -63,53 +63,39 @@ $rightWidth:      265px;
     line-height: 1.2em;
     position: relative;
     overflow: hidden;
+    border: $introBorder;
+    border-bottom: none;
 
-    &:before, &:after {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        content: " ";
-        z-index: -1;
-    }
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -moz-box-shadow:    inset 0 6px 16px 2px rgba(255,255,255,0.05);
+    -webkit-box-shadow: inset 0 6px 16px 2px rgba(255,255,255,0.05);
+    box-shadow:         inset 0 6px 16px 2px rgba(255,255,255,0.05);
+
     &:before {
-        left: 0;
-        border-left: $introBorder;
-    }
+        width: 200%;
+        height: 100px;
+        position: absolute;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        top: -37px;
+        left: -15px;
+        z-index: -1;
+        content: " ";
+        
+        -o-transform:rotate(3deg);
+        -moz-transform:rotate(3deg);
+        -webkit-transform:rotate(3deg);
 
-    &:after {
-        right: 0;
-        border-right: $introBorder;
-        border-top: 1px solid rgba(200,200,200, 0.1);
+        background: rgba(255,255,255,0.02);
     }
-    
 }
 
 #introContent {
     margin: $introTextMargin;
-}
-
-#aboveHL {
-    //display: none;
-    width: 200%;
-    height: 100px;
-    position: absolute;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    top: -35px;
-    left: -15px;
-    z-index: -1;
-    
-    -o-transform:rotate(3deg);
-    -moz-transform:rotate(3deg);
-    -webkit-transform:rotate(3deg);
-
-    background: rgba(255,255,255,0.04);
-    background: linear-gradient(rgba(255,255,255,0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
-    background: -o-linear-gradient(rgba(255,255,255,0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
-    background: -moz-linear-gradient(rgba(255,255,255,0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
-    background: -webkit-linear-gradient(rgba(255,255,255,0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
 }
 
 .downShadow {
@@ -117,9 +103,9 @@ $rightWidth:      265px;
     top: 100%;
     width: 100%;
     height: 10%;
-    -moz-box-shadow:    0 0 16px rgba(0,0,0,0.95);
-    -webkit-box-shadow: 0 0 16px rgba(0,0,0,0.95);
-    box-shadow:         0 0 16px rgba(0,0,0,0.95);
+    -moz-box-shadow:    0 0 16px #000;
+    -webkit-box-shadow: 0 0 16px #000;
+    box-shadow:         0 0 16px #000;
 }
 
 @include DefineToggleLink(".arevert");
@@ -167,13 +153,14 @@ $rightWidth:      265px;
     display: block;
     white-space: nowrap;
     margin: 0;
-    
 
     span {
         color: #AAA;
         padding: 2px 4px;
 
         &:before {
+            position: relative;
+            top: 1px;
             padding-right: 100px;
             font-family: IcoMoon;
             font-size: 16px;
@@ -248,8 +235,6 @@ $rightWidth:      265px;
 
     li {
         display: inline-block;
-        cursor: hand;
-        cursor: pointer;
 
         &:after {
             padding-right: 1px;

@@ -58,6 +58,64 @@ html, body {
 #barWork {
   background-position: 0 -8px; }
 
+#navButtons {
+  position: fixed;
+  right: 10px;
+  bottom: 15px; }
+
+.navbtn {
+  display: none;
+  position: relative;
+  float: left;
+  width: 33px;
+  height: 34px;
+  background: #5b5b5b;
+  margin-right: 5px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+  .navbtn.pressed, .navbtn:active {
+    margin-top: 2px;
+    height: 32px; }
+  .navbtn:hover .btnHL:before {
+    background: #e6e6e6; }
+
+.btnHL:before {
+  width: 27px;
+  height: 15px;
+  line-height: 12px;
+  padding: 14px 2px 0 2px;
+  position: absolute;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  background: #e3e3e3;
+  background: linear-gradient(#e3e3e3 0%, #cecece 100%);
+  background: -o-linear-gradient(#e3e3e3 0%, #cecece 100%);
+  background: -moz-linear-gradient(#e3e3e3 0%, #cecece 100%);
+  background: -webkit-linear-gradient(#e3e3e3 0%, #cecece 100%);
+  font: 12px Verdana;
+  text-shadow: 0 1px 1px white; }
+
+#btnSpace {
+  width: 69px; }
+  #btnSpace .btnHL:before {
+    width: 63px;
+    text-align: center;
+    content: "SpaceBar"; }
+
+#btnRight .btnHL:before {
+  text-align: right;
+  content: "\2192"; }
+
+#btnLeft .btnHL:before {
+  content: "\2190"; }
+
 @font-face {
   font-family: 'IcoMoon';
   src: url("../asset/icomoon.otf") format("opentype"); }
@@ -82,7 +140,7 @@ html, body {
     -o-transition-duration: 0.5s; }
 
 #about {
-  max-width: 394px;
+  max-width: 395px;
   width: 90%;
   text-align: center;
   margin: 0 auto;
@@ -105,52 +163,42 @@ html, body {
   font-weight: bold;
   line-height: 1.2em;
   position: relative;
-  overflow: hidden; }
-  #intro:before, #intro:after {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    content: " ";
-    z-index: -1; }
+  overflow: hidden;
+  border: 1px solid rgba(200, 200, 200, 0.2);
+  border-bottom: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.05);
+  -webkit-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.05); }
   #intro:before {
-    left: 0;
-    border-left: 1px solid rgba(200, 200, 200, 0.15); }
-  #intro:after {
-    right: 0;
-    border-right: 1px solid rgba(200, 200, 200, 0.15);
-    border-top: 1px solid rgba(200, 200, 200, 0.1); }
+    width: 200%;
+    height: 100px;
+    position: absolute;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    top: -37px;
+    left: -15px;
+    z-index: -1;
+    content: " ";
+    -o-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -webkit-transform: rotate(3deg);
+    background: rgba(255, 255, 255, 0.02); }
 
 #introContent {
   margin: 32px; }
-
-#aboveHL {
-  width: 200%;
-  height: 100px;
-  position: absolute;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  top: -35px;
-  left: -15px;
-  z-index: -1;
-  -o-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  -webkit-transform: rotate(3deg);
-  background: rgba(255, 255, 255, 0.04);
-  background: linear-gradient(rgba(255, 255, 255, 0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
-  background: -o-linear-gradient(rgba(255, 255, 255, 0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
-  background: -moz-linear-gradient(rgba(255, 255, 255, 0.05) 50%, rgba(200, 200, 200, 0.05) 100%);
-  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.05) 50%, rgba(200, 200, 200, 0.05) 100%); }
 
 .downShadow {
   position: absolute;
   top: 100%;
   width: 100%;
   height: 10%;
-  -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.95);
-  -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.95);
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.95); }
+  -moz-box-shadow: 0 0 16px #000;
+  -webkit-box-shadow: 0 0 16px #000;
+  box-shadow: 0 0 16px #000; }
 
 .arevert {
   padding: 2px; }
@@ -212,6 +260,8 @@ html, body {
     color: #AAA;
     padding: 2px 4px; }
     .scLink span:before {
+      position: relative;
+      top: 1px;
       padding-right: 100px;
       font-family: IcoMoon;
       font-size: 16px;
@@ -278,9 +328,7 @@ html, body {
     float: right;
     background-position: right center; }
   #nav li {
-    display: inline-block;
-    cursor: hand;
-    cursor: pointer; }
+    display: inline-block; }
     #nav li:after {
       padding-right: 1px;
       content: ","; }
