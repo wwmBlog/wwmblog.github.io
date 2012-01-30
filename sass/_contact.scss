@@ -94,11 +94,9 @@ $formLeftWidth: 160px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
 
-    &:hover {
-        -moz-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-        -webkit-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-        box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-    }
+    -moz-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
 
     &:focus {
         border:1px solid #7dc6dd;

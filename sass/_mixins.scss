@@ -1,5 +1,5 @@
 @mixin ChineseFont {
-    font-family: "STHeiti", "Helvetica", "Microsoft YaHei", sans-serif, "Simsun";
+    font-family: "Helvetica", "STHeiti", "Microsoft YaHei", sans-serif, "Simsun";
 }
 
 @mixin Center ($parent, $inner, $child) {

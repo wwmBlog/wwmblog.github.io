@@ -16,7 +16,7 @@ html, body {
   border: none; }
 
 .bg {
-  font-family: "STHeiti", "Helvetica", "Microsoft YaHei", sans-serif, "Simsun";
+  font-family: "Helvetica", "STHeiti", "Microsoft YaHei", sans-serif, "Simsun";
   background: #252525 url("../img/bg.gif") repeat; }
 
 #playground {
@@ -166,6 +166,7 @@ html, body {
   overflow: hidden;
   border: 1px solid rgba(200, 200, 200, 0.2);
   border-bottom: none;
+  padding: 32px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -188,17 +189,33 @@ html, body {
     -webkit-transform: rotate(3deg);
     background: rgba(255, 255, 255, 0.02); }
 
-#introContent {
-  margin: 32px; }
-
 .downShadow {
   position: absolute;
   top: 100%;
+  left: 0;
   width: 100%;
   height: 10%;
   -moz-box-shadow: 0 0 16px #000;
   -webkit-box-shadow: 0 0 16px #000;
   box-shadow: 0 0 16px #000; }
+
+.annotation {
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  color: #000;
+  text-shadow: 0 1px 1px #333333; }
+  .annotation div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    margin: 0 32px; }
+    .annotation div:before {
+      font-family: Georgia;
+      font-size: 36px;
+      content: "\201c";
+      float: left; }
 
 .arevert {
   padding: 2px; }
@@ -242,7 +259,7 @@ html, body {
     color: #000;
     background: #1A1A1A;
     text-shadow: 0 1px 1px #363636;
-    font-family: "STHeiti", "Helvetica", "Microsoft YaHei", sans-serif, "Simsun"; }
+    font-family: "Helvetica", "STHeiti", "Microsoft YaHei", sans-serif, "Simsun"; }
   #social ul {
     text-align: left;
     margin-left: 24px;
@@ -417,11 +434,10 @@ html, body {
   outline: none;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-  border-radius: 2px; }
-  .inputStyle:hover {
-    -moz-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15); }
+  border-radius: 2px;
+  -moz-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15); }
   .inputStyle:focus {
     border: 1px solid #7dc6dd;
     -moz-box-shadow: 0 0 0 4px #e0f1fc, inset 0 1px 4px rgba(0, 0, 0, 0.15);

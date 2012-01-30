@@ -1,7 +1,8 @@
 $(function(){
 
     var scrollBars = [$("#barSkill"), $("#barWork"), $("#barContact")],
-        scrollBtns = [$("#btnSpace"), $("#btnLeft"), $("#btnRight")];
+        scrollBtns = [$("#btnSpace"), $("#btnLeft"), $("#btnRight")],
+        msgInputs  = [$("#content"),  $("#mail")];
 
     // === Horizontal Scrolling ===
     var winScroller = {
@@ -10,7 +11,7 @@ $(function(){
             var bodyW = $("body").width(),
                 curr  = Math.floor(window.pageXOffset / bodyW);
             if(window.pageXOffset % bodyW == 0 && curr > 0) { --curr; }
-            winScroller.scrollTo(curr * bodyW, 300);
+            winScroller.scrollTo(curr * bodyW);
         },
 
         pageRight: function () 
@@ -18,17 +19,21 @@ $(function(){
             var bodyW = $("body").width(),
                 curr  = Math.ceil(window.pageXOffset / bodyW);
             if(window.pageXOffset % bodyW == 0 && curr < 3) { ++curr; }
-            winScroller.scrollTo(curr * bodyW, 300);
+            winScroller.scrollTo(curr * bodyW, 400, true);
         },
 
         // xpos accepts number or string.
         // string is the name of an element.
-        scrollTo : function (xpos, duration) 
+        scrollTo : function (xpos, duration, noblur)
         {
             var d = (window.contentWindow || window).document || window.ownerDocument || window,
                 t = $.browser.safari || doc.compatMode == 'BackCompat' ? d.body : d.documentElement,
                 l = typeof xpos == "number" ? xpos : $(xpos).offset().left;
             $(t).stop().animate({ "scrollLeft": l }, duration);
+
+            // When scroll, if the msg inputs have focus, it will animate laggy.
+            // So make sure it's deblured.
+            if (!noblur) { msgInputs[0].blur(); msgInputs[1].blur(); }
         }
     };
 
@@ -85,14 +90,13 @@ $(function(){
             this.onmousewheel = fn;
     });
 
-    $(window).scroll(adjustFixedContent).resize(adjustFixedContent);
-    adjustFixedContent();
-
-    // Adjust the bars and the nav buttons,
-    // Set focus to the message input area if we
-    // have scroll to that.
+    $("#navButtons").mousedown(false);
+   
     function adjustFixedContent()
     {
+        // Adjust the bars and the nav buttons,
+        // Set focus to the message input area if we
+        // have scroll to that.
         var bodyW = $("body").width(),
             m = half = bodyW / 2,
             x = window.pageXOffset;
@@ -108,17 +112,65 @@ $(function(){
         scrollBtns[1].toggle(x > 0);
         if(x >= 3 * bodyW) {
             scrollBtns[2].hide();
-            $("#content").focus();
+            msgInputs[0].focus();
         } else if(scrollBtns[2].css("display") == "none") {
             scrollBtns[2].show();
-            $("#content").blur();
+            msgInputs[0].blur();
+            msgInputs[1].blur();
         }
+    }
+    $(window).scroll(adjustFixedContent).resize(adjustFixedContent);
+    adjustFixedContent();
+
+    // === Main Annotation ===
+    configureAnnotation({
+        // A div containing the target elements that has annotation.
+        $targetDiv : $("#introContent"), 
+        // Those elements which have annotation in their title attr.
+        $annoElems : $("#introContent").children("a")
+    });
+    function configureAnnotation(obj) 
+    {
+        var $annoDiv  = $('<div class="annotation"><div></div><div></div></div>')
+                         .appendTo(obj.$targetDiv).css("height", 0),
+            $children = $annoDiv.children().css("opacity", 0),
+            $annoShow = $($children[0]),
+            $annoBack = $($children[1]),
+            currElem  = null,
+            duration  = 250;
+
+        obj.$annoElems.each(
+            function()
+            {
+                $(this).data("anno", this.title).attr("title", "");
+            }
+        ).click(
+            function()
+            {
+                $annoShow.animate({"opacity": 0}, duration);
+
+                var h  = 0;
+                if (currElem != this) {
+                    currElem = this;
+                    var temp = $annoShow;
+                    $annoShow = $annoBack.html($(this).data("anno"))
+                                         .animate({"opacity":1}, duration);
+                    $annoBack = temp;
+                    h = $annoShow.innerHeight();
+                } else {
+                    currElem = null;
+                }
+
+                $annoDiv.animate({"height":h}, duration);
+                return false;
+            }
+        );
     }
 
     // === Message form ===
-    var theForm = {
-        $msgBox       : $("#content"),
-        $mailInput    : $("#mail"),
+    configureForm({
+        $msgBox       : msgInputs[0],
+        $mailInput    : msgInputs[1],
         $sendBtn      : $("#sendme"),
         $notification : $("#notification"), // A element to show the error message.
         submitURL     : "ohnewmessage.php",
@@ -144,9 +196,7 @@ $(function(){
         {
             $("#stampd").hide();
         }
-    }
-    configureForm(theForm);
-
+    });
     function configureForm(form)
     {
         // Clear notification when input changes.
