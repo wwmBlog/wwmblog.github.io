@@ -27,7 +27,7 @@ $(function(){
         scrollTo : function (xpos, duration, noblur)
         {
             var d = (window.contentWindow || window).document || window.ownerDocument || window,
-                t = $.browser.safari || doc.compatMode == 'BackCompat' ? d.body : d.documentElement,
+                t = $.browser.safari || d.compatMode == 'BackCompat' ? d.body : d.documentElement,
                 l = typeof xpos == "number" ? xpos : $(xpos).offset().left;
             $(t).stop().animate({ "scrollLeft": l }, duration);
 
@@ -90,7 +90,20 @@ $(function(){
             this.onmousewheel = fn;
     });
 
-    $("#navButtons").mousedown(false);
+    $("#navButtons a").mousedown(
+        function(){
+            $(this).addClass("pressed"); 
+            return false;
+        }
+    ).mouseup(
+        function(){
+            $(this).removeClass("pressed");
+            return false;
+        }
+    );
+    for(var i=0;i<3;++i) {
+        scrollBtns[i].css("display","block").hide();
+    }
    
     function adjustFixedContent()
     {
