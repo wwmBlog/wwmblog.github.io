@@ -81,7 +81,7 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 #social li { padding-bottom: 3px; line-height: 16px; height: 16px; }
 
 .scLink { display: block; white-space: nowrap; margin: 0; }
-.scLink span { color: #AAA; padding: 2px 4px; }
+.scLink span { color: #AAA; padding: 2px 4px; font-size: 12px; }
 .scLink span:before { position: relative; top: 1px; padding-right: 100px; font-family: IcoMoon; font-size: 16px; color: black; text-shadow: 0 1px 1px #555555; }
 .scLink:hover span { color: #FFF; text-shadow: 0 -1px 0 black; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; background: black; }
 .scLink:hover span:before { padding-right: 5px; color: #FFF; text-shadow: none; }
@@ -130,18 +130,20 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 
 #formWrapper { position: relative; margin-left: 160px; height: 100%; }
 
+#formMargin { position: absolute; left: 3px; right: 10px; height: 100%; }
+
 *::-webkit-input-placeholder { color: #aeaeae; }
 
 *:-moz-placeholder { color: #aeaeae; }
 
-.inputStyle { position: absolute; left: 3px; right: 10px; font-size: 14px; padding: 10px; color: #7f7f7f; border: 1px solid #bec2c4; outline: none; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; -moz-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15); -webkit-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15); box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15); }
+.inputStyle { position: absolute; width: 100%; -moz-box-sizing: border-box; box-sizing: border-box; font-size: 14px; padding: 10px; color: #7f7f7f; border: 1px solid #bec2c4; outline: none; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; -moz-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15); -webkit-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15); box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15); }
 .inputStyle:focus { border: 1px solid #7dc6dd; -moz-box-shadow: 0 0 0 4px #e0f1fc, inset 0 1px 4px rgba(0, 0, 0, 0.15); -webkit-box-shadow: 0 0 0 4px #e0f1fc, inset 0 1px 4px rgba(0, 0, 0, 0.15); box-shadow: 0 0 0 4px #e0f1fc, inset 0 1px 4px rgba(0, 0, 0, 0.15); }
 
-#content { top: 20px; height: 97px; resize: none; }
+#content { top: 20px; height: 119px; resize: none; }
 
-#mail { bottom: 6px; height: 1em; }
+#mail { bottom: 6px; height: 36px; }
 
-#sendme { position: absolute; right: 14px; bottom: 13px; height: 22px; width: 80px; border: none; cursor: pointer; background-position: -16px -16px; }
+#sendme { position: absolute; right: 4px; bottom: 13px; height: 22px; width: 80px; border: none; cursor: pointer; background-position: -16px -16px; }
 #sendme:hover { background-position: -16px -38px; }
 #sendme:active { background-position: -16px -60px; }
 #sendme:disabled { background-position: -16px -82px; cursor: auto; }
