@@ -1,6 +1,6 @@
 ({
     appDir: "./",
     dir: "../build",
-    optimizeCss: "standard",
+    optimizeCss: "none",
     fileExclusionRegExp: /(^\.|psd|gae|scss|build)/
 })
