@@ -105,8 +105,8 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 #news { width: 100%; height: 100px; background: white url("../img/hmbg.png") repeat; }
 
 #nav { float: right; width: 265px; height: 60px; line-height: 60px; background: #000; color: #555; font-weight: bold; }
-#nav ul:before, #nav ul:after { background: url("../img/br.gif") no-repeat left center; width: 20px; height: 60px; float: left; content: " "; }
-#nav ul:after { float: right; background-position: right center; }
+#nav ul:before, #nav ul:after { background: url("../img/br.gif") no-repeat left center; width: 20px; height: 60px; position: absolute; right: 245px; content: " "; }
+#nav ul:after { right: 0; background-position: right center; }
 #nav li { display: inline-block; }
 #nav li:after { padding-right: 1px; content: ","; }
 #nav li:last-child:after { content: ""; }
