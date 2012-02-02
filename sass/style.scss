@@ -46,11 +46,13 @@ html, body {
     bottom: 15px;
 }
 .navbtn {
-    display: none;
     position: relative;
     float: left;
     width: 33px;
     height: 34px;
+    cursor: hand;
+    cursor: pointer;
+
     background: #5b5b5b;
     margin-right: 5px;
     -moz-border-radius: 3px;
@@ -61,47 +63,64 @@ html, body {
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.75);
     box-shadow:         0 1px 3px rgba(0,0,0,0.75);
 
+    div 
+    {
+        display: block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        height: 31px;
+
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 3px;
+        border: 1px solid #e0e0e0;
+        
+        background: #e3e3e3;
+        background: linear-gradient(#e3e3e3 0%, #cecece 100%);
+        background: -o-linear-gradient(#e3e3e3 0%, #cecece 100%);
+        background: -moz-linear-gradient(#e3e3e3 0%, #cecece 100%);
+        background: -webkit-linear-gradient(#e3e3e3 0%, #cecece 100%);
+
+        &:before {
+            position: absolute;
+            margin-top: 16px;
+            height: 13px;
+            line-height: 13px;
+            font-size: 12px;
+            font-family: Verdana;
+            @include TextEmboss(#FFF);
+        }
+    }
+
+    &:hover{
+        background: #404040;
+    }
+
     &.pressed, &:active {
         margin-top: 2px;
         height: 32px;
     }
-
-    &:hover {
-        .btnHL:before {
-            background: #e6e6e6;
-        }
-    }
-}
-.btnHL:before {
-    width: 27px;
-    height: 15px;
-    line-height: 12px;
-    padding: 14px 2px 0 2px;
-    position: absolute;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 3px;
-    border: 1px solid #e0e0e0;
-    background: #e3e3e3;
-    background: linear-gradient(#e3e3e3 0%, #cecece 100%);
-    background: -o-linear-gradient(#e3e3e3 0%, #cecece 100%);
-    background: -moz-linear-gradient(#e3e3e3 0%, #cecece 100%);
-    background: -webkit-linear-gradient(#e3e3e3 0%, #cecece 100%);
-    font: 12px Verdana;
-
-    @include TextEmboss(#FFF);
 }
 
 #btnSpace { 
     width: 69px;
-    .btnHL:before { 
-        width: 63px; 
+
+    div:before {
+        width: 100%;
+        margin-top: 15px;
         text-align: center;
         content: "SpaceBar";
     }
 }
-#btnRight { .btnHL:before { text-align: right; content: "\2192" } }
-#btnLeft { .btnHL:before { content: "\2190"} }
+#btnRight div:before {
+    right: 3px;
+    content: "\2192" 
+}
+#btnLeft div:before { 
+    left: 3px;
+    content: "\2190"
+}
 
 @font-face {
   font-family: 'IcoMoon';

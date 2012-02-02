@@ -90,17 +90,8 @@ $(function(){
             this.onmousewheel = fn;
     });
 
-    $("#navButtons a").mousedown(
-        function(){
-            $(this).addClass("pressed"); 
-            return false;
-        }
-    ).mouseup(
-        function(){
-            $(this).removeClass("pressed");
-            return false;
-        }
-    );
+    $("#navButtons a").mousedown(false).mouseup(false);
+
     for(var i=0;i<3;++i) {
         scrollBtns[i].css("display","block").hide();
     }
