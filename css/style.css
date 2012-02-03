@@ -30,8 +30,8 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 
 #navButtons { position: fixed; right: 10px; bottom: 15px; }
 
-.navbtn { position: relative; float: left; width: 33px; height: 34px; cursor: hand; cursor: pointer; background: #5b5b5b; margin-right: 5px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 5px; border: 1px solid #000; -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
-.navbtn div { display: block; -moz-box-sizing: border-box; box-sizing: border-box; width: 100%; height: 31px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 3px; border: 1px solid #e0e0e0; background: #e3e3e3; background: linear-gradient(#e3e3e3 0%, #cecece 100%); background: -o-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -moz-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -webkit-linear-gradient(#e3e3e3 0%, #cecece 100%); }
+.navbtn { position: relative; float: left; width: 33px; height: 34px; cursor: hand; cursor: pointer; background: #5b5b5b; margin-right: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; border: 1px solid #000; -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+.navbtn div { display: block; width: 100%; height: 31px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #e0e0e0; background: #e3e3e3; background: -o-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -moz-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -webkit-linear-gradient(#e3e3e3 0%, #cecece 100%); background: linear-gradient(#e3e3e3 0%, #cecece 100%); }
 .navbtn div:before { position: absolute; margin-top: 16px; height: 13px; line-height: 13px; font-size: 12px; font-family: Verdana; text-shadow: 0 1px 1px white; }
 .navbtn:hover { background: #404040; }
 .navbtn.pressed, .navbtn:active { margin-top: 2px; height: 32px; }
@@ -55,7 +55,7 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 #intro { text-shadow: 0 1px 1px black; width: 100%; color: white; font-size: 14px; font-weight: bold; line-height: 1.2em; position: relative; overflow: hidden; border: 1px solid rgba(200, 200, 200, 0.2); border-bottom: none; padding: 32px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; -moz-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.05); -webkit-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.05); box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.05); }
 #intro:before { width: 200%; height: 100px; position: absolute; -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; top: -37px; left: -15px; z-index: -1; content: " "; -o-transform: rotate(3deg); -moz-transform: rotate(3deg); -webkit-transform: rotate(3deg); background: rgba(255, 255, 255, 0.02); }
 
-.downShadow { position: absolute; top: 100%; left: 0; width: 100%; height: 10%; -moz-box-shadow: 0 0 16px #000; -webkit-box-shadow: 0 0 16px #000; box-shadow: 0 0 16px #000; }
+.downShadow { position: absolute; top: 100%; left: 0; width: 100%; height: 10%; -moz-box-shadow: 0 0 16px black; -webkit-box-shadow: 0 0 16px black; box-shadow: 0 0 16px black; }
 
 .annotation { position: relative; overflow: hidden; text-align: left; color: #000; text-shadow: 0 1px 1px #333333; }
 .annotation div { position: absolute; top: 0; left: 0; padding-top: 20px; margin: 0 32px; }
@@ -75,15 +75,15 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 
 #socialWrapper { width: 100%; float: left; }
 
-#social { margin-right: 265px; height: 160px; background: #282828 url("../img/scbg.png") repeat; overflow: hidden; font-family: monospace; }
-#social p { width: 1em; float: left; padding: 5px 1px; font-weight: bold; color: #000; background: #1A1A1A; text-shadow: 0 1px 1px #363636; font-family: "Helvetica", "STHeiti", "Microsoft YaHei", sans-serif, "Simsun"; }
+#social { margin-right: 265px; height: 160px; background: #282828 url("../img/scbg.png") repeat; overflow: hidden; }
+#social p { width: 1em; float: left; padding: 5px 1px; font-weight: bold; color: #000; background: #1A1A1A; text-shadow: 0 1px 1px #363636; }
 #social ul { text-align: left; margin-left: 24px; margin-top: 20px; }
 #social li { padding-bottom: 3px; line-height: 16px; height: 16px; }
 
 .scLink { display: block; white-space: nowrap; margin: 0; }
 .scLink span { color: #AAA; padding: 2px 4px; font-size: 12px; }
 .scLink span:before { position: relative; top: 1px; padding-right: 100px; font-family: IcoMoon; font-size: 16px; color: black; text-shadow: 0 1px 1px #555555; }
-.scLink:hover span { color: #FFF; text-shadow: 0 -1px 0 black; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; background: black; }
+.scLink:hover span { color: #FFF; background: black; text-shadow: 0 -1px 0 black; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 .scLink:hover span:before { padding-right: 5px; color: #FFF; text-shadow: none; }
 
 #scda:before { content: '\27'; }
@@ -122,7 +122,7 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 
 #stampd { position: absolute; top: 92px; left: 7px; opacity: 0; }
 
-#formSeperator { width: 1px; height: 166px; margin: 23px 6px 0 6px; float: right; background: -moz-linear-gradient(90deg, #f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%) #e6e6e6; background: -webkit-gradient(linear, left bottom, left top, from(#f6f6f6), color-stop(0.5, #e2e2e2), to(#f6f6f6)) #e6e6e6; background-image: -o-linear-gradient(#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%); }
+#formSeperator { width: 1px; height: 166px; margin: 23px 8px 0 0; float: right; background: #e6e6e6; background: -o-linear-gradient(#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%); background: -moz-linear-gradient(#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%); background: -webkit-linear-gradient(#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%); background: linear-gradient(#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%); }
 
 #notification { position: absolute; bottom: 3px; right: 2px; font-size: 10px; color: red; }
 
@@ -147,3 +147,13 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 #sendme:hover { background-position: -16px -38px; }
 #sendme:active { background-position: -16px -60px; }
 #sendme:disabled { background-position: -16px -82px; cursor: auto; }
+
+#skillPadding { height: 50%; margin-bottom: -72px; }
+
+.sink { width: 90%; max-width: 570px; height: 64px; background: #000; margin: 16px auto 0 auto; position: relative; -moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px; -moz-box-shadow: 0 1px 0 #333333; -webkit-box-shadow: 0 1px 0 #333333; box-shadow: 0 1px 0 #333333; }
+.sink span { color: #FFF; width: auto; padding: 0 15px; font: 30px/64px Impact; }
+.sink div { position: absolute; top: 7px; bottom: 7px; left: 65px; right: 7px; }
+.sink canvas { width: 100%; height: 100%; }
+
+#basic { text-align: right; }
+#basic div { left: 7px; right: 93px; }

@@ -51,3 +51,45 @@
     _height:1%;
     overflow:hidden;
 }
+
+@mixin BorderRadius($radius) {
+    -moz-border-radius:    $radius;
+    -webkit-border-radius: $radius;
+    border-radius:         $radius;
+}
+
+@mixin BoxShadow($shadow) {
+    -moz-box-shadow:    $shadow;
+    -webkit-box-shadow: $shadow;
+    box-shadow:         $shadow;
+}
+
+@mixin SizingBorderBox {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+}
+
+@mixin LinearBackground($color1, $color2) {
+    background: -o-linear-gradient($color1, $color2);
+    background: -moz-linear-gradient($color1, $color2);
+    background: -webkit-linear-gradient($color1, $color2);
+    background: linear-gradient($color1, $color2);
+}
+@mixin LinearBackground3($color1, $color2, $color3) {
+    background: -o-linear-gradient($color1, $color2, $color3);
+    background: -moz-linear-gradient($color1, $color2, $color3);
+    background: -webkit-linear-gradient($color1, $color2, $color3);
+    background: linear-gradient($color1, $color2, $color3);
+}
+
+@mixin HandCursor {
+    cursor: hand;
+    cursor: pointer;
+}
+
+@mixin Transform ($var) {
+    -o-transform:      $var;
+    -moz-transform:    $var;
+    -webkit-transform: $var;
+}

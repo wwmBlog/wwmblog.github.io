@@ -9,18 +9,16 @@ $formLeftWidth: 160px;
 .formbg {
     background: #FFF;
     height: $formHeight;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
+    @include BorderRadius(8px);
 }
 
 #formShadow {
-    background: #121212;
-    border: 8px solid #121212;
-    position: absolute;
-    margin: -113px auto 0 auto;
-    top: 50%;
-    left: 0;
+    background:  #121212;
+    border:      8px solid #121212;
+    position:    absolute;
+    margin:      -113px auto 0 auto;
+    top:   50%;
+    left:  0;
     right: 0;
     width: 90%;
     max-width: $formWidth;
@@ -50,11 +48,10 @@ $formLeftWidth: 160px;
 #formSeperator {
     width: 1px;
     height: 166px;
-    margin: 23px 6px 0 6px;
+    margin: 23px 8px 0 0;
     float: right;
-    background: -moz-linear-gradient(90deg, #f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%) #e6e6e6;
-    background: -webkit-gradient(linear, left bottom, left top, from(#f6f6f6), color-stop(0.5, #e2e2e2), to(#f6f6f6)) #e6e6e6;
-    background-image: -o-linear-gradient(#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%);
+    background: #e6e6e6;
+    @include LinearBackground3(#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%);
 }
 
 // --- Notification ---

@@ -1,0 +1,50 @@
+// +++ Variable Zone +++
+$sinkHeight:  64px;
+$sinkSpacing: 16px;
+// --- Variable Zone ---
+
+#skillPadding {
+    height: 50%;
+    margin-bottom: -($sinkHeight * 2 + $sinkSpacing) / 2;
+}
+
+.sink {
+    width:      90%;
+    max-width:  570px;
+    height:     $sinkHeight;
+    background: #000;
+    margin:     $sinkSpacing auto 0 auto;
+    position:   relative;
+    
+    @include BorderRadius(30px);
+    @include BoxShadow(0 1px 0 #333);
+
+    span {
+        color:   #FFF;
+        width:   auto;
+        padding: 0 15px;
+        font:    30px/64px Impact;
+    }
+
+    div {
+        position: absolute;
+        top:      7px;
+        bottom:   7px;
+        left:     65px;
+        right:    7px;
+    }
+
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+#basic {
+    text-align: right;
+
+    div {
+        left: 7px;
+        right: 93px;
+    }
+}

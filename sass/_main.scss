@@ -40,9 +40,7 @@ $rightWidth:      265px;
     text-align: center;
     margin: 0 auto;
 
-    -moz-box-shadow: 0 0 16px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0 0 16px rgba(0,0,0,0.75);
-    box-shadow: 0 0 16px rgba(0,0,0,0.75);
+    @include BoxShadow(0 0 16px rgba(0,0,0,0.75));
 
     position: absolute;
     top: 50%;
@@ -67,29 +65,21 @@ $rightWidth:      265px;
     border-bottom: none;
     padding: $introTextMargin;
 
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-
-    -moz-box-shadow:    inset 0 6px 16px 2px rgba(255,255,255,0.05);
-    -webkit-box-shadow: inset 0 6px 16px 2px rgba(255,255,255,0.05);
-    box-shadow:         inset 0 6px 16px 2px rgba(255,255,255,0.05);
+    @include SizingBorderBox;
+    @include BoxShadow(inset 0 6px 16px 2px rgba(255,255,255,0.05));
 
     &:before {
         width: 200%;
         height: 100px;
         position: absolute;
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
+        @include BorderRadius(50%);
+
         top: -37px;
         left: -15px;
         z-index: -1;
         content: " ";
-        
-        -o-transform:rotate(3deg);
-        -moz-transform:rotate(3deg);
-        -webkit-transform:rotate(3deg);
+
+        @include Transform(rotate(3deg));
 
         background: rgba(255,255,255,0.02);
     }
@@ -101,9 +91,7 @@ $rightWidth:      265px;
     left: 0;
     width: 100%;
     height: 10%;
-    -moz-box-shadow:    0 0 16px #000;
-    -webkit-box-shadow: 0 0 16px #000;
-    box-shadow:         0 0 16px #000;
+    @include BoxShadow(0 0 16px #000);
 }
 
 .annotation {
@@ -143,7 +131,6 @@ $rightWidth:      265px;
     height: $middleHeight + $navHeight;
     background: #282828 url('../img/scbg.png') repeat;
     overflow: hidden;
-    font-family: monospace;
 
     p {
         width: 1em;
@@ -153,7 +140,6 @@ $rightWidth:      265px;
         color: #000;
         background: #1A1A1A;
         @include TextEmboss(#363636);
-        @include ChineseFont;
     }
 
     ul {
@@ -192,12 +178,10 @@ $rightWidth:      265px;
 
     &:hover span {
         color: #FFF;
-        text-shadow: 0 -1px 0 #000000;
-        
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
         background: black;
+        text-shadow: 0 -1px 0 #000000;
+
+        @include BorderRadius(3px);
         
         &:before {
             padding-right: 5px;
@@ -231,13 +215,13 @@ $rightWidth:      265px;
 
 // --- Nav (About below) ---
 #nav {
-    float: right;
-    width: $rightWidth;
-    height: $navHeight;
+    float:       right;
+    width:       $rightWidth;
+    height:      $navHeight;
     line-height: $navHeight;
 
-    background: #000;
-    color: #555;
+    background:  #000;
+    color:       #555;
     font-weight: bold;
 
     ul {
