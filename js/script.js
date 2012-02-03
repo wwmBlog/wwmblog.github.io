@@ -1,44 +1,25 @@
-$(function(){
+define(function (require) 
+{
+    require('dummy/../../plugins/plugins.js');
+    var winScroller = require('./winScroller.js');
+    var formSetup   = require('./msgForm.js');
 
+$(function()
+{
     var scrollBars = [$("#barSkill"), $("#barWork"), $("#barContact")],
         scrollBtns = [$("#btnSpace"), $("#btnLeft"), $("#btnRight")],
         msgInputs  = [$("#content"),  $("#mail")];
 
     // === Horizontal Scrolling ===
-    var winScroller = {
-        pageLeft : function () 
-        {
-            var bodyW = $("body").width(),
-                curr  = Math.floor(window.pageXOffset / bodyW);
-            if(window.pageXOffset % bodyW == 0 && curr > 0) { --curr; }
-            winScroller.scrollTo(curr * bodyW);
-        },
-
-        pageRight: function () 
-        {
-            var bodyW = $("body").width(),
-                curr  = Math.ceil(window.pageXOffset / bodyW);
-            if(window.pageXOffset % bodyW == 0 && curr < 3) { ++curr; }
-            winScroller.scrollTo(curr * bodyW, 400, true);
-        },
-
-        // xpos accepts number or string.
-        // string is the name of an element.
-        scrollTo : function (xpos, duration, noblur)
-        {
-            var d = (window.contentWindow || window).document || window.ownerDocument || window,
-                t = $.browser.safari || d.compatMode == 'BackCompat' ? d.body : d.documentElement,
-                l = typeof xpos == "number" ? xpos : $(xpos).offset().left;
-            $(t).stop().animate({ "scrollLeft": l }, duration);
-
-            // When scroll, if the msg inputs have focus, it will animate laggy.
-            // So make sure it's deblured.
-            if (!noblur) { msgInputs[0].blur(); msgInputs[1].blur(); }
-        }
-    };
-
     scrollBtns[0].click(function(){winScroller.scrollTo(0);});
-    scrollBtns[1].click(winScroller.pageLeft);
+    scrollBtns[1].click(
+        function() 
+        {
+            msgInputs[0].blur();
+            msgInputs[1].blur();
+            winScroller.pageLeft();
+        }
+    );
     scrollBtns[2].click(winScroller.pageRight);
     $("#nav a").click(
         function(e) 
@@ -90,10 +71,9 @@ $(function(){
             this.onmousewheel = fn;
     });
 
-    $("#navButtons a").mousedown(false).mouseup(false);
-
+    // Disable text selection on the buttons
     for(var i=0;i<3;++i) {
-        scrollBtns[i].css("display","block").hide();
+        scrollBtns[i].mousedown(false).mouseup(false);
     }
    
     function adjustFixedContent()
@@ -204,128 +184,12 @@ $(function(){
             $("#stampd").css({"opacity":"0"});
         }
     };
-    configureForm(theForm);
-
-    function configureForm(form)
-    {
-        // Clear notification when input changes.
-        form.$msgBox.bind(
-            "textchange", 
-            function() 
-            {
-                form.$notification.html(""); 
-                form.hideComplete();
-            }
-        );
-
-        // Check email and interpret 'Enter'
-        form.$mailInput.bind(
-            "textchange",
-            function() 
-            {
-                if(testEmail($(this).val())) { 
-                    form.$sendBtn.removeAttr("disabled"); 
-                } else {
-                    form.$sendBtn.attr("disabled", "disabled");
-                }
-            }
-        ).keydown(
-            function(e) 
-            {
-                var k = e.keyCode | e.which;
-                if(k == 13) {
-                    form.$sendBtn.click();
-                    return false;
-                } else if (k == 9) {
-                    form.$msgBox.focus();
-                    return false;
-                }
-                e.stopPropagation();
-            }
-        ).trigger("textchange");
-
-        form.$msgBox.add(form.$mailInput).keydown(stopProp).keyup(stopProp);
-
-        form.$sendBtn.click(
-            function(e)
-            {
-                var msgVal  = form.$msgBox.val(),
-                    mailVal = form.$mailInput.val(),
-                    err     = "";
-                if(msgVal == "" || msgVal == form.$msgBox.attr("placeholder")) 
-                {
-                    err = "你什么都还没写呢=，=";
-                } else if(!testEmail(mailVal))
-                {
-                    err = "Email不正确吧~~";
-                } else if(form.lastContent == msgVal)
-                {
-                    err = "你刚才就发过了...";
-                } else {
-                    form.lastContent = msgVal;
-                    form.showLoading();
-                    err = "正在努力地发送中...";
-        
-                    // send the content
-                    $.ajax({  
-                        url:      form.submitURL,  
-                        dataType: 'jsonp',
-                        jsonp:    'jsonp',
-                        data:     {"email": mailVal, "content": msgVal},
-                        success: function(data) 
-                        {
-                            if(data.result == "success") {
-                                form.$notification.html("发送成功，我会尽快回复你的。");
-                                form.showComplete();
-                            } else {
-                                onSendError();
-                            }
-                        },
-                        error: onSendError,
-                        complete: function() { form.hideLoading(); }
-                    });
-                    function onSendError() {
-                        form.hideComplete();
-                        form.$notification
-                            .html("Oops，出错了。不如直接发邮件给我吧: liangmorr@gmail.com");
-                    }
-                }
-
-                form.$notification.html(err);
-                return false;
-            }
-        );
-
-        // PlaceHolder
-        var ph = "placeholder";
-        if(!(ph in document.createElement('input'))) 
-        {
-            form.$msgBox.add(form.$mailInput).focus(
-                function() 
-                {
-                    var $t = $(this);
-                    if ($t.attr(ph) != "" && 
-                        $t.val() == $t.attr(ph)) 
-                    { $t.val(""); }
-                }
-            ).blur(
-                function ()
-                {
-                    var $t = $(this);
-                    if ($t.attr(ph) != "" && 
-                        $t.val() == "")
-                    { $t.val($t.attr(ph)); }
-                }
-            ).blur().end();
-        }
-
-        function testEmail(m) { 
-            return /[\w\d_\.\-]+@([\w\d_\-]+\.)+[\w\d]{2,4}/.test(m);
-        }
-        function stopProp(e) { e.stopPropagation(); }
-    }
+    formSetup.configureForm(theForm);
 
     // === Skill Chart ===
 
     // === Work List ===
-});
+});/*$*/
+
+});/*define*/
+

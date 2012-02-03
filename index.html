@@ -105,8 +105,8 @@
     </div><!-- #playground -->
 
   <div id="navButtons">
-    <a class="navbtn" id="btnSpace"><div></div></a>
-    <a class="navbtn" id="btnLeft"><div></div></a>
+    <a class="navbtn" id="btnSpace" style="display:none;"><div></div></a>
+    <a class="navbtn" id="btnLeft" style="display:none;"><div></div></a>
     <a class="navbtn" id="btnRight"><div></div></a>
   </div>
   <div class="bar" id="barSkill"></div>
@@ -115,9 +115,8 @@
 
   <!-- JavaScript at the bottom for fast page loading -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/min/jquery-1.7.1.min.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="js/lib/jquery_1.7.1.js"><\/script>')</script>
 
-  <script defer src="js/plugins.js"></script>
-  <script defer src="js/script.js"></script>
+  <script src="js/lib/sea_1.1.0.js" data-main="./js/script.js"></script>
 </body>
 </html>
