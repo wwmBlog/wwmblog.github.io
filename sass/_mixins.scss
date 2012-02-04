@@ -59,9 +59,9 @@
 }
 
 @mixin BoxShadow($shadow) {
-    -moz-box-shadow:    $shadow;
-    -webkit-box-shadow: $shadow;
-    box-shadow:         $shadow;
+    -moz-box-shadow:    #{$shadow};
+    -webkit-box-shadow: #{$shadow};
+    box-shadow:         #{$shadow};
 }
 
 @mixin SizingBorderBox {
@@ -70,21 +70,8 @@
     box-sizing:         border-box;
 }
 
-@mixin LinearBackground($color1, $color2) {
-    background: -o-linear-gradient($color1, $color2);
-    background: -moz-linear-gradient($color1, $color2);
-    background: -webkit-linear-gradient($color1, $color2);
-    background: linear-gradient($color1, $color2);
-}
-@mixin LinearBackground3($color1, $color2, $color3) {
-    background: -o-linear-gradient($color1, $color2, $color3);
-    background: -moz-linear-gradient($color1, $color2, $color3);
-    background: -webkit-linear-gradient($color1, $color2, $color3);
-    background: linear-gradient($color1, $color2, $color3);
-}
-
 @mixin HandCursor {
-    cursor: hand;
+    cursor: #{"hand"};
     cursor: pointer;
 }
 
@@ -92,4 +79,48 @@
     -o-transform:      $var;
     -moz-transform:    $var;
     -webkit-transform: $var;
+}
+
+@mixin LinearBackground($colors) {
+
+    $g : "linear-gradient(" + $colors + ")";
+
+    background: #{ "-webkit-" + $g };
+    background: #{ "-moz-" + $g };
+    background: #{ "-ms-" + $g };
+    background: #{ "-o-" + $g };
+    background: #{ $g };
+}
+
+@mixin Stripe($degree, $stripSize, $colors) {
+
+    @if (length($colors) < 2) {
+        @warn "Strip uses at least two colors";
+    }
+
+    background-size   : $stripSize * length($colors) $stripSize * length($colors);
+    background-repeat : repeat;
+
+    $index  : 1;
+    $c      : nth($colors, 1);
+    $divide : 50 / length($colors);
+    $stop   : 0% + $divide;
+    $result : "," + $c + " " + $stop;
+
+    $colors : join($colors, $colors);
+    $cCount : length($colors);
+
+    @while $index < $cCount {
+        $index  : $index + 1;
+        $c      : nth($colors, $index);
+        $result : $result + "," + $c + " " + $stop;
+        $stop   : $stop + $divide;
+        $result : $result + "," + $c + " " + $stop;
+    }
+
+    background-image: -webkit-linear-gradient($degree #{$result});
+    background-image: -moz-linear-gradient($degree #{$result});
+    background-image: -ms-linear-gradient($degree #{$result});
+    background-image: -o-linear-gradient($degree #{$result});
+    background-image: linear-gradient($degree #{$result});
 }

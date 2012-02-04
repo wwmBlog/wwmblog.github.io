@@ -35,10 +35,30 @@ html, body {
     width: 100%;
     height: 8px;
     bottom: -8px;
-    background-repeat: repeat-x;
+
+    &.active {
+        -webkit-animation: bar-scroll-horz 0.5s linear infinite;
+        -moz-animation: bar-scroll-horz 0.5s linear infinite;
+        animation: bar-scroll-horz 0.5s linear infinite;
+    }
 }
-#barSkill { background-image: url('../img/bar.gif'); }
-#barWork  { background-position: 0 -8px; }
+
+#barSkill   { @include Stripe(-45deg, 45px, #f11105 #f27405 #f1e105 #3ea62e #0c5b9e); }
+#barWork    { @include Stripe(-45deg, 45px, #000 #fce34f); }
+#barContact { @include Stripe(-45deg, 45px, #0f8bc0 #f00); }
+
+@-webkit-keyframes bar-scroll-horz {
+    0%   { background-position: 0 0;  }
+    100% { background-position: 90px 0; }
+}
+@-moz-keyframes bar-scroll-horz {
+    0%   { background-position: 0 0;  }
+    100% { background-position: 90px 0; }
+}
+@keyframes bar-scroll-horz {
+    0%   { background-position: 0 0;  }
+    100% { background-position: 90px 0; }
+}
 
 #navButtons {
     position: fixed;
@@ -57,7 +77,7 @@ html, body {
     @include BorderRadius(5px);
 
     border: 1px solid #000;
-    @include BoxShadow(0 1px 3px rgba(0,0,0,0.75));
+    @include BoxShadow("0 1px 3px rgba(0,0,0,0.75)");
 
     div 
     {
@@ -69,7 +89,7 @@ html, body {
         border: 1px solid #e0e0e0;
         
         background: #e3e3e3;
-        @include LinearBackground(#e3e3e3 0%, #cecece 100%);
+        @include LinearBackground("#e3e3e3 0%, #cecece 100%");
 
         &:before {
             position: absolute;

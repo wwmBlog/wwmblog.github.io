@@ -16,13 +16,13 @@ $rightWidth:      265px;
     margin-top: 18px;
     float: left;
     position: absolute;
-    background-position: -64px bottom;
+    background-position: -93px bottom;
 }
 #logoAlt {
     width: 103px;
     height: 119px;
     opacity: 0;
-    background-position: -167px bottom;
+    background-position: -196px bottom;
 
     &:hover {
         opacity: 1;
@@ -40,7 +40,7 @@ $rightWidth:      265px;
     text-align: center;
     margin: 0 auto;
 
-    @include BoxShadow(0 0 16px rgba(0,0,0,0.75));
+    @include BoxShadow("0 0 16px rgba(0,0,0,0.75)");
 
     position: absolute;
     top: 50%;
@@ -66,7 +66,7 @@ $rightWidth:      265px;
     padding: $introTextMargin;
 
     @include SizingBorderBox;
-    @include BoxShadow(inset 0 6px 16px 2px rgba(255,255,255,0.05));
+    @include BoxShadow("inset 0 6px 16px 2px rgba(255,255,255,0.05)");
 
     &:before {
         width: 200%;
@@ -91,7 +91,7 @@ $rightWidth:      265px;
     left: 0;
     width: 100%;
     height: 10%;
-    @include BoxShadow(0 0 16px #000);
+    @include BoxShadow("0 0 16px #000");
 }
 
 .annotation {
@@ -224,18 +224,24 @@ $rightWidth:      265px;
     color:       #555;
     font-weight: bold;
 
+    position:    relative;
+
     ul {
+        overflow: hidden;
         &:before, &:after {
-            background: url('../img/br.gif') no-repeat left center;
+            background: url('../img/s2.png') no-repeat;
             width: 20px;
-            height: 60px;
+            height: 40px;
             position: absolute;
+            left: 0;
+            top: 10px;
             right: $rightWidth - 20px;
             content: " ";
         }
         &:after {
+            left: auto;
             right: 0;
-            background-position: right center;
+            background-position: 0 -40px;
         }
     }
 

@@ -161,14 +161,11 @@ $(function()
 
         showLoading   : function()
         {
-            scrollBars[2].css({backgroundPosition:"0 0"})
-                         .animate({backgroundPosition: '-96px 0' }, 
-                                  500, 'linear', 
-                                  theForm.showLoading);
+            scrollBars[2].addClass("active");
         },
         hideLoading   : function()
         {
-            scrollBars[2].stop();
+            scrollBars[2].removeClass("active");
         },
         showComplete  : function()
         {

@@ -51,7 +51,7 @@ $formLeftWidth: 160px;
     margin: 23px 8px 0 0;
     float: right;
     background: #e6e6e6;
-    @include LinearBackground3(#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%);
+    @include LinearBackground("#f6f6f6 0%, #e2e2e2 50%, #f6f6f6 100%");
 }
 
 // --- Notification ---
@@ -86,27 +86,19 @@ $formLeftWidth: 160px;
 .inputStyle {
     position: absolute;
     width: 100%;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    @include SizingBorderBox;
 
     font-size: 14px;
     padding: 10px;
     color: #7f7f7f;
     border: 1px solid #bec2c4;
     outline: none;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-
-    -moz-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15);
+    @include BorderRadius(2px);
+    @include BoxShadow("0 0 0 4px #f2f5f7, inset 0 1px 4px rgba(0, 0, 0, 0.15)");
 
     &:focus {
         border:1px solid #7dc6dd;
-        -moz-box-shadow: 0 0 0 4px #e0f1fc, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-        -webkit-box-shadow: 0 0 0 4px #e0f1fc, inset 0 1px 4px rgba(0, 0, 0, 0.15);
-        box-shadow: 0 0 0 4px #e0f1fc, inset 0 1px 4px rgba(0, 0, 0, 0.15);
+        @include BoxShadow("0 0 0 4px #e0f1fc, inset 0 1px 4px rgba(0, 0, 0, 0.15)");
     }
 }
 
@@ -129,9 +121,9 @@ $formLeftWidth: 160px;
     width: 80px;
     border: none;
     cursor: pointer;
-    background-position: -16px -16px;
+    background-position: 0 -114px;
 
-    &:hover    { background-position: -16px -38px; }
-    &:active   { background-position: -16px -60px; }
-    &:disabled { background-position: -16px -82px; cursor: auto; }
+    &:hover    { background-position: 0 -136px; }
+    &:active   { background-position: 0 -158px; }
+    &:disabled { background-position: 0 bottom; cursor: auto; }
 }

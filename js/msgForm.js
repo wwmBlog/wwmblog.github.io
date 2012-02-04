@@ -8,6 +8,7 @@ define({
             {
                 form.$notification.html(""); 
                 form.hideComplete();
+                form.hideLoading();
             }
         );
 
