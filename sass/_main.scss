@@ -159,11 +159,13 @@ $rightWidth:      265px;
     display: block;
     white-space: nowrap;
     margin: 0;
+    height: 16px;
 
     span {
         color: #AAA;
         padding: 2px 4px;
         font-size: 12px;
+        display: inline-block;
 
         &:before {
             position: relative;
