@@ -1,7 +1,7 @@
 define(function (require) 
 {
     require('dummy/../../plugins/plugins.js');
-    require.async('./pathControl.js');
+    require('./pathControl.js');
     var winScroller = require('./winScroller.js');
     var formSetup   = require('./msgForm.js');
 
