@@ -121,9 +121,9 @@ $formLeftWidth: 160px;
     width: 80px;
     border: none;
     cursor: pointer;
-    background-position: 0 -114px;
+    background-position: 0 -198px;
 
-    &:hover    { background-position: 0 -136px; }
-    &:active   { background-position: 0 -158px; }
+    &:hover    { background-position: 0 -220px; }
+    &:active   { background-position: 0 -242px; }
     &:disabled { background-position: 0 bottom; cursor: auto; }
 }

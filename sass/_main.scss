@@ -232,6 +232,7 @@ $rightWidth:      265px;
         overflow: hidden;
         &:before, &:after {
             background: url('../img/s2.png') no-repeat;
+            background-position: 0 -84px;
             width: 20px;
             height: 40px;
             position: absolute;
@@ -243,7 +244,7 @@ $rightWidth:      265px;
         &:after {
             left: auto;
             right: 0;
-            background-position: 0 -40px;
+            background-position: 0 -124px;
         }
     }
 

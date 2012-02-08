@@ -1,6 +1,10 @@
 // +++ Variable Zone +++
-$sinkHeight:  64px;
-$sinkSpacing: 16px;
+$sinkHeight  : 64px;
+$sinkSpacing : 16px;
+$sinkPadding : 7px;
+$itemHeight  : $sinkHeight - $sinkPadding * 2;
+$iconSize    : 32px;
+$itemPadding : ($itemHeight - $iconSize) / 2;
 // --- Variable Zone ---
 
 #skillPadding {
@@ -34,10 +38,25 @@ $sinkSpacing: 16px;
 
 #proPC {
     position : absolute;
-    top      : 7px;
-    bottom   : 7px;
+    top      : $sinkPadding;
+    bottom   : $sinkPadding;
     left     : 65px;
-    right    : 7px;
+    right    : $sinkPadding;
+
+    .pathItem {
+        padding-left: 52px;
+
+        &:before {
+            margin-left: 3px;
+        }
+    }
+
+    .pathItem:first-child {
+        padding-left: 0;
+        &:before {
+            margin-left: 10px;
+        }
+    }
 
     .pathItem:last-child {
         @include LinearBackground("#cacaca 0%, #fff 100%");
@@ -46,49 +65,73 @@ $sinkSpacing: 16px;
 
 #basicPC {
     position : absolute;
-    top      : 7px;
-    bottom   : 7px;
-    left     : 7px;
+    top      : $sinkPadding;
+    bottom   : $sinkPadding;
+    left     : $sinkPadding;
     right    : 93px;
 
-    .pathItemTitle {
-        margin-right: 55px;
+    .pathItem {
+        padding-right: 52px;
     }
-    .pathItem:last-child .pathItemTitle {
-        margin-right: 3px;
+
+    .pathItem:last-child {
+        padding-right: 0;
     }
 }
 
 .pathItem {
-    height     : 100%;
-    position   : absolute;
-    background : #FFF;
+    position      : absolute;
+    padding       : $itemPadding 0;
+
+    background    : #FFF;
     @include BorderRadius(26px);
     @include BoxShadow(0 0 6px rgba(0,0,0,0.6));
 
-    &:hover .pathItemIcon {
-        background-image: url('../img/icons2.png');
+    height        : $iconSize;
+    line-height   : $iconSize;
+    
+    text-overflow : ellipsis;
+    white-space   : nowrap;
+    overflow      : hidden;
+
+    display       : inline-block;
+
+    &:before {
+        height         : $iconSize;
+        width          : $iconSize;
+        margin         : 0 3px 0 10px;
+        background     : url('../img/s2.png') no-repeat;
+        display        : inline-block;
+        content        : ' ';
+        vertical-align : top;
+    }
+
+    &:after {
+        height  : $iconSize;
+        width   : 10px;
+        content : ' ';
+        display : inline-block;
+        vertical-align : top;
     }
 }
 
-.pathItemIcon {
-    height     : 32px;
-    width      : 32px;
-    background : url('../img/icons.png') no-repeat;
-    float      : left;
-    margin     : 8px 3px 0 57px;
-}
-
-.pathItem:first-child .pathItemIcon, #basicPC .pathItemIcon {
-    margin-left : 10px;
-}
-
-.pathItemTitle {
-    height        : 50px;
-    line-height   : 50px;
-    text-overflow : ellipsis;
-    white-space   : nowrap;
-    margin-right  : 16px;
-    overflow      : hidden;
-}
-
+#flashSk:before       { background-position: 0 0; }
+#flashSk:hover:before { background-position: 0 -32px; }
+#cppSk:before         { background-position: -32px 0; }
+#cppSk:hover:before   { background-position: -32px -32px; }
+#webSk:before         { background-position: -64px 0; }
+#webSk:hover:before   { background-position: -64px -32px; }
+#objcSk:before        { background-position: -96px 0; }
+#objcSk:hover:before  { background-position: -96px -32px; }
+#moreSk:before        { background-position: -128px 0; }
+#moreSk:hover:before  { background-position: -128px -32px; }
+#englishSk:before        { background-position: -160px 0; }
+#englishSk:hover:before  { background-position: -160px -32px; }
+#studySk:before        { background-position: -192px 0; }
+#studySk:hover:before  { background-position: -192px -32px; }
+#senseSk:before        { background-position: -224px 0; }
+#senseSk:hover:before  { background-position: -224px -32px; }
+#basicSk:before        { background-position: -256px 0; }
+#basicSk:hover:before  { background-position: -256px -32px; }
+#solveSk:before        { background-position: -32px -64px; }
+#solveSk:hover:before  { background-position: -64px -64px; }

@@ -118,8 +118,8 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 
 #nav { float: right; width: 265px; height: 60px; line-height: 60px; background: #000; color: #555; font-weight: bold; position: relative; }
 #nav ul { overflow: hidden; }
-#nav ul:before, #nav ul:after { background: url("../img/s2.png") no-repeat; width: 20px; height: 40px; position: absolute; left: 0; top: 10px; right: 245px; content: " "; }
-#nav ul:after { left: auto; right: 0; background-position: 0 -40px; }
+#nav ul:before, #nav ul:after { background: url("../img/s2.png") no-repeat; background-position: 0 -84px; width: 20px; height: 40px; position: absolute; left: 0; top: 10px; right: 245px; content: " "; }
+#nav ul:after { left: auto; right: 0; background-position: 0 -124px; }
 #nav li { display: inline-block; }
 #nav li:after { padding-right: 1px; content: ","; }
 #nav li:last-child:after { content: ""; }
@@ -156,9 +156,9 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 
 #mail { bottom: 6px; height: 36px; }
 
-#sendme { position: absolute; right: 4px; bottom: 13px; height: 22px; width: 80px; border: none; cursor: pointer; background-position: 0 -114px; }
-#sendme:hover { background-position: 0 -136px; }
-#sendme:active { background-position: 0 -158px; }
+#sendme { position: absolute; right: 4px; bottom: 13px; height: 22px; width: 80px; border: none; cursor: pointer; background-position: 0 -198px; }
+#sendme:hover { background-position: 0 -220px; }
+#sendme:active { background-position: 0 -242px; }
 #sendme:disabled { background-position: 0 bottom; cursor: auto; }
 
 #skillPadding { height: 50%; margin-bottom: -72px; }
@@ -169,17 +169,56 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 #basic span { float: right; }
 
 #proPC { position: absolute; top: 7px; bottom: 7px; left: 65px; right: 7px; }
+#proPC .pathItem { padding-left: 52px; }
+#proPC .pathItem:before { margin-left: 3px; }
+#proPC .pathItem:first-child { padding-left: 0; }
+#proPC .pathItem:first-child:before { margin-left: 10px; }
 #proPC .pathItem:last-child { background: -webkit-linear-gradient(#cacaca 0%, #fff 100%); background: -moz-linear-gradient(#cacaca 0%, #fff 100%); background: -ms-linear-gradient(#cacaca 0%, #fff 100%); background: -o-linear-gradient(#cacaca 0%, #fff 100%); background: linear-gradient(#cacaca 0%, #fff 100%); }
 
 #basicPC { position: absolute; top: 7px; bottom: 7px; left: 7px; right: 93px; }
-#basicPC .pathItemTitle { margin-right: 55px; }
-#basicPC .pathItem:last-child .pathItemTitle { margin-right: 3px; }
+#basicPC .pathItem { padding-right: 52px; }
+#basicPC .pathItem:last-child { padding-right: 0; }
 
-.pathItem { height: 100%; position: absolute; background: #FFF; -moz-border-radius: 26px; -webkit-border-radius: 26px; border-radius: 26px; -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); }
-.pathItem:hover .pathItemIcon { background-image: url("../img/icons2.png"); }
+.pathItem { position: absolute; padding: 9px 0; background: #FFF; -moz-border-radius: 26px; -webkit-border-radius: 26px; border-radius: 26px; -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); height: 32px; line-height: 32px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block; }
+.pathItem:before { height: 32px; width: 32px; margin: 0 3px 0 10px; background: url("../img/s2.png") no-repeat; display: inline-block; content: ' '; vertical-align: top; }
+.pathItem:after { height: 32px; width: 10px; content: ' '; display: inline-block; vertical-align: top; }
 
-.pathItemIcon { height: 32px; width: 32px; background: url("../img/icons.png") no-repeat; float: left; margin: 8px 3px 0 57px; }
+#flashSk:before { background-position: 0 0; }
 
-.pathItem:first-child .pathItemIcon, #basicPC .pathItemIcon { margin-left: 10px; }
+#flashSk:hover:before { background-position: 0 -32px; }
 
-.pathItemTitle { height: 50px; line-height: 50px; text-overflow: ellipsis; white-space: nowrap; margin-right: 16px; overflow: hidden; }
+#cppSk:before { background-position: -32px 0; }
+
+#cppSk:hover:before { background-position: -32px -32px; }
+
+#webSk:before { background-position: -64px 0; }
+
+#webSk:hover:before { background-position: -64px -32px; }
+
+#objcSk:before { background-position: -96px 0; }
+
+#objcSk:hover:before { background-position: -96px -32px; }
+
+#moreSk:before { background-position: -128px 0; }
+
+#moreSk:hover:before { background-position: -128px -32px; }
+
+#englishSk:before { background-position: -160px 0; }
+
+#englishSk:hover:before { background-position: -160px -32px; }
+
+#studySk:before { background-position: -192px 0; }
+
+#studySk:hover:before { background-position: -192px -32px; }
+
+#senseSk:before { background-position: -224px 0; }
+
+#senseSk:hover:before { background-position: -224px -32px; }
+
+#basicSk:before { background-position: -256px 0; }
+
+#basicSk:hover:before { background-position: -256px -32px; }
+
+#solveSk:before { background-position: -32px -64px; }
+
+#solveSk:hover:before { background-position: -64px -64px; }
