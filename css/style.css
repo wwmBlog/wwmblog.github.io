@@ -43,8 +43,8 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 #navButtons { position: fixed; right: 10px; bottom: 15px; }
 
 .navbtn { position: relative; float: left; width: 33px; height: 34px; cursor: hand; cursor: pointer; background: #5b5b5b; margin-right: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; border: 1px solid #000; -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.75); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.75); box-shadow: 0 1px 3px rgba(0,0,0,0.75); }
-.navbtn div { width: 100%; height: 31px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #e0e0e0; background: #e3e3e3; background: -webkit-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -moz-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -ms-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -o-linear-gradient(#e3e3e3 0%, #cecece 100%); background: linear-gradient(#e3e3e3 0%, #cecece 100%); }
-.navbtn div:before { position: absolute; margin-top: 16px; height: 13px; line-height: 13px; font-size: 12px; font-family: Verdana; text-shadow: 0 1px 1px white; }
+.navbtn div { width: 100%; height: 31px; font-family: Verdana; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #e0e0e0; background: #e3e3e3; background: -webkit-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -moz-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -ms-linear-gradient(#e3e3e3 0%, #cecece 100%); background: -o-linear-gradient(#e3e3e3 0%, #cecece 100%); background: linear-gradient(#e3e3e3 0%, #cecece 100%); }
+.navbtn div:before { position: absolute; margin-top: 16px; height: 13px; line-height: 13px; font-size: 12px; text-shadow: 0 1px 1px white; }
 .navbtn:hover { background: #404040; }
 .navbtn.pressed, .navbtn:active { margin-top: 2px; height: 32px; }
 
@@ -118,8 +118,8 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 
 #nav { float: right; width: 265px; height: 60px; line-height: 60px; background: #000; color: #555; font-weight: bold; position: relative; }
 #nav ul { overflow: hidden; }
-#nav ul:before, #nav ul:after { background: url("../img/s2.png") no-repeat; width: 20px; height: 40px; position: absolute; left: 0; top: 10px; right: 245px; content: " "; }
-#nav ul:after { left: auto; right: 0; background-position: 0 -40px; }
+#nav ul:before, #nav ul:after { background: url("../img/s2.png") no-repeat; background-position: 0 -84px; width: 20px; height: 40px; position: absolute; left: 0; top: 10px; right: 245px; content: " "; }
+#nav ul:after { left: auto; right: 0; background-position: 0 -124px; }
 #nav li { display: inline-block; }
 #nav li:after { padding-right: 1px; content: ","; }
 #nav li:last-child:after { content: ""; }
@@ -156,17 +156,69 @@ html, body { height: 100%; margin: 0px; padding: 0px; border: none; }
 
 #mail { bottom: 6px; height: 36px; }
 
-#sendme { position: absolute; right: 4px; bottom: 13px; height: 22px; width: 80px; border: none; cursor: pointer; background-position: 0 -114px; }
-#sendme:hover { background-position: 0 -136px; }
-#sendme:active { background-position: 0 -158px; }
+#sendme { position: absolute; right: 4px; bottom: 13px; height: 22px; width: 80px; border: none; cursor: pointer; background-position: 0 -198px; }
+#sendme:hover { background-position: 0 -220px; }
+#sendme:active { background-position: 0 -242px; }
 #sendme:disabled { background-position: 0 bottom; cursor: auto; }
 
 #skillPadding { height: 50%; margin-bottom: -72px; }
 
-.sink { width: 90%; max-width: 570px; height: 64px; background: #000; margin: 16px auto 0 auto; position: relative; -moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px; -moz-box-shadow: 0 1px 0 #333; -webkit-box-shadow: 0 1px 0 #333; box-shadow: 0 1px 0 #333; }
+.sink { width: 90%; max-width: 570px; height: 64px; background: #000; margin: 16px auto 0 auto; position: relative; overflow: hidden; -moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px; -moz-box-shadow: 0 1px 0 #333; -webkit-box-shadow: 0 1px 0 #333; box-shadow: 0 1px 0 #333; }
 .sink span { color: #FFF; width: auto; padding: 0 15px; font: 30px/64px Impact; }
-.sink div { position: absolute; top: 7px; bottom: 7px; left: 65px; right: 7px; }
-.sink canvas { width: 100%; height: 100%; }
 
-#basic { text-align: right; }
-#basic div { left: 7px; right: 93px; }
+#basic span { float: right; }
+
+#proPC { position: absolute; top: 7px; bottom: 7px; left: 65px; right: 7px; }
+#proPC .pathItem { padding-left: 52px; }
+#proPC .pathItem:before { margin-left: 3px; }
+#proPC .pathItem:first-child { padding-left: 0; }
+#proPC .pathItem:first-child:before { margin-left: 10px; }
+#proPC .pathItem:last-child { background: -webkit-linear-gradient(#cacaca 0%, #fff 100%); background: -moz-linear-gradient(#cacaca 0%, #fff 100%); background: -ms-linear-gradient(#cacaca 0%, #fff 100%); background: -o-linear-gradient(#cacaca 0%, #fff 100%); background: linear-gradient(#cacaca 0%, #fff 100%); }
+
+#basicPC { position: absolute; top: 7px; bottom: 7px; left: 7px; right: 93px; }
+#basicPC .pathItem { padding-right: 52px; }
+#basicPC .pathItem:last-child { padding-right: 0; }
+
+.pathItem { position: absolute; padding: 9px 0; background: #FFF; -moz-border-radius: 26px; -webkit-border-radius: 26px; border-radius: 26px; -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); height: 32px; line-height: 32px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block; }
+.pathItem:before { height: 32px; width: 32px; margin: 0 3px 0 10px; background: url("../img/s2.png") no-repeat; display: inline-block; content: ' '; vertical-align: top; }
+.pathItem:after { height: 32px; width: 10px; content: ' '; display: inline-block; vertical-align: top; }
+
+#flashSk:before { background-position: 0 0; }
+
+#flashSk:hover:before { background-position: 0 -32px; }
+
+#cppSk:before { background-position: -32px 0; }
+
+#cppSk:hover:before { background-position: -32px -32px; }
+
+#webSk:before { background-position: -64px 0; }
+
+#webSk:hover:before { background-position: -64px -32px; }
+
+#objcSk:before { background-position: -96px 0; }
+
+#objcSk:hover:before { background-position: -96px -32px; }
+
+#moreSk:before { background-position: -128px 0; }
+
+#moreSk:hover:before { background-position: -128px -32px; }
+
+#englishSk:before { background-position: -160px 0; }
+
+#englishSk:hover:before { background-position: -160px -32px; }
+
+#studySk:before { background-position: -192px 0; }
+
+#studySk:hover:before { background-position: -192px -32px; }
+
+#senseSk:before { background-position: -224px 0; }
+
+#senseSk:hover:before { background-position: -224px -32px; }
+
+#basicSk:before { background-position: -256px 0; }
+
+#basicSk:hover:before { background-position: -256px -32px; }
+
+#solveSk:before { background-position: -32px -64px; }
+
+#solveSk:hover:before { background-position: -64px -64px; }
