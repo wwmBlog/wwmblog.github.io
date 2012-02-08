@@ -84,6 +84,8 @@ html, body {
         width: 100%;
         height: 31px;
 
+        font-family: Verdana;
+
         @include SizingBorderBox;
         @include BorderRadius(3px);
         border: 1px solid #e0e0e0;
@@ -97,7 +99,7 @@ html, body {
             height: 13px;
             line-height: 13px;
             font-size: 12px;
-            font-family: Verdana;
+            
             @include TextEmboss(#FFF);
         }
     }
@@ -119,16 +121,17 @@ html, body {
         width: 100%;
         margin-top: 15px;
         text-align: center;
+
         content: "SpaceBar";
     }
 }
 #btnRight div:before {
     right: 3px;
-    content: "\2192" 
+    content: "\2192";
 }
 #btnLeft div:before { 
     left: 3px;
-    content: "\2190"
+    content: "\2190";
 }
 
 @font-face {

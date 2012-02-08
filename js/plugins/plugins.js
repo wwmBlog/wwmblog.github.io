@@ -1,5 +1,5 @@
-define(
-    function(require) {
-        require('./jqTextChange.js');
-    }
-)
+define(function(require) {
+    
+    require('./jqTextChange.js');
+
+})

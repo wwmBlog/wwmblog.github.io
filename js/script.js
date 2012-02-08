@@ -1,6 +1,7 @@
 define(function (require) 
 {
     require('dummy/../../plugins/plugins.js');
+    require.async('./pathControl.js');
     var winScroller = require('./winScroller.js');
     var formSetup   = require('./msgForm.js');
 
@@ -72,8 +73,11 @@ $(function()
     });
 
     // Disable text selection on the buttons
-    for(var i=0;i<3;++i) {
-        scrollBtns[i].mousedown(false).mouseup(false);
+    if (!$.browser.mozilla)
+    {
+        for(var i=0;i<3;++i) {
+            scrollBtns[i].mousedown(false).mouseup(false);
+        }
     }
    
     function adjustFixedContent()

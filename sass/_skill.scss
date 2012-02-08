@@ -15,6 +15,7 @@ $sinkSpacing: 16px;
     background: #000;
     margin:     $sinkSpacing auto 0 auto;
     position:   relative;
+    overflow:   hidden;
     
     @include BorderRadius(30px);
     @include BoxShadow("0 1px 0 #333");
@@ -25,26 +26,69 @@ $sinkSpacing: 16px;
         padding: 0 15px;
         font:    30px/64px Impact;
     }
+}
 
-    div {
-        position: absolute;
-        top:      7px;
-        bottom:   7px;
-        left:     65px;
-        right:    7px;
-    }
+#basic span{
+    float: right;
+}
 
-    canvas {
-        width: 100%;
-        height: 100%;
+#proPC {
+    position : absolute;
+    top      : 7px;
+    bottom   : 7px;
+    left     : 65px;
+    right    : 7px;
+
+    .pathItem:last-child {
+        @include LinearBackground("#cacaca 0%, #fff 100%");
     }
 }
 
-#basic {
-    text-align: right;
+#basicPC {
+    position : absolute;
+    top      : 7px;
+    bottom   : 7px;
+    left     : 7px;
+    right    : 93px;
 
-    div {
-        left: 7px;
-        right: 93px;
+    .pathItemTitle {
+        margin-right: 55px;
+    }
+    .pathItem:last-child .pathItemTitle {
+        margin-right: 3px;
     }
 }
+
+.pathItem {
+    height     : 100%;
+    position   : absolute;
+    background : #FFF;
+    @include BorderRadius(26px);
+    @include BoxShadow(0 0 6px rgba(0,0,0,0.6));
+
+    &:hover .pathItemIcon {
+        background-image: url('../img/icons2.png');
+    }
+}
+
+.pathItemIcon {
+    height     : 32px;
+    width      : 32px;
+    background : url('../img/icons.png') no-repeat;
+    float      : left;
+    margin     : 8px 3px 0 57px;
+}
+
+.pathItem:first-child .pathItemIcon, #basicPC .pathItemIcon {
+    margin-left : 10px;
+}
+
+.pathItemTitle {
+    height        : 50px;
+    line-height   : 50px;
+    text-overflow : ellipsis;
+    white-space   : nowrap;
+    margin-right  : 16px;
+    overflow      : hidden;
+}
+
