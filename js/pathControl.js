@@ -1,5 +1,7 @@
 define(function(require) {
 
+    require("./tooltip.js");
+
     var skillDat = require("./skillDat.js");
         optns    = 
     {
@@ -28,7 +30,8 @@ define(function(require) {
                         + d.id + '">' + d.title + '</div>')
                         .appendTo(control.$div)
                         .data(d)
-                        .hover(pcItemHover, pcItemBlur);
+                        .hover(pcItemHover, pcItemBlur)
+                        .tooltip(d.detail);
 
             if (!control.firstLowest) {
                 $ch.css("z-index", len - i);
