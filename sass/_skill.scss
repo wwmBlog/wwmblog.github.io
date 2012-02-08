@@ -8,8 +8,18 @@ $itemPadding : ($itemHeight - $iconSize) / 2;
 // --- Variable Zone ---
 
 #skillPadding {
+    position: relative;
     height: 50%;
     margin-bottom: -($sinkHeight * 2 + $sinkSpacing) / 2;
+}
+
+#skillbg {
+    background-position: -26px -96px;
+    width: 150px;
+    height: 65px;
+    margin-left: 50%;
+    position: absolute;
+    bottom: 60px;
 }
 
 .sink {
