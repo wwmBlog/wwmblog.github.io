@@ -4,10 +4,11 @@
 @import "tooltip";
 
 html, body {
-    height:  100%;
-    margin:  0px;
-    padding: 0px;
-    border:  none;
+    height   : 100%;
+    margin   : 0px;
+    padding  : 0px;
+    border   : none;
+    overflow : hidden;
 }
 
 .bg {

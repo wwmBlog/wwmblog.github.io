@@ -1,12 +1,14 @@
 // +++ Variable Zone +++
-$btnBgWidth  : 32px;
-$btnBgHeight : 65px;
+$btnBgWidth    : 32px;
+$btnBgHeight   : 65px;
 $scrollBtnSize : 28px;
+$itemWidth     : 160px;
+$itemMargin    : 20px;
 // --- Variable Zone ---
 
 #workWrapper {
     width     : 90%;
-    max-width : 550px;
+    max-width : $itemWidth * 3 + $itemMargin * 5 + $btnBgWidth;
     height    : 100%;
     margin    : 0 auto;
 }
@@ -20,8 +22,10 @@ $scrollBtnSize : 28px;
 #pinterest {
     padding      : 70px 0;
     height       : 200px;
+}
 
-    // margin-right : $btnBgWidth; // ScrollBtn is hidden, no need for margin
+#pinterest.scrollVisible {
+    margin-right : $btnBgWidth;
 }
 
 #scrollBtnWrapper {
@@ -77,3 +81,141 @@ $scrollBtnSize : 28px;
     margin-top: 8px;
 }
 
+.pinItem {
+    width      : $itemWidth;
+    margin     : 10px 20px;
+    background : transparent;
+    float      : left;
+    position   : relative;
+    @include BorderRadius(10px);
+    @include BoxShadow("0 0 5px #000");
+
+    -webkit-perspective-origin : center bottom;
+    -webkit-perspective        : 500;
+    -moz-perspective-origin    : center bottom;
+    -moz-perspective           : 500px;
+    -o-perspective-origin      : center bottom;
+    perspective-origin         : center bottom;
+    perspective                : 500;
+
+    &:hover {
+        margin: 2px 12px;
+        border: 8px solid #171717;
+        @include BoxShadow("none");
+
+        .pinTitle {
+            color: #ffb500;
+        }
+
+        .pinTitleA {
+            border-bottom     : 1px solid transparent;
+            background        : #bbb;
+            color             : transparent;
+            -webkit-transform : rotateX(114deg);
+            -moz-transform    : rotateX(114deg);
+            transform         : rotateX(114deg);
+        }
+
+        .pinStack {
+            @include BoxShadow("inset 0 20px 5px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,.05)");
+        }
+    }
+}
+
+.pinContent {
+    width         : 100%;
+    background    : #fff;
+    padding       : 10px;
+    border-bottom : 1px solid #b7b7b7;
+    font-size     : 13px;
+    line-height   : 13px;
+    color         : #000;
+    word-wrap     : break-word;
+
+    @include SizingBorderBox;
+    @include BorderRadius(5px 5px 0 0);
+
+    a {
+        color: #CE1433;
+        text-decoration: underline;
+        font-weight: bold;
+
+        padding: 2px 3px;
+        @include BorderRadius(3px);
+
+        &:hover {
+            border          : 1px solid #83050B;
+            color           : white;
+            background      : red;
+            padding         : 1px 2px;
+            text-decoration : none;
+            @include BorderRadius(2px);
+            @include LinearBackground("#FD0136 0%, #BD183B 100%");
+        }
+    }
+
+    p {
+        text-indent: 2em;
+        margin: 0;
+    }
+
+    img {
+        display: block;
+        border: 1px solid #555;
+        margin: 0 auto 5px auto;
+    }
+}
+
+.pinTitle, .pinTitleA, .pinStack {
+    width      : 100%;
+    height     : 30px;
+    padding    : 5px 0;
+    text-align : center;
+    font       : 30px/30px Impact;
+    color      : #4a4a4a;
+    background : #eee;
+    @include BorderRadius(0 0 5px 5px);
+}
+
+.pinStack {
+    height : 31px;
+    border-top : 1px solid #a8a8a8;
+
+    -webkit-transition : box-shadow .2s ease-in-out;
+    -moz-transition    : box-shadow .2s ease-in-out;
+    -o-transition      : box-shadow .2s ease-in-out;
+    transition         : box-shadow .2s ease-in-out;
+}
+
+.pinTitleA {
+    position      : absolute;
+    bottom        : 1px;
+    border-bottom : 1px solid #555;
+
+    -webkit-transform-origin : top;
+    -moz-transform-origin    : top;
+    -o-transform-origin      : top;
+    transform-origin         : top;
+    -webkit-transition       : all .2s ease-in-out;
+    -moz-transition          : all .2s ease-in-out;
+    -o-transition            : all .2s ease-in-out;
+    transition               : all .2s ease-in-out;
+}
+
+// Opera only :
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+.pinItem:hover .pinTitleA {
+    border-bottom     : 1px solid transparent;
+    background        : #fff;
+    color             : #4a4a4a;
+    -o-transform      : skew(50deg) scale(1, 0.3);
+}
+}
+
+// For < FF10
+.pinItem.lowFF:hover .pinTitleA {
+    border-bottom     : 1px solid transparent;
+    background        : #fff;
+    color             : #4a4a4a;
+    -moz-transform    : skew(50deg) scale(1, 0.3);
+}

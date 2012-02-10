@@ -1,9 +1,12 @@
 define(function (require) 
 {
     require('dummy/../../plugins/plugins.js');
+    require('jquery.masonry.js');
     require('./pathControl.js');
-    var winScroller = require('./winScroller.js');
-    var formSetup   = require('./msgForm.js');
+    
+    var winScroller = require('./winScroller.js'),
+        formSetup   = require('./msgForm.js'),
+        workDat     = require('./workDat.js');
 
 $(function()
 {
@@ -187,9 +190,39 @@ $(function()
     };
     formSetup.configureForm(theForm);
 
-    // === Skill Chart ===
-
     // === Work List ===
+    var lowFF   = $.browser.mozilla && parseInt($.browser.version) < 10,
+        $target = $(workDat.targetId),
+        dat     = workDat.data;
+
+    for (var i = 0, len = dat.length; i < len; ++i)
+    {
+        var d    = dat[i],
+            html = "<div class='" + workDat.itemClass;
+
+            if (lowFF) {
+                html += " " + workDat.lowFFClass;
+            }
+            html += "'><div class='" + workDat.contentClass + "'>";
+
+        if (d.img) {
+            html += "<img src='" + d.img + "'></img>";
+        }
+
+        html += d.content + "</div>";
+
+        if (d.link) {
+            html += "<div class='" + workDat.stackClass + "'><a href='" 
+                    + d.link + "'></a>"
+                    + "</div><div class='" + workDat.titleAClass 
+                    + "'>" + d.title + "</div></div>";
+        } else {
+            html += "<div class='" + workDat.titleClass + "'>" 
+                    + d.title + "</div></div>";
+        }
+        $(html).appendTo($target);
+    }
+    $target.masonry({isAnimated: true});
 });/*$*/
 
 });/*define*/
