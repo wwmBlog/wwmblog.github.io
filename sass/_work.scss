@@ -1,0 +1,79 @@
+// +++ Variable Zone +++
+$btnBgWidth  : 32px;
+$btnBgHeight : 65px;
+$scrollBtnSize : 28px;
+// --- Variable Zone ---
+
+#workWrapper {
+    width     : 90%;
+    max-width : 550px;
+    height    : 100%;
+    margin    : 0 auto;
+}
+
+#pinterestWrapper {
+    width  : 100%;
+    height : 100%;
+    float  : left;
+}
+
+#pinterest {
+    padding      : 70px 0;
+    height       : 200px;
+
+    // margin-right : $btnBgWidth; // ScrollBtn is hidden, no need for margin
+}
+
+#scrollBtnWrapper {
+    display    : none; // Always hidden at first
+
+    float      : left;
+    margin-left: -$btnBgWidth;
+    width      : $btnBgWidth;
+    height     : 100%;
+    padding-top: 50%;
+    @include SizingBorderBox;
+}
+
+#scrollBtnBg {
+    margin-top : -$btnBgHeight / 2;
+    height     : $btnBgHeight;
+    width      : $btnBgWidth;
+    background : rgba(0,0,0,0.5);
+    padding-top: 2px;
+    @include BorderRadius($btnBgWidth / 2);
+}
+
+.scrollBtn {
+    height : $scrollBtnSize;
+    width  : $scrollBtnSize;
+    margin : 0 2px 7px 2px;
+    @include BorderRadius($scrollBtnSize / 2);
+    @include LinearBackground("#343a3d 0%, #24272a 100%");
+
+    span {
+        width: $scrollBtnSize;
+        height: $scrollBtnSize;
+        display: block;
+        background-position: -98px -65px;
+    }
+}
+
+.scrollBtn:hover {
+    @include BoxShadow("inset 0 1px 0 #5F5F5F");
+    @include LinearBackground("#494e52 0%, #313538 100%");
+}
+
+#upBtn {
+    span {
+        background-position: -130px -66px;
+    }
+    &:active {
+        margin: 1px 2px 6px 2px;
+    }
+}
+
+#downBtn:active {
+    margin-top: 8px;
+}
+
