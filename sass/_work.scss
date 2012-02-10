@@ -8,7 +8,7 @@ $itemMargin    : 20px;
 
 #workWrapper {
     width     : 90%;
-    max-width : $itemWidth * 3 + $itemMargin * 5 + $btnBgWidth;
+    max-width : $itemWidth * 3 + $itemMargin * 5 + $btnBgWidth * 2;
     height    : 100%;
     margin    : 0 auto;
 }
@@ -185,6 +185,18 @@ $itemMargin    : 20px;
     -moz-transition    : box-shadow .2s ease-in-out;
     -o-transition      : box-shadow .2s ease-in-out;
     transition         : box-shadow .2s ease-in-out;
+
+    a {
+        width      : 24px;
+        height     : 20px;
+        display    : inline-block;
+        background : url("../img/s2.png") -164px -70px no-repeat;
+        content    : " ";
+
+        &:hover {
+            background-position: -196px -70px;
+        }
+    }
 }
 
 .pinTitleA {

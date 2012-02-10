@@ -222,7 +222,42 @@ $(function()
         }
         $(html).appendTo($target);
     }
-    $target.masonry({isAnimated: true});
+
+    $target.watch("height", function()
+    {
+        if ($target.height() > $target.parent().height())
+        {
+            if (!$target.hasClass("scrollVisible"))
+            {
+                $target.addClass("scrollVisible");
+                $("#scrollBtnWrapper").show();
+            }
+            
+        } else {
+            if ($target.hasClass("scrollVisible"))
+            {
+                $target.removeClass("scrollVisible").stop(true,false).animate({"margin-top":"0px"});
+                $("#scrollBtnWrapper").hide();
+            }
+        }
+    }).imagesLoaded(function(){
+        $target.masonry({ isAnimated : true });
+    }).css({"margin-top" : "0px"});
+    $("#upBtn").click(function(){
+        var ph = $target.parent().height(),
+            m  = parseInt($target.css("margin-top")),
+            n  = m - ph * 0.9,
+            x  = ph - $target.outerHeight();
+        if (n < x) { n = x; }
+        if (n != m) { $target.stop(true,false).animate({"margin-top" : n + "px"}); }
+    });
+    $("#downBtn").click(function(){
+        var ph = $target.parent().height(),
+            m  = parseInt($target.css("margin-top")),
+            n  = m + ph * 0.9;
+        if (n > 0)  { n = 0; }
+        if (n != m) { $target.stop(true,false).animate({"margin-top" : n + "px"}); }
+    });
 });/*$*/
 
 });/*define*/

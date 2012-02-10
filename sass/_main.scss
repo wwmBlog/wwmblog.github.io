@@ -212,7 +212,31 @@ $rightWidth:      265px;
 #news {
     width: 100%;
     height: $middleHeight;
+    position: relative;
     background: #FFF url('../img/hmbg.png') repeat;
+}
+
+#quoteMark {
+    position : absolute;
+    top      : 5px;
+    left     : 5px;
+}
+
+#quote {
+    color       : #452705;
+    font-size   : 20px;
+    width       : 100%;
+    height      : $middleHeight + 5;
+    text-align  : center;
+    line-height : $middleHeight + 5;
+}
+
+#quoteFrom {
+    color     : #522a0c;
+    position  : absolute;
+    font-size : 12px;
+    bottom    : 3px;
+    right     : 5px;
 }
 
 // --- Nav (About below) ---
