@@ -35,5 +35,5 @@ body { background: url("broken_noise.png") repeat; }
 
 .right { right: 4px; }
 
-#WWM { clear: both; font: 30px/30px "Dancing Script" "Apple Chancery" "Segoe Script" cursive; text-align: center; padding-top: 10px; display: block; color: #000; text-decoration: none; }
+#WWM { clear: both; font: 30px/30px "Dancing Script", "Apple Chancery", "Segoe Script", cursive; text-align: center; padding-top: 10px; display: block; color: #000; text-decoration: none; }
 #WWM:hover { color: #fff; }
