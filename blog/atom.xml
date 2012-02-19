@@ -4,7 +4,7 @@
   <title><![CDATA[War Within Me]]></title>
   <link href="http://warwithinme.com/blog/atom.xml" rel="self"/>
   <link href="http://warwithinme.com/blog/"/>
-  <updated>2012-02-12T21:12:42+08:00</updated>
+  <updated>2012-02-19T20:31:44+08:00</updated>
   <id>http://warwithinme.com/blog/</id>
   <author>
     <name><![CDATA[WWM]]></name>
@@ -12,14 +12,5 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Test first post]]></title>
-    <link href="http://warwithinme.com/blog/2012/02/12/test-first-post/"/>
-    <updated>2012-02-12T21:10:00+08:00</updated>
-    <id>http://warwithinme.com/blog/2012/02/12/test-first-post</id>
-    <content type="html"><![CDATA[<p>~Test, First Octopress Post~</p>
-]]></content>
-  </entry>
   
 </feed>
