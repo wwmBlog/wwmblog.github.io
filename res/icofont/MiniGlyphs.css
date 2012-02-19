@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'MiniGlyphs';
+    src: url('MiniGlyphs.eot');
+    src: local('☺'), url('MiniGlyphs.woff') format('woff'), url('MiniGlyphs.ttf') format('truetype'), url('MiniGlyphs.svg#MiniGlyphs') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
