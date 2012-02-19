@@ -1,0 +1,21 @@
+// +++ Variables +++
+$footerMinHeight : 5em;
+$footerColor     : #f3f5f7;
+$footerBorder    : #ddd;
+// ------ End ------
+
+footer {
+    background  : $footerColor;
+    border-top  : 1px solid $footerBorder;
+    font-size   : 1.2em;
+    line-height : 1.6em;
+    min-height  : $footerMinHeight;
+    width       : 100%;
+    
+
+    @include BoxShadow("inset 0 6px 6px -6px rgba(112, 122, 122, 0.15)");
+
+    div {
+        padding : 2em 6em;
+    }
+}

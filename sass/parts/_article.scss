@@ -1,0 +1,175 @@
+// +++ Variables +++
+$postMaxWidth         : 860px;
+$postHorzPadding      : 50px;
+$metaFontSize         : 2em;
+$singlePostHorzMargin : 80px;
+
+$postSplitLineColor   : #C0C0C0;
+$postTitleColor       : #555;
+$postTitleColorHover  : #000;
+$metaDataColor        : #FFF;
+$dateBgColor          : #bbb;
+$commentBgColor       : #6c6c6c;
+$commentBgColorHover  : #222;
+$moreLinkBgColor      : #313131;
+$moreLinkBgColorHover : #00aeff;
+$categoryColor        : #00aeff;
+$navLinkBg            : #6d3f24;
+// ------ End ------
+
+article.post {
+    @include SimplePost;
+    padding-bottom : 15px;
+    
+    &:first-of-type { border-top : none; }
+}
+
+.title {
+    padding-bottom : 8px;
+    padding-top    : 0.7em;
+    color : $postTitleColor;
+}
+
+.post .title:hover{
+    color : $postTitleColorHover;
+}
+
+.meta {
+    text-align  : right;
+    width       : 100%;
+    color       : $metaDataColor;
+
+    font-size   : 2em;
+    height      : 1em;
+    line-height : 1em;
+
+    position : relative;
+
+    .seperator {
+        border-top    : 1px solid #ddd;
+        border-bottom : 1px solid #FFF;
+        width         : 100%;
+        position      : absolute;
+        top           : -1px;
+    }
+    
+    .date {
+        background : $dateBgColor;
+        padding    : 0 3px;
+        font-size  : 0.65em;
+
+        float    : right;
+        position : relative;
+        top      : -11px;
+    }
+
+    .comments {
+        background  : $commentBgColor;
+        padding     : 0 5px 0 0;
+        font-size   : 0.65em;
+        height      : 100%;
+
+        float    : right;
+        position : relative;
+        top      : -11px;
+        
+        &:before {
+            @include IconFont('@', 16px, #FFF);
+            padding        : 0 3px 0 5px;
+            vertical-align : middle;
+        }
+
+        &:hover { background : $commentBgColorHover; }
+    }
+}
+
+.entry {
+    padding     : 0 10px 25px 10px;
+    font-size   : 1.6em;
+    line-height : 1.5em;
+}
+
+.more-link {
+    background   : $moreLinkBgColor;
+    padding      : 6px;
+    font-size    : 1.4em;
+    margin-right : 1em;
+    color        : $metaDataColor;
+
+    @include BorderRadius(3px 3px 0 0);
+    @include BoxShadow("inset 0 0 9px #333");
+
+    &:hover {
+        background : $moreLinkBgColorHover;
+        @include BoxShadow("none");
+    }
+}
+
+.cat {
+    display     : inline-block;
+    color       : $categoryColor;
+    font-size   : 1.6em;
+
+    &:before {
+        @include IconFont('+', 1em, darken($categoryColor, 20));
+        margin-right : -3px;
+    }
+}
+
+.postWrapper {
+    position  : absolute;
+    left      : $singlePostHorzMargin;
+    right     : $singlePostHorzMargin;
+    max-width : $postMaxWidth;
+    margin    : auto;
+}
+
+.singlePost {
+    padding    : 0 $postHorzPadding $postHorzPadding $postHorzPadding;
+    background : image-url('paper.jpg', false, false) repeat;
+    @include BoxShadow('0 0 6px rgba(0,0,0,0.35)');
+}
+
+#comment h1, #topNav {
+    @include WoodCarveText;
+}
+
+#topNav {
+    width       : 100%;
+    height      : 2.5em;
+    font-size   : 1.6em;
+    padding     : 0 10px;
+
+    @include ClearFix;
+
+    li {
+        padding      : 1em 5px 5px 5px;
+        float        : left;
+        margin-right : 1em;
+        position : relative;
+
+        &:before, &:after {
+            width      : 10px;
+            height     : 100%;
+            display    : block;
+            content    : ' ';
+            top        : 0;
+            position   : absolute;
+        }
+        &:before {
+            left : -5px;
+        }
+        &:after {
+            right : -5px;
+        }
+    }
+    li:hover {
+        @include WoodEmbossText;
+        background : $navLinkBg;
+
+        &:before, &:after {
+            background : $navLinkBg;
+            @include Transform(skew(8deg));
+        }
+    }
+}

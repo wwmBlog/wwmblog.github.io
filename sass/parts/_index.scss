@@ -1,0 +1,75 @@
+// +++ Variables +++
+$sidebarWidth      : 18em;
+$hideoutInitHeight : 3px;
+// ------ End ------
+
+body {
+    background : image-url('wood.jpg', false, false) repeat 100% 0;
+    min-height : 100%;
+    height     : auto !important;
+
+    &:after {
+        clear   : both;
+        content : ' ';
+        display : table;
+    }
+}
+
+.contentWrapper {
+    float : left;
+    width : 100%;
+}
+
+.blog-index {
+    background   : image-url('paper.jpg', false, false) repeat;
+    margin-right : $sidebarWidth;
+
+    @include BoxShadow('0 0 6px rgba(0,0,0,0.35)');
+}
+
+.sidebar {
+    width       : $sidebarWidth;
+    margin-left : -$sidebarWidth;
+    float       : left;
+}
+
+#hideout {
+    background : image-url('noise.jpg', false, false) repeat;
+    width      : 100%;
+    height     : $hideoutInitHeight;
+    position   : relative;
+    margin     : 0 0 20px 0;
+}
+
+#hideoutBtn {
+    background : image-url('forbidden.png', false, false) no-repeat;
+    width      : image-width('forbidden.png');
+    height     : image-height('forbidden.png');
+
+    position   : absolute;
+    bottom     : 0 - image-height('forbidden.png');
+    right      : 0;
+
+    cursor     : hand;
+    cursor     : pointer;
+}
+
+#pagenavi {
+    @include SimplePost;
+
+    text-align : center;
+    font       : 3.2em/2.5em Impact;
+    height     : 2.5em;
+    color      : #aaa;
+
+    a { text-align : center; }
+    a:hover {
+        background : #000;
+        color      : #FFF;
+    }
+
+    .prev { padding : 0 10px 0 0; }
+    .next { padding : 0 0 0 10px; }
+    .prev:before { @include IconFont('\2190', 32px); }
+    .next:after  { @include IconFont('\2192', 32px); }
+}

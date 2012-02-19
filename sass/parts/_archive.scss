@@ -1,0 +1,50 @@
+$archiveMetaWidth : 65px;
+
+.archive-title {
+    margin-top : 20px;
+    text-align : center;
+}
+
+.a_meta {
+    text-align    : right;
+    float         : left;
+    color         : $metaDataColor;
+    line-height   : 20px;
+    padding-right : 10px;
+
+    .date {
+        background : $dateBgColor;
+        padding    : 0 3px;
+        font-size  : 13px;
+        height     : 20px;
+    }
+
+    .comments {
+        background  : $commentBgColor;
+        padding     : 0 5px 0 0;
+        font-size  : 13px;
+        height     : 20px;
+        display    : inline-block;
+
+        &:before {
+            @include IconFont('@', 16px, #FFF);
+            padding        : 0 3px 0 5px;
+            vertical-align : middle;
+        }
+
+        &:hover { background : $commentBgColorHover; }
+    }
+}
+
+.archive {
+    padding : 10px 0;
+    @include ClearFix;
+
+    h1 {
+        padding : 0;
+    }
+}
+
+.archiveWrapper {
+    float : left;
+}

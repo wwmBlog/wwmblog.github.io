@@ -1,10 +1,21 @@
 @import "compass";
-@include global-reset;
-@include reset-html5;
 
-@import "custom/colors";
-@import "custom/fonts";
-@import "custom/layout";
-@import "base";
-@import "partials";
-@import "custom/styles";
+
+@import "base/font";
+@import "base/reset";
+@import "base/mixins";
+@import "base/base";
+@import "base/icn";
+@import "base/general";
+
+
+@import "parts/sidebar";
+@import "parts/article"; 
+@import "parts/index";
+@import "parts/footer";
+@import "parts/archive"; // archive must be after article.
+@import "parts/syntax";
+
+
+@import "asides/logo";
+@import "asides/recent_posts";

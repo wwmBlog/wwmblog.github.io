@@ -1,0 +1,51 @@
+// +++ Variables +++
+$sideBarContentColor : #6d3d1d;
+// ------ End ------
+
+aside {
+    @include WoodCarveText;
+}
+
+aside section {
+    font-size : 1.3em;
+    padding : 10px 2em 20px 2em;
+    position : relative;
+
+    h1 {
+        font-size   : 1.3em;
+        margin      : 0 0 5px -12px;
+        font-weight : bold;
+        line-height : 1em;
+
+        @include WoodEmbossText;
+    }
+
+    +section 
+    {
+        &:before, &:after {
+            width    : 70%;
+            margin   : auto;
+            height   : 1px;
+            content  : ' ';
+            display  : block;
+            position : absolute;
+            margin   : auto;
+            left     : 0;
+            right    : 0;
+        }
+        &:before {
+            top : 0;
+            @include LinearBackground("0deg, rgba(127,76,33,0), rgba(127,76,33,0.7), rgba(127,76,33,0)");
+        }
+        &:after {
+            top : 1px;
+            @include LinearBackground("0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%");
+        }
+    }
+}
+
+aside section a {
+    font-weight : bold;
+
+    &:hover { @include WoodEmbossText; }
+}
