@@ -1,0 +1,121 @@
+@include ReverseLink(".entry a, a.category", #FFF, $spColor);
+
+.entry{
+    line-height : 2;
+    color : $entryTextColor;
+
+    .left  { float : left; margin-right : 8px; }
+    .right { float : right; margin-left : 8px; }
+    strong { font-weight: bold; }
+    img, video {
+        max-width: 100%;
+        height: auto;
+    }
+    a.fancybox {
+        background : none;
+        @include BorderRadius(none);
+    } // Clear ReverseLink for FancyBox image.
+    iframe {
+        width : 100%;
+        border: none;
+        @include BoxShadow("0 2px 3px rgba(0,0,0,0.3)");
+    }
+    ol, ul {
+        margin-left: 3em;
+    }
+    >pre, code {
+        font        : $fixedMonoSize $monospace;
+        background  : #fff;
+        border      : 1px solid #ccc;
+        @include BorderRadius(5px);
+    }
+    pre code {
+        background : none;
+        border     : none;
+        padding    : 0;
+        margin     : 0;
+        @include BorderRadius(none);
+    }
+    code {
+        padding : 1px 3px;
+        margin  : 0 3px;
+    }
+    >pre {
+        padding     : 5px 15px;
+        line-height : 1.5;
+        overflow-x  : auto;
+    }
+    hr {
+        border        : none;
+        border-top : 1px dashed $splitLineColor;
+        position      : relative;
+        &:before {
+            color     : splitLineColor;
+            content   : '\2702';
+            position  : absolute;
+            font-size : 16px;
+            top       : -1em;
+            left      : 5em;
+        }
+    }
+    .max-box {
+        position       : relative;
+        padding-bottom : 56.25%;
+        height         : 0;
+        overflow       : hidden;
+        iframe, object, embed {
+            position : absolute;
+            top      : 0;
+            left     : 0;
+            width    : 100%;
+            height   : 100%;
+        }
+    }
+    .center-box {
+        max-width  : 100%;
+        text-align : center;
+    }
+
+    blockquote {
+        position    : relative;
+        background  : #222;
+        color       : #FFF;
+        padding-top : 10px;
+        display     : inline-block;
+        text-align  : center;
+        @include BorderRadius(3px);
+
+        &:before {
+            content : '"';
+            display : block;
+            position: absolute;
+            top  : 0;
+            left : 8px;
+            font : 45px $defaultChFont;
+        }
+
+        p { padding: 0 3em; }
+
+        footer {
+            background   : #FFF;
+            padding      : 0 3px;
+            font-size    : 0.5em;
+            color        : #222;
+            margin       : 10px 2px 2px 2px;
+            line-height  : 1.5em;
+            text-align   : left;
+            @include BorderRadius(1px);
+
+            &:before {
+                content : 'By ';
+            }
+
+            a:hover {
+                color : inherit;
+                background:  none;
+                text-decoration: underline;
+                @include BorderRadius(none);
+            }
+        }
+    }
+}

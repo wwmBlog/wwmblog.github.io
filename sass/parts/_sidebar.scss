@@ -1,7 +1,3 @@
-// +++ Variables +++
-$sideBarContentColor : #6d3d1d;
-// ------ End ------
-
 aside {
     @include WoodCarveText;
 }
@@ -18,6 +14,10 @@ aside section {
         line-height : 1em;
 
         @include WoodEmbossText;
+    }
+
+    ul, ol {
+        list-style-type : none;
     }
 
     +section 

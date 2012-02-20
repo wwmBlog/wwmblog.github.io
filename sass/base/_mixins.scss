@@ -17,28 +17,6 @@
     }
 }
 
-@mixin DefineToggleLink($toggleSel) {
-    #{$toggleSel} {
-        padding: 2px; 
-        &:hover {
-            color: #000;
-            text-shadow: none;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-        }
-    }
-}
-
-@mixin AddToogleLinkColor($colorSel, $color) {
-    #{$colorSel} {
-        color: $color;
-        &:hover {
-            background: $color;
-        }
-    }
-}
-
 @mixin ClearFix {
     overflow : hidden;
     display  : inline-block;
@@ -66,6 +44,21 @@
 @mixin HandCursor {
     cursor: #{"hand"};
     cursor: pointer;
+}
+
+@mixin ReverseLink($linkSel, $hoverColor, $hoverBgColor) {
+    #{$linkSel} {
+        padding : 2px;
+        color   : $hoverBgColor;
+
+        &:hover {
+            text-shadow : none;
+            color       : $hoverColor;
+            background  : $hoverBgColor;
+            text-decoration: none;
+            @include BorderRadius(3px);
+        }
+    }
 }
 
 @mixin Transform ($var) {

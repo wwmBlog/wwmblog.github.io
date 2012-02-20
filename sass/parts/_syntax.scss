@@ -1,352 +1,157 @@
-$gray01: #666;
-$gray02: #999;
-$gray03: #ccc;
-$gray04: #ddd;
-$gray05: #fff;
-$base03:          #002b36 !default; //darkest blue
-$base02:          #073642 !default; //dark blue
-$base01:          #586e75 !default; //darkest gray
-$base00:          #657b83 !default; //dark gray
-$base0:           #839496 !default; //medium gray
-$base1:           #93a1a1 !default; //medium light gray
-$base2:           #eee8d5 !default; //cream
-$base3:           #fdf6e3 !default; //white
-$solar-yellow:    #b58900 !default;
-$solar-orange:    #cb4b16 !default;
-$solar-red:       #dc322f !default;
-$solar-magenta:   #d33682 !default;
-$solar-violet:    #6c71c4 !default;
-$solar-blue:      #268bd2 !default;
-$solar-cyan:      #2aa198 !default;
-$solar-green:     #859900 !default;
-$meta-size: 0.9em;
-$default: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-$background: #eee;
-$main: #258fb8;
+// Monokai Theme.
+$mnkNormal          : #F8F8F2;
+$mnkBg              : #211F1C;
+$mnkHoverLineBg     : #000;
 
-$solarized: light !default;
+$mnkLineCount       : #7c7c77;
+$mnkLineCountBg     : #141412;
+$mnkLineCountBorder : #2c2c28;
 
-@if $solarized == light {
+$mnkErr             : #F8F8F0;
+$mnkErrBg           : #F92672;
 
-  $_base03: $base03;
-  $_base02: $base02;
-  $_base01: $base01;
-  $_base00: $base00;
-  $_base0:  $base0;
-  $_base1:  $base1;
-  $_base2:  $base2;
-  $_base3:  $base3;
+$mnkKeyword         : #66D8EF; // Cyan
+$mnkComment         : #60605B; // Grey
+$mnkString          : #A5E22D; // Green
+$mnkNumber          : #AE80FF; // Purple
+$mnkVariable        : #FF7E00; // Orange
+$mnkPreprocesser    : #F25DB1; // Light Pink
+$mnkFunction        : #E6DB74; // Light yellow
+$mnkClass           : #F92672; // Pink
+$mnkType            : #2B829F; // Blue
 
-  $base03:  $_base3;
-  $base02:  $_base2;
-  $base01:  $_base1;
-  $base00:  $_base0;
-  $base0:   $_base00;
-  $base1:   $_base01;
-  $base2:   $_base02;
-  $base3:   $_base03;
+figure.code, .entry .gist {
+    background  : $mnkBg;
+    overflow-x  : auto;
+    color       : $mnkNormal;
+    @include BorderRadius(5px);
 }
 
-/* non highlighted code colors */
-$pre-bg: $base03 !default;
-$pre-border: darken($base02, 5) !default;
-$pre-color: $base1 !default;
+figure.code, .entry .gist-data pre {
+    font : $fixedMonoSize $monospace !important;
+}
 
-figure.code{
-	background: $gray04;
-	padding: 5px 15px;
-	margin-top: 10px;
-	border: 1px solid $gray03;
-	line-height: 1.5;
-	overflow-x: auto;
-	@include border-radius(5px);
-	figcaption{
-		font-size: $meta-size;
-		position: relative;
-		span{
-			margin: -5px -15px 0;
-			padding: 5px 15px;
-			display: block;
-			@include background(linear-gradient(top, $gray03, $gray04));
-			&:empty{
-				display: none;
-			}
-		}
-		a{
-			position: absolute;
-			top: 5px;
-			right: 0;
-		}
-	}
-	.line-numbers{
-		border-right: 1px solid $gray03;
-		color: #000;
-		padding-right: 15px;
-	}
-	td.code{
-		width: 100%;
-		padding-left: 15px;
-		overflow-x: auto;
-	}
+.entry .gist-file {
+    margin-bottom: 5px !important;
+    border : none !important;
+    .gist-data {
+        background : none !important;
+    }
+    .gist-meta {
+        font : $fixedMonoSize $defaultChFont;
+        height : 1em !important;
+        line-height : 1em !important;
+    }
 }
-.entry .gist{
-	background: $gray04;
-	color: $gray01;
-	padding: 30px 15px 5px;
-	margin-top: 10px;
-	border: 1px solid $gray03;
-	position: relative;
-	overflow: hidden;
-	@include border-radius(5px);
-	.gist-file{
-		margin: 0;
-		.gist-data{
-			background: none;
-			border: none;
-			pre{
-				font: $meta-size $monospace;
-				line-height: 1.5;
-			}
-		}
-		.gist-meta{
-			font: 300 $meta-size $default;
-			line-height: 1.5;
-			margin: 0 -16px -6px;
-			padding: 5px 15px;
-			@include background(linear-gradient(top, $gray04, $gray03));
-			a{
-				color: $main;
-				&:first-of-type{
-					position: absolute;
-					top: 5px;
-					right: 15px;
-					z-index: 1;
-				}
-				&:nth-of-type(2){
-					position: absolute;
-					top: 0;
-					left: 0;
-					padding: 5px 15px;
-					width: 100%;
-					@include background(linear-gradient(top, $gray03, $gray04));
-				}
-			}
-		}
-	}
+
+figure.code {
+    .line-numbers {
+        display      : block;
+        border-right : 1px solid $mnkLineCountBorder;
+        background   : $mnkLineCountBg;
+        color        : $mnkLineCount;
+        padding      : 0 10px;
+        
+        line-height  : 1.6em;
+    }
+
+    span.line {
+        display     : block;
+        line-height : 1.6em;
+        padding-left : 5px;
+        &:hover {
+            background : $mnkHoverLineBg;
+        }
+    }
+
+    td.code {
+        width: 100%;
+        overflow-x: auto;
+    }
 }
-figure.code, .gist-highlight{
-	.c {
-		color:$base01 !important;
-		font-style: italic !important;
-	}
-	/* Comment */
-	.cm {
-		color:$base01 !important;
-		font-style: italic !important;
-	}
-	/* Comment.Multiline */
-	.cp {
-		color:$base01 !important;
-		font-style: italic !important;
-	}
-	/* Comment.Preproc */
-	.c1 {
-		color:$base01 !important;
-		font-style: italic !important;
-	}
-	/* Comment.Single */
-	.cs {
-		color:$base01 !important;
-		font-weight:bold !important;
-		font-style: italic !important;
-	}
-	/* Comment.Special */
-	.err {
-		color:$solar-red !important;
-		background: none !important;
-	}
-	/* Error */
-	.k {
-		color: $solar-orange !important;
-	}
-	/* Keyword */
-	.o {
-		color:$base1 !important;
-		font-weight: bold !important;
-	}
-	/* Operator */
-	.p {
-		color: $base1 !important;
-	}
-	/* Operator */
-	.ow {
-		color:$solar-cyan !important;
-		font-weight: bold !important;
-	}
-	/* Operator.Word */
-	.gd {
-		color:$base1 !important;
-		background-color:mix($solar-red,$base03,25%) !important;
-		display: inline-block;
-	}
-	/* Generic.Deleted */
-	.gd .x {
-		color:$base1 !important;
-		background-color:mix($solar-red,$base03,35%) !important;
-		display: inline-block;
-	}
-	/* Generic.Deleted.Specific */
-	.ge {
-		color:$base1 !important;
-		font-style: italic !important;
-	}
-	/* Generic.Emph */
-	.gh {
-		color: $base01 !important;
-	}
-	/* Generic.Heading */
-	.gi {
-		color:$base1 !important;
-		background-color:mix($solar-green,$base03,20%) !important;
-		display: inline-block;
-	}
-	/* Generic.Inserted */
-	.gi .x {
-		color:$base1 !important;
-		background-color:mix($solar-green,$base03,40%) !important;
-		display: inline-block;
-	}
-	/* Generic.Inserted.Specific */
-	.gs {
-		color:$base1 !important;
-		font-weight: bold !important;
-	}
-	/* Generic.Strong */
-	.gu {
-		color: $solar-violet !important;
-	}
-	/* Generic.Subheading */
-	.kc {
-		color:$solar-green !important;
-		font-weight: bold !important;
-	}
-	/* Keyword.Constant */
-	.kd {
-		color: $solar-blue !important;
-	}
-	/* Keyword.Declaration */
-	.kp {
-		color:$solar-orange !important;
-		font-weight: bold !important;
-	}
-	/* Keyword.Pseudo */
-	.kr {
-		color:$solar-magenta !important;
-		font-weight: bold !important;
-	}
-	/* Keyword.Reserved */
-	.kt {
-		color: $solar-cyan !important;
-	}
-	/* Keyword.Type */
-	.n {
-		color:$solar-blue !important;
-	}
-	.na {
-		color: $solar-blue !important;
-	}
-	/* Name.Attribute */
-	.nb {
-		color: $solar-green !important;
-	}
-	/* Name.Builtin */
-	.nc {
-		color: $solar-magenta !important;
-	}
-	/* Name.Class */
-	.no {
-		color: $solar-yellow !important;
-	}
-	/* Name.Constant */
-	.nl {
-		color:$solar-green !important;
-	}
-	.ne {
-		color:$solar-blue !important;
-		font-weight: bold !important;
-	}
-	/* Name.Exception */
-	.nf {
-		color:$solar-blue !important;
-		font-weight: bold !important;
-	}
-	/* Name.Function */
-	.nn {
-		color: $solar-yellow !important;
-	}
-	/* Name.Namespace */
-	.nt {
-		color:$solar-blue !important;
-		font-weight: bold !important;
-	}
-	/* Name.Tag */
-	.nx {
-		color:$solar-yellow !Important;
-	}
-	.vg {
-		color: $solar-blue !important;
-	}
-	/* Name.Variable.Global */
-	.vi {
-		color: $solar-blue !important;
-	}
-	/* Name.Variable.Instance */
-	.nv {
-		color: $solar-blue !important;
-	}
-	/* Name.Variable */
-	.mf {
-		color: $solar-cyan !important;
-	}
-	/* Literal.Number.Float */
-	.m {
-		color: $solar-cyan !important;
-	}
-	/* Literal.Number */
-	.mh {
-		color: $solar-cyan !important;
-	}
-	/* Literal.Number.Hex */
-	.mi {
-		color: $solar-cyan !important;
-	}
-	/* Literal.Number.Integer */
-	.s {
-		color: $solar-cyan !important;
-	}
-	/* Literal.String */
-	.sd {
-		color: $solar-cyan !important;
-	}
-	/* Literal.String.Doc */
-	.s2 {
-		color: $solar-cyan !important;
-	}
-	/* Literal.String.Double */
-	.se {
-		color: $solar-red !important;
-	}
-	/* Literal.String.Escape */
-	.si {
-		color: $solar-blue !important;
-	}
-	/* Literal.String.Interpol */
-	.sr {
-		color: $solar-cyan !important;
-	}
-	/* Literal.String.Regex */
-	.s1 {
-		color: $solar-cyan !important;
-	}
-	/* Literal.String.Single */
+
+figCaption {
+    color       : $mnkComment;
+    line-height : 1.5em;
+    height      : 1.5em;
+    padding     : 3px 1em;
+    position    : relative;
+
+    a {
+        background : darken($mnkBg, 5);
+        position : absolute;
+        right : 5px;
+        @include BorderRadius(3px);
+    }
+}
+
+figure.code, .gist-highlight {
+
+    .o, .p, .nv, .n, .nx {
+        color : $mnkNormal !important;
+        font-weight: normal !important;
+    } // Operator, Name.Variable, Name
+
+    .c, .cm, .c1, .cs {
+        color : $mnkComment !important;
+        font-style: italic !important;
+    } // Comment, Comment.Multiline, Comment.Preproc, Comment.Single, Comment.Special
+    .cs {
+        font-weight:bold !important;
+    } // Comment.Special
+    .err {
+        color : $mnkErr !important;
+        background : $mnkErrBg !important;
+    } // Error
+
+    .k, .kc, .kd, .ow, .no, .gh {
+        color: $mnkKeyword !important;
+    } // Keyword, Keyword.Constant, Keyword.Declaration, Operator.Word, Generic.Heading
+    .mf, .m, .mh, .mi {
+        color: $mnkNumber !important;
+    } // Literal.Number.Float, Literal.Number, Literal.Number.Hex, Literal.Number.Integer
+    .s, .sd, .s2, .s1, .sr, .se, .si {
+        color: $mnkString !important;
+    } // Literal.String, Literal.String.Doc, Literal.String.Double, Literal.String.Single, Literal.String.Regex, Literal.String.Escape, Literal.String.Interpol
+    .vg, .vi, .kp{
+        color: $mnkVariable !important;
+    } // Name.Variable.Global, Name.Variable.Instance
+    .vg {
+        font-style : italic !important;
+    } // Name.Variable.Global
+    .nb, .kt, .gu {
+        color: $mnkType !important;
+    } // Name.Builtin, Keyword.Type, Generic.SubHeading
+    .nc {
+        color: $mnkString !important;
+    } // Name.Class
+    .nt, .cp, .kr {
+        color: $mnkClass !important;
+    } //  Name.Tag, , Keyword.Reversed
+    .na, .nl, .nf, .nn {
+        color: $mnkFunction !important;
+    } // Name.Attribute, Function, Name.Namespace
+    .ne {
+        color:$mnkFunction !important;
+        font-weight: bold !important;
+    } // Name.Exception
+    .gd {
+        color: $mnkBg !important;
+        background: $mnkClass !important;
+        display: inline-block;
+    } // Generic.Deleted
+    .gi {
+        color:$mnkBg !important;
+        background : $mnkString !important;
+        display: inline-block;
+    } // Generic.Inserted
+
+    .ge {
+        color:$mnkNormal !important;
+        font-style: italic !important;
+    } // Generic.Emph
+    .gs {
+        color:$mnkNormal !important;
+        font-weight: bold !important;
+    } // Generic.Strong
 }

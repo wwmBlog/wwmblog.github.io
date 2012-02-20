@@ -3,6 +3,19 @@ $sidebarWidth      : 18em;
 $hideoutInitHeight : 3px;
 // ------ End ------
 
+@mixin SimplePost {
+    padding    : 0 $postHorzPadding;
+    border-top : 1px dashed $splitLineColor;
+    max-width  : $postMaxWidth;
+    margin     : auto;
+}
+
+article.post {
+    @include SimplePost;
+    padding-bottom : 15px;
+    &:first-of-type { border-top : none; }
+}
+
 body {
     background : image-url('wood.jpg', false, false) repeat 100% 0;
     min-height : 100%;
@@ -50,8 +63,7 @@ body {
     bottom     : 0 - image-height('forbidden.png');
     right      : 0;
 
-    cursor     : hand;
-    cursor     : pointer;
+    @include HandCursor;
 }
 
 #pagenavi {

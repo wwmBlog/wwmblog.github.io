@@ -2,19 +2,20 @@
 
 
 @import "base/font";
-@import "base/reset";
+@import "base/color";
+@import "base/icn";
 @import "base/mixins";
 @import "base/base";
-@import "base/icn";
 @import "base/general";
 
 
 @import "parts/sidebar";
 @import "parts/article"; 
-@import "parts/index";
+@import "parts/index"; // index must be fater article.
 @import "parts/footer";
 @import "parts/archive"; // archive must be after article.
 @import "parts/syntax";
+@import "parts/post";
 
 
 @import "asides/logo";

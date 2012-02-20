@@ -4,7 +4,6 @@ $postHorzPadding      : 50px;
 $metaFontSize         : 2em;
 $singlePostHorzMargin : 80px;
 
-$postSplitLineColor   : #C0C0C0;
 $postTitleColor       : #555;
 $postTitleColorHover  : #000;
 $metaDataColor        : #FFF;
@@ -12,19 +11,10 @@ $dateBgColor          : #bbb;
 $commentBgColor       : #6c6c6c;
 $commentBgColorHover  : #222;
 $moreLinkBgColor      : #313131;
-$moreLinkBgColorHover : #00aeff;
-$categoryColor        : #00aeff;
 $navLinkBg            : #6d3f24;
 // ------ End ------
-
-article.post {
-    @include SimplePost;
-    padding-bottom : 15px;
-    
-    &:first-of-type { border-top : none; }
-}
-
-.title {
+h1.title {
+    font-size      : 3em;
     padding-bottom : 8px;
     padding-top    : 0.7em;
     color : $postTitleColor;
@@ -57,6 +47,7 @@ article.post {
         background : $dateBgColor;
         padding    : 0 3px;
         font-size  : 0.65em;
+        height     : 100%;
 
         float    : right;
         position : relative;
@@ -100,18 +91,18 @@ article.post {
     @include BoxShadow("inset 0 0 9px #333");
 
     &:hover {
-        background : $moreLinkBgColorHover;
+        background : $spColor;
         @include BoxShadow("none");
     }
 }
 
 .cat {
     display     : inline-block;
-    color       : $categoryColor;
+    color       : $spColor;
     font-size   : 1.6em;
 
     &:before {
-        @include IconFont('+', 1em, darken($categoryColor, 20));
+        @include IconFont('+', 1em, darken($spColor, 20));
         margin-right : -3px;
     }
 }
@@ -146,7 +137,8 @@ article.post {
         padding      : 1em 5px 5px 5px;
         float        : left;
         margin-right : 1em;
-        position : relative;
+        position     : relative;
+        list-style   : none;
 
         &:before, &:after {
             width      : 10px;
