@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>action</key>
+	<false/>
+	<key>category</key>
+	<string>SCRIPTS</string>
+	<key>command</key>
+	<string>cd /Volumes/MacData/项目/WWM.com/octopress
+
+rake generate
+rake preview
+</string>
+	<key>disabled</key>
+	<false/>
+	<key>escapequery</key>
+	<true/>
+	<key>escapequerybackquotes</key>
+	<true/>
+	<key>escapequerybrackets</key>
+	<true/>
+	<key>escapequeryquotes</key>
+	<true/>
+	<key>escapequerysemicolons</key>
+	<true/>
+	<key>growloutput</key>
+	<false/>
+	<key>growloutputsticky</key>
+	<false/>
+	<key>keyword</key>
+	<string>blogpreivew</string>
+	<key>logging</key>
+	<false/>
+	<key>parameter</key>
+	<integer>1</integer>
+	<key>silent</key>
+	<false/>
+	<key>subtitle</key>
+	<string></string>
+	<key>title</key>
+	<string>预览博客</string>
+</dict>
+</plist>
