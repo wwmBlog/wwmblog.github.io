@@ -14,8 +14,8 @@
     <link rel="canonical" href="{{ canonical }}">
     <link href="{{ root_url }}/favicon.png" rel="shortcut icon">
     <link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]><script src="{{ root_url }}/javascripts/html5.js"></script><![endif]-->
-    <script src="{{ root_url }}/javascripts/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ root_url }}/javascripts/jquery_1.7.1.js"><\/script>')</script>
     {% include custom/head.html %}
     {% include google_analytics.html %}
 </head>

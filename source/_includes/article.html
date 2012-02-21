@@ -21,7 +21,7 @@
     <div class="meta">
         <div class="seperator"></div>
         {% if site.disqus_short_name and page.comments == true and site.disqus_show_comment_count == true %}
-        <a class="comments" href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread">comments</a>
+        <a class="comments" href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread">0</a>
         {% endif %}
         <div class="date">{% include post/date.html %}{{ time }}</div>
     </div>

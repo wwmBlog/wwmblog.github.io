@@ -34,6 +34,13 @@
     -webkit-box-shadow: #{$shadow};
     box-shadow:         #{$shadow};
 }
+@mixin Transition($transition) {
+    -moz-transition: $transition;
+    -webkit-transition: $transition;
+    -o-transition: $transition;
+    -ms-transition: $transition;
+    transition : $transition;
+}
 
 @mixin SizingBorderBox {
     -moz-box-sizing:    border-box;

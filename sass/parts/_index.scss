@@ -54,17 +54,17 @@ body {
     margin     : 0 0 20px 0;
 }
 
-#hideoutBtn {
-    background : image-url('forbidden.png', false, false) no-repeat;
-    width      : image-width('forbidden.png');
-    height     : image-height('forbidden.png');
+// #hideoutBtn {
+//     background : image-url('forbidden.png', false, false) no-repeat;
+//     width      : image-width('forbidden.png');
+//     height     : image-height('forbidden.png');
 
-    position   : absolute;
-    bottom     : 0 - image-height('forbidden.png');
-    right      : 0;
+//     position   : absolute;
+//     bottom     : 0 - image-height('forbidden.png');
+//     right      : 0;
 
-    @include HandCursor;
-}
+//     @include HandCursor;
+// }
 
 #pagenavi {
     @include SimplePost;

@@ -4,24 +4,33 @@
     line-height : 2;
     color : $entryTextColor;
 
-    .left  { float : left; margin-right : 8px; }
-    .right { float : right; margin-left : 8px; }
-    strong { font-weight: bold; }
-    img, video {
-        max-width: 100%;
-        height: auto;
-    }
     a.fancybox {
         background : none;
         @include BorderRadius(none);
     } // Clear ReverseLink for FancyBox image.
+      // This one is going to change, since i'm not using fancybox
+
+    p {
+        margin-top : 1em;
+    }
+
+    strong {
+        font-weight : bold;
+        color : #000;
+    }
+
+    .left  { float : left; margin-right : 8px; }
+    .right { float : right; margin-left : 8px; }
+
+    img, video { max-width: 100%; height: auto; }
+
     iframe {
         width : 100%;
         border: none;
         @include BoxShadow("0 2px 3px rgba(0,0,0,0.3)");
     }
     ol, ul {
-        margin-left: 3em;
+        margin: 1em 0 1em 2em;
     }
     >pre, code {
         font        : $fixedMonoSize $monospace;
@@ -45,18 +54,22 @@
         line-height : 1.5;
         overflow-x  : auto;
     }
-    hr {
-        border        : none;
+    hr, h1 {
+        border     : none;
         border-top : 1px dashed $splitLineColor;
-        position      : relative;
+        position   : relative;
         &:before {
-            color     : splitLineColor;
+            color     : $splitLineColor;
             content   : '\2702';
             position  : absolute;
             font-size : 16px;
             top       : -1em;
             left      : 5em;
+            font-weight : normal;
         }
+    }
+    hr {
+        margin : 1em 0;
     }
     .max-box {
         position       : relative;
@@ -94,7 +107,10 @@
             font : 45px $defaultChFont;
         }
 
-        p { padding: 0 3em; }
+        p { 
+            padding: 0 3em; 
+            margin : 0; 
+        }
 
         footer {
             background   : #FFF;

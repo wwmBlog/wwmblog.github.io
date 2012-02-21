@@ -8,37 +8,55 @@
 	<string>SCRIPTS</string>
 	<key>command</key>
 	<string>cd /Volumes/MacData/项目/WWM.com/octopress
-./newpost.rb "{query}"
 
+blog="public/blog"
+target_dir="../build"
+branch="master"
+
+# Generate
+rake integrate
 rake generate
-rake preview</string>
+
+# Copy
+rsync -vrc $blog $target_dir
+
+# Commit
+cd $target_dir
+git add .
+git add -u
+date_time=$(date)
+message="Blog updated at: "$date_time
+git commit -m "$message"
+
+# Push
+git push origin $branch --force</string>
 	<key>disabled</key>
 	<false/>
 	<key>escapequery</key>
-	<false/>
+	<true/>
 	<key>escapequerybackquotes</key>
-	<false/>
+	<true/>
 	<key>escapequerybrackets</key>
-	<false/>
+	<true/>
 	<key>escapequeryquotes</key>
-	<false/>
+	<true/>
 	<key>escapequerysemicolons</key>
-	<false/>
+	<true/>
 	<key>growloutput</key>
 	<false/>
 	<key>growloutputsticky</key>
 	<false/>
 	<key>keyword</key>
-	<string>newpost</string>
+	<string>blogpublish</string>
 	<key>logging</key>
 	<false/>
 	<key>parameter</key>
-	<integer>3</integer>
+	<integer>1</integer>
 	<key>silent</key>
 	<false/>
 	<key>subtitle</key>
 	<string></string>
 	<key>title</key>
-	<string>创建博文</string>
+	<string>发布博客</string>
 </dict>
 </plist>
