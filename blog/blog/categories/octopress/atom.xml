@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | War Within Me]]></title>
   <link href="http://warwithinme.com/blog/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://warwithinme.com/blog/"/>
-  <updated>2012-02-21T15:30:37+08:00</updated>
+  <updated>2012-02-21T15:41:54+08:00</updated>
   <id>http://warwithinme.com/blog/</id>
   <author>
     <name><![CDATA[WWM]]></name>
@@ -156,9 +156,9 @@ end
 <li><code>EDITOR = "mate"</code> (换成TextMate)</li>
 </ul>
 </li>
-<li><p>因为博客不是放在根目录里, 只能<code>rake preview</code>的方法来预览, 否则加载的文件的路径都错了... 可惜目前没找到能让[LiveReload]来刷新页面的方法, sign.</p></li>
+<li><p>因为博客不是放在根目录里, 只能<code>rake preview</code>的方法来预览, 否则加载的文件的路径都错了... 可惜目前没找到能让<a href="http://livereload.com/">LiveReload</a>来刷新页面的方法, sign.</p></li>
 <li><strong>用了这个脚本, 在准备更新到服务器之前的那次<code>rake generate</code>之前, 必须先<code>rake integrate</code>. 否则只有新建的那个blog文哦.</strong></li>
-<li>要用SublimeText2之前还得先在terminal运行一下代码, 这样才能用它的命令行工具:
+<li>要用<a href="http://www.sublimetext.com/2">SublimeText2</a>之前还得先在terminal运行一下代码, 这样才能用它的命令行工具:
 <code>bash
 sudo ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /bin/subl
 </code></li>
