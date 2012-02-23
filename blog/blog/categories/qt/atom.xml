@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Qt | War Within Me]]></title>
+  <link href="http://warwithinme.com/blog/blog/categories/qt/atom.xml" rel="self"/>
+  <link href="http://warwithinme.com/blog/"/>
+  <updated>2012-02-23T17:32:37+08:00</updated>
+  <id>http://warwithinme.com/blog/</id>
+  <author>
+    <name><![CDATA[WWM]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Qt与MSVC的中文问题]]></title>
+    <link href="http://warwithinme.com/blog/2010/10/qt-msvc-encoding/"/>
+    <updated>2010-10-02T15:50:00+08:00</updated>
+    <id>http://warwithinme.com/blog/2010/10/qt-msvc-encoding</id>
+    <content type="html"><![CDATA[<p>因为之前发布了GCC编译的TwitWar，结果在有些人的xp系统下面出现Runtime Error。主要是调用插件，而这个插件又调用了其他的dll文件。。。然后一直解决不了，最后还是决定用MSVC2008编译。。还好最后结果还不错。。(但是有个同学说他没能加载插件，真悲催。。。)</p>
+
+<p>如果用MSVC2008编译的话，源代码的编码格式是绝对不可以是<strong>UTF-8 without BOM</strong>的。因为该死的MSVC只认<strong>UTF-8 without BOM</strong>。。。如果你保存的编码格式是<strong>UTF-8 with BOM</strong>，那么你用Qt的时候，十有八九会乱码。。</p>
+
+<p>目前我觉得最稳妥的方法是：</p>
+
+<!-- more -->
+
+
+<ol>
+<li>将源代码都保存为<strong>GBK</strong>或<strong>GB2312</strong>。这样编译之后的二进制文件中的字符串就都是这个编码。</li>
+<li>凡是源代码中有中文的字符串都用<code>tr()</code>括起来。。例如：<code>tr(“测试中文”)</code>;</li>
+<li>在<code>main()</code>函数中，一开始就设置<strong>codec</strong>：</li>
+</ol>
+
+
+<p><code>cpp 设置Codec
+QTextCodec* codec = QTextCodec::codecForName("UTF-8");
+QTextCodec::setCodecForCStrings(codec);
+codec = QTextCodec::codecForLocale();
+//codec = QTextCodec::codecForName("GBK");//或GB2312
+QTextCodec::setCodecForTr(codec);
+</code></p>
+
+<p>这里解释一下：</p>
+
+<ol>
+<li><p>按常理来说，被注释掉的<code>codec = QTextCodec::codecForName(“GBK”);</code>应该是能工作的。因为源代码是用<strong>GBK</strong>格式保存的。
+但是实际上在xp系统下，依然会乱码，只能用<code>codecForLocale()</code>来解决。郁闷的是xp系统的默认编码本来就是<strong>GBK</strong>。</p></li>
+<li><p>最后一行设置了用于<code>tr()</code>的编码为<strong>GBK</strong>。这样，被<code>tr()</code>括起来的中文就会被<a href="http://qt.nokia.com/products/">Qt</a>正确转换成Unicode了。</p></li>
+<li><p>如果设置了<code>codecForCString</code>为<strong>UTF-8</strong>的话，那么下面的会按<strong>UTF-8</strong>来转换。<code>QString astring = "My little World!";</code> 虽然因为源代码是<strong>GBK</strong>格式，My little World!会以<strong>GBK</strong>格式储存。但是由于<strong>UTF-8</strong>和<strong>GBK</strong>都兼容<strong>ASCII</strong>，就是说那些<strong>ASCII</strong>字符在<strong>UTF-8</strong>和<strong>GBK</strong>里面都是一样的，所以这里不会出错。。</p></li>
+<li><p>至于为什么要将<code>CStrings</code>的编码设置成<strong>UTF-8</strong>？因为网络数据。网络数据一般都是<strong>UTF-8</strong>编码的，而<code>codecForCStrings</code>指定的是<code>QByteArray</code>、<code>char*</code>与<code>QString</code>互换的编码。。<br/>
+例如，读取<code>QNetworkReply</code>中的数据：</p></li>
+</ol>
+
+
+<p><code>cpp
+QByteArray data = reply-&gt;readAll();
+QString content = data;
+</code></p>
+
+<p>因为<code>data</code>是<strong>UTF-8</strong>格式，所以按上面设置以后content不会乱码。</p>
+]]></content>
+  </entry>
+  
+</feed>

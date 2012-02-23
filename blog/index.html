@@ -299,6 +299,53 @@ D2D本身没有支持让你直接操作像素数据的API，例如你只是想�
 
 </article>
     
+    
+    <article class="post">
+    <h1 class="title"><a href="/blog/2010/10/qt-msvc-encoding/">Qt与MSVC的中文问题</a></h1>
+    <div class="meta">
+        <div class="seperator"></div>
+        
+        <a class="comments" href="/blog/2010/10/qt-msvc-encoding/#disqus_thread">0</a>
+        
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-02T15:50:00+08:00" pubdate data-updated="true">10年10月02日</time></div>
+    </div>
+    <div class="entry">
+        <p>因为之前发布了GCC编译的TwitWar，结果在有些人的xp系统下面出现Runtime Error。主要是调用插件，而这个插件又调用了其他的dll文件。。。然后一直解决不了，最后还是决定用MSVC2008编译。。还好最后结果还不错。。(但是有个同学说他没能加载插件，真悲催。。。)</p>
+
+<p>如果用MSVC2008编译的话，源代码的编码格式是绝对不可以是<strong>UTF-8 without BOM</strong>的。因为该死的MSVC只认<strong>UTF-8 without BOM</strong>。。。如果你保存的编码格式是<strong>UTF-8 with BOM</strong>，那么你用Qt的时候，十有八九会乱码。。</p>
+
+<p>目前我觉得最稳妥的方法是：</p>
+
+
+        
+    </div>
+    <div class="afterArticle">
+        <a href="/blog/2010/10/qt-msvc-encoding/" class="more-link">继续阅读</a>
+        
+
+<div class="cat">
+  
+    <a class='category' href='/blog/blog/categories/qt/'>Qt</a>
+  
+</div>
+
+
+    </div>
+
+</article>
+    
 
 
 
@@ -348,7 +395,7 @@ D2D本身没有支持让你直接操作像素数据的API，例如你只是想�
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a class='li_cat' href='/blog/blog/categories/general'>General</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/m-'>M$</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/octopress'>Octopress</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/xvim'>Xvim</a><span class='count'>2</span></li></ul>
+    <ul id="category-list"><li><a class='li_cat' href='/blog/blog/categories/general'>General</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/m-'>M$</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/octopress'>Octopress</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/qt'>Qt</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/xvim'>Xvim</a><span class='count'>2</span></li></ul>
 </section>
 
 
