@@ -3,11 +3,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>xVim v0.2 is out - War Within Me</title>
+    <title>xVim v0.12 - War Within Me</title>
     <meta name="author" content="WWM">
 
     
-    <meta name="description" content="Blog Archives RSS xVim v0.2 Is Out 0 12年02月23日 Well, xVim v0.2 is out. It now supports Visual Mode, though some command are still not implemented &hellip;">
+    <meta name="description" content="Blog Archives RSS xVim v0.12 0 11年12月24日 So xVim has updated to 0.12. Fixed some bugs
+Added a little more key binding like (ctrl+u and ctrl+d). &hellip;">
     
     <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
@@ -46,7 +47,7 @@
 
 </section>
     
-    <h1 class="title">xVim v0.2 Is Out</h1>
+    <h1 class="title">xVim v0.12</h1>
     <div class="meta">
         <div class="seperator"></div>
         
@@ -64,33 +65,22 @@
   
 
 
-<time datetime="2012-02-23T12:26:00+08:00" pubdate data-updated="true">12年02月23日</time></div>
+<time datetime="2011-12-24T13:50:00+08:00" pubdate data-updated="true">11年12月24日</time></div>
     </div>
-    <div class="entry"><p>Well, <a href="https://github.com/WarWithinMe/xVim">xVim</a> v0.2 is out. It now supports <strong>Visual Mode</strong>, <em>though some command are still not implemented yet</em>.</p>
+    <div class="entry"><p>So <a href="https://github.com/WarWithinMe/xVim">xVim</a> has updated to 0.12.</p>
 
-<!-- more -->
+<p>Fixed some bugs
+Added a little more key binding like (ctrl+u and ctrl+d).
+Added a simplified key-mapping feature, so that you can type &#8216;jk&#8217; or other stuff in insert mode to switch back to normal mode.
+some motions, % and visual mode are still not implemented.</p>
 
+<p>BTW, xVim is a SIMBL plugin to add vim like key-binding to Xcode and other application that uses NSTextView.</p>
 
-<h1>What is xVim</h1>
+<p>Check it out in <a href="https://github.com/WarWithinMe/xVim">github repo</a></p>
 
-<p>xVim is a <a href="http://www.culater.net/software/SIMBL/SIMBL.php">SIMBL</a> plugin which aims to provide <strong><a href="http://www.vim.org">Vim</a> Key-Binding</strong> for <strong>NSTextView</strong>. So every cocoa app which uses NSTextView can have vim key binding with them. Sounds like crazy, huh?</p>
+<p>Currently supported are Xcode, espresso and chocalat.</p>
 
-<h1>What is not xVim</h1>
-
-<p>Any way, the difference between <a href="http://www.vim.org">Vim</a> and <a href="https://github.com/WarWithinMe/xVim">xVim</a> is that, <a href="http://www.vim.org">Vim</a> is an full featured (not-good-looking?) editor, while xVim is just a plugin.<br/>
-That is to say, features belonged to editor (e.g. bookmarks, tags, and anything sounds complicated&#8230;=, =) will not be implemented in xVim.</p>
-
-<h1>What app is supported</h1>
-
-<p>Well:</p>
-
-<ul>
-<li><p><strong><a href="https://developer.apple.com/xcode">Xcode</a></strong> (I&#8217;m using 4.2, and I bet other versions will works fine)</p></li>
-<li><p><a href="http://chocolatapp.com">Chocolat</a></p></li>
-<li><p><a href="http://macrabbit.com/espresso">Espresso</a></p></li>
-<li><p>And anything that has <strong>NSTextView</strong> within it.</p></li>
-</ul>
-
+<p>(TextMate does not use NSTextView, so if someone wants to use vim in TextMate, they should use Vico app.)</p>
 </div>
     <div class="afterArticle">
 
@@ -118,8 +108,8 @@ That is to say, features belonged to editor (e.g. bookmarks, tags, and anything 
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://warwithinme.com/blog/2012/02/23/xvim-v02/';
-        var disqus_url = 'http://warwithinme.com/blog/2012/02/23/xvim-v02/';
+        var disqus_identifier = 'http://warwithinme.com/blog/2011/12/24/xvim-0-12/';
+        var disqus_url = 'http://warwithinme.com/blog/2011/12/24/xvim-0-12/';
         var disqus_script = 'embed.js';
       
     (function () {

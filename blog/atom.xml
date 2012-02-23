@@ -4,7 +4,7 @@
   <title><![CDATA[War Within Me]]></title>
   <link href="http://warwithinme.com/blog/atom.xml" rel="self"/>
   <link href="http://warwithinme.com/blog/"/>
-  <updated>2012-02-23T12:46:10+08:00</updated>
+  <updated>2012-02-23T14:29:37+08:00</updated>
   <id>http://warwithinme.com/blog/</id>
   <author>
     <name><![CDATA[WWM]]></name>
@@ -19,6 +19,9 @@
     <updated>2012-02-23T12:26:00+08:00</updated>
     <id>http://warwithinme.com/blog/2012/02/23/xvim-v02</id>
     <content type="html"><![CDATA[<p>Well, <a href="https://github.com/WarWithinMe/xVim">xVim</a> v0.2 is out. It now supports <strong>Visual Mode</strong>, <em>though some command are still not implemented yet</em>.</p>
+
+<!-- more -->
+
 
 <h1>What is xVim</h1>
 
@@ -211,6 +214,28 @@ end
 
 
 <h1>呼, 好累哎, 睡觉先 =, =</h1>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[xVim v0.12]]></title>
+    <link href="http://warwithinme.com/blog/2011/12/24/xvim-0-12/"/>
+    <updated>2011-12-24T13:50:00+08:00</updated>
+    <id>http://warwithinme.com/blog/2011/12/24/xvim-0-12</id>
+    <content type="html"><![CDATA[<p>So <a href="https://github.com/WarWithinMe/xVim">xVim</a> has updated to 0.12.</p>
+
+<p>Fixed some bugs
+Added a little more key binding like (ctrl+u and ctrl+d).
+Added a simplified key-mapping feature, so that you can type &#8216;jk&#8217; or other stuff in insert mode to switch back to normal mode.
+some motions, % and visual mode are still not implemented.</p>
+
+<p>BTW, xVim is a SIMBL plugin to add vim like key-binding to Xcode and other application that uses NSTextView.</p>
+
+<p>Check it out in <a href="https://github.com/WarWithinMe/xVim">github repo</a></p>
+
+<p>Currently supported are Xcode, espresso and chocalat.</p>
+
+<p>(TextMate does not use NSTextView, so if someone wants to use vim in TextMate, they should use Vico app.)</p>
 ]]></content>
   </entry>
   
