@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xVim | War Within Me]]></title>
   <link href="http://warwithinme.com/blog/blog/categories/xvim/atom.xml" rel="self"/>
   <link href="http://warwithinme.com/blog/"/>
-  <updated>2012-02-23T14:29:37+08:00</updated>
+  <updated>2012-02-23T14:31:51+08:00</updated>
   <id>http://warwithinme.com/blog/</id>
   <author>
     <name><![CDATA[WWM]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[xVim v0.2 is out]]></title>
-    <link href="http://warwithinme.com/blog/2012/02/23/xvim-v02/"/>
+    <link href="http://warwithinme.com/blog/2012/02/xvim-v02/"/>
     <updated>2012-02-23T12:26:00+08:00</updated>
-    <id>http://warwithinme.com/blog/2012/02/23/xvim-v02</id>
+    <id>http://warwithinme.com/blog/2012/02/xvim-v02</id>
     <content type="html"><![CDATA[<p>Well, <a href="https://github.com/WarWithinMe/xVim">xVim</a> v0.2 is out. It now supports <strong>Visual Mode</strong>, <em>though some command are still not implemented yet</em>.</p>
 
 <!-- more -->
@@ -48,9 +48,9 @@ That is to say, features belonged to editor (e.g. bookmarks, tags, and anything 
   
   <entry>
     <title type="html"><![CDATA[xVim v0.12]]></title>
-    <link href="http://warwithinme.com/blog/2011/12/24/xvim-0-12/"/>
+    <link href="http://warwithinme.com/blog/2011/12/xvim-0-12/"/>
     <updated>2011-12-24T13:50:00+08:00</updated>
-    <id>http://warwithinme.com/blog/2011/12/24/xvim-0-12</id>
+    <id>http://warwithinme.com/blog/2011/12/xvim-0-12</id>
     <content type="html"><![CDATA[<p>So <a href="https://github.com/WarWithinMe/xVim">xVim</a> has updated to 0.12.</p>
 
 <p>Fixed some bugs
