@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: xVim | War Within Me]]></title>
+  <link href="http://warwithinme.com/blog/blog/categories/xvim/atom.xml" rel="self"/>
+  <link href="http://warwithinme.com/blog/"/>
+  <updated>2012-02-23T12:46:10+08:00</updated>
+  <id>http://warwithinme.com/blog/</id>
+  <author>
+    <name><![CDATA[WWM]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[xVim v0.2 is out]]></title>
+    <link href="http://warwithinme.com/blog/2012/02/23/xvim-v02/"/>
+    <updated>2012-02-23T12:26:00+08:00</updated>
+    <id>http://warwithinme.com/blog/2012/02/23/xvim-v02</id>
+    <content type="html"><![CDATA[<p>Well, <a href="https://github.com/WarWithinMe/xVim">xVim</a> v0.2 is out. It now supports <strong>Visual Mode</strong>, <em>though some command are still not implemented yet</em>.</p>
+
+<h1>What is xVim</h1>
+
+<p>xVim is a <a href="http://www.culater.net/software/SIMBL/SIMBL.php">SIMBL</a> plugin which aims to provide <strong><a href="http://www.vim.org">Vim</a> Key-Binding</strong> for <strong>NSTextView</strong>. So every cocoa app which uses NSTextView can have vim key binding with them. Sounds like crazy, huh?</p>
+
+<h1>What is not xVim</h1>
+
+<p>Any way, the difference between <a href="http://www.vim.org">Vim</a> and <a href="https://github.com/WarWithinMe/xVim">xVim</a> is that, <a href="http://www.vim.org">Vim</a> is an full featured (not-good-looking?) editor, while xVim is just a plugin.<br/>
+That is to say, features belonged to editor (e.g. bookmarks, tags, and anything sounds complicated...=, =) will not be implemented in xVim.</p>
+
+<h1>What app is supported</h1>
+
+<p>Well:</p>
+
+<ul>
+<li><p><strong><a href="https://developer.apple.com/xcode">Xcode</a></strong> (I'm using 4.2, and I bet other versions will works fine)</p></li>
+<li><p><a href="http://chocolatapp.com">Chocolat</a></p></li>
+<li><p><a href="http://macrabbit.com/espresso">Espresso</a></p></li>
+<li><p>And anything that has <strong>NSTextView</strong> within it.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
