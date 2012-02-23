@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | War Within Me]]></title>
   <link href="http://warwithinme.com/blog/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://warwithinme.com/blog/"/>
-  <updated>2012-02-21T15:41:54+08:00</updated>
+  <updated>2012-02-23T12:45:34+08:00</updated>
   <id>http://warwithinme.com/blog/</id>
   <author>
     <name><![CDATA[WWM]]></name>
@@ -20,18 +20,6 @@
     <id>http://warwithinme.com/blog/2012/02/20/blogging-with-octopress</id>
     <content type="html"><![CDATA[<p>嗯, 貌似用<a href="http://octopress.org/">Octopress</a>的循例是将<strike>初夜</strike>(初篇)献给八爪君的各种触手.
 那么我也来写写好了.</p>
-
-<hr />
-
-<p><small>WWM的各种TODO备忘:</small></p>
-
-<ul>
-<li>单独的post页面的disqus好像用不到耶 (＞﹏＜)</li>
-<li>不同功能的JS</li>
-</ul>
-
-
-<hr />
 
 <p>很多宅与Hacker都已经<strike>吐槽</strike>(解释)过如何打造自己的触手系博客了. 所以就再也没有必要在这个方面啰嗦啦, 还是说说日常的blog方面吧...</p>
 
