@@ -3,11 +3,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>xVim v0.2 is out - War Within Me</title>
+    <title>M$的东西怎么这么让人不敢恭维啊。。 - War Within Me</title>
     <meta name="author" content="WWM">
 
     
-    <meta name="description" content="Blog Archives RSS xVim v0.2 Is Out 0 12年02月23日 Well, xVim v0.2 is out. It now supports Visual Mode, though some command are still not implemented &hellip;">
+    <meta name="description" content="Blog Archives RSS M$的东西怎么这么让人不敢恭维啊。。 0 11年04月28日 就拿图形来说。现在M$就有三套图形的API: GDI 倒胃口的是: C API和不支持Alpha
+唯一就是硬件加速。同时搭配上GDI++(这玩意可不是M$自己出的, 阿鲁)， &hellip;">
     
     <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
@@ -46,7 +47,7 @@
 
 </section>
     
-    <h1 class="title">xVim v0.2 Is Out</h1>
+    <h1 class="title">M$的东西怎么这么让人不敢恭维啊。。</h1>
     <div class="meta">
         <div class="seperator"></div>
         
@@ -64,39 +65,37 @@
   
 
 
-<time datetime="2012-02-23T12:26:00+08:00" pubdate data-updated="true">12年02月23日</time></div>
+<time datetime="2011-04-28T13:50:00+08:00" pubdate data-updated="true">11年04月28日</time></div>
     </div>
-    <div class="entry"><p>Well, <a href="https://github.com/WarWithinMe/xVim">xVim</a> v0.2 is out. It now supports <strong>Visual Mode</strong>, <em>though some command are still not implemented yet</em>.</p>
+    <div class="entry"><p>就拿图形来说。现在M$就有三套图形的API:</p>
 
-<!-- more -->
+<h4>GDI</h4>
 
+<p>倒胃口的是: <code>C API</code>和<code>不支持Alpha</code>
+唯一就是<strong>硬件加速</strong>。同时搭配上GDI++(这玩意可不是M$自己出的, 阿鲁)，可以达到Mac的字体渲染效果。</p>
 
-<h1>What is xVim</h1>
+<h4>GDI+</h4>
 
-<p>xVim is a <a href="http://www.culater.net/software/SIMBL/SIMBL.php">SIMBL</a> plugin which aims to provide <strong><a href="http://www.vim.org">Vim</a> Key-Binding</strong> for <strong>NSTextView</strong>. So every cocoa app which uses NSTextView can have vim key binding with them. Sounds like crazy, huh?</p>
+<p><code>C++ API</code>，<strong>不支持硬件加速</strong>。使用方便，可以图像处理，效率却不高。</p>
 
-<h1>What is not xVim</h1>
+<h4>Direct2D</h4>
 
-<p>Any way, the difference between <a href="http://www.vim.org">Vim</a> and <a href="https://github.com/WarWithinMe/xVim">xVim</a> is that, <a href="http://www.vim.org">Vim</a> is an full featured (not-good-looking?) editor, while xVim is just a plugin.<br/>
-That is to say, features belonged to editor (e.g. bookmarks, tags, and anything sounds complicated&#8230;=, =) will not be implemented in xVim.</p>
-
-<h1>What app is supported</h1>
-
-<p>Well:</p>
+<p>第三个<strong>Direct2D</strong>(DirectDraw悲催要到墙角画圈圈了&#8230;)，看上去很优秀的:</p>
 
 <ul>
-<li><strong><a href="https://developer.apple.com/xcode">Xcode</a></strong> (I&#8217;m using 4.2, and I bet other versions will works fine)</li>
-<li><a href="http://chocolatapp.com">Chocolat</a></li>
-<li><p><a href="http://macrabbit.com/espresso">Espresso</a></p></li>
-<li><p>And anything that has <strong>NSTextView</strong> within it.</p></li>
+<li>轻便的COM接口，比较易用。</li>
+<li>硬件加速的哦, 亲。。</li>
 </ul>
 
+
+<p>可惜硬件加速的是绘图，不是图像处理。。图像处理方面的能力基本上为0。这个是不是因为GPU只懂得vertex之类的东西，而不懂像素的关系呢？
+D2D本身没有支持让你直接操作像素数据的API，例如你只是想修改一个像素的值，noway。。当然也不是绝对的，你可以通过WIC来获取那些像素，但是仅仅限于软件渲染的RenderTarget。如果一个RenderTarget是硬件加速的，你就没有办法用WIC来获取这个RenderTarget上面的数据了。</p>
 </div>
     <div class="afterArticle">
 
 <div class="cat">
   
-    <a class='category' href='/blog/blog/categories/xvim/'>xVim</a>
+    <a class='category' href='/blog/blog/categories/m-/'>M$</a>
   
 </div>
 
@@ -118,8 +117,8 @@ That is to say, features belonged to editor (e.g. bookmarks, tags, and anything 
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://warwithinme.com/blog/2012/02/xvim-v02/';
-        var disqus_url = 'http://warwithinme.com/blog/2012/02/xvim-v02/';
+        var disqus_identifier = 'http://warwithinme.com/blog/2011/04/ms-never-make-good-things/';
+        var disqus_url = 'http://warwithinme.com/blog/2011/04/ms-never-make-good-things/';
         var disqus_script = 'embed.js';
       
     (function () {

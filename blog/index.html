@@ -185,6 +185,120 @@ some motions, % and visual mode are still not implemented.</p>
 
 </article>
     
+    
+    <article class="post">
+    <h1 class="title"><a href="/blog/2011/04/ms-never-make-good-things/">M$的东西怎么这么让人不敢恭维啊。。</a></h1>
+    <div class="meta">
+        <div class="seperator"></div>
+        
+        <a class="comments" href="/blog/2011/04/ms-never-make-good-things/#disqus_thread">0</a>
+        
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-28T13:50:00+08:00" pubdate data-updated="true">11年04月28日</time></div>
+    </div>
+    <div class="entry">
+        <p>就拿图形来说。现在M$就有三套图形的API:</p>
+
+<h4>GDI</h4>
+
+<p>倒胃口的是: <code>C API</code>和<code>不支持Alpha</code>
+唯一就是<strong>硬件加速</strong>。同时搭配上GDI++(这玩意可不是M$自己出的, 阿鲁)，可以达到Mac的字体渲染效果。</p>
+
+<h4>GDI+</h4>
+
+<p><code>C++ API</code>，<strong>不支持硬件加速</strong>。使用方便，可以图像处理，效率却不高。</p>
+
+<h4>Direct2D</h4>
+
+<p>第三个<strong>Direct2D</strong>(DirectDraw悲催要到墙角画圈圈了&#8230;)，看上去很优秀的:</p>
+
+<ul>
+<li>轻便的COM接口，比较易用。</li>
+<li>硬件加速的哦, 亲。。</li>
+</ul>
+
+
+<p>可惜硬件加速的是绘图，不是图像处理。。图像处理方面的能力基本上为0。这个是不是因为GPU只懂得vertex之类的东西，而不懂像素的关系呢？
+D2D本身没有支持让你直接操作像素数据的API，例如你只是想修改一个像素的值，noway。。当然也不是绝对的，你可以通过WIC来获取那些像素，但是仅仅限于软件渲染的RenderTarget。如果一个RenderTarget是硬件加速的，你就没有办法用WIC来获取这个RenderTarget上面的数据了。</p>
+
+        
+    </div>
+    <div class="afterArticle">
+        
+        
+
+<div class="cat">
+  
+    <a class='category' href='/blog/blog/categories/m-/'>M$</a>
+  
+</div>
+
+
+    </div>
+
+</article>
+    
+    
+    <article class="post">
+    <h1 class="title"><a href="/blog/2011/03/readin-why-is-chinese-web-design/">在看Why Is Chinese Web Design So Bad</a></h1>
+    <div class="meta">
+        <div class="seperator"></div>
+        
+        <a class="comments" href="/blog/2011/03/readin-why-is-chinese-web-design/#disqus_thread">0</a>
+        
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-02T13:50:00+08:00" pubdate data-updated="true">11年03月02日</time></div>
+    </div>
+    <div class="entry">
+        <p>刚才看到一篇文章<a href="http://thinkvitamin.com/design/why-is-chinese-web-design-so-bad/">Why Is Chinese Web Design So Bad</a>。文章是一个叫Nick Johnson的人在吐槽中国网站设计得<strong>so bad</strong>。
+我没仔细看原文这种事情, 我会告诉你么。有看头的其实是那篇文章后面那堆评论。</p>
+
+<p>就算很多人点了<em>like</em>，我也只能说，lovebk的评论超反感啊！看得出愤青的他已经恼羞成怒，结果就语无伦次喷了人家一面。虽然Nick是绝对不会知道他在说啥，因为我也不清楚那个comment的主旨啊。但是，喂，lovebk，你的节操掉了一地，麻烦扫一扫好么。。。Anyway， 正如lovebk所言，Nick确实挺片面的，但是我觉得整篇文章的目的在于探讨那种中国风的设计风格，而不是在谩骂中国的设计师如何的低质。</p>
+
+<p>Nick Johnson说中国的网站设计不好，是说这些网站喜欢整合一切可能的数据在网页上，趋于繁杂。而西方则流行简洁优雅的风格。
+但Nick不晓得与资本主义国家不同的是，在中国，这些展现出来的东西，并不都是设计师的思想。它们更多出自于其他领域的人的想法，这些人可以对设计一窍不通，但是最终的产品却都是他们把关，设计师只是在&#8221;工作&#8221;而已。所以说中国这些“丑陋的”网站其实无所谓设计不设计，只要它们成功迎合了中国网民的需求，或者中国网民愿意接受它们的“丑陋的一面”，之后这个网站赚到钱了，成功了。要知道，他们是商人，他们不是设计师，跟他们说你们设计师崇尚的设计观念是行不通的。</p>
+
+<p>设计优雅的中国网站不是没有，但是你未必看得到。能跟从设计师的理念诞生的网站，它本身属于这个设计师。而在中国，很多设计师都没有影响力。因为他们没钱没权力，这个网站没影响力。所以Nick问他周围的人，也只能问出诸如百度，新浪这种网站。</p>
+
+        
+    </div>
+    <div class="afterArticle">
+        
+        
+
+<div class="cat">
+  
+    <a class='category' href='/blog/blog/categories/general/'>General</a>
+  
+</div>
+
+
+    </div>
+
+</article>
+    
 
 
 
@@ -222,11 +336,19 @@ some motions, % and visual mode are still not implemented.</p>
         <a href="/blog/2011/12/xvim-0-12/">xVim v0.12</a>
       </li>
     
+      <li class="post">
+        <a href="/blog/2011/04/ms-never-make-good-things/">M$的东西怎么这么让人不敢恭维啊。。</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/03/readin-why-is-chinese-web-design/">在看Why Is Chinese Web Design So Bad</a>
+      </li>
+    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/blog/categories/octopress'>Octopress (1)</a></li><li><a href='/blog/blog/categories/xvim'>Xvim (2)</a></li></ul>
+    <ul id="category-list"><li><a class='li_cat' href='/blog/blog/categories/general'>General</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/m-'>M$</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/octopress'>Octopress</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/xvim'>Xvim</a><span class='count'>2</span></li></ul>
 </section>
 
 

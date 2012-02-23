@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: M$ | War Within Me]]></title>
+  <link href="http://warwithinme.com/blog/blog/categories/m-/atom.xml" rel="self"/>
+  <link href="http://warwithinme.com/blog/"/>
+  <updated>2012-02-23T17:11:02+08:00</updated>
+  <id>http://warwithinme.com/blog/</id>
+  <author>
+    <name><![CDATA[WWM]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[M$的东西怎么这么让人不敢恭维啊。。]]></title>
+    <link href="http://warwithinme.com/blog/2011/04/ms-never-make-good-things/"/>
+    <updated>2011-04-28T13:50:00+08:00</updated>
+    <id>http://warwithinme.com/blog/2011/04/ms-never-make-good-things</id>
+    <content type="html"><![CDATA[<p>就拿图形来说。现在M$就有三套图形的API:</p>
+
+<h4>GDI</h4>
+
+<p>倒胃口的是: <code>C API</code>和<code>不支持Alpha</code>
+唯一就是<strong>硬件加速</strong>。同时搭配上GDI++(这玩意可不是M$自己出的, 阿鲁)，可以达到Mac的字体渲染效果。</p>
+
+<h4>GDI+</h4>
+
+<p><code>C++ API</code>，<strong>不支持硬件加速</strong>。使用方便，可以图像处理，效率却不高。</p>
+
+<h4>Direct2D</h4>
+
+<p>第三个<strong>Direct2D</strong>(DirectDraw悲催要到墙角画圈圈了...)，看上去很优秀的:</p>
+
+<ul>
+<li>轻便的COM接口，比较易用。</li>
+<li>硬件加速的哦, 亲。。</li>
+</ul>
+
+
+<p>可惜硬件加速的是绘图，不是图像处理。。图像处理方面的能力基本上为0。这个是不是因为GPU只懂得vertex之类的东西，而不懂像素的关系呢？
+D2D本身没有支持让你直接操作像素数据的API，例如你只是想修改一个像素的值，noway。。当然也不是绝对的，你可以通过WIC来获取那些像素，但是仅仅限于软件渲染的RenderTarget。如果一个RenderTarget是硬件加速的，你就没有办法用WIC来获取这个RenderTarget上面的数据了。</p>
+]]></content>
+  </entry>
+  
+</feed>
