@@ -1,0 +1,49 @@
+#category-list {
+    li {
+        height       : image-height('tag.png');
+        position     : relative;
+        padding-left : image-width('tag.png') - 2;
+
+        &:before {
+            position   : absolute;
+            left       : 0;
+            width      : image-width('tag.png');
+            height     : image-height('tag.png');
+            background : image-url('tag.png') no-repeat;
+            content    : ' ';
+            display    : inline-block;
+        }
+    }
+
+    a, span {
+        display     : inline-block;
+        margin      : 1px 0 0 1px;
+        padding     : 0 3px;
+        
+        height      : image-height('tag.png') - 2 * 2;
+        line-height : image-height('tag.png') - 2 * 2;
+
+        color       : #fff;
+        border      : 1px solid #5f371f;
+        text-shadow : 0 1px 2px rgba(104, 53, 30, 0.56);
+
+        @include BoxShadow("0 0 1px #ffe6cd");
+        @include BorderRadius(0 2px 2px 0);
+        @include LinearBackground("#6b3f23, #371b0a, #6b3f23");
+    }
+
+    span {
+        width    : 0;
+        padding  : 0;
+        border   : none;
+        overflow : hidden;
+
+        @include Transition(all 0.1s);
+    }
+
+    li:hover span {
+        width   : auto;
+        padding : 0 3px;
+        border  : 1px solid #5f371f;
+    }
+}

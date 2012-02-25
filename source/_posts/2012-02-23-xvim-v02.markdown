@@ -1,0 +1,34 @@
+---
+layout: post
+title: "xVim v0.2 is out"
+date: 2012-02-23 12:26
+comments: true
+categories: xVim
+---
+
+Well, [xVim] v0.2 is out. It now supports __Visual Mode__, _though some command are still not implemented yet_.
+
+<!-- more -->
+
+# What is xVim
+xVim is a [SIMBL] plugin which aims to provide __[Vim] Key-Binding__ for __NSTextView__. So every cocoa app which uses NSTextView can have vim key binding with them. Sounds like crazy, huh?
+
+# What is not xVim
+Any way, the difference between [Vim] and [xVim] is that, [Vim] is an full featured (not-good-looking?) editor, while xVim is just a plugin.  
+That is to say, features belonged to editor (e.g. bookmarks, tags, and anything sounds complicated...=, =) will not be implemented in xVim.
+
+# What app is supported
+Well:
+
+-   __[Xcode]__ (I'm using 4.2, and I bet other versions will works fine)
+-   [Chocolat]
+-   [Espresso]
+-   And anything that has __NSTextView__ within it.
+
+
+[xVim]: https://github.com/WarWithinMe/xVim
+[SIMBL]: http://www.culater.net/software/SIMBL/SIMBL.php
+[Vim]: http://www.vim.org
+[Xcode]: https://developer.apple.com/xcode
+[Espresso]: http://macrabbit.com/espresso
+[Chocolat]: http://chocolatapp.com

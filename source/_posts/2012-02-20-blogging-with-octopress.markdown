@@ -9,13 +9,6 @@ categories: octopress
 嗯, 貌似用[Octopress]的循例是将<strike>初夜</strike>(初篇)献给八爪君的各种触手. 
 那么我也来写写好了. 
 
--------------
-<small>WWM的各种TODO备忘:</small>
-
-- 单独的post页面的disqus好像用不到耶 (＞﹏＜) 
-- 不同功能的JS
-
--------------
 很多宅与Hacker都已经<strike>吐槽</strike>(解释)过如何打造自己的触手系博客了. 所以就再也没有必要在这个方面啰嗦啦, 还是说说日常的blog方面吧...
 
 <!-- more -->

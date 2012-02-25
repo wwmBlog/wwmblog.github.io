@@ -34,6 +34,10 @@ system(open_cmd)
 # Preview
 if PREVIEW == true then
     puts "Peady to preview..."
-    preview_path = "/" + File.basename(new_post, '.*').gsub("-", "/") + "/"
+    component = File.basename(new_post, '.*').split("-", 4)
+    component.delete_at(2)
+    puts component
+    preview_path = "/" + component.join("/") + "/"
+
     exec "rake preview[#{preview_path}]"
 end

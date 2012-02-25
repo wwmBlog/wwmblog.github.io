@@ -30,3 +30,43 @@
         position   : absolute;
     }
 }
+
+#backToTop {
+    position : fixed;
+    left     : 100%;
+    top      : 100%;
+    margin   : -50px 0 0 1-$sidebarWidth;
+    opacity  : 0.4;
+    height   : 32px;
+    width    : 32px;
+    background : #6d3f23;
+
+    @include BorderRadius(32px);
+    @include Transition(all 0.6s);
+
+    &:hover  { opacity : 8; }
+    &.hidden { opacity : 0; }
+
+    &:before, &:after {
+        position : absolute;
+        content  : ' ';
+        display  : block;
+    }
+
+    &:before {
+        border : transparent solid 6px;
+        width  : 0;
+        height : 0;
+        left   : 10px;
+        top    : 2px;
+        border-bottom-color: #fff;
+    }
+
+    &:after {
+        width  : 6px;
+        height : 10px;
+        background : #fff;
+        left   : 13px;
+        top    : 14px;
+    }
+}

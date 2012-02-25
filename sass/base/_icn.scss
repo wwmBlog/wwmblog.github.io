@@ -3,12 +3,13 @@
 .icn_bubble:before  { @include IconFont('@'); }
 .icn_mail:before    { @include IconFont('#'); }
 .icn_tag:before     { @include IconFont('+'); }
-.icn_link:before    { @include IconFont('\x21a9'); }
-.icn_left:before    { @include IconFont('\x2190'); }
-.icn_right:before   { @include IconFont('\x2192'); }
-.icn_star:before    { @include IconFont('\x2605'); }
+.icn_link:before    { @include IconFont('\21a9'); }
+.icn_left:before    { @include IconFont('\2190'); }
+.icn_right:before   { @include IconFont('\2192'); }
+.icn_star:before    { @include IconFont('\2605'); }
 .icn_plane:before   { @include IconFont('\2708'); }
 .icn_heart:before   { @include IconFont('\2764'); }
 .icn_cloud:before   { @include IconFont('\2601'); }
 .icn_muisc:before   { @include IconFont('\266c'); }
 .icn_pointer:before { @include IconFont('\26b2'); }
+.icn_zoom:before    { @include IconFont('\2699'); }

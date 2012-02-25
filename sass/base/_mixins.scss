@@ -75,6 +75,13 @@
     transform         : $var;
 }
 
+@mixin TransformOrigin($origin) {
+    -o-transform-origin      : $origin;
+    -moz-transform-origin    : $origin;
+    -webkit-transform-origin : $origin;
+    transform-origin         : $origin;   
+}
+
 @mixin LinearBackground($colors) {
 
     $g : "linear-gradient(" + $colors + ")";
