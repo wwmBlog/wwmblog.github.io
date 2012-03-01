@@ -15,6 +15,11 @@
 # <img class="left half" src="http://site.com/images/ninja.png" title="Ninja Attack!" alt="Ninja Attack!">
 # <img class="left half" src="http://site.com/images/ninja.png" width="150" height="150" title="Ninja Attack!" alt="Ninja in attack posture">
 #
+#
+# {% img [linkURL] [imageClass | "imageClass"] imgURL [width [height]] title "rel" %}
+# at least linkURL or imageClass should exist.
+# if imageClass has quotes, the image is wrapped by <a class='imageClass'><span></span></a>
+# imgURL will be a's href if linkURL is not specified
 
 module Jekyll
 
@@ -22,24 +27,33 @@ module Jekyll
     @img = nil
 
     def initialize(tag_name, markup, tokens)
-      attributes = ['class', 'src', 'width', 'height', 'title']
+      attributes = ['link_src', 'class', 'src', 'width', 'height', 'title']
 
-      if markup =~ /(?<class>\S.*\s+)?(?<src>(?:https?:\/\/|\/|\S+\/)\S+)(?:\s+(?<width>\d+))?(?:\s+(?<height>\d+))?(?<title>\s+.+)?/i
+      if markup =~ /(?<link_src>(?:https?:\/\/|\/|\S+\/)\S+)?(?<class>\s*?.*\s+)?(?<src>(?:https?:\/\/|\/|\S+\/)\S+)(?:\s+(?<width>\d+))?(?:\s+(?<height>\d+))?(?<title>\s+.+)?/i
+
         @img = attributes.reduce({}) { |img, attr| img[attr] = $~[attr].strip if $~[attr]; img }
-        if /(?:"|')(?<title>[^"']+)?(?:"|')\s+(?:"|')(?<alt>[^"']+)?(?:"|')/ =~ @img['title']
+
+        if /(?:"|')(?<title>[^"']+)?(?:"|')\s+(?:"|')(?<rel>[^"']+)?(?:"|')/ =~ @img['title']
           @img['title']  = title
-          @img['alt']    = alt
+          @img['rel']    = rel
         else
-          @img['alt']    = @img['title'].gsub!(/"/, '&#34;') if @img['title']
+          @img['rel']    = @img['title'].gsub!(/"/, '&#34;') if @img['title']
         end
-        @img['class'].gsub!(/"/, '') if @img['class']
       end
       super
     end
 
     def render(context)
-      if @img
-        "<img #{@img.collect {|k,v| "#{k}=\"#{v}\"" if v}.join(" ")}>"
+      if @img 
+        if @img["class"] && @img["class"].gsub!(/"|'/, '')
+          html = "<a href='#{@img["link_src"] ? @img["link_src"] : @img["src"]}' class='#{@img["class"]}' #{ 'rel=\'' + @img["rel"] + '\'' if @img["rel"] }><span>"
+          @img.delete("class")
+          @img.delete("link_src")
+          @img.delete("rel")
+          html + "<img #{@img.collect {|k,v| "#{k}=\"#{v}\"" if v}.join(" ")}></span></a>"
+        else
+          "<img #{@img.collect {|k,v| "#{k}=\"#{v}\"" if v}.join(" ")}>"
+        end
       else
         "Error processing input, expected syntax: {% img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | \"title text\" [\"alt text\"]] %}"
       end
