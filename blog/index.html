@@ -7,7 +7,8 @@
     <meta name="author" content="WWM">
 
     
-    <meta name="description" content="xVim v0.2 Is Out 0 12年02月23日 Well, xVim v0.2 is out. It now supports Visual Mode, though some command are still not implemented yet. 继续阅读 xVim &hellip;">
+    <meta name="description" content="JS检测Image的加载 0 12年03月01日 Background 页面中所有指向大图的链接，在被点击时不跳转，而是直接显示该大图。为了能尽快可以加载这些大图，它们会在页面完全加载完后，自动预加载。
+JS代码要做的是点击链接时，需要判断图片是否能立刻显示。 Issue Firefox &hellip;">
     
     <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
@@ -15,9 +16,6 @@
     <link rel="canonical" href="">
     <link href="/blog/favicon.png" rel="shortcut icon">
     <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/blog/javascripts/jquery_1.7.1.js"><\/script>')</script>
-    
     
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -40,6 +38,159 @@
     <div id="hideout"><div id="hideoutBtn"></div></div>
 
     
+    
+    
+    <article class="post">
+    <h1 class="title"><a href="/blog/2012/03/javascript-image/">JS检测Image的加载</a></h1>
+    <div class="meta">
+        <div class="seperator"></div>
+        
+        <a class="comments" href="/blog/2012/03/javascript-image/#disqus_thread">0</a>
+        
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-01T10:54:00+08:00" pubdate data-updated="true">12年03月01日</time></div>
+    </div>
+    <div class="entry">
+        <h2>Background</h2>
+
+<p>页面中所有指向大图的链接，在被点击时不跳转，而是直接显示该大图。为了能尽快可以加载这些大图，它们会在页面完全加载完后，自动预加载。<br/>
+JS代码要做的是<strong>点击链接时，需要判断图片是否能立刻显示</strong>。</p>
+
+<h2>Issue</h2>
+
+<h4>Firefox quirkies</h4>
+
+<p>FF里面，一旦一个<code>Image</code>对象加载完成，它的<code>complete</code>属性就变成<code>true</code>，并且一直为<code>true</code>，即使修改<code>src</code>属性去加载另外的图片：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+</span><span class='line'><span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;loaded_pic.jpg&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">img</span><span class="p">.</span><span class="nx">complete</span> <span class="o">==</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;not_loaded_pic.jpg&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// 加载没有cache的图片，这里img.complete本来应为false，但FF不重设img的complete属性。</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">img</span><span class="p">.</span><span class="nx">complete</span> <span class="o">==</span> <span class="kc">true</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>每次都要用全新的Image对象检测图片是否能立刻显示</strong></li>
+</ul>
+
+
+<h4>Chrome quirkies</h4>
+
+<p>Chrome的<code>complete</code>很飘忽，好难捉摸啊：</p>
+
+<ul>
+<li>显示过的图片，<code>complete</code>一定(?)为<code>true</code>。</li>
+<li>没Cache的图片，在没加载完成前，<code>complete</code>肯定为<code>false</code> (理所当然嘛)</li>
+<li>Cache了的图片就用代码说明好了：</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">imgURL</span>        <span class="o">=</span> <span class="s1">&#39;cached.jpg&#39;</span><span class="p">;</span>    <span class="c1">// 缓存图片路径</span>
+</span><span class='line'><span class="nx">anotherImgURL</span> <span class="o">=</span> <span class="s1">&#39;cached2.png&#39;</span><span class="p">;</span>   <span class="c1">// 另外一个缓存了的图片路径</span>
+</span><span class='line'><span class="nx">globalImg</span>     <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>     <span class="c1">// 全局用预加载器</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">onDocReady</span><span class="p">()</span> <span class="c1">// 页面加载完成后调用</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">preloadImg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">preloadImg</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">imgURL</span><span class="p">;</span>           <span class="c1">// 第一次请求加载该图片</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">preloadImg</span><span class="p">.</span><span class="nx">complete</span> <span class="o">==</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// 即使缓存了，complete铁定也是false</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">preloadImg2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">preloadImg2</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">imgURL</span><span class="p">;</span>          <span class="c1">// 立马再请求一次</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">preloadImg</span><span class="p">.</span><span class="nx">complete</span> <span class="o">==</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// 依然是false</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">globalImg</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">anotherImgURL</span><span class="p">;</span>     <span class="c1">// 用全局的来预加载</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">onLinkClick</span><span class="p">()</span> <span class="c1">// 点击某个链接时调用</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">imgURL</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">// 之后再加载该图片，complete有可能是true，也可能是false</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">img</span><span class="p">.</span><span class="nx">complete</span> <span class="o">==</span> <span class="kc">false</span> <span class="o">||</span> <span class="nx">img</span><span class="p">.</span><span class="nx">complete</span> <span class="o">==</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">img2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">img2</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">anotherImgURL</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">// 用全局的预加载的话，这个一定为true。</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">img</span><span class="p">.</span><span class="nx">complete</span> <span class="o">==</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>结论就是：</p>
+
+<ol>
+<li>图片的complete属性最起码要在下一次代码调度时才会更改。</li>
+<li>如果指向图片A的所有Image对象都被GC，而且这个图片A并没有在页面显示过，则再创建Image对象，将它<code>src</code>设为链接A，它的complete属性要在下次调度时才会变成ture。(将预加载放在一个全局对象里面，它就不被回收)</li>
+</ol>
+
+
+        
+    </div>
+    <div class="afterArticle">
+        
+        
+
+<div class="cat">
+  
+    <a class='category' href='/blog/blog/categories/js/'>JS</a>
+  
+</div>
+
+
+    </div>
+
+</article>
     
     
     <article class="post">
@@ -355,7 +506,8 @@ D2D本身没有支持让你直接操作像素数据的API，例如你只是想�
 
 <aside class="sidebar">
 
-<div class="logo">WarWithinMe<div class="woodHighlight"></div></div><section>
+<div class="logo">WarWithinMe<div class="woodHighlight"></div></div><div id="backToTop" class="hidden"></div>
+<section>
   <h1>About WWM</h1>
   <p>WWM是个宅星人, 对2次元各种喜欢. 更多关于我的事情请到<a href='http://warwithinme.com' class='icn_user'>My Portfolio.</a></p>
 </section>
@@ -370,6 +522,10 @@ D2D本身没有支持让你直接操作像素数据的API，例如你只是想�
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/javascript-image/">JS检测Image的加载</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/02/xvim-v02/">xVim v0.2 is out</a>
@@ -387,20 +543,19 @@ D2D本身没有支持让你直接操作像素数据的API，例如你只是想�
         <a href="/blog/2011/04/ms-never-make-good-things/">M$的东西怎么这么让人不敢恭维啊。。</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/03/readin-why-is-chinese-web-design/">在看Why Is Chinese Web Design So Bad</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a class='li_cat' href='/blog/blog/categories/general'>General</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/m-'>M$</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/octopress'>Octopress</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/qt'>Qt</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/xvim'>Xvim</a><span class='count'>2</span></li></ul>
+    <ul id="category-list"><li><a class='li_cat' href='/blog/blog/categories/general'>General</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/js'>Js</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/m$'>M$</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/octopress'>Octopress</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/qt'>Qt</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/xvim'>Xvim</a><span class='count'>2</span></li></ul>
 </section>
 
 
 </aside>
-    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/blog/javascripts/jquery_1.7.1.js"><\/script>')</script>
+<script src="/blog/javascripts/undefined.min.js" type="text/javascript" charset="utf-8" async defer></script>
+
 
 <script type="text/javascript">
       var disqus_shortname = 'warwithinme';

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xVim | War Within Me]]></title>
   <link href="http://warwithinme.com/blog/blog/categories/xvim/atom.xml" rel="self"/>
   <link href="http://warwithinme.com/blog/"/>
-  <updated>2012-02-23T17:32:37+08:00</updated>
+  <updated>2012-03-01T15:58:07+08:00</updated>
   <id>http://warwithinme.com/blog/</id>
   <author>
     <name><![CDATA[WWM]]></name>
@@ -39,8 +39,8 @@ That is to say, features belonged to editor (e.g. bookmarks, tags, and anything 
 <ul>
 <li><strong><a href="https://developer.apple.com/xcode">Xcode</a></strong> (I'm using 4.2, and I bet other versions will works fine)</li>
 <li><a href="http://chocolatapp.com">Chocolat</a></li>
-<li><p><a href="http://macrabbit.com/espresso">Espresso</a></p></li>
-<li><p>And anything that has <strong>NSTextView</strong> within it.</p></li>
+<li><a href="http://macrabbit.com/espresso">Espresso</a></li>
+<li>And anything that has <strong>NSTextView</strong> within it.</li>
 </ul>
 
 ]]></content>
