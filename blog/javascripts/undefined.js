@@ -123,7 +123,13 @@ $.galleryWM = {
             img      = $link.data('preloadImg'),
             preferSize  = {};
 
-        if (img.complete)
+        if (img == undefined)
+        {
+            preferSize = gwm.gwm_calcPreferImgSize({
+                width  : $real.width(),
+                height : $real.height()
+            });
+        } else if (img.complete)
         {
             preferSize = gwm.gwm_calcPreferImgSize(img);
             $loading.hide();
