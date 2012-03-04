@@ -19,8 +19,9 @@ $.galleryWM = {
 
     gwm_init : function() {
         $("body").append("<div id='galleryBG'></div><div id='galleryContainer'><div id='galleryWrap'></div><div class='galleryNav left'></div><div class='galleryNav right'></div></div><div id='circle_loading'><div class='circle left'><div class='cl_bg'></div></div><div class='circle right'><div class='cl_bg'></div></div></div>");
-        $('#galleryBG, #galleryWrap').click(function() { $.galleryWM.gwm_hide() });
+        $('#galleryBG, #galleryWrap').click($.galleryWM.gwm_hide);
         $('#galleryContainer').find('.galleryNav').click($.galleryWM.gwm_next);
+        $(window).resize($.galleryWM.gwm_resize());
     },
 
     gwm_next : function() {
@@ -35,6 +36,22 @@ $.galleryWM = {
         }
         gwm.$currentLink = gwm.groups[gwm.$currentLink.attr('rel') || 'defaultG'][idx];
         gwm.gwm_showImage();
+    },
+
+    gwm_resize : function() {
+        var timeOut = null;
+
+        function clear() { timeOut = null; }
+
+        return function() {
+            if (timeOut)
+            {
+                clearTimeout(timeOut);
+            } else {
+                $.galleryWM.gwm_showImage(true);
+                timeOut = setTimeout($.gwm.aniDuration * 2, clear);
+            }
+        }
     },
 
     gwm_hide : function() {
@@ -93,8 +110,8 @@ $.galleryWM = {
 
         var toWidth  = showcaseImg.width,
             toHeight = showcaseImg.height,
-            maxW     = $(window).width()  * .82,
-            maxH     = $(window).height() * .82;
+            maxW     = $(window).width()  * .9,
+            maxH     = $(window).height() * .9;
 
         // Reduce size to fit the window if necessary, respect the img ratio.
         if (maxH / toHeight < maxW / toWidth)
@@ -112,7 +129,7 @@ $.galleryWM = {
         return { width : Math.round(toWidth), height : Math.round(toHeight) };
     },
 
-    gwm_showImage : function() {
+    gwm_showImage : function(isResize) {
 
         var gwm      = $.galleryWM,
             $link    = gwm.$currentLink,
@@ -125,9 +142,11 @@ $.galleryWM = {
 
         if (img == undefined)
         {
+            img = new Image();
+            img.src = url;
             preferSize = gwm.gwm_calcPreferImgSize({
-                width  : $real.width(),
-                height : $real.height()
+                width  : img.width,
+                height : img.height
             });
         } else if (img.complete)
         {
@@ -161,19 +180,22 @@ $.galleryWM = {
             };
         }
 
-        var wrap = $('#galleryWrap'),
+        if (!isResize)
+        {
+            var wrap = $('#galleryWrap'),
             orig = wrap.find('img');
 
-        orig.animate({
-            opacity : 0,
-            width   : '+=30%',
-            height  : '+=30%',
-            left    : '-' + orig.width() * .15 + 'px',
-            top     : '-' + orig.height()* .15 + 'px'
-        }, gwm.defaults.aniDuration, function() { $(this).remove(); });
+            orig.animate({
+                opacity : 0,
+                width   : '+=30%',
+                height  : '+=30%',
+                left    : '-' + orig.width() * .15 + 'px',
+                top     : '-' + orig.height()* .15 + 'px'
+            }, gwm.defaults.aniDuration, function() { $(this).remove(); });
 
-        wrap.prepend('<img ' + url + 'style="' + style + '">');
-
+            wrap.prepend('<img ' + url + 'style="' + style + '">');
+        }
+        
         var nav = $('#galleryContainer')
                     .stop()
                     .animate({
