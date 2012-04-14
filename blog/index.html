@@ -7,7 +7,7 @@
     <meta name="author" content="WWM">
 
     
-    <meta name="description" content="After Reading Misstion Transition 0 12年03月01日 SmashingMagazine真心赞。。刚看到最近的一篇文章Mission Transition。发觉如果transition的效果做好的，用着会有很爽的赶脚。 Scorekeeper真心让人眼前一亮。 &hellip;">
+    <meta name="description" content="HTML5的DND API好恶心哦 0 12年04月15日 HTML5将Drag and Drop标准化的过程中，为了省事，将M$的那一套DnD搬了过来（M$好不容易有些东西变成标准，却又这么让人纠结&#8230;lol）。然后就是各种的莫名其妙： &hellip;">
     
     <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
@@ -37,6 +37,59 @@
     <div id="hideout"><div id="hideoutBtn"></div></div>
 
     
+    
+    
+    <article class="post">
+    <h1 class="title"><a href="/blog/2012/04/sucky-html5-dnd-api/">HTML5的DND API好恶心哦</a></h1>
+    <div class="meta">
+        <div class="seperator"></div>
+        
+        <a class="comments" href="/blog/2012/04/sucky-html5-dnd-api/#disqus_thread">0</a>
+        
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-15T00:09:00+08:00" pubdate data-updated="true">12年04月15日</time></div>
+    </div>
+    <div class="entry">
+        <p>HTML5将Drag and Drop标准化的过程中，为了省事，将M$的那一套DnD搬了过来（M$好不容易有些东西变成标准，却又这么让人纠结&#8230;lol）。然后就是各种的莫名其妙：</p>
+
+<ol>
+<li><code>dragenter</code>和<code>dragover</code>事件的存在就是让web开发者调用<code>e.preventDefault()</code>？</li>
+<li><code>dragenter</code>和<code>dragleave</code>会因为鼠标划过children而出现多次。并且次序是反的。</li>
+<li>DnD事件那么多种，我都数不过来了。</li>
+<li>各种DnD事件里面获得的FileList不能获取绝对路径（这个其实属于FileSystem那边的问题，虽然可以理解，但是这样限制，本地应用根本没法弄）。</li>
+<li>element如果没有监听<code>drop</code>事件，用户就不能在这个element放东西。并且<code>dragenter</code>和<code>dragover</code>默认的操作就是禁止用户拖放。。。结果不监听任何DnD事件的body，却又默认接受一切的拖放，这是要闹哪样啊？</li>
+</ol>
+
+
+<p>结果如果想利用Webkit做Native Client App的话（我有没有说搭配[ember.js]其实是很爽的事情呢？），想用HTML5的DnD，就只能在自己的App Thin Wrapper里做非标准的实现了。</p>
+
+        
+    </div>
+    <div class="afterArticle">
+        
+        
+
+<div class="cat">
+  
+    <a class='category' href='/blog/blog/categories/html5/'>HTML5</a>, <a class='category' href='/blog/blog/categories/web/'>Web</a>
+  
+</div>
+
+
+    </div>
+
+</article>
     
     
     <article class="post">
@@ -615,6 +668,10 @@ D2D本身没有支持让你直接操作像素数据的API，例如你只是想�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/04/sucky-html5-dnd-api/">HTML5的DND API好恶心哦</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/03/after-read-mission-transition/">After Reading Misstion Transition</a>
       </li>
     
@@ -630,15 +687,11 @@ D2D本身没有支持让你直接操作像素数据的API，例如你只是想�
         <a href="/blog/2012/02/xvim-v02/">xVim v0.2 is out</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/02/blogging-with-octopress/">开始用Octopress写Blog</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a class='li_cat' href='/blog/blog/categories/general'>General</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/js'>Js</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/m$'>M$</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/octopress'>Octopress</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/qt'>Qt</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/ux'>Ux</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/xvim'>Xvim</a><span class='count'>2</span></li><li><a class='li_cat' href='/blog/blog/categories/二次元'>二次元</a><span class='count'>1</span></li></ul>
+    <ul id="category-list"><li><a class='li_cat' href='/blog/blog/categories/general'>General</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/html5'>Html5</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/js'>Js</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/m$'>M$</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/octopress'>Octopress</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/qt'>Qt</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/ux'>Ux</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/web'>Web</a><span class='count'>1</span></li><li><a class='li_cat' href='/blog/blog/categories/xvim'>Xvim</a><span class='count'>2</span></li><li><a class='li_cat' href='/blog/blog/categories/二次元'>二次元</a><span class='count'>1</span></li></ul>
 </section>
 
 

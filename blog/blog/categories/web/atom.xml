@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Web | War Within Me]]></title>
+  <link href="http://warwithinme.com/blog/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://warwithinme.com/blog/"/>
+  <updated>2012-04-15T00:27:24+08:00</updated>
+  <id>http://warwithinme.com/blog/</id>
+  <author>
+    <name><![CDATA[WWM]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5的DND API好恶心哦]]></title>
+    <link href="http://warwithinme.com/blog/2012/04/sucky-html5-dnd-api/"/>
+    <updated>2012-04-15T00:09:00+08:00</updated>
+    <id>http://warwithinme.com/blog/2012/04/sucky-html5-dnd-api</id>
+    <content type="html"><![CDATA[<p>HTML5将Drag and Drop标准化的过程中，为了省事，将M$的那一套DnD搬了过来（M$好不容易有些东西变成标准，却又这么让人纠结...lol）。然后就是各种的莫名其妙：</p>
+
+<ol>
+<li><code>dragenter</code>和<code>dragover</code>事件的存在就是让web开发者调用<code>e.preventDefault()</code>？</li>
+<li><code>dragenter</code>和<code>dragleave</code>会因为鼠标划过children而出现多次。并且次序是反的。</li>
+<li>DnD事件那么多种，我都数不过来了。</li>
+<li>各种DnD事件里面获得的FileList不能获取绝对路径（这个其实属于FileSystem那边的问题，虽然可以理解，但是这样限制，本地应用根本没法弄）。</li>
+<li>element如果没有监听<code>drop</code>事件，用户就不能在这个element放东西。并且<code>dragenter</code>和<code>dragover</code>默认的操作就是禁止用户拖放。。。结果不监听任何DnD事件的body，却又默认接受一切的拖放，这是要闹哪样啊？</li>
+</ol>
+
+
+<p>结果如果想利用Webkit做Native Client App的话（我有没有说搭配[ember.js]其实是很爽的事情呢？），想用HTML5的DnD，就只能在自己的App Thin Wrapper里做非标准的实现了。</p>
+]]></content>
+  </entry>
+  
+</feed>
