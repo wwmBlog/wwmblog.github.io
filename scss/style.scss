@@ -25,15 +25,17 @@ html, body {
   padding : 0; 
 }
 
-h1, h2, h3, h4, h5, h6 { margin : 0; font-weight : normal; }
-p { margin : 0; }
-address { font-style : normal; }
+h1, h2, h3, h4, h5, h6, p, input { margin : 0; font-weight : normal; }
+address  { font-style : normal; }
+textarea { resize  : none; }
+textarea:focus, input:focus { outline : none; }
 q:before { content : ""; }
 q:after  { content : ""; }
 
 .clearfix:after {
   content : " ";
   clear   : both;
+  display : block;
 }
 
 .vam {
@@ -208,6 +210,11 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
 .page-title {
   color     : #7f7f7f;
   font-size : 18px;
+  margin    : -$firstPageBottomHeight auto 0;
+  max-width : 90%;
+  width     : 1000px;
+  
+  @include box-sizing( border-box );
   
   .l1 {
     line-height : 20px;
@@ -245,16 +252,12 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
 .page {
   position   : relative;
   min-height : 100%;
+  height     : 100%;
   z-index    : 3;
   background : $mainBGColor;
-  
-  margin    : 0 auto;
-  max-width : $pageMaxWidth;
-  width     : $pageWidth;
-}
-
-.page1 {
-  margin-top : -$firstPageBottomHeight;
+  margin     : 0 auto;
+  max-width  : $pageMaxWidth;
+  width      : $pageWidth;
 }
 
 // --------- J, K Navigation
@@ -325,6 +328,150 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
 // J, K Navigation ---------
 
 
+// ---------- Contact Me Form
+$formRightMargin  : 160px;
+$formWidth        : 260px;
+$form2ndRowHeight : 28px;
+$formSpacing      : 5px;
+$formSubmitWidth  : 60px;
+
+.page3 {
+  &:before {
+    display : block;
+    content : " ";
+    height  : 100px;
+  }
+}
+
+.contact {
+  width       : $formWidth;
+  line-height : 0;
+  position    : relative;
+  margin-left : 500 - $formWidth - $formRightMargin;
+}
+.content-lbl {
+  position    : absolute;
+  width       : 32px;
+  height      : 32px;
+  line-height : 32px;
+  left        : 0;
+  top         : 0;
+  text-align  : center;
+  color       : #afafab;
+}
+.content {
+  background : #555;
+  color      : #ddd;
+
+  border     : none;
+  height     : 120px - 8 * 2;
+  $formContentWidth : $formWidth - 8 * 2;
+  width      : $formContentWidth;
+  max-width  : $formContentWidth;
+  min-width  : $formContentWidth;
+  
+  padding    : 8px;
+  margin-bottom : $formSpacing;
+  
+  text-indent : 2em;
+  line-height : 1.2em;
+  
+  &::first-line {
+    line-height : 2em;
+  }
+  &:focus + .content-lbl {
+    color : #fff;
+  }
+}
+
+.email {
+  float    : left;
+  position : relative;
+  
+  label {
+    position    : absolute;
+    font-size   : 16px;
+    color       : #afafab;
+    height      : $form2ndRowHeight;
+    line-height : $form2ndRowHeight;
+    width       : 32px;
+    text-align  : center;
+    top         : 0;
+    left        : 0;
+  }
+  
+  input {
+    width  : $formWidth - $formSpacing - $formSubmitWidth - 8 - 32;
+    height : 1em;
+    $p  : ($form2ndRowHeight - 12) / 2;
+    padding : ceil($p) 8px floor($p) 32px;
+    
+    border     : none;
+    color      : #ddd;
+    background : #555;
+    
+    font-size  : 12px;
+    
+    &:focus + label {
+      color : #fff;
+    }
+  }
+}
+
+.submit {
+  width      : $formSubmitWidth - 2;
+  height     : $form2ndRowHeight - 2;
+  border     : 1px solid #86ac29;
+  float      : right;
+  color      : #546724;
+  background : #A8D733;
+  font-size  : 12px;
+  position   : relative;
+  cursor     : pointer;
+  overflow   : hidden;
+  
+  input {
+    color       : #546724;
+    display     : block;
+    
+    background  : none;
+    border      : none;
+    text-align  : center;
+    line-height : $form2ndRowHeight - 2;
+    padding     : 0 0 0 10px;
+    width       : 100%;
+    
+    cursor : pointer;
+    
+    @include box-sizing( border-box );
+  }
+
+  label {
+    display     : inline-block;
+    width       : 22px;
+    height      : $form2ndRowHeight - 2;
+    line-height : $form2ndRowHeight - 4;
+    font-size   : 16px;
+    position    : absolute;
+    top         : 0;
+    text-align  : right;
+    cursor      : pointer;
+    
+    text-shadow : -30px 30px #546724;
+    
+    
+  }
+
+  &:hover {
+    label {
+      @include transition(all ease-in-out 0.35s);
+      @include transform(translate(30px, -30px));
+    }
+  }
+}
+// Contact Me Form ----------
+
+
 // ---------- Footer
 $footerHeight : 54px;
 footer {
@@ -339,6 +486,7 @@ footer {
   font-size  : 24px;
   padding    : 0 1em 0 3em;
   overflow   : hidden;
+  margin-top : -$footerHeight;
   
   @include retina() {
     background-image : inline-image("zigzag@2x.png");
