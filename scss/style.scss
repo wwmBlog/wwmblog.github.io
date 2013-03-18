@@ -330,11 +330,16 @@ footer {
   text-align    : right;
   color         : #686868;
   font-size     : 24px;
-  padding-right : 1em;
+  padding       : 0 1em 0 3em;
   
   @include retina() {
     background-image : inline-image("zigzag@2x.png");
     @include background-size(image-width("zigzag.png"), auto);
   }
+}
+.copyright {
+  font-size : 12px;
+  float : left;
+  color : lighten(#262626, 10%);
 }
 // Footer ----------

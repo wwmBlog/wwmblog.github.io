@@ -364,7 +364,7 @@ footer {
   text-align: right;
   color: #686868;
   font-size: 24px;
-  padding-right: 1em;
+  padding: 0 1em 0 3em;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
   /* line 17, ../scss/style.scss */
@@ -375,4 +375,11 @@ footer {
     -o-background-size: 34px, auto;
     background-size: 34px, auto;
   }
+}
+
+/* line 340, ../scss/style.scss */
+.copyright {
+  font-size: 12px;
+  float: left;
+  color: #404040;
 }
