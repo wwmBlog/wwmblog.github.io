@@ -10,33 +10,72 @@
   font-style: normal;
 }
 
-/* line 17, ../scss/style.scss */
+/* line 22, ../scss/style.scss */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* line 23, ../scss/style.scss */
+/* line 28, ../scss/style.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* line 29, ../scss/style.scss */
+p {
+  margin: 0;
+}
+
+/* line 30, ../scss/style.scss */
+address {
+  font-style: normal;
+}
+
+/* line 32, ../scss/style.scss */
 .clearfix:after {
   content: " ";
   clear: both;
 }
 
-/* line 32, ../scss/style.scss */
+/* line 38, ../scss/style.scss */
+.vam:before {
+  content: " ";
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+/* line 48, ../scss/style.scss */
+.font-title {
+  font-family: "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "Arial";
+}
+
+/* line 52, ../scss/style.scss */
+.wwmicn {
+  font-family: "wwmregular";
+  font-size: 16px;
+}
+
+/* line 61, ../scss/style.scss */
 .intro-wrap {
   background: url('../img/bg.png') repeat;
   position: fixed;
-  top: 0;
+  top: -76px;
   height: 100%;
   width: 100%;
   z-index: 2;
+  text-align: center;
+  padding-top: 76px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
-  /* line 12, ../scss/style.scss */
+  /* line 17, ../scss/style.scss */
   .intro-wrap {
     background-image: url('../img/bg@2x.png');
     -webkit-background-size: 141px, auto;
@@ -46,37 +85,212 @@ html, body {
   }
 }
 
-/* line 47, ../scss/style.scss */
+/* line 78, ../scss/style.scss */
 .intro-wrap-holder {
   height: 100%;
-  position: relative;
-  z-index: 1;
 }
 
-/* line 53, ../scss/style.scss */
-.page {
+/* line 90, ../scss/style.scss */
+.card-wrap {
+  max-width: 320px;
+  min-width: 290px;
+  width: 90%;
+  height: 198px;
+  margin: auto;
+  vertical-align: middle;
+  display: inline-block;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+}
+
+/* line 103, ../scss/style.scss */
+.card-top {
+  height: 80px;
+  border: 1px solid rgba(200, 200, 200, 0.1);
+  border-bottom: none;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
+  -moz-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, rgba(255, 255, 255, 0.02)), color-stop(100%, rgba(255, 255, 255, 0.03)));
+  background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+  background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+  background-image: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+  background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+  background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+}
+/* line 113, ../scss/style.scss */
+.card-top:before {
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  top: -35%;
+  left: -15px;
+  z-index: -1;
+  content: " ";
+  background: rgba(255, 255, 255, 0.02);
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+/* line 127, ../scss/style.scss */
+.card-top:after {
+  position: absolute;
+  width: 80%;
+  height: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: -10px;
+  -webkit-box-shadow: 0 0 16px black;
+  -moz-box-shadow: 0 0 16px black;
+  box-shadow: 0 0 16px black;
+}
+
+/* line 139, ../scss/style.scss */
+.card-left {
+  height: 118px;
+  width: 122px;
+  float: left;
+  background: #7c7c7c;
+  border-radius: 0 0 0 4px;
+}
+
+/* line 148, ../scss/style.scss */
+.card-mid {
+  width: 198px;
+  height: 73px;
+  margin-left: 122px;
+  background: #eeebdf url('../img/noise.png') repeat;
+}
+
+/* line 156, ../scss/style.scss */
+.card-bottom {
+  width: 198px;
+  height: 45px;
+  line-height: 45px;
+  margin-left: 122px;
+  background: #393939;
+  border-radius: 0 0 4px 0;
+  text-align: right;
+  padding: 0 1em;
+  cursor: default;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 170, ../scss/style.scss */
+.card-bottom a {
+  color: #1f1f1f;
+  text-decoration: none;
+  vertical-align: middle;
+}
+/* line 177, ../scss/style.scss */
+.card-bottom .github:hover {
+  color: #5791ca;
+}
+/* line 178, ../scss/style.scss */
+.card-bottom .dribbble:hover {
+  color: #cb416f;
+}
+/* line 179, ../scss/style.scss */
+.card-bottom .twitter:hover {
+  color: #00acee;
+}
+/* line 180, ../scss/style.scss */
+.card-bottom .fanfou:hover {
+  color: #1ac0fa;
+}
+/* line 181, ../scss/style.scss */
+.card-bottom .v2ex:hover {
+  color: #d9d9dc;
+}
+/* line 182, ../scss/style.scss */
+.card-bottom .mail:hover {
+  color: #d53c36;
+}
+
+/* line 188, ../scss/style.scss */
+.logo {
+  height: 76px;
+  padding-left: 72.895px;
+  background: url('../img/logo.svg') no-repeat;
+  background-position: 0 5px;
+  -webkit-background-size: auto 66px;
+  -moz-background-size: auto 66px;
+  -o-background-size: auto 66px;
+  background-size: auto 66px;
+}
+
+/* line 199, ../scss/style.scss */
+.page-title {
+  color: #7f7f7f;
+  font-size: 18px;
+}
+/* line 203, ../scss/style.scss */
+.page-title .l1 {
+  line-height: 20px;
+  padding-top: 28px;
+}
+/* line 208, ../scss/style.scss */
+.page-title .l2 {
+  font-size: 16px;
+  line-height: 20px;
+  height: 20px;
+  padding-top: 20px;
+}
+/* line 215, ../scss/style.scss */
+.page-title .l2s {
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
+}
+/* line 221, ../scss/style.scss */
+.page-title b {
+  font-weight: normal;
+  color: #333;
+}
+
+/* line 229, ../scss/style.scss */
+.page-wrap {
   position: relative;
   min-height: 100%;
   z-index: 3;
   background: #ecece4;
 }
 
-/* line 60, ../scss/style.scss */
-.page1 {
-  margin-top: -75px;
+/* line 236, ../scss/style.scss */
+.page {
+  position: relative;
+  min-height: 100%;
+  z-index: 3;
+  background: #ecece4;
+  margin: 0 auto;
+  max-width: 90%;
+  width: 1000px;
 }
 
-/* line 65, ../scss/style.scss */
+/* line 247, ../scss/style.scss */
+.page1 {
+  margin-top: -76px;
+}
+
+/* line 252, ../scss/style.scss */
 .shortcut-nav {
   position: fixed;
-  bottom: 18px;
+  bottom: 19px;
   right: 50px;
   border: 1px dashed #d1d1d1;
   z-index: 4;
   border-radius: 2px;
   padding: 4px 4px;
 }
-/* line 76, ../scss/style.scss */
+/* line 263, ../scss/style.scss */
 .shortcut-nav .sc-button {
   position: relative;
   float: left;
@@ -105,18 +319,19 @@ html, body {
   -moz-user-select: none;
   user-select: none;
 }
-/* line 103, ../scss/style.scss */
+/* line 290, ../scss/style.scss */
 .shortcut-nav .sc-button:active {
-  line-height: 26px;
+  margin-top: 1px;
+  height: 23px;
   -webkit-box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
   -moz-box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
   box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
 }
-/* line 110, ../scss/style.scss */
+/* line 298, ../scss/style.scss */
 .shortcut-nav .underline:active:after {
   bottom: 4px;
 }
-/* line 114, ../scss/style.scss */
+/* line 302, ../scss/style.scss */
 .shortcut-nav .underline:after {
   content: " ";
   width: 0.4em;
