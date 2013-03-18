@@ -28,6 +28,8 @@ html, body {
 h1, h2, h3, h4, h5, h6 { margin : 0; font-weight : normal; }
 p { margin : 0; }
 address { font-style : normal; }
+q:before { content : ""; }
+q:after  { content : ""; }
 
 .clearfix:after {
   content : " ";
@@ -51,7 +53,6 @@ address { font-style : normal; }
 
 .wwmicn {
   font-family : "wwmregular";
-  font-size   : 16px;
 }
 
 // General Stuff ----------
@@ -168,7 +169,8 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
   @include box-sizing( border-box );
   
   a {
-    color : #1f1f1f;
+    color     : #1f1f1f;
+    font-size : 16px;
 
     text-decoration : none;
     vertical-align  : middle;
@@ -314,3 +316,25 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
 }
 
 // J, K Navigation ---------
+
+
+// ---------- Footer
+$footerHeight : 54px;
+footer {
+  position   : relative;
+  z-index    : 5;
+  height     : $footerHeight;
+  line-height: $footerHeight + floor(image-height("zigzag.png") / 2);
+  background : #262626 inline-image("zigzag.png") repeat-x;
+  
+  text-align    : right;
+  color         : #686868;
+  font-size     : 24px;
+  padding-right : 1em;
+  
+  @include retina() {
+    background-image : inline-image("zigzag@2x.png");
+    @include background-size(image-width("zigzag.png"), auto);
+  }
+}
+// Footer ----------

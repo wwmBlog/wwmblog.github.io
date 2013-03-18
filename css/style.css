@@ -33,13 +33,23 @@ address {
   font-style: normal;
 }
 
+/* line 31, ../scss/style.scss */
+q:before {
+  content: "";
+}
+
 /* line 32, ../scss/style.scss */
+q:after {
+  content: "";
+}
+
+/* line 34, ../scss/style.scss */
 .clearfix:after {
   content: " ";
   clear: both;
 }
 
-/* line 38, ../scss/style.scss */
+/* line 40, ../scss/style.scss */
 .vam:before {
   content: " ";
   width: 0;
@@ -49,18 +59,17 @@ address {
   margin-right: -0.25em;
 }
 
-/* line 48, ../scss/style.scss */
+/* line 50, ../scss/style.scss */
 .font-title {
   font-family: "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "Arial";
 }
 
-/* line 52, ../scss/style.scss */
+/* line 54, ../scss/style.scss */
 .wwmicn {
   font-family: "wwmregular";
-  font-size: 16px;
 }
 
-/* line 61, ../scss/style.scss */
+/* line 62, ../scss/style.scss */
 .intro-wrap {
   background: url('../img/bg.png') repeat;
   position: fixed;
@@ -85,12 +94,12 @@ address {
   }
 }
 
-/* line 78, ../scss/style.scss */
+/* line 79, ../scss/style.scss */
 .intro-wrap-holder {
   height: 100%;
 }
 
-/* line 90, ../scss/style.scss */
+/* line 91, ../scss/style.scss */
 .card-wrap {
   max-width: 320px;
   min-width: 290px;
@@ -104,7 +113,7 @@ address {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
 }
 
-/* line 103, ../scss/style.scss */
+/* line 104, ../scss/style.scss */
 .card-top {
   height: 80px;
   border: 1px solid rgba(200, 200, 200, 0.1);
@@ -121,7 +130,7 @@ address {
   background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
   background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
 }
-/* line 113, ../scss/style.scss */
+/* line 114, ../scss/style.scss */
 .card-top:before {
   width: 200%;
   height: 100%;
@@ -138,7 +147,7 @@ address {
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
 }
-/* line 127, ../scss/style.scss */
+/* line 128, ../scss/style.scss */
 .card-top:after {
   position: absolute;
   width: 80%;
@@ -152,7 +161,7 @@ address {
   box-shadow: 0 0 16px black;
 }
 
-/* line 139, ../scss/style.scss */
+/* line 140, ../scss/style.scss */
 .card-left {
   height: 118px;
   width: 122px;
@@ -161,7 +170,7 @@ address {
   border-radius: 0 0 0 4px;
 }
 
-/* line 148, ../scss/style.scss */
+/* line 149, ../scss/style.scss */
 .card-mid {
   width: 198px;
   height: 73px;
@@ -169,7 +178,7 @@ address {
   background: #eeebdf url('../img/noise.png') repeat;
 }
 
-/* line 156, ../scss/style.scss */
+/* line 157, ../scss/style.scss */
 .card-bottom {
   width: 198px;
   height: 45px;
@@ -184,38 +193,39 @@ address {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 170, ../scss/style.scss */
+/* line 171, ../scss/style.scss */
 .card-bottom a {
   color: #1f1f1f;
+  font-size: 16px;
   text-decoration: none;
   vertical-align: middle;
 }
-/* line 177, ../scss/style.scss */
+/* line 179, ../scss/style.scss */
 .card-bottom .github:hover {
   color: #5791ca;
 }
-/* line 178, ../scss/style.scss */
+/* line 180, ../scss/style.scss */
 .card-bottom .dribbble:hover {
   color: #cb416f;
 }
-/* line 179, ../scss/style.scss */
+/* line 181, ../scss/style.scss */
 .card-bottom .twitter:hover {
   color: #00acee;
 }
-/* line 180, ../scss/style.scss */
+/* line 182, ../scss/style.scss */
 .card-bottom .fanfou:hover {
   color: #1ac0fa;
 }
-/* line 181, ../scss/style.scss */
+/* line 183, ../scss/style.scss */
 .card-bottom .v2ex:hover {
   color: #d9d9dc;
 }
-/* line 182, ../scss/style.scss */
+/* line 184, ../scss/style.scss */
 .card-bottom .mail:hover {
   color: #d53c36;
 }
 
-/* line 188, ../scss/style.scss */
+/* line 190, ../scss/style.scss */
 .logo {
   height: 76px;
   padding-left: 72.895px;
@@ -227,36 +237,36 @@ address {
   background-size: auto 66px;
 }
 
-/* line 199, ../scss/style.scss */
+/* line 201, ../scss/style.scss */
 .page-title {
   color: #7f7f7f;
   font-size: 18px;
 }
-/* line 203, ../scss/style.scss */
+/* line 205, ../scss/style.scss */
 .page-title .l1 {
   line-height: 20px;
   padding-top: 28px;
 }
-/* line 208, ../scss/style.scss */
+/* line 210, ../scss/style.scss */
 .page-title .l2 {
   font-size: 16px;
   line-height: 20px;
   height: 20px;
   padding-top: 20px;
 }
-/* line 215, ../scss/style.scss */
+/* line 217, ../scss/style.scss */
 .page-title .l2s {
   font-size: 12px;
   line-height: 16px;
   height: 16px;
 }
-/* line 221, ../scss/style.scss */
+/* line 223, ../scss/style.scss */
 .page-title b {
   font-weight: normal;
   color: #333;
 }
 
-/* line 229, ../scss/style.scss */
+/* line 231, ../scss/style.scss */
 .page-wrap {
   position: relative;
   min-height: 100%;
@@ -264,7 +274,7 @@ address {
   background: #ecece4;
 }
 
-/* line 236, ../scss/style.scss */
+/* line 238, ../scss/style.scss */
 .page {
   position: relative;
   min-height: 100%;
@@ -275,12 +285,12 @@ address {
   width: 1000px;
 }
 
-/* line 247, ../scss/style.scss */
+/* line 249, ../scss/style.scss */
 .page1 {
   margin-top: -76px;
 }
 
-/* line 252, ../scss/style.scss */
+/* line 254, ../scss/style.scss */
 .shortcut-nav {
   position: fixed;
   bottom: 19px;
@@ -290,7 +300,7 @@ address {
   border-radius: 2px;
   padding: 4px 4px;
 }
-/* line 263, ../scss/style.scss */
+/* line 265, ../scss/style.scss */
 .shortcut-nav .sc-button {
   position: relative;
   float: left;
@@ -319,7 +329,7 @@ address {
   -moz-user-select: none;
   user-select: none;
 }
-/* line 290, ../scss/style.scss */
+/* line 292, ../scss/style.scss */
 .shortcut-nav .sc-button:active {
   margin-top: 1px;
   height: 23px;
@@ -327,11 +337,11 @@ address {
   -moz-box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
   box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
 }
-/* line 298, ../scss/style.scss */
+/* line 300, ../scss/style.scss */
 .shortcut-nav .underline:active:after {
   bottom: 4px;
 }
-/* line 302, ../scss/style.scss */
+/* line 304, ../scss/style.scss */
 .shortcut-nav .underline:after {
   content: " ";
   width: 0.4em;
@@ -342,4 +352,27 @@ address {
   left: 50%;
   bottom: 5px;
   margin-left: -0.2em;
+}
+
+/* line 323, ../scss/style.scss */
+footer {
+  position: relative;
+  z-index: 5;
+  height: 54px;
+  line-height: 56px;
+  background: #262626 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAECAYAAADrsu3pAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAIGNIUk0AAG11AABzoAAA/N0AAINkAABw6AAA7GgAADA+AAAQkOTsmeoAAACfSURBVHjapM6hDoJAAMbxv7sq6YrHUziqG69iIJIkXKFcoPgQF6hsPgUzMzNGN3AjXtfibQgk+Odvv327YXh9+GVtCUCSnFmq798UxZU81yh1WNysNYTWmfGAtSVN8wAgio4zIE0vtO2Tur4TxyeCYD87sdYQWmfGA74p5IGu6wFwzs2grYaQUpoxMIXCUP0BvjFUVTe2Gl8AAAD//wMA9ruA7EZ+o/EAAAAASUVORK5CYII=') repeat-x;
+  text-align: right;
+  color: #686868;
+  font-size: 24px;
+  padding-right: 1em;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  /* line 17, ../scss/style.scss */
+  footer {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAICAYAAABAiVmlAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAIGNIUk0AAG11AABzoAAA/N0AAINkAABw6AAA7GgAADA+AAAQkOTsmeoAAACFSURBVHja3NC7DYAgFIXhY3ADFjEsZMEGFNQsQuFExB0s2UErTXzwupWXM8CXP2eIcduRmPcLAEDrGdRxM8YccCLUGI6GsNa4EhDCCgBQaiJHcDFehzwBSgxn43ZICmiJ4W5ch5SAmpgeDGGtcbVADurFEFJK1wJ8Qa0RfzYOAAAA//8DAOuxzMu07i9/AAAAAElFTkSuQmCC');
+    -webkit-background-size: 34px, auto;
+    -moz-background-size: 34px, auto;
+    -o-background-size: 34px, auto;
+    background-size: 34px, auto;
+  }
 }
