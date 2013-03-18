@@ -60,16 +60,22 @@ q:after {
 }
 
 /* line 50, ../scss/style.scss */
+::selection {
+  color: #eee;
+  background: #4BA9FF;
+}
+
+/* line 55, ../scss/style.scss */
 .font-title {
   font-family: "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "Arial";
 }
 
-/* line 54, ../scss/style.scss */
+/* line 59, ../scss/style.scss */
 .wwmicn {
   font-family: "wwmregular";
 }
 
-/* line 62, ../scss/style.scss */
+/* line 67, ../scss/style.scss */
 .intro-wrap {
   background: url('../img/bg.png') repeat;
   position: fixed;
@@ -94,12 +100,12 @@ q:after {
   }
 }
 
-/* line 79, ../scss/style.scss */
+/* line 84, ../scss/style.scss */
 .intro-wrap-holder {
   height: 100%;
 }
 
-/* line 91, ../scss/style.scss */
+/* line 96, ../scss/style.scss */
 .card-wrap {
   max-width: 320px;
   min-width: 290px;
@@ -113,7 +119,7 @@ q:after {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
 }
 
-/* line 104, ../scss/style.scss */
+/* line 109, ../scss/style.scss */
 .card-top {
   height: 80px;
   border: 1px solid rgba(200, 200, 200, 0.1);
@@ -130,7 +136,7 @@ q:after {
   background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
   background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
 }
-/* line 114, ../scss/style.scss */
+/* line 119, ../scss/style.scss */
 .card-top:before {
   width: 200%;
   height: 100%;
@@ -147,7 +153,7 @@ q:after {
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
 }
-/* line 128, ../scss/style.scss */
+/* line 133, ../scss/style.scss */
 .card-top:after {
   position: absolute;
   width: 80%;
@@ -161,7 +167,7 @@ q:after {
   box-shadow: 0 0 16px black;
 }
 
-/* line 140, ../scss/style.scss */
+/* line 145, ../scss/style.scss */
 .card-left {
   height: 118px;
   width: 122px;
@@ -170,7 +176,7 @@ q:after {
   border-radius: 0 0 0 4px;
 }
 
-/* line 149, ../scss/style.scss */
+/* line 154, ../scss/style.scss */
 .card-mid {
   width: 198px;
   height: 73px;
@@ -178,7 +184,7 @@ q:after {
   background: #eeebdf url('../img/noise.png') repeat;
 }
 
-/* line 157, ../scss/style.scss */
+/* line 162, ../scss/style.scss */
 .card-bottom {
   width: 198px;
   height: 45px;
@@ -192,40 +198,43 @@ q:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
-/* line 171, ../scss/style.scss */
+/* line 178, ../scss/style.scss */
 .card-bottom a {
   color: #1f1f1f;
   font-size: 16px;
   text-decoration: none;
   vertical-align: middle;
 }
-/* line 179, ../scss/style.scss */
+/* line 186, ../scss/style.scss */
 .card-bottom .github:hover {
   color: #5791ca;
 }
-/* line 180, ../scss/style.scss */
+/* line 187, ../scss/style.scss */
 .card-bottom .dribbble:hover {
   color: #cb416f;
 }
-/* line 181, ../scss/style.scss */
+/* line 188, ../scss/style.scss */
 .card-bottom .twitter:hover {
   color: #00acee;
 }
-/* line 182, ../scss/style.scss */
+/* line 189, ../scss/style.scss */
 .card-bottom .fanfou:hover {
   color: #1ac0fa;
 }
-/* line 183, ../scss/style.scss */
+/* line 190, ../scss/style.scss */
 .card-bottom .v2ex:hover {
   color: #d9d9dc;
 }
-/* line 184, ../scss/style.scss */
+/* line 191, ../scss/style.scss */
 .card-bottom .mail:hover {
   color: #d53c36;
 }
 
-/* line 190, ../scss/style.scss */
+/* line 197, ../scss/style.scss */
 .logo {
   height: 76px;
   padding-left: 72.895px;
@@ -237,36 +246,36 @@ q:after {
   background-size: auto 66px;
 }
 
-/* line 201, ../scss/style.scss */
+/* line 208, ../scss/style.scss */
 .page-title {
   color: #7f7f7f;
   font-size: 18px;
 }
-/* line 205, ../scss/style.scss */
+/* line 212, ../scss/style.scss */
 .page-title .l1 {
   line-height: 20px;
   padding-top: 28px;
 }
-/* line 210, ../scss/style.scss */
+/* line 217, ../scss/style.scss */
 .page-title .l2 {
   font-size: 16px;
   line-height: 20px;
   height: 20px;
   padding-top: 20px;
 }
-/* line 217, ../scss/style.scss */
+/* line 224, ../scss/style.scss */
 .page-title .l2s {
   font-size: 12px;
   line-height: 16px;
   height: 16px;
 }
-/* line 223, ../scss/style.scss */
+/* line 230, ../scss/style.scss */
 .page-title b {
   font-weight: normal;
   color: #333;
 }
 
-/* line 231, ../scss/style.scss */
+/* line 238, ../scss/style.scss */
 .page-wrap {
   position: relative;
   min-height: 100%;
@@ -274,7 +283,7 @@ q:after {
   background: #ecece4;
 }
 
-/* line 238, ../scss/style.scss */
+/* line 245, ../scss/style.scss */
 .page {
   position: relative;
   min-height: 100%;
@@ -285,12 +294,12 @@ q:after {
   width: 1000px;
 }
 
-/* line 249, ../scss/style.scss */
+/* line 256, ../scss/style.scss */
 .page1 {
   margin-top: -76px;
 }
 
-/* line 254, ../scss/style.scss */
+/* line 261, ../scss/style.scss */
 .shortcut-nav {
   position: fixed;
   bottom: 19px;
@@ -300,7 +309,7 @@ q:after {
   border-radius: 2px;
   padding: 4px 4px;
 }
-/* line 265, ../scss/style.scss */
+/* line 272, ../scss/style.scss */
 .shortcut-nav .sc-button {
   position: relative;
   float: left;
@@ -329,7 +338,7 @@ q:after {
   -moz-user-select: none;
   user-select: none;
 }
-/* line 292, ../scss/style.scss */
+/* line 299, ../scss/style.scss */
 .shortcut-nav .sc-button:active {
   margin-top: 1px;
   height: 23px;
@@ -337,11 +346,11 @@ q:after {
   -moz-box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
   box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
 }
-/* line 300, ../scss/style.scss */
+/* line 307, ../scss/style.scss */
 .shortcut-nav .underline:active:after {
   bottom: 4px;
 }
-/* line 304, ../scss/style.scss */
+/* line 311, ../scss/style.scss */
 .shortcut-nav .underline:after {
   content: " ";
   width: 0.4em;
@@ -354,7 +363,7 @@ q:after {
   margin-left: -0.2em;
 }
 
-/* line 323, ../scss/style.scss */
+/* line 330, ../scss/style.scss */
 footer {
   position: relative;
   z-index: 5;
@@ -365,6 +374,7 @@ footer {
   color: #686868;
   font-size: 24px;
   padding: 0 1em 0 3em;
+  overflow: hidden;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
   /* line 17, ../scss/style.scss */
@@ -377,7 +387,7 @@ footer {
   }
 }
 
-/* line 340, ../scss/style.scss */
+/* line 349, ../scss/style.scss */
 .copyright {
   font-size: 12px;
   float: left;

@@ -47,6 +47,11 @@ q:after  { content : ""; }
   }
 }
 
+::selection {
+  color      : #eee;
+  background : #4BA9FF;
+}
+
 .font-title {
   font-family : "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "Arial";
 }
@@ -166,7 +171,9 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
   text-align : right;
   padding    : 0 1em;
   cursor     : default;
+  
   @include box-sizing( border-box );
+  @include user-select( none );
   
   a {
     color     : #1f1f1f;
@@ -327,16 +334,18 @@ footer {
   line-height: $footerHeight + floor(image-height("zigzag.png") / 2);
   background : #262626 inline-image("zigzag.png") repeat-x;
   
-  text-align    : right;
-  color         : #686868;
-  font-size     : 24px;
-  padding       : 0 1em 0 3em;
+  text-align : right;
+  color      : #686868;
+  font-size  : 24px;
+  padding    : 0 1em 0 3em;
+  overflow   : hidden;
   
   @include retina() {
     background-image : inline-image("zigzag@2x.png");
     @include background-size(image-width("zigzag.png"), auto);
   }
 }
+
 .copyright {
   font-size : 12px;
   float : left;
