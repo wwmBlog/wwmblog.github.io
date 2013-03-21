@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Bad+Script);
+
 @import "../asset/font";
 @import "compass/css3";
 @import "compass/css3/user-interface";
@@ -22,8 +24,10 @@ $pageMaxWidth : 90%;
 html, body {
   height  : 100%;
   margin  : 0;
-  padding : 0; 
+  padding : 0;
 }
+
+a { text-decoration : none; }
 
 h1, h2, h3, h4, h5, h6, p, input { margin : 0; font-weight : normal; }
 address  { font-style : normal; }
@@ -55,7 +59,7 @@ q:after  { content : ""; }
 }
 
 .font-title {
-  font-family : "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "Arial";
+  font-family : "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", sans-serif;
 }
 
 .wwmicn {
@@ -87,9 +91,10 @@ q:after  { content : ""; }
   height   : 100%;
 }
 
-$cardWidth  : 320px;
+$cardWidth  : 360px;
 $cardHeight : ceil($cardWidth * 0.618);
 $cardTopHPercent   : 0.4;
+$cardTopHeight     : ceil($cardHeight * $cardTopHPercent);
 $cardRightWPercent : 0.618;
 $cardRightHSplitP  : 0.618;
 $cardBottomH       : floor($cardHeight * (1 - $cardTopHPercent));
@@ -109,7 +114,7 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
 }
 
 .card-top {
-  height        : ceil($cardHeight * $cardTopHPercent);
+  height        : $cardTopHeight;
   border        : 1px solid rgba(200, 200, 200, 0.1);
   border-bottom : none;
   position      : relative;
@@ -144,6 +149,34 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
   }
 }
 
+#W_introContent {
+  $introHeight : 14px * 1.5 * 2;
+  padding : floor(($cardTopHeight - $introHeight)/2) 30px;
+  height  : 14px * 1.5 * 2;
+  
+  text-shadow : 0 1px 1px black;
+  color       : white;
+  font-size   : 14px;
+  line-height : 1.5em;
+  
+  vertical-align : middle;
+}
+
+.arevert {
+  padding       : 2px 4px;
+  border-radius : 2px;
+  margin        : 0 1px;
+  
+  &:hover {
+    color       : #000;
+    text-shadow : none;
+  }
+}
+
+.ablue   { color: #009cff; &:hover { background : #009cff; } }
+.aorange { color: #ff9600; &:hover { background : #ff9600; } }
+.agreen  { color: #c6ff00; &:hover { background : #c6ff00; } }
+
 .card-left {
   height : $cardBottomH;
   width  : $cardLeftW;
@@ -154,11 +187,68 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
 }
 
 .card-mid {
+  position    : relative;
   width       : ceil($cardWidth * $cardRightWPercent);
   height      : ceil($cardBottomH * $cardRightHSplitP);
   margin-left : $cardLeftW;
+  overflow    : hidden;
   
   background : #eeebdf image-url("noise.png") repeat;
+  
+  &:before, &:after {
+    @extend .wwmicn;
+    content  : "\201c";
+    position : absolute;
+    top      : -5px;
+    left     : -5px;
+    height   : 40px;
+    
+    color       : #3a3a3a;
+    font-size   : 70px;
+    
+    pointer-events : none;
+  }
+
+  &:before {
+    text-shadow : 0 1px 1px #fff;
+  }
+
+  &:after {
+    // grandient text effect
+    -webkit-text-fill-color : transparent;
+    background : -webkit-linear-gradient(top, #101010, #363636);
+    -webkit-background-clip : text;
+  }
+}
+
+.cite-wrap {
+  padding     : 0 10px;
+  text-indent : 30px;
+  text-align  : left;
+  color       : #452705;
+  text-shadow : 0 1px 1px #fff;
+  font        : 12px/1.2em "Apple Chancery", "Segoe Script", "Bad Script", cursive;
+  height      : 100%;
+  position    : relative;
+  
+  .cite {
+    padding-top : 20px;
+    
+    &.single-bold {
+      font-size : 18px;
+      padding-top : 30px;
+    }
+  }
+  
+  .cite-src {
+    position : absolute;
+    bottom   : 5px;
+    right    : 10px;
+    
+    &:before {
+      content : " - ";
+    }
+  }
 }
 
 .card-bottom {
@@ -167,7 +257,7 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
   line-height : floor($cardBottomH * (1 - $cardRightHSplitP));
   margin-left : $cardLeftW;
   
-  background    : #393939;
+  background    : #393939 image-url("nw_bg.png") no-repeat;
   border-radius : 0 0 4px 0;
   
   text-align : right;
@@ -176,6 +266,11 @@ $cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
   
   @include box-sizing( border-box );
   @include user-select( none );
+  
+  @include retina() {
+    background-image : image-url("nw_bg@2x.png");
+    @include background-size(image-width("nw_bg.png") auto);
+  }
   
   a {
     color     : #1f1f1f;
