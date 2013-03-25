@@ -10,24 +10,24 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="font-title">
+<body>
   <div class="intro-wrap-holder"></div>
   <div class="intro-wrap vam">
     <div class="card-wrap">
       <div class="card-top">
         <div id="W_introContent">
-          Hi，I'm Morris，是个<a href="" class="arevert ablue" title="对各种技术充满着幻想的技术宅">程序员⟊宅⟊Hacker</a>。热衷于制作各种<a href="" class="arevert aorange" title="优雅的程序应该是平易近人的和赏心悦目的">优雅的</a>前沿的<a href="" class="arevert agreen" title="我专注于人机交互界面，无论他是网页、桌面应用、还是终端应用">UI APP</a>。
+          Hi，I'm Morris，是个<dfn class="arevert ablue" data-def="" title="对各种技术充满着幻想的技术宅">程序员⟊宅⟊Hacker</dfn>。热衷于制作各种<dfn class="arevert aorange" data-def="" title="优雅的程序应该是人性化的和赏心悦目的">优雅的</dfn>前沿的<dfn class="arevert agreen" data-def="" title="我专注于人机交互界面，无论他是网页、桌面应用、还是终端应用">UI APP</dfn>。
         </div>
       </div>
       <div class="card-left"></div>
-      <div class="card-mid">
-        <div class="cite-wrap">
-          <p class="cite single-bold">溃退吧，过时的人啊</p>
-          <p class="cite-src">鲁鲁修·VI·布里塔尼亚</p>
-        </div>
+      <div class="card-mid cite-con" id="W_citeCarousel">
         <div class="cite-wrap">
           <p class="cite">Never commit to memory what can be easily looked up in books</p>
           <p class="cite-src">Albert Einstein</p>
+        </div>
+        <div class="cite-wrap">
+          <p class="cite single-bold">溃退吧，过时的人啊</p>
+          <p class="cite-src">鲁鲁修·VI·布里塔尼亚</p>
         </div>
       </div>
       <address class="card-bottom wwmicn">
@@ -80,10 +80,11 @@
     <kbd><a class="sc-button">K</a></kbd>
   </section>
 
+  <script type="text/javascript" src="js/libs/sea.js" id="seajsnode"></script>
+  <script type="text/javascript">
+    seajs.config({ base : "./js" });
+    seajs.use("main.js");
+  </script>
 
-  <!-- JavaScript at the bottom for fast page loading
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/lib/jquery_1.7.1.js"><\/script>')</script>
-  <script src="js/lib/sea_1.1.0.js" data-main="./js/script.js"></script> -->
 </body>
 </html>
