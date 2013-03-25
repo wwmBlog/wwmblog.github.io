@@ -1,0 +1,52 @@
+// Mixins
+@mixin retina {
+  @media (-webkit-min-device-pixel-ratio:2), (min--moz-device-pixel-ratio:2), (-o-min-device-pixel-ratio:2/1), (min-device-pixel-ratio: 2) {
+      & { @content; }
+  }
+}
+
+// Resets
+html, body {
+  height  : 100%;
+  margin  : 0;
+  padding : 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, input      { margin : 0; font-weight : normal; }
+em, strong, dfn, code, samp, kbd, var { font-style : normal; }
+a        { text-decoration : none; }
+dfn      { cursor : pointer;       }
+address  { font-style : normal;    }
+textarea { resize  : none;         }
+textarea:focus, input:focus { outline : none; }
+q { &:before { content : ""; } &:after { content : ""; } }
+
+.clearfix:after {
+  content : " ";
+  clear   : both;
+  display : block;
+}
+
+.vam {
+  &:before {
+    content        : " ";
+    width          : 0;
+    height         : 100%;
+    display        : inline-block;
+    vertical-align : middle;
+    margin-right   : -0.25em;
+  }
+}
+
+::selection {
+  color      : #eee;
+  background : #4BA9FF;
+}
+
+
+.wwmicn { 
+  font-family : "wwmregular";
+}
+body, .font-title {
+  font-family : "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", sans-serif;
+}

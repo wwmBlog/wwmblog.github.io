@@ -11,538 +11,7 @@
   font-style: normal;
 }
 
-/* line 24, ../scss/style.scss */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* line 30, ../scss/style.scss */
-h1, h2, h3, h4, h5, h6, p, input {
-  margin: 0;
-  font-weight: normal;
-}
-
-/* line 31, ../scss/style.scss */
-em, strong, dfn, code, samp, kbd, var {
-  font-style: normal;
-}
-
-/* line 32, ../scss/style.scss */
-a {
-  text-decoration: none;
-}
-
-/* line 33, ../scss/style.scss */
-dfn {
-  cursor: pointer;
-}
-
-/* line 34, ../scss/style.scss */
-address {
-  font-style: normal;
-}
-
-/* line 35, ../scss/style.scss */
-textarea {
-  resize: none;
-}
-
-/* line 36, ../scss/style.scss */
-textarea:focus, input:focus {
-  outline: none;
-}
-
-/* line 37, ../scss/style.scss */
-q:before {
-  content: "";
-}
-/* line 37, ../scss/style.scss */
-q:after {
-  content: "";
-}
-
-/* line 39, ../scss/style.scss */
-.clearfix:after {
-  content: " ";
-  clear: both;
-  display: block;
-}
-
-/* line 46, ../scss/style.scss */
-.vam:before {
-  content: " ";
-  width: 0;
-  height: 100%;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: -0.25em;
-}
-
-/* line 56, ../scss/style.scss */
-::selection {
-  color: #eee;
-  background: #4BA9FF;
-}
-
-/* line 62, ../scss/style.scss */
-.wwmicn, .cite-con:before, .cite-con:after {
-  font-family: "wwmregular";
-}
-
-/* line 65, ../scss/style.scss */
-body, .font-title {
-  font-family: "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", sans-serif;
-}
-
-/* line 74, ../scss/style.scss */
-.intro-wrap {
-  background: url('../img/bg.png') repeat;
-  position: fixed;
-  top: -76px;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
-  text-align: center;
-  padding-top: 76px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
-  /* line 19, ../scss/style.scss */
-  .intro-wrap {
-    background-image: url('../img/bg@2x.png');
-    -webkit-background-size: 141px, auto;
-    -moz-background-size: 141px, auto;
-    -o-background-size: 141px, auto;
-    background-size: 141px, auto;
-  }
-}
-
-/* line 91, ../scss/style.scss */
-.intro-wrap-holder {
-  height: 100%;
-}
-
-/* line 106, ../scss/style.scss */
-.card-wrap {
-  max-width: 360px;
-  min-width: 330px;
-  width: 90%;
-  height: 223px;
-  margin: auto;
-  vertical-align: middle;
-  display: inline-block;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
-}
-
-/* line 119, ../scss/style.scss */
-.card-top {
-  border: 1px solid rgba(200, 200, 200, 0.1);
-  border-bottom: none;
-  position: relative;
-  overflow: hidden;
-  padding: 24px 30px;
-  -webkit-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
-  -moz-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
-  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, rgba(255, 255, 255, 0.02)), color-stop(100%, rgba(255, 255, 255, 0.03)));
-  background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
-  background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
-  background-image: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
-  background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
-  background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
-}
-/* line 131, ../scss/style.scss */
-.card-top .definition {
-  padding-top: 10px;
-  font-size: 13px;
-  text-shadow: 0 1px rgba(153, 153, 153, 0.14);
-  text-align: left;
-  white-space: pre;
-  word-wrap: break-word;
-  overflow: hidden;
-  -webkit-transition: height 0.3s 0.1s ease-in-out, padding 0.1s linear;
-  -moz-transition: height 0.3s 0.1s ease-in-out, padding 0.1s linear;
-  -ms-transition: height 0.3s 0.1s ease-in-out, padding 0.1s linear;
-  -o-transition: height 0.3s 0.1s ease-in-out, padding 0.1s linear;
-  transition: height 0.3s 0.1s ease-in-out, padding 0.1s linear;
-}
-/* line 142, ../scss/style.scss */
-.card-top .definition.hidden {
-  padding-top: 0;
-  height: 0;
-  -webkit-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
-  -moz-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
-  -ms-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
-  -o-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
-  transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
-}
-/* line 149, ../scss/style.scss */
-.card-top .definition .def-span {
-  line-height: 24px;
-  padding: 4px;
-  background: rgba(255, 255, 255, 0.03);
-}
-/* line 155, ../scss/style.scss */
-.card-top .definition:before {
-  font-family: Georgia;
-  font-size: 36px;
-  content: "\201c";
-  display: inline-block;
-  height: 16px;
-  line-height: 20px;
-  width: 20px;
-}
-/* line 166, ../scss/style.scss */
-.card-top:before {
-  width: 200%;
-  height: 90px;
-  position: absolute;
-  border-radius: 50%;
-  top: -31px;
-  left: -15px;
-  z-index: -1;
-  content: " ";
-  background: rgba(255, 255, 255, 0.02);
-  -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  -ms-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
-  transform: rotate(3deg);
-}
-/* line 180, ../scss/style.scss */
-.card-top:after {
-  position: absolute;
-  width: 80%;
-  height: 10px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  bottom: -10px;
-  -webkit-box-shadow: 0 0 16px black;
-  -moz-box-shadow: 0 0 16px black;
-  box-shadow: 0 0 16px black;
-}
-
-/* line 192, ../scss/style.scss */
-#W_introContent {
-  height: 42px;
-  text-shadow: 0 1px 1px black;
-  color: white;
-  font-size: 14px;
-  line-height: 1.5em;
-  vertical-align: middle;
-}
-
-/* line 203, ../scss/style.scss */
-.arevert {
-  padding: 2px 4px;
-  border-radius: 2px;
-  margin: 0 1px;
-}
-/* line 208, ../scss/style.scss */
-.arevert:hover {
-  color: #000;
-  text-shadow: none;
-}
-
-/* line 214, ../scss/style.scss */
-.ablue {
-  color: #009cff;
-}
-/* line 214, ../scss/style.scss */
-.ablue:hover {
-  background: #009cff;
-}
-
-/* line 215, ../scss/style.scss */
-.aorange {
-  color: #ff9600;
-}
-/* line 215, ../scss/style.scss */
-.aorange:hover {
-  background: #ff9600;
-}
-
-/* line 216, ../scss/style.scss */
-.agreen {
-  color: #c6ff00;
-}
-/* line 216, ../scss/style.scss */
-.agreen:hover {
-  background: #c6ff00;
-}
-
-/* line 218, ../scss/style.scss */
-.card-left {
-  height: 133px;
-  width: 137px;
-  float: left;
-  background: #7c7c7c;
-  border-radius: 0 0 0 4px;
-}
-
-/* line 227, ../scss/style.scss */
-.card-mid {
-  position: relative;
-  width: 223px;
-  height: 83px;
-  margin-left: 137px;
-}
-
-/* line 234, ../scss/style.scss */
-.cite-con {
-  background: #eeebdf url('../img/noise.png') repeat;
-}
-/* line 237, ../scss/style.scss */
-.cite-con:before, .cite-con:after {
-  content: "\201c";
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  height: 40px;
-  color: #3a3a3a;
-  font-size: 70px;
-  pointer-events: none;
-}
-/* line 251, ../scss/style.scss */
-.cite-con:before {
-  text-shadow: 0 1px 1px #fff;
-}
-/* line 255, ../scss/style.scss */
-.cite-con:after {
-  -webkit-text-fill-color: transparent;
-  background: -webkit-linear-gradient(top, #101010, #363636);
-  -webkit-background-clip: text;
-}
-
-/* line 263, ../scss/style.scss */
-#W_citeCarousel {
-  -webkit-perspective: 500px;
-  -moz-perspective: 500px;
-  -ms-perspective: 500px;
-  -o-perspective: 500px;
-  perspective: 500px;
-}
-/* line 267, ../scss/style.scss */
-#W_citeCarousel .cite-con {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/* line 275, ../scss/style.scss */
-#W_citeCarousel .head {
-  z-index: 3;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-/* line 280, ../scss/style.scss */
-#W_citeCarousel .tail {
-  z-index: 4;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-/* line 286, ../scss/style.scss */
-#W_citeCarousel.cite-play .head {
-  -webkit-animation: flipHead 0.5s linear both;
-  -moz-animation: flipHead 0.5s linear both;
-  -ms-animation: flipHead 0.5s linear both;
-  -o-animation: flipHead 0.5s linear both;
-  animation: flipHead 0.5s linear both;
-}
-/* line 289, ../scss/style.scss */
-#W_citeCarousel.cite-play .tail {
-  z-index: 2;
-  -webkit-animation: flipTail 0.5s linear both;
-  -moz-animation: flipTail 0.5s linear both;
-  -ms-animation: flipTail 0.5s linear both;
-  -o-animation: flipTail 0.5s linear both;
-  animation: flipTail 0.5s linear both;
-}
-
-@-webkit-keyframes flipHead {
-  /* line 298, ../scss/style.scss */
-  0% {
-    -webkit-transform: rotateX(0deg);
-  }
-
-  /* line 301, ../scss/style.scss */
-  100% {
-    -webkit-transform: rotateX(180deg);
-  }
-}
-
-@-webkit-keyframes flipTail {
-  /* line 307, ../scss/style.scss */
-  0% {
-    z-index: 2;
-    -webkit-transform: rotateX(-180deg);
-  }
-
-  /* line 311, ../scss/style.scss */
-  50% {
-    z-index: 4;
-  }
-
-  /* line 314, ../scss/style.scss */
-  100% {
-    z-index: 4;
-    -webkit-transform: rotateX(0deg);
-  }
-}
-
-/* line 320, ../scss/style.scss */
-.cite-wrap {
-  padding: 0 10px;
-  text-indent: 30px;
-  text-align: left;
-  color: #452705;
-  text-shadow: 0 1px 1px #fff;
-  font: 12px/1.2em "Apple Chancery", "Segoe Script", "Bad Script", cursive;
-  height: 100%;
-  position: relative;
-}
-/* line 330, ../scss/style.scss */
-.cite-wrap .cite {
-  padding-top: 20px;
-}
-/* line 333, ../scss/style.scss */
-.cite-wrap .cite.single-bold {
-  font-size: 18px;
-  padding-top: 30px;
-}
-/* line 339, ../scss/style.scss */
-.cite-wrap .cite-src {
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-}
-/* line 344, ../scss/style.scss */
-.cite-wrap .cite-src:before {
-  content: " - ";
-}
-
-/* line 350, ../scss/style.scss */
-.card-bottom {
-  width: 223px;
-  height: 50px;
-  line-height: 50px;
-  margin-left: 137px;
-  background: #393939 url('../img/nw_bg.png') no-repeat;
-  border-radius: 0 0 4px 0;
-  text-align: right;
-  padding: 0 1em;
-  cursor: default;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
-  /* line 19, ../scss/style.scss */
-  .card-bottom {
-    background-image: url('../img/nw_bg@2x.png');
-    -webkit-background-size: 200px auto;
-    -moz-background-size: 200px auto;
-    -o-background-size: 200px auto;
-    background-size: 200px auto;
-  }
-}
-/* line 371, ../scss/style.scss */
-.card-bottom a {
-  color: #1f1f1f;
-  font-size: 16px;
-  text-decoration: none;
-  vertical-align: middle;
-}
-/* line 379, ../scss/style.scss */
-.card-bottom .github:hover {
-  color: #5791ca;
-}
-/* line 380, ../scss/style.scss */
-.card-bottom .dribbble:hover {
-  color: #cb416f;
-}
-/* line 381, ../scss/style.scss */
-.card-bottom .twitter:hover {
-  color: #00acee;
-}
-/* line 382, ../scss/style.scss */
-.card-bottom .fanfou:hover {
-  color: #1ac0fa;
-}
-/* line 383, ../scss/style.scss */
-.card-bottom .v2ex:hover {
-  color: #d9d9dc;
-}
-/* line 384, ../scss/style.scss */
-.card-bottom .mail:hover {
-  color: #d53c36;
-}
-
-/* line 390, ../scss/style.scss */
-.logo {
-  height: 76px;
-  padding-left: 72.895px;
-  background: url('../img/logo.svg') no-repeat;
-  background-position: 0 5px;
-  -webkit-background-size: auto 66px;
-  -moz-background-size: auto 66px;
-  -o-background-size: auto 66px;
-  background-size: auto 66px;
-}
-
-/* line 401, ../scss/style.scss */
-.page-title {
-  color: #7f7f7f;
-  font-size: 18px;
-  margin: -76px auto 0;
-  max-width: 90%;
-  width: 1000px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-/* line 410, ../scss/style.scss */
-.page-title .l1 {
-  line-height: 20px;
-  padding-top: 28px;
-}
-/* line 415, ../scss/style.scss */
-.page-title .l2 {
-  font-size: 16px;
-  line-height: 20px;
-  height: 20px;
-  padding-top: 20px;
-}
-/* line 422, ../scss/style.scss */
-.page-title .l2s {
-  font-size: 12px;
-  line-height: 16px;
-  height: 16px;
-}
-/* line 428, ../scss/style.scss */
-.page-title b {
-  font-weight: normal;
-  color: #333;
-}
-
-/* line 436, ../scss/style.scss */
+/* line 17, ../scss/style.scss */
 .page-wrap {
   position: relative;
   min-height: 100%;
@@ -550,7 +19,7 @@ body, .font-title {
   background: #ecece4;
 }
 
-/* line 443, ../scss/style.scss */
+/* line 24, ../scss/style.scss */
 .page {
   position: relative;
   min-height: 100%;
@@ -562,7 +31,139 @@ body, .font-title {
   width: 1000px;
 }
 
-/* line 455, ../scss/style.scss */
+/* line 9, /Users/morris/Projects/wwmblog/scss/_base.scss */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 15, /Users/morris/Projects/wwmblog/scss/_base.scss */
+h1, h2, h3, h4, h5, h6, p, input {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* line 16, /Users/morris/Projects/wwmblog/scss/_base.scss */
+em, strong, dfn, code, samp, kbd, var {
+  font-style: normal;
+}
+
+/* line 17, /Users/morris/Projects/wwmblog/scss/_base.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 18, /Users/morris/Projects/wwmblog/scss/_base.scss */
+dfn {
+  cursor: pointer;
+}
+
+/* line 19, /Users/morris/Projects/wwmblog/scss/_base.scss */
+address {
+  font-style: normal;
+}
+
+/* line 20, /Users/morris/Projects/wwmblog/scss/_base.scss */
+textarea {
+  resize: none;
+}
+
+/* line 21, /Users/morris/Projects/wwmblog/scss/_base.scss */
+textarea:focus, input:focus {
+  outline: none;
+}
+
+/* line 22, /Users/morris/Projects/wwmblog/scss/_base.scss */
+q:before {
+  content: "";
+}
+/* line 22, /Users/morris/Projects/wwmblog/scss/_base.scss */
+q:after {
+  content: "";
+}
+
+/* line 24, /Users/morris/Projects/wwmblog/scss/_base.scss */
+.clearfix:after {
+  content: " ";
+  clear: both;
+  display: block;
+}
+
+/* line 31, /Users/morris/Projects/wwmblog/scss/_base.scss */
+.vam:before {
+  content: " ";
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+/* line 41, /Users/morris/Projects/wwmblog/scss/_base.scss */
+::selection {
+  color: #eee;
+  background: #4BA9FF;
+}
+
+/* line 47, /Users/morris/Projects/wwmblog/scss/_base.scss */
+.wwmicn, .cite-con:before, .cite-con:after {
+  font-family: "wwmregular";
+}
+
+/* line 50, /Users/morris/Projects/wwmblog/scss/_base.scss */
+body, .font-title {
+  font-family: "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", sans-serif;
+}
+
+/* line 2, /Users/morris/Projects/wwmblog/scss/_misc.scss */
+.logo {
+  height: 76px;
+  padding-left: 72.895px;
+  background: url('../img/logo.svg') no-repeat;
+  background-position: 0 5px;
+  -webkit-background-size: auto 66px;
+  -moz-background-size: auto 66px;
+  -o-background-size: auto 66px;
+  background-size: auto 66px;
+}
+
+/* line 13, /Users/morris/Projects/wwmblog/scss/_misc.scss */
+.page-title {
+  color: #7f7f7f;
+  font-size: 18px;
+  margin: -76px auto 0;
+  max-width: 90%;
+  width: 1000px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 22, /Users/morris/Projects/wwmblog/scss/_misc.scss */
+.page-title .l1 {
+  line-height: 20px;
+  padding-top: 28px;
+}
+/* line 27, /Users/morris/Projects/wwmblog/scss/_misc.scss */
+.page-title .l2 {
+  font-size: 16px;
+  line-height: 20px;
+  height: 20px;
+  padding-top: 20px;
+}
+/* line 34, /Users/morris/Projects/wwmblog/scss/_misc.scss */
+.page-title .l2s {
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
+}
+/* line 40, /Users/morris/Projects/wwmblog/scss/_misc.scss */
+.page-title b {
+  font-weight: normal;
+  color: #333;
+}
+
+/* line 49, /Users/morris/Projects/wwmblog/scss/_misc.scss */
 .shortcut-nav {
   position: fixed;
   bottom: 19px;
@@ -572,7 +173,7 @@ body, .font-title {
   border-radius: 2px;
   padding: 4px 4px;
 }
-/* line 466, ../scss/style.scss */
+/* line 60, /Users/morris/Projects/wwmblog/scss/_misc.scss */
 .shortcut-nav .sc-button {
   position: relative;
   float: left;
@@ -601,7 +202,7 @@ body, .font-title {
   -moz-user-select: none;
   user-select: none;
 }
-/* line 493, ../scss/style.scss */
+/* line 87, /Users/morris/Projects/wwmblog/scss/_misc.scss */
 .shortcut-nav .sc-button:active {
   margin-top: 1px;
   height: 23px;
@@ -609,11 +210,11 @@ body, .font-title {
   -moz-box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
   box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
 }
-/* line 501, ../scss/style.scss */
+/* line 95, /Users/morris/Projects/wwmblog/scss/_misc.scss */
 .shortcut-nav .underline:active:after {
   bottom: 4px;
 }
-/* line 505, ../scss/style.scss */
+/* line 99, /Users/morris/Projects/wwmblog/scss/_misc.scss */
 .shortcut-nav .underline:after {
   content: " ";
   width: 0.4em;
@@ -626,14 +227,413 @@ body, .font-title {
   margin-left: -0.2em;
 }
 
-/* line 530, ../scss/style.scss */
+/* line 1, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.intro-wrap {
+  background: url('../img/bg.png') repeat;
+  position: fixed;
+  top: -76px;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  text-align: center;
+  padding-top: 76px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (min-device-pixel-ratio: 2) {
+  /* line 4, /Users/morris/Projects/wwmblog/scss/_base.scss */
+  .intro-wrap {
+    background-image: url('../img/bg@2x.png');
+    -webkit-background-size: 141px, auto;
+    -moz-background-size: 141px, auto;
+    -o-background-size: 141px, auto;
+    background-size: 141px, auto;
+  }
+}
+
+/* line 18, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.intro-wrap-holder {
+  height: 100%;
+}
+
+/* line 33, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-wrap {
+  max-width: 360px;
+  min-width: 330px;
+  width: 90%;
+  height: 223px;
+  margin: auto;
+  vertical-align: middle;
+  display: inline-block;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+}
+
+/* line 46, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-top {
+  border: 1px solid rgba(200, 200, 200, 0.1);
+  border-bottom: none;
+  position: relative;
+  overflow: hidden;
+  padding: 24px 30px;
+  -webkit-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
+  -moz-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, rgba(255, 255, 255, 0.02)), color-stop(100%, rgba(255, 255, 255, 0.03)));
+  background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+  background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+  background-image: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+  background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+  background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+}
+/* line 58, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-top .definition {
+  padding-top: 10px;
+  font-size: 13px;
+  text-shadow: 0 1px rgba(153, 153, 153, 0.14);
+  text-align: left;
+  white-space: pre;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-transition: height 0.3s ease-in-out, padding 0.1s linear;
+  -moz-transition: height 0.3s ease-in-out, padding 0.1s linear;
+  -ms-transition: height 0.3s ease-in-out, padding 0.1s linear;
+  -o-transition: height 0.3s ease-in-out, padding 0.1s linear;
+  transition: height 0.3s ease-in-out, padding 0.1s linear;
+}
+/* line 69, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-top .definition.hidden {
+  padding-top: 0;
+  height: 0;
+  -webkit-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
+  -moz-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
+  -ms-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
+  -o-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
+  transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
+}
+/* line 76, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-top .definition .def-span {
+  line-height: 24px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.03);
+}
+/* line 82, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-top .definition:before {
+  font-family: Georgia;
+  font-size: 36px;
+  content: "\201c";
+  display: inline-block;
+  height: 16px;
+  line-height: 20px;
+  width: 20px;
+}
+/* line 93, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-top:before {
+  width: 200%;
+  height: 90px;
+  position: absolute;
+  border-radius: 50%;
+  top: -31px;
+  left: -15px;
+  z-index: -1;
+  content: " ";
+  background: rgba(255, 255, 255, 0.02);
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+/* line 107, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-top:after {
+  position: absolute;
+  width: 80%;
+  height: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: -10px;
+  -webkit-box-shadow: 0 0 16px black;
+  -moz-box-shadow: 0 0 16px black;
+  box-shadow: 0 0 16px black;
+}
+
+/* line 119, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+#W_introContent {
+  height: 42px;
+  text-shadow: 0 1px 1px black;
+  color: white;
+  font-size: 14px;
+  line-height: 1.5em;
+  vertical-align: middle;
+}
+
+/* line 130, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.arevert {
+  padding: 2px 4px;
+  border-radius: 2px;
+  margin: 0 1px;
+}
+/* line 135, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.arevert:hover {
+  color: #000;
+  text-shadow: none;
+}
+
+/* line 141, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.ablue {
+  color: #009cff;
+}
+/* line 141, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.ablue:hover {
+  background: #009cff;
+}
+
+/* line 142, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.aorange {
+  color: #ff9600;
+}
+/* line 142, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.aorange:hover {
+  background: #ff9600;
+}
+
+/* line 143, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.agreen {
+  color: #c6ff00;
+}
+/* line 143, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.agreen:hover {
+  background: #c6ff00;
+}
+
+/* line 145, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-left {
+  height: 133px;
+  width: 137px;
+  float: left;
+  background: #7c7c7c;
+  border-radius: 0 0 0 4px;
+}
+
+/* line 154, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-mid {
+  position: relative;
+  width: 223px;
+  height: 83px;
+  margin-left: 137px;
+}
+
+/* line 161, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-con {
+  background: #eeebdf url('../img/noise.png') repeat;
+}
+/* line 164, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-con:before, .cite-con:after {
+  content: "\201c";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  height: 40px;
+  color: #3a3a3a;
+  font-size: 70px;
+  pointer-events: none;
+}
+/* line 178, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-con:before {
+  text-shadow: 0 1px 1px #fff;
+}
+/* line 182, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-con:after {
+  -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(top, #101010, #363636);
+  -webkit-background-clip: text;
+}
+
+/* line 190, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+#W_citeCarousel {
+  -webkit-perspective: 500px;
+  -moz-perspective: 500px;
+  -ms-perspective: 500px;
+  -o-perspective: 500px;
+  perspective: 500px;
+}
+/* line 194, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+#W_citeCarousel .cite-con {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 202, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+#W_citeCarousel .head {
+  z-index: 3;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* line 207, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+#W_citeCarousel .tail {
+  z-index: 4;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* line 213, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+#W_citeCarousel.cite-play .head {
+  -webkit-animation: flipHead 0.5s linear both;
+  -moz-animation: flipHead 0.5s linear both;
+  -ms-animation: flipHead 0.5s linear both;
+  -o-animation: flipHead 0.5s linear both;
+  animation: flipHead 0.5s linear both;
+}
+/* line 216, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+#W_citeCarousel.cite-play .tail {
+  z-index: 2;
+  -webkit-animation: flipTail 0.5s linear both;
+  -moz-animation: flipTail 0.5s linear both;
+  -ms-animation: flipTail 0.5s linear both;
+  -o-animation: flipTail 0.5s linear both;
+  animation: flipTail 0.5s linear both;
+}
+
+@-webkit-keyframes flipHead {
+  /* line 225, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  0% {
+    -webkit-transform: rotateX(0deg);
+  }
+
+  /* line 228, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  100% {
+    -webkit-transform: rotateX(180deg);
+  }
+}
+
+@-webkit-keyframes flipTail {
+  /* line 234, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  0% {
+    z-index: 2;
+    -webkit-transform: rotateX(-180deg);
+  }
+
+  /* line 238, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  50% {
+    z-index: 4;
+  }
+
+  /* line 241, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  100% {
+    z-index: 4;
+    -webkit-transform: rotateX(0deg);
+  }
+}
+
+/* line 247, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-wrap {
+  padding: 0 10px;
+  text-indent: 30px;
+  text-align: left;
+  color: #452705;
+  text-shadow: 0 1px 1px #fff;
+  font: 12px/1.2em "Apple Chancery", "Segoe Script", "Bad Script", cursive;
+  height: 100%;
+  position: relative;
+}
+/* line 257, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-wrap .cite {
+  padding-top: 20px;
+}
+/* line 260, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-wrap .cite.single-bold {
+  font-size: 18px;
+  padding-top: 30px;
+}
+/* line 266, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-wrap .cite-src {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+/* line 271, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.cite-wrap .cite-src:before {
+  content: " - ";
+}
+
+/* line 277, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-bottom {
+  width: 223px;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 137px;
+  background: #393939 url('../img/nw_bg.png') no-repeat;
+  border-radius: 0 0 4px 0;
+  text-align: right;
+  padding: 0 1em;
+  cursor: default;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (min-device-pixel-ratio: 2) {
+  /* line 4, /Users/morris/Projects/wwmblog/scss/_base.scss */
+  .card-bottom {
+    background-image: url('../img/nw_bg@2x.png');
+    -webkit-background-size: 200px auto;
+    -moz-background-size: 200px auto;
+    -o-background-size: 200px auto;
+    background-size: 200px auto;
+  }
+}
+/* line 298, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-bottom a {
+  color: #1f1f1f;
+  font-size: 16px;
+  text-decoration: none;
+  vertical-align: middle;
+}
+/* line 306, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-bottom .github:hover {
+  color: #5791ca;
+}
+/* line 307, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-bottom .dribbble:hover {
+  color: #cb416f;
+}
+/* line 308, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-bottom .twitter:hover {
+  color: #00acee;
+}
+/* line 309, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-bottom .fanfou:hover {
+  color: #1ac0fa;
+}
+/* line 310, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-bottom .v2ex:hover {
+  color: #d9d9dc;
+}
+/* line 311, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+.card-bottom .mail:hover {
+  color: #d53c36;
+}
+
+/* line 9, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .page3:before {
   display: block;
   content: " ";
   height: 100px;
 }
 
-/* line 537, ../scss/style.scss */
+/* line 16, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .contact {
   width: 260px;
   line-height: 0;
@@ -641,7 +641,7 @@ body, .font-title {
   margin-left: 80px;
 }
 
-/* line 543, ../scss/style.scss */
+/* line 22, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .content-lbl {
   position: absolute;
   width: 32px;
@@ -653,7 +653,7 @@ body, .font-title {
   color: #afafab;
 }
 
-/* line 553, ../scss/style.scss */
+/* line 32, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .content {
   background: #555;
   color: #ddd;
@@ -667,21 +667,21 @@ body, .font-title {
   text-indent: 2em;
   line-height: 1.2em;
 }
-/* line 570, ../scss/style.scss */
+/* line 49, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .content::first-line {
   line-height: 2em;
 }
-/* line 573, ../scss/style.scss */
+/* line 52, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .content:focus + .content-lbl {
   color: #fff;
 }
 
-/* line 578, ../scss/style.scss */
+/* line 57, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .email {
   float: left;
   position: relative;
 }
-/* line 582, ../scss/style.scss */
+/* line 61, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .email label {
   position: absolute;
   font-size: 16px;
@@ -693,7 +693,7 @@ body, .font-title {
   top: 0;
   left: 0;
 }
-/* line 594, ../scss/style.scss */
+/* line 73, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .email input {
   width: 155px;
   height: 1em;
@@ -703,12 +703,12 @@ body, .font-title {
   background: #555;
   font-size: 12px;
 }
-/* line 606, ../scss/style.scss */
+/* line 85, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .email input:focus + label {
   color: #fff;
 }
 
-/* line 612, ../scss/style.scss */
+/* line 91, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .submit {
   width: 58px;
   height: 26px;
@@ -721,7 +721,7 @@ body, .font-title {
   cursor: pointer;
   overflow: hidden;
 }
-/* line 624, ../scss/style.scss */
+/* line 103, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .submit input {
   color: #546724;
   display: block;
@@ -736,7 +736,7 @@ body, .font-title {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 640, ../scss/style.scss */
+/* line 119, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .submit label {
   display: inline-block;
   width: 22px;
@@ -749,7 +749,7 @@ body, .font-title {
   cursor: pointer;
   text-shadow: -30px 30px #546724;
 }
-/* line 657, ../scss/style.scss */
+/* line 136, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .submit:hover label {
   -webkit-transition: all ease-in-out 0.35s;
   -moz-transition: all ease-in-out 0.35s;
@@ -763,7 +763,7 @@ body, .font-title {
   transform: translate(30px, -30px);
 }
 
-/* line 668, ../scss/style.scss */
+/* line 146, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 footer {
   position: relative;
   z-index: 5;
@@ -777,8 +777,8 @@ footer {
   overflow: hidden;
   margin-top: -54px;
 }
-@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
-  /* line 19, ../scss/style.scss */
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (min-device-pixel-ratio: 2) {
+  /* line 4, /Users/morris/Projects/wwmblog/scss/_base.scss */
   footer {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAICAYAAABAiVmlAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAIGNIUk0AAG11AABzoAAA/N0AAINkAABw6AAA7GgAADA+AAAQkOTsmeoAAACFSURBVHja3NC7DYAgFIXhY3ADFjEsZMEGFNQsQuFExB0s2UErTXzwupWXM8CXP2eIcduRmPcLAEDrGdRxM8YccCLUGI6GsNa4EhDCCgBQaiJHcDFehzwBSgxn43ZICmiJ4W5ch5SAmpgeDGGtcbVADurFEFJK1wJ8Qa0RfzYOAAAA//8DAOuxzMu07i9/AAAAAElFTkSuQmCC');
     -webkit-background-size: 34px, auto;
@@ -788,7 +788,7 @@ footer {
   }
 }
 
-/* line 688, ../scss/style.scss */
+/* line 166, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .copyright {
   font-size: 12px;
   float: left;
