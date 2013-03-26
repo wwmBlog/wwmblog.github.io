@@ -3,6 +3,8 @@ define(function(require){
   require("libs/zepto.js");
   require("src/definition.js");
 
+
+  /* -- Intro Page -- */
   (function(){
     // Intro Card Citing Carousel, 2D Version
     function CiteCarousel2D(){
@@ -55,6 +57,21 @@ define(function(require){
 
     (support.threed ? CiteCarousel3D : CiteCarousel2D)();
   })();
-  
+
+
+  /* -- Stickers(Logo, Shortcuts) -- */
+  (function(){
+
+    var ScrollWatcher = require("src/scrollwatcher.js").ScrollWatcher;
+    var logoOffset  = $(".logo-wrap").height() + 5;
+    var logoW = new ScrollWatcher( ".intro-wrap-holder", -logoOffset );
+    logoW.on("scrollabove", function(){ $(".logo-wrap").addClass("fixed"); })
+         .on("scrollinto",  function(){ $(".logo-wrap").removeClass("fixed"); });
+
+    var shortcutW = new ScrollWatcher( "footer", 10 );
+    shortcutW.on("scrollinto",  function(){ $(".shortcut-nav").addClass("sticky"); })
+             .on("scrollbelow", function(){ $(".shortcut-nav").removeClass("sticky"); });
+
+  })();
 
 });

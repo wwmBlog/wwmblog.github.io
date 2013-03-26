@@ -51,7 +51,15 @@ define(function(require, exports){
       }
     }
 
-    this.update();
+    if ( viewportTop != 0 ) {
+      // If the window has been scroll, I want to fire an event.
+      // So we need to delay until next cycle,
+      // so that the event handlers have been bound.
+      var self = this;
+      setTimeout( function(){ self.update(); }, 18 );
+    } else {
+      this.update();
+    }
   }
 
   ScrollWatcher.prototype.on = function ( event, callback ) {
@@ -86,7 +94,7 @@ define(function(require, exports){
     this.watchY = this.element.offset().top;
 
     if ( this.offset < 0 ) {
-      this.watchY += this.element.theHeight() - this.offset;
+      this.watchY += this.element.theHeight() + this.offset;
     } else if ( this.offset > 0 ) {
       this.watchY += this.offset;
     }

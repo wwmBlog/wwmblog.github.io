@@ -1,4 +1,29 @@
 // ---------- Logo / Title
+.logo-wrap {
+  position : absolute;
+  z-index  : 100;
+  width    : 100%;
+  height   : $firstPageBottomHeight;
+  
+  pointer-events : none;
+  
+  &.fixed {
+    position : fixed;
+    margin   : 0;
+    top      : 4px;
+    
+    &:before {
+      position   : absolute;
+      width      : 100%;
+      height     : 4px;
+      top        : -4px;
+      left       : 0;
+      content    : " ";
+      display    : block;
+      background : image-url("bg.png") repeat;
+    }
+  }
+}
 .logo {
   $svgBGWidth  : 200;
   $svgBGHeight : 228;
@@ -10,10 +35,11 @@
   background-position : 0 floor(($firstPageBottomHeight - 66) / 2);
   @include background-size(auto 66px);
 }
+
 .page-title {
   color     : #7f7f7f;
   font-size : 18px;
-  margin    : -$firstPageBottomHeight auto 0;
+  margin    : 0 auto;
   max-width : 90%;
   width     : 1000px;
   
@@ -45,10 +71,46 @@
 
 // Logo / Title ----------
 
+// ---------- Footer
+$footerHeight : 54px;
+footer {
+  position    : relative;
+  height      : $footerHeight;
+  background  : #262626 inline-image("zigzag.png") repeat-x;
+  
+  @include retina() {
+    background-image : inline-image("zigzag@2x.png");
+    @include background-size(image-width("zigzag.png"), auto);
+  }
+}
+
+.footer-wrap {
+  height      : $footerHeight;
+  line-height : $footerHeight + floor(image-height("zigzag.png") / 2);
+  overflow    : hidden;
+  white-space : nowrap;
+  padding     : 0 1em 0 3em;
+  
+  text-align : right;
+  color      : #686868;
+  font-size  : 24px;
+  padding    : 0 1em 0 3em;
+}
+
+.copyright {
+  font-size : 12px;
+  float : left;
+  color : lighten(#262626, 10%);
+}
+// Footer ----------
+
 // --------- J, K Navigation
 .shortcut-nav {
+
+  $sc-bottom : floor(($firstPageBottomHeight - 32 - 2*2 - 1*2) / 2);
+
   position : fixed;
-  bottom   : floor(($firstPageBottomHeight - 32 - 2*2 - 1*2) / 2);
+  bottom   : $sc-bottom;
   right    : 50px;
   border   : 1px dashed #d1d1d1;
   
@@ -56,6 +118,12 @@
   
   border-radius : 2px;
   padding : 4px 4px;
+  
+  &.sticky {
+    position : absolute;
+    top      : 0px - (26+4*2+1*2) - 10px;
+    bottom   : auto;
+  }
   
   .sc-button {
 
