@@ -32,13 +32,13 @@
   }
 }
 #W_lgdPro, #W_lgdBasic {
-  background   : image-url("legend.png") no-repeat;
+  background   : inline-image("legend.png") no-repeat;
   display      : inline-block;
   height       : 20px;
   line-height  : 20px;
   padding-left : 22px;
   @include retina() {
-    background-image : image-url("legend@2x.png");
+    background-image : inline-image("legend@2x.png");
     @include background-size(image-width("legend.png") auto);
   }
 }
