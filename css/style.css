@@ -14,17 +14,12 @@
 /* line 18, ../scss/style.scss */
 .page-wrap {
   position: relative;
-  min-height: 100%;
   z-index: 3;
   background: #ecece4;
 }
 
-/* line 25, ../scss/style.scss */
+/* line 24, ../scss/style.scss */
 .page {
-  position: relative;
-  min-height: 100%;
-  height: 100%;
-  z-index: 3;
   background: #ecece4;
   margin: 0 auto;
   max-width: 90%;
@@ -39,7 +34,7 @@ html, body {
 }
 
 /* line 15, /Users/morris/Projects/wwmblog/scss/_base.scss */
-h1, h2, h3, h4, h5, h6, p, input {
+h1, h2, h3, h4, h5, h6, p, input, figure {
   margin: 0;
   font-weight: normal;
 }
@@ -114,6 +109,11 @@ q:after {
 /* line 50, /Users/morris/Projects/wwmblog/scss/_base.scss */
 body, .font-title {
   font-family: "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", sans-serif;
+}
+
+/* line 54, /Users/morris/Projects/wwmblog/scss/_base.scss */
+.mh100p {
+  min-height: 100%;
 }
 
 /* line 2, /Users/morris/Projects/wwmblog/scss/_misc.scss */
@@ -713,6 +713,87 @@ footer {
   color: #d53c36;
 }
 
+/* line 1, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+.page1 {
+  padding-top: 150px;
+  width: 800px;
+  color: #413d32;
+}
+
+/* line 7, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+.chart-wrap {
+  max-width: 100%;
+  width: 300px;
+  margin: 0 10px 60px 20px;
+  float: right;
+}
+/* line 13, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+.chart-wrap .chart {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+}
+/* line 19, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+.chart-wrap legend {
+  position: absolute;
+  bottom: -40px;
+  color: #7f7f7f;
+  background: #dfdfda;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 12px;
+  text-align: center;
+  width: 150px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* line 34, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+#W_lgdPro, #W_lgdBasic {
+  background: url('../img/legend.png') no-repeat;
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 22px;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (min-device-pixel-ratio: 2) {
+  /* line 4, /Users/morris/Projects/wwmblog/scss/_base.scss */
+  #W_lgdPro, #W_lgdBasic {
+    background-image: url('../img/legend@2x.png');
+    -webkit-background-size: 17px auto;
+    -moz-background-size: 17px auto;
+    -o-background-size: 17px auto;
+    background-size: 17px auto;
+  }
+}
+
+/* line 46, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+#W_lgdPro {
+  margin-right: 15px;
+}
+
+/* line 50, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+#W_lgdBasic {
+  background-position: 0 -19px;
+}
+
+/* line 54, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+#W_skillChart {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 600px) {
+  /* line 61, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  .chart-wrap {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+  }
+}
 /* line 9, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .page3:before {
   display: block;

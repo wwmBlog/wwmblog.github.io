@@ -12,7 +12,7 @@ html, body {
   padding : 0;
 }
 
-h1, h2, h3, h4, h5, h6, p, input      { margin : 0; font-weight : normal; }
+h1, h2, h3, h4, h5, h6, p, input, figure { margin : 0; font-weight : normal; }
 em, strong, dfn, code, samp, kbd, var { font-style : normal; }
 a        { text-decoration : none; }
 dfn      { cursor : pointer;       }
@@ -49,4 +49,8 @@ q { &:before { content : ""; } &:after { content : ""; } }
 }
 body, .font-title {
   font-family : "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", sans-serif;
+}
+
+.mh100p {
+  min-height : 100%;
 }

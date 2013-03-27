@@ -7,6 +7,7 @@ define(function(require, exports){
 
   // Requires
   require("libs/zepto.js");
+  require("src/misc.js");
   var EventTarget = require("src/event.js").EventTarget;
 
 
@@ -175,9 +176,6 @@ define(function(require, exports){
   var RESIZE_THRESHOLD = 250;
   $(window)
     .on("scroll", function(e){ onWinScroll(); })
-    .on("resize", function(e){
-      if ( resizeDebounceTO ) { clearTimeout(resizeDebounceTO); }
-      resizeDebounceTO = setTimeout( onWinResize, RESIZE_THRESHOLD );
-    })
+    .on("debouncedResize", onWinResize);
 
 });

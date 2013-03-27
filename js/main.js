@@ -2,6 +2,7 @@ define(function(require){
 
   require("libs/zepto.js");
   require("src/definition.js");
+  require("src/skillchart.js");
 
 
   /* -- Intro Page -- */

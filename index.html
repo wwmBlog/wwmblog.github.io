@@ -43,7 +43,7 @@
 
   <section class="logo-wrap">
     <h1 class="logo page-title font-title">
-      <p class="l1"><b>W</b>ar<b>W</b>ithin<b>M</b>e</p>
+      <!-- <p class="l1"><b>W</b>ar<b>W</b>ithin<b>M</b>e</p> -->
     </h1>
     <!-- <h1 class="logo page-title font-title">
         <p class="l2">我的人生的时间轴</p>
@@ -52,9 +52,26 @@
   </section>
 
   <section class="page-wrap">
-    <div class="page page1"></div>
+    <div class="page page1 clearfix">
+      <aside class="chart-wrap">
+        <div class="chart">
+          <figure id="W_skillChart"></figure>
+          <legend><span id="W_lgdPro">PRO</span><span id="W_lgdBasic">BASIC</span></legend>
+        </div>
+      </aside>
+      <article>
+        <p>爿悎岪翐垤靇頎溳艸伬衵豸泬弨迉僉乇耵蜤遒。仉娞炓掭扂釂楜剺网价姝厏疌坭妧愯屮枒禔筤。菄彔朸膵嗙廩伎一痦偫唚芚帄挍屮，睕梊乜杻姶罫泫戉亍泩漧洬仈昈。亓匎歾娾俅躟愩溤犵扚耏抈狌狜吰溞乇怌褗睔。埼一羑郫腇雸乇幓韸勼，蛁乇洐釱虓輀乇塺仉仩。</p>
+    <p>厹羒剆釴苰曭揫慆氘邙陑妠炓洰忡谼乜泧嘂葮。酡迍汔墿溒縤忕一椋聇砬坶宄眃乜，喿硥乇拑耎觢弨仡乇芺蓛昹尐怑。夃涃岯馗厗醽腧睟旯扡柪尨冼弢尪犌兀旼蒱腷。筎岬芀閿隒鼒孖一椋豽砨斨犰巹乜，趐惾乜佌秖傿瓝氿屮侕禖哅旡玢。</p>
+
+    <p>袺一垚翋棷裮丌蒱熼夃，罣屮挓釴詘蜅丌蒨仈肊。硌一釓趼奡楴屮蜧澥尐，焆乇峓蛌菛楋乇漧卬扐。仉埒甾莥俍鼞</p>
+    <p>爿悎岪翐垤靇頎溳艸伬衵豸泬弨迉僉乇耵蜤遒。仉娞炓掭扂釂楜剺网价姝厏疌坭妧愯屮枒禔筤。菄彔朸膵嗙廩伎一痦偫唚芚帄挍屮，睕梊乜杻姶罫泫戉亍泩漧洬仈昈。亓匎歾娾俅躟愩溤犵扚耏抈狌狜吰溞乇怌褗睔。埼一羑郫腇雸乇幓韸勼，蛁乇洐釱虓輀乇塺仉仩。</p>
+    <p>厹羒剆釴苰曭揫慆氘邙陑妠炓洰忡谼乜泧嘂葮。酡迍汔墿溒縤忕一椋聇砬坶宄眃乜，喿硥乇拑耎觢弨仡乇芺蓛昹尐怑。夃涃岯馗厗醽腧睟旯扡柪尨冼弢尪犌兀旼蒱腷。筎岬芀閿隒鼒孖一椋豽砨斨犰巹乜，趐惾乜佌秖傿瓝氿屮侕禖哅旡玢。</p>
+
+    <p>袺一垚翋棷裮丌蒱熼夃，罣屮挓釴詘蜅丌蒨仈肊。硌一釓趼奡楴屮蜧澥尐，焆乇峓蛌菛楋乇漧卬扐。仉埒甾莥俍鼞</p>
+      </article>
+    </div>
   </section>
-  <section class="page-wrap">
+  <section class="page-wrap mh100p">
     <div class="page page3">
       <form class="contact clearfix" action="">
         <textarea class="content" name="content" id="content" cols="30" rows="10"></textarea>
@@ -79,11 +96,17 @@
     <div class="footer-wrap"><p class="copyright font-title">&copy;你可以随意复制我的网站，只需标明出处。</p><q>不要随波俗流</q></div>
   </footer>
 
-  
-
   <script type="text/javascript" src="js/libs/sea.js" id="seajsnode"></script>
   <script type="text/javascript">
-    seajs.config({ base : "./js" });
+    seajs.config({ 
+        base  : "./js"
+      , shim  : {
+        "SVG" : {
+            src     : "libs/svg.js"
+          , exports : "SVG"
+        }
+      }
+    });
     seajs.use("main.js");
   </script>
 
