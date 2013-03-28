@@ -1,50 +1,48 @@
 define({
 
-    labels   : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    labels   : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10\n21"]
   , datasets : [
     {
-        fill          : "#fff"
-      , fillOpacity   : 0.3
-      , stroke        : "#000"
-      , strokeOpacity : 1
+        fill          : "#e05146"
+      , fillOpacity   : 0.4
+      , stroke        : "#e05146"
       , strokeWidth   : 1
       , data : [
           null
-        , { l : 3, name : "ABC", extra : "" }
+        , { v : 2, extra : "" }
 
         , null
         , null
 
-        , { l : 3, name : "ABC", extra : "" }
+        , { v : 3, extra : "" }
         , null
 
-        , { l : 3, name : "ABC", extra : "" }
+        , { v : 4, extra : "" }
         , null
 
         , null
-        , { l : 3, name : "ABC", extra : "" }
+        , { v : 3, extra : "" }
       ]
     }
     , {
-        fill          : "#fff"
+        fill          : "#0084ff"
       , fillOpacity   : 0.3
-      , stroke        : "#000"
-      , strokeOpacity : 1
+      , stroke        : "#0084ff"
       , strokeWidth   : 1
       , data : [
-          { l : 3, name : "ABC", extra : "" }
+          { v : 4, extra : "" }
         , null
 
-        , { l : 3, name : "ABC", extra : "" }
-        , { l : 3, name : "ABC", extra : "" }
+        , { v : 1, extra : "" }
+        , { v : 3, extra : "" }
 
         , null
-        , { l : 3, name : "ABC", extra : "" }
+        , { v : 4, extra : "" }
 
         , null
-        , { l : 3, name : "ABC", extra : "" }
+        , { v : 4, extra : "" }
 
-        , { l : 3, name : "ABC", extra : "" }
+        , { v : 3, extra : "" }
         , null
       ]
     }

@@ -63,7 +63,7 @@ define(function(require){
   /* -- Stickers(Logo, Shortcuts) -- */
   (function(){
 
-    var ScrollWatcher = require("src/scrollwatcher.js").ScrollWatcher;
+    var ScrollWatcher = require("src/scrollwatcher.js");
     var logoOffset  = $(".logo-wrap").height() + 5;
     var logoW = new ScrollWatcher( ".intro-wrap-holder", -logoOffset );
     logoW.on("scrollabove", function(){ $(".logo-wrap").addClass("fixed"); })

@@ -1,9 +1,9 @@
-define(function(require, exports){
+define(function(require, exports, module){
 
   // Inspired by scrollMonitor(https://github.com/sakabako/scrollMonitor)
   // However, this Monitor only watches a point, instead of a rectangle.
 
-  exports.ScrollWatcher = ScrollWatcher;
+  module.exports = ScrollWatcher;
 
   // Requires
   require("libs/zepto.js");
@@ -76,7 +76,7 @@ define(function(require, exports){
       for ( var i = watcherList.length - 1 ; i >= 0; --i )
       {
         if ( watcherList[i] == this ) {
-          watcher.splice( i, 1 );
+          watcherList.splice( i, 1 );
           break;
         }
       }

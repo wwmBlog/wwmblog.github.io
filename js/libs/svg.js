@@ -912,9 +912,21 @@
     }
     // Remove all elements in this container
   , clear: function() {
-      for (var i = this.children().length - 1; i >= 0; i--)
-        this.removeElement(this.children()[i])
-      
+      var childrens = this.children();
+      for (var i = childrens.length - 1; i >= 0; i--)
+      {
+        var ch = childrens[i];
+        if ( ch.type != "defs" )
+        {
+          this.removeElement(this.children()[i])
+        } else {
+          while ( ch.firstChild ) {
+            ch.removeChild( ch.firstChild );
+          }
+        }
+      }
+
+
       return this
     }
     
@@ -1863,12 +1875,7 @@
     this.constructor.call(this, SVG.create('text'))
     
     /* define default style */
-    this.styles = {
-      'font-size':    16
-    , 'font-family':  'Helvetica, Arial, sans-serif'
-    , 'text-anchor':  'start'
-    }
-    
+    this.styles   = {}
     this._leading = 1.2
   }
   
@@ -1923,8 +1930,9 @@
       /* build new lines */
       for (i = 0, il = lines.length; i < il; i++)
         this.tspan(lines[i])
-        
-      return this.attr('textLength', 1).attr('textLength', null)
+      
+      return this; 
+      // return this.attr('textLength', 1).attr('textLength', null)
     }
     // Create a tspan
   , tspan: function(text) {
@@ -1954,7 +1962,7 @@
     // rebuild appearance type
   , rebuild: function() {
       var i, il
-        , size = this.styles['font-size']
+        , size = parseInt(this.styles['font-size'])
       
       /* define position of all lines */
       for (i = 0, il = this.lines.length; i < il; i++)
