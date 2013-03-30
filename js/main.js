@@ -70,8 +70,8 @@ define(function(require){
          .on("scrollinto",  function(){ $(".logo-wrap").removeClass("fixed"); });
 
     var shortcutW = new ScrollWatcher( "footer", 10 );
-    shortcutW.on("scrollinto",  function(){ $(".shortcut-nav").addClass("sticky"); })
-             .on("scrollbelow", function(){ $(".shortcut-nav").removeClass("sticky"); });
+    shortcutW.on("scrollinto",  function(){ $(".shortcut-nav").toggleClass("sticky", true);  })
+             .on("scrollbelow", function(){ $(".shortcut-nav").toggleClass("sticky", false); });
 
   })();
 

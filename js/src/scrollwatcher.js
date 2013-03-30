@@ -121,18 +121,18 @@ define(function(require, exports, module){
     }
 
     if ( this.prevAbove != this.currAbove && this.currAbove == true ) {
-      this.emmiter.trigger("scrollabove");
+      this.emmiter.trigger( "scrollabove" );
       return;
     }
 
     if ( this.prevBelow != this.currBelow && this.currBelow == true ) {
-      this.emmiter.trigger("scrollbelow");
+      this.emmiter.trigger( "scrollbelow" );
       return;
     }
 
     if ( this.currAbove == false && this.currBelow == false ) {
       if ( this.prevAbove != false || this.prevBelow != false ) {
-        this.emmiter.trigger("scrollinto");
+        this.emmiter.trigger( "scrollinto" );
       }
     }
   }
@@ -141,7 +141,6 @@ define(function(require, exports, module){
   var viewportTop    = 0;
   var viewportBottom = 0;
   var viewportHeight = 0;
-  var prevDocHeight  = 0;
   var docHeight      = 0;
   var docEl          = document.documentElement;
 
@@ -152,18 +151,17 @@ define(function(require, exports, module){
     docHeight      = docEl.scrollHeight;
   }
 
-  function updateWrap ( thisObj ) { ScrollWatcher.prototype.update.apply( thisObj); }
-  function notifyWrap ( thisObj ) { ScrollWatcher.prototype.notify.apply( thisObj); }
+  function notifyWrap ( thisObj ) { thisObj.notify(); }
+  function updateWrap ( thisObj ) { thisObj.update(); }
 
   // Update All Stuffs when Window Scrolled / Resized.
   function onWinResize () {
-    prevDocHeight = docHeight;
     calcViewport();
 
     // Update all items if the body has been resized.
     // Note that one need to manually update the item,
     // if the item might have changed.
-    watcherList.forEach( prevDocHeight != docHeight ? updateWrap : notifyWrap);
+    watcherList.forEach( updateWrap );
   }
   function onWinScroll () {
     calcViewport();

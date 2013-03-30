@@ -9,7 +9,11 @@ define(function(require){
 
       function debounced () { $(window).trigger("debouncedResize"); }
 
-      if ( resizeDebounceTO ) { clearTimeout(resizeDebounceTO); }
+      if ( resizeDebounceTO ) {
+        clearTimeout(resizeDebounceTO);
+      } else {
+        debounced();
+      }
       resizeDebounceTO = setTimeout( debounced, RESIZE_THRESHOLD );
   });
 
