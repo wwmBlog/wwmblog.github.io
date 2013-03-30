@@ -29,8 +29,20 @@ define(function( require, exports, module ){
     canvas.renderGraphs   = renderGraphs;
     canvas.moveToCenter   = moveToCenter;
     canvas.vertexPosition = vertexPosition;
+    canvas.setup          = setup;
+
+    canvas.EVT_RESIZE   = "resize";
+
+    canvas.setup();
+    canvas.renderBG();
 
     return canvas;
+  }
+
+  function setup () {
+    // Container Info
+    this.CENTER = document.getElementById(this.elementID).clientWidth / 2;
+    this.RADIUS = this.CENTER - 50;
   }
 
   function renderBG () {
@@ -73,7 +85,6 @@ define(function( require, exports, module ){
                      .font(labelStyle);
 
       var bbox = text.node.getBBox();
-      console.log( bbox );
 
       if ( i < LABEL_LEN_2_4 && i > 0) {
         pos.x += bbox.width / 2;
@@ -87,7 +98,6 @@ define(function( require, exports, module ){
         pos.y -= bbox.height / 2;
       }
 
-      console.log( pos );
       text.center( pos.x, pos.y );
 
       group.add( text );
@@ -103,17 +113,17 @@ define(function( require, exports, module ){
       }
     }
   }
-  function render () {
+  function render ( event ) {
 
-    // Container Info
-    this.CENTER = document.getElementById(this.elementID).clientWidth / 2;
-    this.RADIUS = this.CENTER - 50;
-
-    this.clear();
-    this.renderBG();
-    this.renderGraphs();
-
-    this.firstRender = false;
+    if ( event == this.EVT_RESIZE ) {
+      this.setup();
+      this.clear();
+      this.renderBG();
+      this.renderGraphs();
+    } else if ( this.firstRender ) {
+      this.renderGraphs();
+      this.firstRender = false;
+    }
   }
   function moveToCenter ( svgElement ) {
     svgElement.transform( { "x" : this.CENTER, "y" : this.CENTER });
