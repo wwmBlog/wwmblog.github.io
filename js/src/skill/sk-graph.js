@@ -2,7 +2,7 @@ define(function(require, exports, module){
 
   module.exports = Graph;
 
-  var easing = require("src/support.js").easing;
+  require("src/support.js");
 
   function Graph( data, canvas ) {
 
@@ -28,7 +28,10 @@ define(function(require, exports, module){
 
   function draw () {
 
-    if ( this.polygon ) return;
+    if ( this.polygon ) {
+      this.polygonMask.remove();
+      this.group.remove();
+    }
 
     this.dots        = [];
     this.maskDots    = [];
@@ -111,22 +114,13 @@ define(function(require, exports, module){
     var DURATION  = 1500;
     var TO        = this.canvas.vertexPosition( 0 ); // Get the longest distance
     var DISTANCE  = Math.sqrt(TO.x*TO.x+TO.y*TO.y);
-
     var self      = this;
-    var startTime = Date.now();
 
-    var doAni = function () {
-
-      var time     = Date.now();
-      var interval = time - startTime;
-      var p        = easing.easeInOutCubic( interval / DURATION );
-      if ( p > 1 ) { p = 1; }
-      var unit     = DISTANCE * p;
-
-      // Deal with dots
+    $.genericAnimate(DISTANCE, DURATION, function( unit, p ){
       var dots          = self.dots;
       var maskdots      = self.maskDots;
       var polygonString = [];
+
       for ( var i = 0; i < dots.length; ++i ) {
         var dot = dots[i];
         var pp  = unit / dot.data("toDis");
@@ -142,12 +136,7 @@ define(function(require, exports, module){
 
       // Deal with polygon
       self.polygon.attr("points", polygonString.join(" "));
-
-      if ( time - startTime < DURATION ) {
-        requestAnimationFrame(doAni);
-      }
-    };
-    requestAnimationFrame(doAni);
+    });
 
     return this;
   }

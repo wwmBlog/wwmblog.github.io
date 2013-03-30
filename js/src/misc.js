@@ -34,11 +34,11 @@ define(function(require){
           if ( w != t.data("_ar_width") || h != t.data("_ar_height") ) {
             t.data("_ar_width",  w)
              .data("_ar_height", h)
-             .trigger("autoreisze");
+             .trigger("autoresize");
           }
         }
       });
     }
+    return this;
   }
-
 });

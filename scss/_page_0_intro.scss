@@ -331,7 +331,7 @@ $introHeight : 14px * 1.5 * 2;
   line-height : floor($cardBottomH * (1 - $cardRightHSplitP));
   margin-left : $cardLeftW;
   
-  background    : #393939 image-url("nw_bg.png") no-repeat;
+  background    : #393939 image-url("nw_bg.png") 0 center repeat-x;
   border-radius : 0 0 4px 0;
   
   text-align : right;

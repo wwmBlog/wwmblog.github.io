@@ -188,6 +188,9 @@ footer {
   }
 }
 @media (max-width:410px) {
+  .footer-wrap {
+    padding : 0 8px;
+  }
   .footer-wrap q {
     font-size : 18px;
   }

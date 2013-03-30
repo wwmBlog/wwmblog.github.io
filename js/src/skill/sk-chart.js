@@ -15,9 +15,6 @@ define(function( require, exports, module ){
     canvas.unitAngle = 360 / data.labels.length;
     canvas.maxValue  = 5;
 
-    // Container Info
-    canvas.CENTER      = document.getElementById(elementID).clientWidth / 2;
-    canvas.RADIUS      = canvas.CENTER - 5;
     canvas.firstRender = true;
 
     // Graphs
@@ -58,20 +55,43 @@ define(function( require, exports, module ){
     }
 
     // Generate label
-    // var labelStyle = {
-    //     size   : "12px"
-    //   , anchor : "middle"
-    //   , fill   : "#b4ac95"
-    // };
+    var labelStyle = {
+        size   : "12px"
+      , anchor : "middle"
+      , fill   : "#b4ac95"
+    };
 
-    // for ( i = 0; i < labels.length; ++i )
-    // {
-    //   var pos  = this.vertexPosition(i, 6);
-    //   var text = this.text(labels[i])
-    //                  .font(labelStyle)
-    //                  .move(pos.x, pos.y);
-    //   group.add( text );
-    // }
+    var LABEL_LEN     = labels.length;
+    var LABEL_LEN_1_4 = LABEL_LEN / 4;
+    var LABEL_LEN_2_4 = LABEL_LEN / 2;
+    var LABEL_LEN_3_4 = LABEL_LEN_1_4 * 3;
+
+    for ( i = 0; i < labels.length; ++i )
+    {
+      var pos  = this.vertexPosition(i, 5.2);
+      var text = this.text(labels[i])
+                     .font(labelStyle);
+
+      var bbox = text.node.getBBox();
+      console.log( bbox );
+
+      if ( i < LABEL_LEN_2_4 && i > 0) {
+        pos.x += bbox.width / 2;
+      } else if ( i != 0 && i != LABEL_LEN_2_4 ) {
+        pos.x -= bbox.width / 2;
+      }
+
+      if ( i < LABEL_LEN_3_4 && i > LABEL_LEN_1_4 ) {
+        pos.y += bbox.height / 2;
+      } else if ( i != LABEL_LEN_1_4 && i != LABEL_LEN_3_4 ) {
+        pos.y -= bbox.height / 2;
+      }
+
+      console.log( pos );
+      text.center( pos.x, pos.y );
+
+      group.add( text );
+    }
 
     this.moveToCenter( group );
   }
@@ -84,6 +104,10 @@ define(function( require, exports, module ){
     }
   }
   function render () {
+
+    // Container Info
+    this.CENTER = document.getElementById(this.elementID).clientWidth / 2;
+    this.RADIUS = this.CENTER - 50;
 
     this.clear();
     this.renderBG();

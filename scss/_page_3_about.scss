@@ -6,7 +6,9 @@ $formSpacing      : 5px;
 $formSubmitWidth  : 60px;
 
 .page3 {
-  &:before {
+  min-height : 100%;
+  
+  .page:before {
     display : block;
     content : " ";
     height  : 100px;

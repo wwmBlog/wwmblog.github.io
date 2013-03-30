@@ -309,6 +309,11 @@ footer {
 }
 @media (max-width: 410px) {
   /* line 191, /Users/morris/Projects/wwmblog/scss/_misc.scss */
+  .footer-wrap {
+    padding: 0 8px;
+  }
+
+  /* line 194, /Users/morris/Projects/wwmblog/scss/_misc.scss */
   .footer-wrap q {
     font-size: 18px;
   }
@@ -746,7 +751,7 @@ footer {
   height: 50px;
   line-height: 50px;
   margin-left: 137px;
-  background: #393939 url('../img/nw_bg.png') no-repeat;
+  background: #393939 url('../img/nw_bg.png') 0 center repeat-x;
   border-radius: 0 0 4px 0;
   text-align: right;
   padding: 0 1em;
@@ -762,10 +767,10 @@ footer {
   /* line 4, /Users/morris/Projects/wwmblog/scss/_base.scss */
   .card-bottom {
     background-image: url('../img/nw_bg@2x.png');
-    -webkit-background-size: 200px auto;
-    -moz-background-size: 200px auto;
-    -o-background-size: 200px auto;
-    background-size: 200px auto;
+    -webkit-background-size: 230px auto;
+    -moz-background-size: 230px auto;
+    -o-background-size: 230px auto;
+    background-size: 230px auto;
   }
 }
 /* line 349, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
@@ -803,27 +808,30 @@ footer {
 /* line 3, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 .page1 {
   padding-top: 150px;
-  width: 800px;
   color: #413d32;
 }
+/* line 7, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+.page1 .page {
+  width: 800px;
+}
 
-/* line 9, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 12, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 .chart-wrap {
   max-width: 100%;
-  width: 300px;
-  margin: 0 10px 60px 20px;
+  width: 400px;
+  margin: 0 0 20px 20px;
   float: right;
 }
-/* line 15, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 18, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 .chart-wrap .chart {
   position: relative;
   width: 100%;
   padding-bottom: 100%;
 }
-/* line 21, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 24, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 .chart-wrap legend {
   position: absolute;
-  bottom: -40px;
+  bottom: -20px;
   color: #7f7f7f;
   background: #dfdfda;
   border-radius: 4px;
@@ -836,7 +844,7 @@ footer {
   margin: auto;
 }
 
-/* line 36, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 39, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 #W_lgdPro, #W_lgdBasic {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAlCAYAAACkhgJBAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAIGNIUk0AAG11AABzoAAA/N0AAINkAABw6AAA7GgAADA+AAAQkOTsmeoAAAGySURBVHjarNRLaxNRGMbxX2rUKk3wglDQjReol4ouxJXgQv0Sfh4/jtCVCK7ciF1GoVWwSC21gkgqJkYNmLh5p4zDTHIm6QOHZObM/Oe9nafhyVhBR3EHryVqoeTefdxEe1bILVyK/6uzQM7jbu56JVJLhizhARqF2qykQhbwCIsl+6upkHs4V7HfxoUUyOkpzzyMWp2YBHkzBXIMt/E4om4VH2jiE/YTIjqC67iKj+igm0HGeBtDllrHK7F20Mla/AED9bWMpQwyimjqaA9PsZWf2Pf4mfDyX6zjGfrFsR/iefxWqYu1iHpcdQC7eBHp5ZUVfy3ryDQr2MPL3HU/Ql+PVJTNSZm24lCewSv8mVSk5oS9zjzOVluN8SFAsnSu4SI+x/o2C+RX+EbmHb+xm4P2UyC9wv3F3CGD7wHbxZfiQFZBijoV60YM4tfo3k6+O8Mp417s6DIul7W4V7MprcOAtMsg/ZqQk1lN85AfM8xZa95IDlKapyYHkTRnhOxjIyzjP8gwfON4xYsjbGMzjKvST/olkAHexRqkmFIPZ3M2uRlfH9Vxtm58bSPyTtK/AQCO7WPVJb2whAAAAABJRU5ErkJggg==') no-repeat;
   display: inline-block;
@@ -855,17 +863,17 @@ footer {
   }
 }
 
-/* line 48, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 51, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 #W_lgdPro {
   margin-right: 15px;
 }
 
-/* line 52, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 55, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 #W_lgdBasic {
   background-position: 0 -19px;
 }
 
-/* line 56, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 59, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 #W_skillChart {
   position: absolute;
   width: 100%;
@@ -873,7 +881,7 @@ footer {
 }
 
 @media (max-width: 600px) {
-  /* line 63, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 66, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   .chart-wrap {
     float: none;
     margin-left: auto;
@@ -881,7 +889,7 @@ footer {
     margin-bottom: 60px;
   }
 }
-/* line 71, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 74, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 article dfn {
   background: #413d32;
   color: #eee;
@@ -894,7 +902,7 @@ article dfn {
   -o-animation: breath infinite 1.2s ease-in-out alternate;
   animation: breath infinite 1.2s ease-in-out alternate;
 }
-/* line 81, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 84, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 article dfn:hover {
   -webkit-animation: none;
   -moz-animation: none;
@@ -904,54 +912,54 @@ article dfn:hover {
 }
 
 @-webkit-keyframes breath {
-  /* line 87, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 90, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   0% {
     -webkit-box-shadow: inset 0 0 0 rgba(162, 152, 124, 0);
   }
 
-  /* line 88, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 91, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   100% {
     -webkit-box-shadow: inset 0 1px 16px #A2987C;
   }
 }
 
 @-moz-keyframes breath {
-  /* line 91, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 94, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   0% {
     -moz-box-shadow: inset 0 0 0 rgba(162, 152, 124, 0);
   }
 
-  /* line 92, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 95, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   100% {
     -moz-box-shadow: inset 0 1px 16px #A2987C;
   }
 }
 
 @-o-keyframes breath {
-  /* line 95, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 98, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   0% {
     -o-box-shadow: inset 0 0 0 rgba(162, 152, 124, 0);
   }
 
-  /* line 96, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 99, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   100% {
     -o-box-shadow: inset 0 1px 16px #A2987C;
   }
 }
 
 @keyframes breath {
-  /* line 99, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 102, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   0% {
     box-shadow: inset 0 0 0 rgba(162, 152, 124, 0);
   }
 
-  /* line 100, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+  /* line 103, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
   100% {
     box-shadow: inset 0 1px 16px #A2987C;
   }
 }
 
-/* line 104, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
+/* line 107, /Users/morris/Projects/wwmblog/scss/_page_1_skill.scss */
 [data-faq]:before {
   content: attr(data-faq);
   display: block;
@@ -964,14 +972,25 @@ article dfn:hover {
   font-weight: bold;
 }
 
-/* line 9, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
-.page3:before {
+/* line 2, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+.page2 .page {
+  width: auto;
+  max-width: 100%;
+  height: 300px;
+}
+
+/* line 8, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+.page3 {
+  min-height: 100%;
+}
+/* line 11, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+.page3 .page:before {
   display: block;
   content: " ";
   height: 100px;
 }
 
-/* line 16, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 18, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .contact {
   width: 260px;
   line-height: 0;
@@ -979,7 +998,7 @@ article dfn:hover {
   margin-left: 80px;
 }
 
-/* line 22, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 24, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .content-lbl {
   position: absolute;
   width: 32px;
@@ -991,7 +1010,7 @@ article dfn:hover {
   color: #afafab;
 }
 
-/* line 32, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 34, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .content {
   background: #555;
   color: #ddd;
@@ -1005,21 +1024,21 @@ article dfn:hover {
   text-indent: 2em;
   line-height: 1.2em;
 }
-/* line 49, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 51, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .content::first-line {
   line-height: 2em;
 }
-/* line 52, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 54, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .content:focus + .content-lbl {
   color: #fff;
 }
 
-/* line 57, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 59, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .email {
   float: left;
   position: relative;
 }
-/* line 61, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 63, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .email label {
   position: absolute;
   font-size: 16px;
@@ -1031,7 +1050,7 @@ article dfn:hover {
   top: 0;
   left: 0;
 }
-/* line 73, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 75, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .email input {
   width: 155px;
   height: 1em;
@@ -1041,12 +1060,12 @@ article dfn:hover {
   background: #555;
   font-size: 12px;
 }
-/* line 85, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 87, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .email input:focus + label {
   color: #fff;
 }
 
-/* line 91, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 93, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .submit {
   width: 58px;
   height: 26px;
@@ -1059,7 +1078,7 @@ article dfn:hover {
   cursor: pointer;
   overflow: hidden;
 }
-/* line 103, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 105, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .submit input {
   color: #546724;
   display: block;
@@ -1074,7 +1093,7 @@ article dfn:hover {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 119, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 121, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .submit label {
   display: inline-block;
   width: 22px;
@@ -1087,7 +1106,7 @@ article dfn:hover {
   cursor: pointer;
   text-shadow: -30px 30px #546724;
 }
-/* line 136, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
+/* line 138, /Users/morris/Projects/wwmblog/scss/_page_3_about.scss */
 .submit:hover label {
   -webkit-transition: all ease-in-out 0.35s;
   -moz-transition: all ease-in-out 0.35s;

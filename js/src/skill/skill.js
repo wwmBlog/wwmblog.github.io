@@ -6,7 +6,8 @@ define(function(require){
 
   var chart         = new RadarChart( data, "W_skillChart" );
 
-  $("#W_skillChart").on("autoresize", function(){ chart.render(); });
+  $("#W_skillChart").watchAutoResize()
+                    .on("autoresize", function(){ chart.render(); });
 
   var chartW  = new ScrollWatcher( ".page1" );
   chartW.on("scrollabove", onShown)

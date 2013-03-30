@@ -2,14 +2,17 @@ $softTextColor : #413d32;
 
 .page1 {
   padding-top : 150px;
-  width       : 800px;
   color       : $softTextColor;
+  
+  .page {
+    width : 800px;
+  }
 }
 
 .chart-wrap {
   max-width : 100%;
-  width     : 300px;
-  margin    : 0 10px 60px 20px;
+  width     : 400px;
+  margin    : 0 0 20px 20px;
   float     : right;
   
   .chart {
@@ -20,7 +23,7 @@ $softTextColor : #413d32;
 
   legend {
     position      : absolute;
-    bottom        : -40px;
+    bottom        : -20px;
     color         : #7f7f7f;
     background    : #dfdfda;
     border-radius : 4px;
