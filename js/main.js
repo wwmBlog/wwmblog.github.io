@@ -3,10 +3,11 @@ define(function(require){
   require("libs/zepto.js");
   require("src/definition.js");
   require("src/skill/skill.js");
+  require("src/timeline.js");
 
 
   /* -- Intro Page -- */
-  (function(){
+  ;(function(){
     // Intro Card Citing Carousel, 2D Version
     function CiteCarousel2D(){
       var index = 0;
@@ -61,7 +62,7 @@ define(function(require){
 
 
   /* -- Stickers(Logo, Shortcuts) -- */
-  (function(){
+  ;(function(){
 
     var ScrollWatcher = require("src/scrollwatcher.js");
     var logoOffset  = $(".logo-wrap").height() + 5;

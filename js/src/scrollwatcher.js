@@ -41,17 +41,6 @@ define(function(require, exports, module){
       this.element = $(watchElement);
     }
 
-    this.element.theHeight = theHeight;
-
-    function theHeight () {
-      var el = this[0];
-      if ( el == document.documentElement ) {
-        return el.scrollHeight;
-      } else {
-        return this.height();
-      }
-    }
-
     if ( viewportTop != 0 ) {
       // If the window has been scroll, I want to fire an event.
       // So we need to delay until next cycle,
@@ -95,7 +84,7 @@ define(function(require, exports, module){
     this.watchY = this.element.offset().top;
 
     if ( this.offset < 0 ) {
-      this.watchY += this.element.theHeight() + this.offset;
+      this.watchY += theHeight.apply( this.element ) + this.offset;
     } else if ( this.offset > 0 ) {
       this.watchY += this.offset;
     }
@@ -134,6 +123,15 @@ define(function(require, exports, module){
       if ( this.prevAbove != false || this.prevBelow != false ) {
         this.emmiter.trigger( "scrollinto" );
       }
+    }
+  }
+
+  function theHeight () {
+    var el = this[0];
+    if ( el == document.documentElement ) {
+      return el.scrollHeight;
+    } else {
+      return this.height();
     }
   }
 
