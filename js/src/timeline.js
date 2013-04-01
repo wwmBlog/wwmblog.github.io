@@ -161,16 +161,28 @@ define(function(require){
 
   function drawLines () {
     var $dot = $currents[0];
-    var x = $dot.css("left");
-    var y = $dot.css("top");
+    var pos1 = $dot.position();
+    var w1   = $dot.width() / 2 + 4;
     for ( var i = 1; i < $currents.length; ++i )
     {
-      currentLines[i - 1].attr({ "x1" : x, "y1" : y });
+      $dot = $currents[i];
 
-      x = $currents[i].css("left");
-      y = $currents[i].css("top");
+      var pos2 = $dot.position();
+      var line = currentLines[i - 1];
+      var rad  = Math.atan2( pos2.top - pos1.top, pos2.left - pos1.left );
 
-      currentLines[i - 1].attr({ "x2" : x, "y2" : y });
+      pos1.left += Math.floor( Math.cos( rad ) * w1 );
+      pos1.top  += Math.floor( Math.sin( rad ) * w1 );
+
+      w1 = $dot.width() / 2 + 4;
+
+      line.attr({ "x1" : pos1.left, "y1" : pos1.top })
+          .attr({ 
+              "x2" : pos2.left - Math.floor( Math.cos( rad ) * w1 )
+            , "y2" : pos2.top  - Math.floor( Math.sin( rad ) * w1 )
+          });
+
+      pos1 = pos2;
     }
   }
 
