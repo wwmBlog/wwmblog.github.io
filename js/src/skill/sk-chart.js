@@ -119,7 +119,10 @@ define(function( require, exports, module ){
       this.setup();
       this.clear();
       this.renderBG();
-      this.renderGraphs();
+      if ( this.firstRender == false )
+      {
+        this.renderGraphs();
+      }
     } else if ( this.firstRender ) {
       this.renderGraphs();
       this.firstRender = false;
