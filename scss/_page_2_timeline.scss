@@ -1,9 +1,12 @@
+$timelineBGColor : #dcdcd5;
+
 .page2 {
   .page {
     width      : auto;
     max-width  : 100%;
     height     : 300px;
-    background : rgba(#000, 0.1);
+    background : $timelineBGColor;
+    overflow   : hidden;
   }
 }
 
@@ -11,20 +14,26 @@
   position : relative;
 }
 
-$dotEndPointSize    : 32px;
-$dotSize            : 24px;
-$dotHoverBorderSize : 6px;
+$dotEndPointSize     : 32px;
+$dotSize             : 24px;
+$dotHoverBorderSize  : 6px;
+$dotEndPointSize_2   : $dotEndPointSize / 2;
+$dotSize_2           : $dotSize / 2;
+$n_dotEndPointSize_2 : -$dotEndPointSize / 2;
+$n_dotSize_2         : -$dotSize / 2;
 
 .tl_dot {
   position      : absolute;
   display       : block;
   border-radius : 50%;
-  border        : $dotSize/2 solid #aaa;
+  border        : -$n_dotSize_2 solid #aaa;
   width         : $dotSize;
   height        : $dotSize;
   z-index       : 3;
   top           : 50%;
-  margin-top    : -$dotSize/2;
+  left          : 0;
+  margin        : $n_dotSize_2 0 0 $n_dotSize_2;
+  background    : $timelineBGColor;
 
   @include box-sizing(border-box);
   @include transition(border-width 0.2s ease-in-out);
@@ -36,14 +45,13 @@ $dotHoverBorderSize : 6px;
   &.start, &.end {
     width        : $dotEndPointSize;
     height       : $dotEndPointSize;
-    left         : -$dotEndPointSize / 2;
-    margin-top   : -$dotEndPointSize / 2;
-    border-width : $dotEndPointSize / 2;
+    margin       : $n_dotEndPointSize_2 0 0 $n_dotEndPointSize_2;
+    border-width : $dotEndPointSize_2;
   }
 
   &.end {
     left        : 100%;
-    margin-left : -$dotEndPointSize / 2;
+    margin-left : $n_dotEndPointSize_2;
   }
 
   &:hover {
@@ -52,27 +60,30 @@ $dotHoverBorderSize : 6px;
 }
 
 @media (max-width:530px) {
-  $dotEndPointSize    : 24px;
-  $dotSize            : 16px;
-  $dotHoverBorderSize : 6px;
+  $dotEndPointSize     : 24px;
+  $dotSize             : 16px;
+  $dotHoverBorderSize  : 8px;
+  $dotEndPointSize_2   : $dotEndPointSize / 2;
+  $dotSize_2           : $dotSize / 2;
+  $n_dotEndPointSize_2 : -$dotEndPointSize / 2;
+  $n_dotSize_2         : -$dotSize / 2;
 
   .tl_dot {
-    border        : $dotSize/2 solid #aaa;
-    width         : $dotSize;
-    height        : $dotSize;
-    margin-top    : -$dotSize/2;
+    border : -$n_dotSize_2 solid #aaa;
+    width  : $dotSize;
+    height : $dotSize;
+    margin : $n_dotSize_2 0 0 $n_dotSize_2;
 
     &.start, &.end {
       width        : $dotEndPointSize;
       height       : $dotEndPointSize;
-      left         : -$dotEndPointSize / 2;
-      margin-top   : -$dotEndPointSize / 2;
-      border-width : $dotEndPointSize / 2;
+      margin       : $n_dotEndPointSize_2 0 0 $n_dotEndPointSize_2;
+      border-width : $dotEndPointSize_2;
     }
 
     &.end { 
       left        : 100%;
-      margin-left : -$dotEndPointSize / 2;
+      margin-left : $n_dotEndPointSize_2;
     }
     &:hover { border-width : $dotHoverBorderSize / 2; }
   }

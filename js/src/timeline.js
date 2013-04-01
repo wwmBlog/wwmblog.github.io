@@ -3,15 +3,14 @@ define(function(require){
   var data = require("data/timeline.js");
   var SVG  = require("SVG");
 
-  var canvas = SVG("W_timeline");
-  var $currents  = [];
-  var $alphas    = [];
-  var $betas     = [];
+  var canvas       = SVG("W_timeline");
+  var $currents    = [];
+  var currentLines = [];
+  var $alphas      = [];
+  var $betas       = [];
 
   // Part of the timeline is rendered using CSS
   var $container = $("#W_timelineContainer");
-  $("<span class='tl_dot start'></span>").appendTo($container).data("desc", data.start);
-  $("<span class='tl_dot end'></span>"  ).appendTo($container).data("desc", data.end);
 
   ;(function(){
 
@@ -45,7 +44,19 @@ define(function(require){
                         .data("midT", r.mid)
                         .css( "left", c.left );
         collection.push($dot);
+
+        // Add lines by the way.
+        var line = canvas.line(0, h_half, 0, h_half).attr( { "stroke" : "#b9b9b9", "stroke-width" : "8" } );
+        currentLines.push( line );
       }
+
+      var line = canvas.line(0, h_half, 0, h_half)
+                       .attr( { 
+                            "stroke"           : "#b9b9b9"
+                          , "stroke-width"     : "8"
+                          , "stroke-dasharray" : "16, 8"
+                       } );
+      currentLines.push( line );
     }
 
     function range ( start, s , b ) {
@@ -76,7 +87,14 @@ define(function(require){
 
     addAltDots( data.alpha,   $alphas,   $container );
     addAltDots( data.beta,    $betas,    $container );
-    addDots   ( data.current, $currents, $container );
+
+    var d = $("<span class='tl_dot start'></span>").appendTo($container).data("desc", data.start);
+    $currents.push( d );
+
+    addDots( data.current, $currents, $container );
+
+    d = $("<span class='tl_dot end'></span>"  ).appendTo($container).data("desc", data.end);
+    $currents.push( d );
 
   })();
 
@@ -114,7 +132,7 @@ define(function(require){
       tlState = (scrollY - tlCenter) / (tlCenter - tlTop);
     }
 
-    for ( var i = 0; i < $currents.length; ++i ) {
+    for ( var i = 1; i < $currents.length - 1; ++i ) {
       var $dot = $currents[i];
       var midT = $dot.data("midT");
       var endT;
@@ -136,6 +154,23 @@ define(function(require){
     c_height *= 3;
     for ( i = 0; i < $betas.length; ++i ) {
       $dot = $betas[i].css("top", c_height);
+    }
+
+    drawLines();
+  }
+
+  function drawLines () {
+    var $dot = $currents[0];
+    var x = $dot.css("left");
+    var y = $dot.css("top");
+    for ( var i = 1; i < $currents.length; ++i )
+    {
+      currentLines[i - 1].attr({ "x1" : x, "y1" : y });
+
+      x = $currents[i].css("left");
+      y = $currents[i].css("top");
+
+      currentLines[i - 1].attr({ "x2" : x, "y2" : y });
     }
   }
 

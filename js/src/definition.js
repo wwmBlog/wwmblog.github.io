@@ -14,7 +14,7 @@ define(function(require){
       $defContainer = $wrapper.children(".definition");
     }
     if ( $defContainer.length == 0 ) {
-      $defContainer = $('<details class="definition hidden"></details>').appendTo($wrapper);
+      $defContainer = $('<div class="definition hidden"></div>').appendTo($wrapper);
     }
 
     var immDef = $defContainer.children().html();
