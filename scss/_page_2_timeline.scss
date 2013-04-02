@@ -1,19 +1,59 @@
 $timelineBGColor : #dcdcd5;
-$dotColor        : #454545;
+$dotColor        : #838383;
 $dotColorAlt     : #f88953;
 
 .page2 {
   .page {
-    width      : auto;
-    max-width  : 100%;
-    height     : 300px;
-    background : $timelineBGColor;
-    overflow   : hidden;
+    width          : auto;
+    max-width      : 100%;
+    height         : 300px;
+    position       : relative;
+    overflow       : hidden;
+    padding-bottom : 20px;
+
+    // background : $timelineBGColor;
+  }
+
+  legend {
+    position      : absolute;
+    bottom        : 0;
+    color         : #7f7f7f;
+    background    : #dfdfda;
+    border-radius : 4px;
+    padding       : 8px 12px;
+    font-size     : 12px;
+    text-align    : center;
+    left          : 15%;
   }
 }
 
-#W_timelineContainer {
-  position : relative;
+#W_lgdTL, #W_lgdTLAlt {
+
+  line-height  : 20px;
+  padding-left : 16px;
+  height       : 20px;
+  display      : inline-block;
+  position     : relative;
+  
+  &:before {
+    content       : " ";
+    width         : 14px;
+    height        : 14px;
+    line-height   : 20px;
+    border-radius : 10px;
+    background    : $dotColor;
+    position      : absolute;
+    top           : 2px;
+    left          : 0;
+  }
+}
+
+#W_lgdTLAlt {
+  margin-left : 8px;
+  
+  &:before{
+    background : $dotColorAlt;
+  }
 }
 
 $dotEndPointSize     : 32px;
@@ -35,7 +75,7 @@ $n_dotSize_2         : -$dotSize / 2;
   top           : 50%;
   left          : 0;
   margin        : $n_dotSize_2 0 0 $n_dotSize_2;
-  background    : $timelineBGColor;
+  // background    : $timelineBGColor;
 
   @include box-sizing(border-box);
   @include transition(border-width 0.2s ease-in-out);
