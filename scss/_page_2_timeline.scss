@@ -1,4 +1,6 @@
 $timelineBGColor : #dcdcd5;
+$dotColor        : #454545;
+$dotColorAlt     : #f88953;
 
 .page2 {
   .page {
@@ -26,7 +28,7 @@ $n_dotSize_2         : -$dotSize / 2;
   position      : absolute;
   display       : block;
   border-radius : 50%;
-  border        : -$n_dotSize_2 solid #aaa;
+  border        : $dotSize_2 solid $dotColor;
   width         : $dotSize;
   height        : $dotSize;
   z-index       : 3;
@@ -38,15 +40,12 @@ $n_dotSize_2         : -$dotSize / 2;
   @include box-sizing(border-box);
   @include transition(border-width 0.2s ease-in-out);
   
-  &.alt {
-    border-color : #f88953;
-  }
   
   &.start, &.end {
+    border-width : $dotEndPointSize_2;
     width        : $dotEndPointSize;
     height       : $dotEndPointSize;
     margin       : $n_dotEndPointSize_2 0 0 $n_dotEndPointSize_2;
-    border-width : $dotEndPointSize_2;
   }
 
   &.end {
@@ -54,9 +53,8 @@ $n_dotSize_2         : -$dotSize / 2;
     margin-left : $n_dotEndPointSize_2;
   }
 
-  &:hover {
-    border-width : $dotHoverBorderSize / 2;
-  }
+  &.alt   { border-color : $dotColorAlt;            }
+  &:hover { border-width : $dotHoverBorderSize / 2; }
 }
 
 @media (max-width:530px) {
@@ -69,16 +67,16 @@ $n_dotSize_2         : -$dotSize / 2;
   $n_dotSize_2         : -$dotSize / 2;
 
   .tl_dot {
-    border : -$n_dotSize_2 solid #aaa;
-    width  : $dotSize;
-    height : $dotSize;
-    margin : $n_dotSize_2 0 0 $n_dotSize_2;
+    border-width : $dotSize_2;
+    width        : $dotSize;
+    height       : $dotSize;
+    margin       : $n_dotSize_2 0 0 $n_dotSize_2;
 
     &.start, &.end {
+      border-width : $dotEndPointSize_2;
       width        : $dotEndPointSize;
       height       : $dotEndPointSize;
       margin       : $n_dotEndPointSize_2 0 0 $n_dotEndPointSize_2;
-      border-width : $dotEndPointSize_2;
     }
 
     &.end { 

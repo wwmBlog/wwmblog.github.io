@@ -8,10 +8,16 @@ define(function(require){
   var currentLines = [];
   var $alphas      = [];
   var $betas       = [];
+  var altlines     = [];
+  var $alphaStartDot;
+  var $betaStartDot;
+  var $alphaStartLine;
+  var $betaStartLine;
 
   // Part of the timeline is rendered using CSS
   var $container = $("#W_timelineContainer");
 
+  // Init necessary elements.
   ;(function(){
 
     var c_height = $container.height();
@@ -45,14 +51,18 @@ define(function(require){
                         .css( "left", c.left );
         collection.push($dot);
 
+        if ( c.alpha ) { $alphaStartDot = $dot; }
+        if ( c.beta  ) { $betaStartDot  = $dot; }
+
         // Add lines by the way.
-        var line = canvas.line(0, h_half, 0, h_half).attr( { "stroke" : "#b9b9b9", "stroke-width" : "8" } );
+        var line = canvas.line().attr( { "stroke" : "#b9b9b9", "stroke-width" : "8" });
         currentLines.push( line );
       }
 
+      // Last Line
       var line = canvas.line(0, h_half, 0, h_half)
                        .attr( { 
-                            "stroke"           : "#b9b9b9"
+                            "stroke"           : "#cbcbcb"
                           , "stroke-width"     : "8"
                           , "stroke-dasharray" : "16, 8"
                        } );
@@ -82,28 +92,40 @@ define(function(require){
                           .data("desc", c.desc)
                           .css( "left", c.left );
         collection.push($dot);
+
+        if ( i != 0 ) {
+          altlines.push( canvas.line().attr({ "stroke" : "#cbcbcb", "stroke-width" : "8" }) );
+        }
       }
     }
 
-    addAltDots( data.alpha,   $alphas,   $container );
-    addAltDots( data.beta,    $betas,    $container );
+    // Alt Dot
+    addAltDots( data.alpha, $alphas, $container );
+    addAltDots( data.beta,  $betas,  $container );
 
+    // Alt Curves
+    $alphaStartLine = canvas.path().fill("#cbcbcb").back();
+    $betaStartLine  = canvas.path().fill("#cbcbcb").back();
+
+    // Start Dot
     var d = $("<span class='tl_dot start'></span>").appendTo($container).data("desc", data.start);
     $currents.push( d );
 
     addDots( data.current, $currents, $container );
 
+    // End Dot
     d = $("<span class='tl_dot end'></span>"  ).appendTo($container).data("desc", data.end);
     $currents.push( d );
 
   })();
 
+  // Recalc
   var tlTop    = 0;
   var tlCenter = 0;
   var tlBottom = 0;
   var tlState  = -2;
 
-  function updateMetric () {
+  function redrawTimeline () {
     var offset = $container.offset();
     var wh     = window.innerHeight;
     var space  = wh - offset.height;
@@ -112,6 +134,8 @@ define(function(require){
     if ( space < 200 ) { space = 200; }
     tlTop    = offset.top - space;
     tlBottom = offset.top + offset.height + space - wh;
+
+    arrageDots();
   }
 
   function arrageDots () {
@@ -160,35 +184,97 @@ define(function(require){
   }
 
   function drawLines () {
-    var $dot = $currents[0];
-    var pos1 = $dot.position();
-    var w1   = $dot.width() / 2 + 4;
+    var MARGIN = 4;
+    var $dot   = $currents[0];
+    var pos1   = $dot.position();
+    var w1     = $dot.width() / 2 + MARGIN;
     for ( var i = 1; i < $currents.length; ++i )
     {
       $dot = $currents[i];
 
       var pos2 = $dot.position();
       var line = currentLines[i - 1];
-      var rad  = Math.atan2( pos2.top - pos1.top, pos2.left - pos1.left );
 
-      pos1.left += Math.floor( Math.cos( rad ) * w1 );
-      pos1.top  += Math.floor( Math.sin( rad ) * w1 );
+      var rad  = Math.atan2( pos2.top  - pos1.top, pos2.left - pos1.left );
+      var cosR = Math.cos( rad );
+      var sinR = Math.sin( rad );
 
-      w1 = $dot.width() / 2 + 4;
+      pos1.left += Math.floor( cosR * w1 );
+      pos1.top  += Math.floor( sinR * w1 );
 
-      line.attr({ "x1" : pos1.left, "y1" : pos1.top })
-          .attr({ 
-              "x2" : pos2.left - Math.floor( Math.cos( rad ) * w1 )
-            , "y2" : pos2.top  - Math.floor( Math.sin( rad ) * w1 )
+      w1 = $dot.width() / 2 + MARGIN;
+
+      var x2 = Math.floor( pos2.left - cosR * w1 );
+      var y2 = Math.floor( pos2.top  - sinR * w1 );
+
+      if ( Math.pow(x2 - pos1.left, 2) + Math.pow(y2 - pos1.top, 2) < 18 ) {
+        line.attr({"x1":"0","y1":"0","x2":"0","y2":"0"});
+      } else {
+        line.attr({ 
+              "x1" : pos1.left
+            , "y1" : pos1.top
+            , "x2" : x2
+            , "y2" : y2
           });
+      }
 
       pos1 = pos2;
     }
+
+    // Curve to the first alpha and beta
+    function drawCurve ( $dot1, $dot2, path ) {
+      
+      var MARGIN = 4;
+      var pos1   = $dot1.position();
+      var pos2   = $dot2.position();
+      var w1     = $dot1.width() / 2 + MARGIN;
+      var rad    = Math.atan2( pos2.top - pos1.top, pos2.left - pos1.left );
+
+      var cosR   = Math.cos( rad );
+      var sinR   = Math.sin( rad );
+
+      pos1.left += Math.floor( cosR * w1 );
+      pos1.top  += Math.floor( sinR * w1 );
+      pos2.left -= $dot2.width() / 2 + MARGIN;
+
+      var lx_off    = Math.floor(sinR * 4);
+      var ly_off    = Math.floor(cosR * 4);
+      var rx_off    = Math.floor(sinR * 7);
+      var ry_off    = Math.floor(cosR * 7);
+      var control_x = pos1.left + Math.floor( (pos2.left - pos1.left) * 0.15 );
+
+      var p = ["M", pos1.left + lx_off, pos1.top - ly_off,
+               "Q", control_x, pos2.top - ry_off,
+                    pos2.left, pos2.top - ry_off,
+               "L", pos2.left, pos2.top + ry_off,
+               "Q", control_x, pos2.top + ry_off, 
+                    pos1.left - lx_off, pos1.top + ly_off,
+               "Z"
+              ].join(" ");
+      path.attr("d", p);
+    }
+
+    drawCurve( $alphaStartDot, $alphas[0], $alphaStartLine );
+    drawCurve( $betaStartDot,  $betas[0],  $betaStartLine );
+
+    function altLineTo( $dot1, $dot2, index ) {
+      var line = altlines[index];
+      var pos1 = $dot1.position();
+      var pos2 = $dot2.position();
+      line.attr({
+          "x1" : pos1.left + $dot1.width() / 2 + 4
+        , "y1" : pos1.top
+        , "x2" : pos2.left - $dot2.width() / 2 - 4
+        , "y2" : pos2.top
+      });
+    }
+
+    // Alt lines
+    for ( i = 0; i < $alphas.length - 1; ++i ) { altLineTo($alphas[i], $alphas[i + 1], i); }
+    for ( i = 0; i < $betas.length  - 1; ++i ) { altLineTo($betas [i], $betas [i + 1], i+$alphas.length-1); }
   }
 
-  $(window).on("resize", updateMetric)
-           .on("scroll", arrageDots);
+  redrawTimeline();
 
-  updateMetric();
-  arrageDots();
+  $(window).on("resize", redrawTimeline).on("scroll", arrageDots);
 });

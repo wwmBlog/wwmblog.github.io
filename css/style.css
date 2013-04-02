@@ -972,7 +972,7 @@ article dfn:hover {
   font-weight: bold;
 }
 
-/* line 4, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+/* line 6, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
 .page2 .page {
   width: auto;
   max-width: 100%;
@@ -981,17 +981,17 @@ article dfn:hover {
   overflow: hidden;
 }
 
-/* line 13, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+/* line 15, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
 #W_timelineContainer {
   position: relative;
 }
 
-/* line 25, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+/* line 27, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
 .tl_dot {
   position: absolute;
   display: block;
   border-radius: 50%;
-  border: 12px solid #aaaaaa;
+  border: 12px solid #454545;
   width: 24px;
   height: 24px;
   z-index: 3;
@@ -1008,21 +1008,21 @@ article dfn:hover {
   -o-transition: border-width 0.2s ease-in-out;
   transition: border-width 0.2s ease-in-out;
 }
-/* line 41, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
-.tl_dot.alt {
-  border-color: #f88953;
-}
-/* line 45, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+/* line 44, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
 .tl_dot.start, .tl_dot.end {
+  border-width: 16px;
   width: 32px;
   height: 32px;
   margin: -16px 0 0 -16px;
-  border-width: 16px;
 }
-/* line 52, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+/* line 51, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
 .tl_dot.end {
   left: 100%;
   margin-left: -16px;
+}
+/* line 56, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+.tl_dot.alt {
+  border-color: #f88953;
 }
 /* line 57, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
 .tl_dot:hover {
@@ -1030,26 +1030,26 @@ article dfn:hover {
 }
 
 @media (max-width: 530px) {
-  /* line 71, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+  /* line 69, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
   .tl_dot {
-    border: 8px solid #aaaaaa;
+    border-width: 8px;
     width: 16px;
     height: 16px;
     margin: -8px 0 0 -8px;
   }
-  /* line 77, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+  /* line 75, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
   .tl_dot.start, .tl_dot.end {
+    border-width: 12px;
     width: 24px;
     height: 24px;
     margin: -12px 0 0 -12px;
-    border-width: 12px;
   }
-  /* line 84, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+  /* line 82, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
   .tl_dot.end {
     left: 100%;
     margin-left: -12px;
   }
-  /* line 88, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
+  /* line 86, /Users/morris/Projects/wwmblog/scss/_page_2_timeline.scss */
   .tl_dot:hover {
     border-width: 4px;
   }
