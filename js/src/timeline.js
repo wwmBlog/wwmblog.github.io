@@ -224,26 +224,19 @@ define(function(require){
     // Curve to the first alpha and beta
     function drawCurve ( $dot1, $dot2, path ) {
       
-      var MARGIN = 4;
       var pos1   = $dot1.position();
       var pos2   = $dot2.position();
-      var w1     = $dot1.width() / 2 + MARGIN;
+      var w1     = $dot1.width() / 2 + 2;
       var rad    = Math.atan2( pos2.top - pos1.top, pos2.left - pos1.left );
 
-      var cosR   = Math.cos( rad );
-      var sinR   = Math.sin( rad );
+      pos2.left -= $dot2.width() / 2 + 4;
 
-      pos1.left += Math.floor( cosR * w1 );
-      pos1.top  += Math.floor( sinR * w1 );
-      pos2.left -= $dot2.width() / 2 + MARGIN;
-
-      var lx_off    = Math.floor(sinR * 4);
-      var ly_off    = Math.floor(cosR * 4);
-      var rx_off    = Math.floor(sinR * 7);
-      var ry_off    = Math.floor(cosR * 7);
+      var lx_off    = pos2.top > pos1.top ? 1 : -1;
+      var ly_off    = pos2.top > pos1.top ? w1 : -w1;
+      var ry_off    = 4;
       var control_x = pos1.left + Math.floor( (pos2.left - pos1.left) * 0.15 );
 
-      var p = ["M", pos1.left + lx_off, pos1.top - ly_off,
+      var p = ["M", pos1.left + lx_off, pos1.top + ly_off,
                "Q", control_x, pos2.top - ry_off,
                     pos2.left, pos2.top - ry_off,
                "L", pos2.left, pos2.top + ry_off,
