@@ -350,7 +350,7 @@ footer {
   }
 }
 
-/* line 34, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 37, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-wrap {
   max-width: 360px;
   min-width: 330px;
@@ -364,13 +364,13 @@ footer {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
 }
 
-/* line 47, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 50, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-top {
   border: 1px solid rgba(200, 200, 200, 0.1);
   border-bottom: none;
   position: relative;
   overflow: hidden;
-  padding: 24px 30px;
+  padding: 23px 30px;
   -webkit-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
   -moz-box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
   box-shadow: inset 0 6px 16px 2px rgba(255, 255, 255, 0.03);
@@ -381,7 +381,7 @@ footer {
   background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
   background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
 }
-/* line 59, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 62, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-top .definition {
   padding-top: 10px;
   font-size: 13px;
@@ -396,7 +396,7 @@ footer {
   -o-transition: height 0.3s ease-in-out, padding 0.1s linear;
   transition: height 0.3s ease-in-out, padding 0.1s linear;
 }
-/* line 70, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 73, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-top .definition.hidden {
   padding-top: 0;
   height: 0;
@@ -406,13 +406,13 @@ footer {
   -o-transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
   transition: height 0.3s ease-in-out, padding 0.1s 0.3s linear;
 }
-/* line 77, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 80, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-top .definition .def-span {
   line-height: 24px;
   padding: 4px;
   background: rgba(255, 255, 255, 0.03);
 }
-/* line 83, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 86, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-top .definition:before {
   font-family: Georgia;
   font-size: 36px;
@@ -422,10 +422,10 @@ footer {
   line-height: 20px;
   width: 20px;
 }
-/* line 94, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 97, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-top:before {
   width: 200%;
-  height: 90px;
+  height: 89px;
   position: absolute;
   border-radius: 50%;
   top: -31px;
@@ -439,7 +439,7 @@ footer {
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
 }
-/* line 108, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 111, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-top:after {
   position: absolute;
   width: 80%;
@@ -453,7 +453,7 @@ footer {
   box-shadow: 0 0 16px black;
 }
 
-/* line 120, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 123, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 #W_introContent {
   height: 42px;
   text-shadow: 0 1px 1px black;
@@ -463,67 +463,68 @@ footer {
   vertical-align: middle;
 }
 
-/* line 131, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 134, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .arevert {
   padding: 2px 4px;
   border-radius: 2px;
   margin: 0 1px;
 }
-/* line 136, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 139, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .arevert:hover {
   color: #000;
   text-shadow: none;
 }
 
-/* line 142, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 145, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .ablue {
   color: #009cff;
 }
-/* line 142, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 145, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .ablue:hover {
   background: #009cff;
 }
 
-/* line 143, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 146, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .aorange {
   color: #ff9600;
 }
-/* line 143, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 146, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .aorange:hover {
   background: #ff9600;
 }
 
-/* line 144, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 147, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .agreen {
   color: #c6ff00;
 }
-/* line 144, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 147, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .agreen:hover {
   background: #c6ff00;
 }
 
-/* line 146, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 149, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-left {
-  height: 133px;
-  width: 137px;
+  height: 134px;
+  width: 138px;
   float: left;
   background: #7c7c7c;
   border-radius: 0 0 0 4px;
 }
 
-/* line 155, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 158, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-mid {
   position: relative;
-  width: 223px;
+  width: 222px;
   height: 83px;
-  margin-left: 137px;
+  margin-left: 138px;
 }
 
-/* line 162, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 165, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-con {
   background: #eeebdf url('../img/noise.png') repeat;
+  overflow: hidden;
 }
-/* line 165, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 169, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-con:before, .cite-con:after {
   content: "\201c";
   position: absolute;
@@ -534,18 +535,18 @@ footer {
   font-size: 70px;
   pointer-events: none;
 }
-/* line 179, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 183, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-con:before {
   text-shadow: 0 1px 1px #fff;
 }
-/* line 183, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 187, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-con:after {
   -webkit-text-fill-color: transparent;
   background: -webkit-linear-gradient(top, #101010, #363636);
   -webkit-background-clip: text;
 }
 
-/* line 191, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 195, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 #W_citeCarousel {
   -webkit-perspective: 500px;
   -moz-perspective: 500px;
@@ -553,7 +554,7 @@ footer {
   -o-perspective: 500px;
   perspective: 500px;
 }
-/* line 195, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 199, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 #W_citeCarousel .cite-con {
   width: 100%;
   height: 100%;
@@ -561,7 +562,7 @@ footer {
   top: 0;
   left: 0;
 }
-/* line 203, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 207, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 #W_citeCarousel .head {
   z-index: 3;
   -webkit-backface-visibility: hidden;
@@ -570,7 +571,7 @@ footer {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-/* line 208, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 212, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 #W_citeCarousel .tail {
   z-index: 4;
   -webkit-backface-visibility: hidden;
@@ -579,7 +580,7 @@ footer {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-/* line 214, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 218, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 #W_citeCarousel.cite-play .head {
   -webkit-animation: flipHead 0.5s linear both;
   -moz-animation: flipHead 0.5s linear both;
@@ -587,7 +588,7 @@ footer {
   -o-animation: flipHead 0.5s linear both;
   animation: flipHead 0.5s linear both;
 }
-/* line 217, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 221, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 #W_citeCarousel.cite-play .tail {
   z-index: 2;
   -webkit-animation: flipTail 0.5s linear both;
@@ -598,30 +599,30 @@ footer {
 }
 
 @-webkit-keyframes flipHead {
-  /* line 226, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 230, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   0% {
     -webkit-transform: rotateX(0deg);
   }
 
-  /* line 227, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 231, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   100% {
     -webkit-transform: rotateX(180deg);
   }
 }
 
 @-webkit-keyframes flipTail {
-  /* line 231, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 235, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   0% {
     z-index: 2;
     -webkit-transform: rotateX(-180deg);
   }
 
-  /* line 235, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 239, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   50% {
     z-index: 4;
   }
 
-  /* line 238, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 242, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   100% {
     z-index: 4;
     -webkit-transform: rotateX(0deg);
@@ -629,28 +630,28 @@ footer {
 }
 
 @-moz-keyframes flipHead {
-  /* line 244, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 248, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   0% {
     -moz-transform: rotateX(0deg);
   }
 
-  /* line 245, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 249, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   100% {
     -moz-transform: rotateX(180deg);
   }
 }
 
 @-moz-keyframes flipTail {
-  /* line 249, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 253, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   0% {
     z-index: 2;
     -moz-transform: rotateX(-180deg);
   }
 
-  /* line 253, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 257, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 
 
-  /* line 256, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 260, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   100% {
     z-index: 4;
     -moz-transform: rotateX(0deg);
@@ -658,28 +659,28 @@ footer {
 }
 
 @-o-keyframes flipHead {
-  /* line 262, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 266, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   0% {
     -o-transform: rotateX(0deg);
   }
 
-  /* line 263, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 267, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   100% {
     -o-transform: rotateX(180deg);
   }
 }
 
 @-o-keyframes flipTail {
-  /* line 267, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 271, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   0% {
     z-index: 2;
     -o-transform: rotateX(-180deg);
   }
 
-  /* line 271, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 275, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 
 
-  /* line 274, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 278, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   100% {
     z-index: 4;
     -o-transform: rotateX(0deg);
@@ -687,35 +688,35 @@ footer {
 }
 
 @keyframes flipHead {
-  /* line 280, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 284, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   0% {
     transform: rotateX(0deg);
   }
 
-  /* line 281, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 285, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   100% {
     transform: rotateX(180deg);
   }
 }
 
 @keyframes flipTail {
-  /* line 285, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 289, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   0% {
     z-index: 2;
     transform: rotateX(-180deg);
   }
 
-  /* line 289, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 293, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 
 
-  /* line 292, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+  /* line 296, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
   100% {
     z-index: 4;
     transform: rotateX(0deg);
   }
 }
 
-/* line 298, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 302, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-wrap {
   padding: 0 10px;
   text-indent: 30px;
@@ -726,32 +727,32 @@ footer {
   height: 100%;
   position: relative;
 }
-/* line 308, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 312, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-wrap .cite {
   padding-top: 20px;
 }
-/* line 311, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 315, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-wrap .cite.single-bold {
   font-size: 18px;
   padding-top: 30px;
 }
-/* line 317, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 321, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-wrap .cite-src {
   position: absolute;
   bottom: 5px;
   right: 10px;
 }
-/* line 322, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 326, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .cite-wrap .cite-src:before {
   content: " - ";
 }
 
-/* line 328, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 332, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-bottom {
-  width: 223px;
-  height: 50px;
-  line-height: 50px;
-  margin-left: 137px;
+  width: 222px;
+  height: 51px;
+  line-height: 51px;
+  margin-left: 138px;
   background: #393939 url('../img/nw_bg.png') 0 center repeat-x;
   border-radius: 0 0 4px 0;
   text-align: right;
@@ -774,34 +775,34 @@ footer {
     background-size: 230px auto;
   }
 }
-/* line 349, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 353, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-bottom a {
   color: #1f1f1f;
   font-size: 16px;
   text-decoration: none;
   vertical-align: middle;
 }
-/* line 357, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 361, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-bottom .github:hover {
   color: #5791ca;
 }
-/* line 358, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 362, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-bottom .dribbble:hover {
   color: #cb416f;
 }
-/* line 359, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 363, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-bottom .twitter:hover {
   color: #00acee;
 }
-/* line 360, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 364, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-bottom .fanfou:hover {
   color: #1ac0fa;
 }
-/* line 361, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 365, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-bottom .v2ex:hover {
   color: #d9d9dc;
 }
-/* line 362, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
+/* line 366, /Users/morris/Projects/wwmblog/scss/_page_0_intro.scss */
 .card-bottom .mail:hover {
   color: #d53c36;
 }

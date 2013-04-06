@@ -23,11 +23,14 @@
 $cardWidth  : 360px;
 $cardHeight : ceil($cardWidth * 0.618);
 $cardTopHPercent   : 0.4;
-$cardTopHeight     : ceil($cardHeight * $cardTopHPercent);
+$cardTopHeight     : floor($cardHeight * $cardTopHPercent);
 $cardRightWPercent : 0.618;
 $cardRightHSplitP  : 0.618;
-$cardBottomH       : floor($cardHeight * (1 - $cardTopHPercent));
-$cardLeftW         : floor($cardWidth * (1 - $cardRightWPercent));
+$cardLowerH        : ceil($cardHeight * (1 - $cardTopHPercent));
+$cardLeftW         : ceil($cardWidth * (1 - $cardRightWPercent));
+$cardRightW        : floor($cardWidth * $cardRightWPercent);
+$cardMidH          : ceil($cardLowerH  * $cardRightHSplitP);
+$cardBottomH       : floor($cardLowerH  * (1 - $cardRightHSplitP));
 
 $introHeight : 14px * 1.5 * 2;
 
@@ -144,7 +147,7 @@ $introHeight : 14px * 1.5 * 2;
 .agreen  { color: #c6ff00; &:hover { background : #c6ff00; } }
 
 .card-left {
-  height : $cardBottomH;
+  height : $cardLowerH ;
   width  : $cardLeftW;
   float  : left;
 
@@ -154,13 +157,14 @@ $introHeight : 14px * 1.5 * 2;
 
 .card-mid {
   position    : relative;
-  width       : ceil($cardWidth * $cardRightWPercent);
-  height      : ceil($cardBottomH * $cardRightHSplitP);
+  width       : $cardRightW;
+  height      : $cardMidH;
   margin-left : $cardLeftW;
 }
 
 .cite-con {
   background : #eeebdf image-url("noise.png") repeat;
+  overflow   : hidden;
 
   &:before, &:after {
     @extend .wwmicn;
@@ -326,9 +330,9 @@ $introHeight : 14px * 1.5 * 2;
 }
 
 .card-bottom {
-  width       : ceil($cardWidth * $cardRightWPercent);
-  height      : floor($cardBottomH * (1 - $cardRightHSplitP));
-  line-height : floor($cardBottomH * (1 - $cardRightHSplitP));
+  width       : $cardRightW;
+  height      : $cardBottomH; 
+  line-height : $cardBottomH;
   margin-left : $cardLeftW;
   
   background    : #393939 image-url("nw_bg.png") 0 center repeat-x;
