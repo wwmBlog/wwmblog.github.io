@@ -4,6 +4,7 @@ define(function(require){
   require("src/definition.js");
   require("src/skill/skill.js");
   require("src/timeline.js");
+  require("src/support.js");
 
 
   /* -- Intro Page -- */
@@ -74,6 +75,56 @@ define(function(require){
     shortcutW.on("scrollinto",  function(){ $(".shortcut-nav").toggleClass("sticky", true);  })
              .on("scrollbelow", function(){ $(".shortcut-nav").toggleClass("sticky", false); });
 
+    function scrollPage ( toggleItem, dirDown ) {
+      if ( toggleItem ) {
+        $(toggleItem).addClass("active");
+        setTimeout( function(){ $(toggleItem).removeClass("active"); }, 200);
+      }
+
+      var scrollY   = window.scrollTop || window.scrollY;
+      var $pages    = $(".page-wrap");
+      var toScrollY = -1;
+      var i         = 0;
+      var offset;
+
+      if ( dirDown ) {
+        for ( ; i < $pages.length; ++i ) {
+          offset = $pages.eq(i).offset();
+          if ( scrollY < offset.top ) {
+            toScrollY = offset.top;
+            break;
+          }
+        } 
+      } else {
+        for ( i = $pages.length - 1; i >= 0; --i ) {
+          offset = $pages.eq(i).offset();
+          if ( scrollY > offset.top ) {
+            toScrollY = offset.top;
+            break;
+          }
+        }
+      }
+
+      if ( toScrollY == -1 ) {
+        toScrollY = dirDown ? document.documentElement.scrollHeight - window.innerHeight : 0;
+      }
+      if ( toScrollY != scrollY ) {
+        $.genericAnimate( toScrollY - scrollY, function( value ){
+          window.scrollTo( 0, scrollY + value );
+        });
+      }
+    }
+
+    function pageUp   ( effect ) { scrollPage( effect ? "#W_vimK" : "", false ); }
+    function pageDown ( effect ) { scrollPage( effect ? "#W_vimJ" : "", true );  }
+
+    $("body").on("keypress", function( evt ){
+      var kc = evt.which || evt.keyCode;
+      if ( kc == 106 /* j */) { pageDown( true ); } else 
+      if ( kc == 107 /* k */) { pageUp  ( true ); }
+    });
+    $("#W_vimJ").on("click", pageDown);
+    $("#W_vimK").on("click", pageUp);
   })();
 
 });

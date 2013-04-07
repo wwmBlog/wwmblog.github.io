@@ -236,7 +236,7 @@ body, .font-title {
   user-select: none;
 }
 /* line 122, /Users/morris/Projects/wwmblog/scss/_misc.scss */
-.shortcut-nav .sc-button:active {
+.shortcut-nav .sc-button:active, .shortcut-nav .sc-button.active {
   margin-top: 1px;
   height: 23px;
   -webkit-box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
@@ -244,7 +244,7 @@ body, .font-title {
   box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
 }
 /* line 130, /Users/morris/Projects/wwmblog/scss/_misc.scss */
-.shortcut-nav .underline:active:after {
+.shortcut-nav .underline:active:after, .shortcut-nav .underline.active:after {
   bottom: 4px;
 }
 /* line 134, /Users/morris/Projects/wwmblog/scss/_misc.scss */
