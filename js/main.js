@@ -75,11 +75,15 @@ define(function(require){
     shortcutW.on("scrollinto",  function(){ $(".shortcut-nav").toggleClass("sticky", true);  })
              .on("scrollbelow", function(){ $(".shortcut-nav").toggleClass("sticky", false); });
 
+    var scrolling = false;
     function scrollPage ( toggleItem, dirDown ) {
+      
       if ( toggleItem ) {
-        $(toggleItem).addClass("active");
-        setTimeout( function(){ $(toggleItem).removeClass("active"); }, 200);
+        $(toggleItem).toggleClass("active", true);
+        setTimeout( function(){ $(toggleItem).toggleClass("active", false); }, 200);
       }
+
+      if ( scrolling ) { return; }
 
       var scrollY   = window.scrollTop || window.scrollY;
       var $pages    = $(".page-wrap");
@@ -109,8 +113,13 @@ define(function(require){
         toScrollY = dirDown ? document.documentElement.scrollHeight - window.innerHeight : 0;
       }
       if ( toScrollY != scrollY ) {
+        scrolling = true;
+
         $.genericAnimate( toScrollY - scrollY, function( value ){
-          window.scrollTo( 0, scrollY + value );
+          window.scrollTo( 0, Math.floor(scrollY + value) );
+          if ( scrollY + value == toScrollY ) {
+            scrolling = false;
+          }
         });
       }
     }
