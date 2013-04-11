@@ -4,7 +4,7 @@ define(function(require){
   require("src/definition.js");
   require("src/skill/skill.js");
   require("src/timeline.js");
-  require("src/support.js");
+  require("src/sliderpuzzle.js");
 
 
   /* -- Intro Page -- */
@@ -25,7 +25,7 @@ define(function(require){
 
     var index     = 0;
     var child_len = 0;
-    var support   = require("src/support.js");
+    var misc      = require("src/misc.js");
 
     // Intro Card Citing Carousel, 3D Version
     function CiteCarousel3D(){
@@ -37,7 +37,7 @@ define(function(require){
       index = child_len - 1;
 
       function flipDone() {
-        $("#W_citeCarousel").off(support.animationEnd, flipDone).removeClass("cite-play");
+        $("#W_citeCarousel").off(misc.animationEnd, flipDone).removeClass("cite-play");
         setTimeout(flip, 5000);
         return false;
       }
@@ -52,13 +52,13 @@ define(function(require){
         if ( index == child_len ) { index = 0; }
         $chs.eq(index).addClass("tail");
 
-        $con.on(support.animationEnd, flipDone).addClass("cite-play");
+        $con.on(misc.animationEnd, flipDone).addClass("cite-play");
       }
 
       setTimeout(flip, 3000);
     }
 
-    (support.threed ? CiteCarousel3D : CiteCarousel2D)();
+    (misc.threed ? CiteCarousel3D : CiteCarousel2D)();
   })();
 
 

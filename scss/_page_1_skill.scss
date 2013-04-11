@@ -71,16 +71,15 @@ $softTextColor : #413d32;
 }
 
 article dfn {
-  background : $softTextColor;
+  background : #333;
   color      : #eee;
   margin     : 0 2px;
-  padding    : 2px 3px;
-
-  border-radius : 2px;
+  padding    : 4px; 
 
   @include animation(breath infinite 1.2s ease-in-out alternate);
   
   &:hover {
+    background : #7f7f7f;
     @include animation(none);
   }
 }

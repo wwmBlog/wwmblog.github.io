@@ -146,15 +146,36 @@ $introHeight : 14px * 1.5 * 2;
 .aorange { color: #ff9600; &:hover { background : #ff9600; } }
 .agreen  { color: #c6ff00; &:hover { background : #c6ff00; } }
 
+// Left of the card ----------
 .card-left {
-  height : $cardLowerH ;
-  width  : $cardLeftW;
-  float  : left;
+  height   : $cardLowerH;
+  width    : $cardLeftW;
+  float    : left;
+  position : relative;
 
   background    : #7c7c7c;
   border-radius : 0 0 0 4px;
+  
+  &.ready {
+    .loading     { display : none;  }
+    .puzzle-wrap { display : block; }
+  }
 }
 
+.puzzle-wrap {
+  display    : none;
+  height     : 100%;
+  background : image-url("avatar.jpg") no-repeat;
+
+  @include retina() {
+    background-image : image-url("avatar@2x.jpg");
+    @include background-size(image-width("avatar.jpg") auto); 
+  }
+}
+// ---------- Left of the card
+
+
+// Middle of the card ----------
 .card-mid {
   position    : relative;
   width       : $cardRightW;
@@ -328,6 +349,8 @@ $introHeight : 14px * 1.5 * 2;
     }
   }
 }
+
+// ---------- Middle of the card
 
 .card-bottom {
   width       : $cardRightW;

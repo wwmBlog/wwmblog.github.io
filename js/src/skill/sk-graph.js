@@ -2,7 +2,7 @@ define(function(require, exports, module){
 
   module.exports = Graph;
 
-  require("src/support.js");
+  require("src/misc.js");
 
   function Graph( data, canvas ) {
 
