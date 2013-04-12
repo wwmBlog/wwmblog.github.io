@@ -6,16 +6,16 @@
 }
 
 .intro-wrap {
-  background  : image-url("bg.png") repeat;
-  position    : fixed;
-  top         : -$firstPageBottomHeight;
-  height      : 100%;
-  width       : 100%;
-  z-index     : 2;
-  text-align  : center;
-  padding-top : $firstPageBottomHeight;
+  background     : image-url("bg.png") repeat;
+  position       : fixed;
+  top            : 0;
+  height         : 100%;
+  width          : 100%;
+  z-index        : 2;
+  padding-bottom : $firstPageBottomHeight;
   
-  @include box-sizing( border-box );
+  display : table;
+  
   @include retina() {
     background-image : image-url("bg@2x.png");
     @include background-size( image-width("bg.png"), auto );
@@ -36,16 +36,19 @@ $cardBottomH       : floor($cardLowerH  * (1 - $cardRightHSplitP));
 
 $introHeight : 14px * 1.5 * 2;
 
-.card-wrap {
-  max-width : $cardWidth;
-  min-width : $cardWidth - 30px;
-  width     : 90%;
-  height    : $cardHeight;
-  
-  margin         : auto;
+.card-vam {
+  display        : table-cell;
   vertical-align : middle;
-  display        : inline-block;
+}
 
+.card-wrap {
+  max-width  : $cardWidth;
+  min-width  : $cardWidth - 30px;
+  width      : 90%;
+  height     : $cardHeight;
+  margin     : auto;
+  
+  @include transform( translate3d(0,0,0) );
   @include box-shadow(0 0 20px rgba(0,0,0,0.75));
 }
 
@@ -183,6 +186,7 @@ $introHeight : 14px * 1.5 * 2;
   width       : $cardRightW;
   height      : $cardMidH;
   margin-left : $cardLeftW;
+  opacity     : 0.99;
 }
 
 .cite-con {

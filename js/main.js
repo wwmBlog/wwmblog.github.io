@@ -55,7 +55,7 @@ define(function(require){
         $con.on(misc.animationEnd, flipDone).addClass("cite-play");
       }
 
-      setTimeout(flip, 3000);
+      setTimeout(flip, 2000);
     }
 
     (misc.threed ? CiteCarousel3D : CiteCarousel2D)();
