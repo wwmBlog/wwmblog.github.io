@@ -1,3 +1,5 @@
+@import "mixin";
+
 .intro-wrap-holder {
   height : 100%;
   margin-bottom : -$firstPageBottomHeight;
@@ -207,8 +209,8 @@ $introHeight : 14px * 1.5 * 2;
 
   &:after {
     // grandient text effect
-    -webkit-text-fill-color : transparent;
     background : -webkit-linear-gradient(top, #101010, #363636);
+    -webkit-text-fill-color : transparent;
     -webkit-background-clip : text;
   }
 }

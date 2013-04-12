@@ -96,8 +96,8 @@ define(function(require, exports, module){
     exps.transition = exps.transition || el.style["transition"] != undefined;
     document.body.removeChild(el);
 
-    var baseTREnd  = "transitionEnd transitionend";
-    var baseANIEnd = "animationEnd animationend";
+    var baseTREnd  = " transitionEnd transitionend";
+    var baseANIEnd = " animationEnd animationend";
     if ( $.browser.firefox ) {
       baseTREnd  = "mozTransitionEnd" + baseTREnd;
       baseANIEnd = "mozAnimationEnd"  + baseANIEnd;
@@ -217,5 +217,14 @@ define(function(require, exports, module){
 
   /*
    * == Inject new style ==========
+   * If targetEl is supplied, then the stylesheet will replace
+   * whatever in the targetEl.
    */
+  exps.insertCSS = function ( $targetEl, stylesheet ) {
+    if ( !stylesheet ) {
+      stylesheet = $targetEl;
+      $targetEl   = $("<div />").appendTo("body");
+    }
+    $targetEl.html( '&shy;<style>' + stylesheet + '</style>' );
+  }
 });

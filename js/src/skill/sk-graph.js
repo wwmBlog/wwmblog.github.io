@@ -19,6 +19,9 @@ define(function(require, exports, module){
     this.polygon     = null;
     this.polygonMask = null;
     this.group       = null;
+
+    this.dots        = [];
+    this.maskDots    = [];
   }
 
   Graph.prototype.vertexSize = 10;

@@ -32,6 +32,12 @@ define(function(require, exports, module){
     this.offset  = offset || 0;
     this.element = watchElement;
     this.emmiter = new EventTarget();
+    this.watchY  = 0;
+
+    this.currAbove = undefined;
+    this.currBelow = undefined;
+    this.prevAbove = undefined;
+    this.prevBelow = undefined;
 
     var type = typeof watchElement;
     if ( type == "number" ) {

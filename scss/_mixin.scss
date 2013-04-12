@@ -1,0 +1,13 @@
+@mixin animation( $content ) {
+  -webkit-animation : $content;
+     -moz-animation : $content;
+       -o-animation : $content;
+          animation : $content;
+}
+
+@mixin animation-delay( $content ) {
+  -webkit-animation-delay : $content;
+     -moz-animation-delay : $content;
+       -o-animation-delay : $content;
+          animation-delay : $content;
+}
