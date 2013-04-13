@@ -1,0 +1,36 @@
+.card-bottom {
+  width       : $cardRightW;
+  height      : $cardBottomH; 
+  line-height : $cardBottomH;
+  margin-left : $cardLeftW;
+  
+  background    : #393939 image-url("nw_bg.png") 0 center repeat-x;
+  border-radius : 0 0 4px 0;
+  
+  text-align : right;
+  padding    : 0 1em;
+  cursor     : default;
+  
+  @include box-sizing( border-box );
+  @include user-select( none );
+  
+  @include retina() {
+    background-image : image-url("nw_bg@2x.png");
+    @include background-size(image-width("nw_bg.png") auto);
+  }
+  
+  a {
+    color     : #1f1f1f;
+    font-size : 16px;
+
+    text-decoration : none;
+    vertical-align  : middle;
+  }
+
+  .github:hover   { color : #5791ca; }
+  .dribbble:hover { color : #cb416f; }
+  .twitter:hover  { color : #00acee; }
+  .fanfou:hover   { color : #1ac0fa; }
+  .v2ex:hover     { color : #d9d9dc; }
+  .mail:hover     { color : #d53c36; }
+}

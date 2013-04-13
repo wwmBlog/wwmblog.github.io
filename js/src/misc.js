@@ -61,6 +61,54 @@ define(function(require, exports, module){
 
 
   /*
+   * == $.fn.transform ==========
+   * Apply transform css to the first element.
+   */
+  $.fn.transform = function ( value ) {
+    var self = arguments.callee;
+    if ( !self.vendors ) { 
+      self.vendors = ["webkitTransform", "MozTransform", "msTransform", "OTransform", "transform"];
+    }
+
+    var vendors = self.vendors;
+    var ss      = this[0].style;
+
+    if ( vendors.length ) {
+      for ( var i = 0; i < vendors.length; ++i ) {
+        if ( ss.hasOwnProperty( vendors[i] ) ) {
+          self.vendors = vendors[i];
+          break;
+        }
+      }
+    }
+
+    if ( value ) ss[ self.vendors ] = value;
+    return this;
+  }
+
+  /*
+   * == Get transform css ==========
+   */
+  exps.transformCSS = function ( value ) {
+    var self = arguments.callee;
+    if ( !self.prefix ) { 
+      var vendors  = ["webkitTransform", "MozTransform", "msTransform", "OTransform", "transform"];
+      var prefixes = ["-webkit-transform", "-moz-transform", "-ms-transform", "-o-transform", "transform"];
+      var ss       = $("body")[0].style;
+      for ( var i = 0; i < vendors.length; ++i ) {
+        if ( ss.hasOwnProperty( vendors[i] ) ) {
+          self.prefix = prefixes[i];
+        }
+      }
+
+      if ( !self.prefix ) { self.prefix = "transform"; }
+    }
+
+    return self.prefix + ":" + value + ";";
+  }
+
+
+  /*
    * == Feature Detection ==========
    */
   ;(function(){
@@ -223,8 +271,17 @@ define(function(require, exports, module){
   exps.insertCSS = function ( $targetEl, stylesheet ) {
     if ( !stylesheet ) {
       stylesheet = $targetEl;
-      $targetEl   = $("<div />").appendTo("body");
+      $targetEl  = null;
     }
-    $targetEl.html( '&shy;<style>' + stylesheet + '</style>' );
+
+    var isStyleTag = true;
+
+    if ( !$targetEl ) { 
+      $targetEl = $("<style type='text/css' />").appendTo("head");
+    } else {
+      isStyleTag = $targetEl.attr("tagName").toLowerCase() == "style";
+    }
+
+    return $targetEl.html( isStyleTag ? stylesheet : '&shy;<style>' + stylesheet + '</style>' );
   }
 });

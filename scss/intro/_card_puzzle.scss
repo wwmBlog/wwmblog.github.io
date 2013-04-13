@@ -1,0 +1,37 @@
+.card-left {
+  height   : $cardLowerH;
+  width    : $cardLeftW;
+  float    : left;
+  position : relative;
+
+  background    : #7c7c7c;
+  border-radius : 0 0 0 4px;
+}
+
+$puzzleSize        : 30px;
+$puzzlePaddingLeft : ($cardLeftW  - $puzzleSize * 4) / 2;
+$puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
+
+#W_puzzle {
+  display    : none;
+  height     : 100%;
+  background : image-url("avatar.jpg") no-repeat;
+  padding    : $puzzlePaddingTop $puzzlePaddingLeft; 
+  
+  @include box-sizing( border-box );
+
+  @include retina() {
+    background-image : image-url("avatar@2x.jpg");
+    @include background-size(image-width("avatar.jpg") auto); 
+  }
+
+  .ready & { display : block; }
+}
+
+.puzzle-item {
+  position : absolute;
+  width    : $puzzleSize;
+  height   : $puzzleSize;
+  left     : $puzzlePaddingLeft; 
+  top      : $puzzlePaddingTop;
+}
