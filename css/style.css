@@ -262,6 +262,7 @@ body, .font-title {
 /* line 154, ../scss/_misc.scss */
 footer {
   position: relative;
+  z-index: 10;
   height: 54px;
   background: #262626 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAECAYAAADrsu3pAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAIGNIUk0AAG11AABzoAAA/N0AAINkAABw6AAA7GgAADA+AAAQkOTsmeoAAACfSURBVHjapM6hDoJAAMbxv7sq6YrHUziqG69iIJIkXKFcoPgQF6hsPgUzMzNGN3AjXtfibQgk+Odvv327YXh9+GVtCUCSnFmq798UxZU81yh1WNysNYTWmfGAtSVN8wAgio4zIE0vtO2Tur4TxyeCYD87sdYQWmfGA74p5IGu6wFwzs2grYaQUpoxMIXCUP0BvjFUVTe2Gl8AAAD//wMA9ruA7EZ+o/EAAAAASUVORK5CYII=') repeat-x;
 }
@@ -276,7 +277,7 @@ footer {
   }
 }
 
-/* line 165, ../scss/_misc.scss */
+/* line 166, ../scss/_misc.scss */
 .footer-wrap {
   height: 54px;
   line-height: 56px;
@@ -289,7 +290,7 @@ footer {
   padding: 0 1em 0 3em;
 }
 
-/* line 178, ../scss/_misc.scss */
+/* line 179, ../scss/_misc.scss */
 .copyright {
   font-size: 12px;
   float: left;
@@ -297,28 +298,28 @@ footer {
 }
 
 @media (max-width: 500px) {
-  /* line 185, ../scss/_misc.scss */
+  /* line 186, ../scss/_misc.scss */
   .footer-wrap {
     padding: 0 1em;
   }
 
-  /* line 188, ../scss/_misc.scss */
+  /* line 189, ../scss/_misc.scss */
   .copyright {
     line-height: 64px;
   }
 }
 @media (max-width: 410px) {
-  /* line 193, ../scss/_misc.scss */
+  /* line 194, ../scss/_misc.scss */
   .footer-wrap {
     padding: 0 8px;
   }
 
-  /* line 196, ../scss/_misc.scss */
+  /* line 197, ../scss/_misc.scss */
   .footer-wrap q {
     font-size: 18px;
   }
 }
-/* line 203, ../scss/_misc.scss */
+/* line 204, ../scss/_misc.scss */
 .loading-wrap {
   width: 100%;
   height: 20px;
@@ -328,7 +329,7 @@ footer {
   text-align: center;
 }
 
-/* line 211, ../scss/_misc.scss */
+/* line 212, ../scss/_misc.scss */
 .loading {
   width: 10px;
   height: 10px;
@@ -342,14 +343,14 @@ footer {
   -o-animation: loading 0.5s cubic-bezier(0.3, 0.6, 1, 0.5) alternate infinite;
   animation: loading 0.5s cubic-bezier(0.3, 0.6, 1, 0.5) alternate infinite;
 }
-/* line 222, ../scss/_misc.scss */
+/* line 223, ../scss/_misc.scss */
 .loading.no2 {
   -webkit-animation-delay: 0.2s;
   -moz-animation-delay: 0.2s;
   -o-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
-/* line 223, ../scss/_misc.scss */
+/* line 224, ../scss/_misc.scss */
 .loading.no3 {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
@@ -358,14 +359,14 @@ footer {
 }
 
 @-webkit-keyframes loading {
-  /* line 226, ../scss/_misc.scss */
+  /* line 227, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 231, ../scss/_misc.scss */
+  /* line 232, ../scss/_misc.scss */
   100% {
     background: #777;
     top: 8px;
@@ -375,14 +376,14 @@ footer {
 }
 
 @-moz-keyframes loading {
-  /* line 239, ../scss/_misc.scss */
+  /* line 240, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 244, ../scss/_misc.scss */
+  /* line 245, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -391,14 +392,14 @@ footer {
 }
 
 @-o-keyframes loading {
-  /* line 251, ../scss/_misc.scss */
+  /* line 252, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 256, ../scss/_misc.scss */
+  /* line 257, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -407,14 +408,14 @@ footer {
 }
 
 @keyframes loading {
-  /* line 263, ../scss/_misc.scss */
+  /* line 264, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 268, ../scss/_misc.scss */
+  /* line 269, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -926,6 +927,7 @@ footer {
   height: 100%;
   background: url('../img/avatar.jpg') no-repeat;
   padding: 7px 9px;
+  cursor: hand;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -940,18 +942,28 @@ footer {
     background-size: 138px auto;
   }
 }
-/* line 28, ../scss/intro/_card_puzzle.scss */
+/* line 29, ../scss/intro/_card_puzzle.scss */
 .ready #W_puzzle {
   display: block;
 }
 
-/* line 31, ../scss/intro/_card_puzzle.scss */
+/* line 32, ../scss/intro/_card_puzzle.scss */
 .puzzle-item {
   position: absolute;
   width: 30px;
   height: 30px;
   left: 9px;
   top: 7px;
+}
+
+/* line 40, ../scss/intro/_card_puzzle.scss */
+.puzzle-item[data-index="15"] {
+  background: #7c7c7c !important;
+}
+
+/* line 44, ../scss/intro/_card_puzzle.scss */
+.puzzle-item[data-index="0"] {
+  z-index: 20;
 }
 
 /* line 3, ../scss/_page_1_skill.scss */

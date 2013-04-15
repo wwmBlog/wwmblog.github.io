@@ -16,7 +16,8 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   display    : none;
   height     : 100%;
   background : image-url("avatar.jpg") no-repeat;
-  padding    : $puzzlePaddingTop $puzzlePaddingLeft; 
+  padding    : $puzzlePaddingTop $puzzlePaddingLeft;
+  cursor     : hand;
   
   @include box-sizing( border-box );
 
@@ -34,4 +35,12 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   height   : $puzzleSize;
   left     : $puzzlePaddingLeft; 
   top      : $puzzlePaddingTop;
+}
+
+.puzzle-item[data-index="15"] {
+  background : #7c7c7c !important;
+}
+
+.puzzle-item[data-index="0"] {
+  z-index : 20;
 }

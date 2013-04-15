@@ -152,9 +152,10 @@
 // ---------- Footer
 $footerHeight : 54px;
 footer {
-  position    : relative;
-  height      : $footerHeight;
-  background  : #262626 inline-image("zigzag.png") repeat-x;
+  position   : relative;
+  z-index    : 10;
+  height     : $footerHeight;
+  background : #262626 inline-image("zigzag.png") repeat-x;
   
   @include retina() {
     background-image : inline-image("zigzag@2x.png");

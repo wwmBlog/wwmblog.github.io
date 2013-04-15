@@ -13,49 +13,56 @@ define(function(require){
       $(".card-left").toggleClass("ready", true)
                      .children(".loading-wrap").remove();
 
-      self.WIDTH  = self.$container.width();
-      self.HEIGHT = self.$container.height();
+      var $c = self.$container;
+      
       self.onLoadImage( url, img.width, img.height );
     }
     img.src = url;
 
-    this.images     = [ img ];
-    this.imgWidth   = 0;
-    this.imgHeight  = 0;
-    this.imgLeft    = 0;
-    this.imgTop     = 0;
-    this.url        = url;
-    this.$container = container;
+    this.images      = [ img ];
+    this.imgWidth    = 0;
+    this.imgHeight   = 0;
+    this.imgLeft     = 0;
+    this.imgTop      = 0;
+    this.url         = url;
+    this.stylesheet  = undefined;
+    this.$container  = container;
 
     Puzzle.ID += 1;
   }
 
   var dpr = window.devicePixelRatio;
 
-  Puzzle.ID                    = 100;
-  Puzzle.StyleSheet            = undefined;
-  Puzzle.prototype.DPR         = dpr !== undefined && dpr > 1 ? 2 : 1;
-  Puzzle.prototype.TILE_COUNT  = 4;
-  Puzzle.prototype.TILE_SIZE   = 30;
-  Puzzle.prototype.onLoadImage = function ( url, imgWidth, imgHeight ) {
+  Puzzle.ID                     = 100;
+  Puzzle.prototype.DPR          = dpr !== undefined && dpr > 1 ? 2 : 1;
+  Puzzle.prototype.COLUMN_COUNT = 4;
+  Puzzle.prototype.TILE_COUNT   = 16;
+  Puzzle.prototype.TILE_SIZE    = 30;
+  Puzzle.prototype.onLoadImage  = function ( url, imgWidth, imgHeight ) {
+
+    var WIDTH  = this.$container.width();
+    var HEIGHT = this.$container.height();
+
+    this.imgLeft  = parseInt(this.$container.css("padding-left"));
+    this.imgTop   = parseInt(this.$container.css("padding-top"));
+
     /* Caculate best image size for the container */
-    if ( imgWidth == this.WIDTH && imgHeight == this.HEIGHT ) {
+    if ( imgWidth == WIDTH && imgHeight == HEIGHT ) {
       // Image is excatly fit container.
       // No need to transform the image.
+      this.imgWidth = 0;
     } else {
       // Make the image to fit the container.
-      var w_r = imgWidth  / this.WIDTH;
-      var h_r = imgHeight / this.HEIGHT;
+      var w_r = imgWidth  / WIDTH;
+      var h_r = imgHeight / HEIGHT;
       if ( w_r > h_r ) { w_r = h_r; }
-      if ( this.DPR == 2 ) { // This makes the image to resize larger than the container.
-        if ( w_r > 2.6 ) { w_r -= 0.3;  }
-      } else {
-        if ( w_r > 1.3 ) { w_r -= 0.15; }
-      }
-      this.imgWidth  = imgWidth  / w_r;
-      this.imgHeight = imgHeight / w_r;
-      this.imgLeft   = ( this.imgWidth  - this.WIDTH  ) / 2;
-      this.imgTop    = ( this.imgHeight - this.HEIGHT ) / 2;
+      // Makes the image to resize larger than the container.
+      if ( w_r > 1.3 * this.DPR ) { w_r -= 0.15 * this.DPR; } 
+
+      this.imgWidth   = imgWidth  / w_r;
+      this.imgHeight  = imgHeight / w_r;
+      this.imgLeft   += ( this.imgWidth  - WIDTH  ) / 2 / this.DPR;
+      this.imgTop    += ( this.imgHeight - HEIGHT ) / 2 / this.DPR;
     }
 
     /* Inject new style rules for our image */
@@ -63,27 +70,56 @@ define(function(require){
     
     /* Create tile elements */
     this.$container[0].className = cName;
-    var tag  = "<span class='puzzle-item " + cName + "' style='{#s}' />";
-    var tr   = "translate(Xpx,Ypx)";
-    var html = "";
-    for ( var i = Math.pow(this.TILE_COUNT, 2) - 1; i >= 0; --i ) {
-      var x     = i % this.TILE_COUNT * this.TILE_SIZE;
-      var y     = Math.floor( i / this.TILE_COUNT ) * this.TILE_SIZE;
-      
-      var style = misc.transformCSS( tr.replace('X', x).replace('Y', y) )
-                    + "background-position:-" + x + "px -" + y +"px";
+    var tag       = "<span class='puzzle-item " + cName + "' style='{#s}' data-index='{#i}' />";
+    var html      = "";
+    var randomArr = this.random();
 
-      html += tag.replace("{#s}", style);
+    for ( var i = this.TILE_COUNT - 1; i >= 0; --i ) {
+      html += tag
+                .replace("{#s}", this.itemStyle( i ) )
+                .replace("{#i}", i);
     }
     $(html).appendTo( this.$container );
+  }
+
+  Puzzle.prototype.itemPos = function ( index ) {
+    var a = { 
+        x : index % this.COLUMN_COUNT * this.TILE_SIZE
+      , y : Math.floor( index / this.COLUMN_COUNT ) * this.TILE_SIZE
+    };
+    return a;
+  }
+
+  Puzzle.prototype.itemStyle = function ( index, positionIndex ) {
+    var tr = "translate(Xpx,Ypx)";
+    var bg = [ "background-position:-", 0, "px -", 0, "px" ];
+    var x, y, pos;
+
+    Puzzle.prototype.itemStyle = function ( index, positionIndex ) {
+      pos = this.itemPos( index );
+
+      bg[1] = pos.x + this.imgLeft;
+      bg[3] = pos.y + this.imgTop;
+
+      if ( positionIndex !== undefined && positionIndex != index ) {
+        pos.x = positionIndex % this.COLUMN_COUNT * this.TILE_SIZE;
+        pos.y = Math.floor( positionIndex / this.COLUMN_COUNT ) * this.TILE_SIZE;
+      }
+
+      return ( misc.transformCSS( tr.replace('X', pos.x).replace('Y', pos.y) ) + bg.join("") );
+    }
+
+    return this.itemStyle( index, positionIndex );
   }
   
   // Inject background styles to document and returns a class that
   // can be used by the element.
   Puzzle.prototype.prepareCSS   = function () {
     // We need to define background and backgroundSize
-    var cName    = "puzzle-item" + Puzzle.ID;
-    var bgsize   = "";
+    var cName  = "puzzle-item" + Puzzle.ID;
+    var bgsize = "";
+    var bgpos  = "";
+
     if ( this.imgWidth != 0 ) {
       bgsize = "-webkit-background-size:{#bgsize} !important;"
                   + "-moz-background-size:{#bgsize} !important;"
@@ -92,13 +128,55 @@ define(function(require){
       bgsize = bgsize.replace(/\{#bgsize\}/g, this.imgWidth + "px auto");
     }
 
-    var css = ".{#class} { background-image:url({#url}) !important; {#bgsize} }"
+    var x = this.imgLeft - parseInt(this.$container.css("padding-left"));
+    var y = this.imgLeft - parseInt(this.$container.css("padding-top"));
+    if ( x != 0 && y != 0 ) {
+      bgpos = "background-position:-" + x + "px -" + y + "px;";
+    }
+
+    var css = ".{#class} { background-image:url({#url}) !important; {#bgpos} {#bgsize}}"
                   .replace("{#class}",  cName)
+                  .replace("{#bgpos}",  bgpos)
                   .replace("{#bgsize}", bgsize)
                   .replace("{#url}",    this.url);
 
-    Puzzle.StyleSheet = misc.insertCSS( Puzzle.StyleSheet, css );
+    this.stylesheet = misc.insertCSS( this.stylesheet, css );
     return cName;
+  }
+
+  Puzzle.prototype.random = function () {
+    var len        = this.TILE_COUNT - 1;
+    var r          = new Array( len );
+    var parity     = 0;
+    var switch_idx = 0;
+    var t;
+    for ( var i = 0; i < len; ++i ) {
+      switch_idx  = Math.floor( Math.random() * (len - i) ) + i;
+      parity     += switch_idx - i;
+
+      t = r[ switch_idx ];
+
+      r[ switch_idx ] = r[i] === undefined ? i          : r[i];
+      r[ i ]          = t    === undefined ? switch_idx : t;
+    }
+
+    // We need even parity
+    if ( parity % 2 == 1 ) {
+      t    = r[0];
+      r[0] = r[1];
+      r[1] = t;
+    }
+
+    r.splice( Math.floor( Math.random() * (len + 1) ), 0, this.TILE_COUNT - 1);
+    return r;
+  }
+
+  Puzzle.prototype.solve = function ( layoutArr ) {
+
+  }
+
+  Puzzle.prototype.slide = function () {
+
   }
 
   $(function(){
@@ -111,7 +189,8 @@ define(function(require){
     if ( !url ) { 
       console.log("Something Bad Happens.");
     } else {
-      new Puzzle( url, $el );
+      var p = new Puzzle( url, $el );
+      $el.on("click", function(){ p.solve( p.random() ); });
     }
 
   });  
