@@ -29,6 +29,9 @@
     text-decoration : none;
     vertical-align  : middle;
     display         : inline-block;
+    
+    // Fixing icon font is not pixel perfect.
+    -webkit-font-smoothing: antialiased;
 
     &:hover {
       @include transform-origin(top, center);
