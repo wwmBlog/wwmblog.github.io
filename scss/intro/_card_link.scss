@@ -1,7 +1,6 @@
 .card-bottom {
   width       : $cardRightW;
   height      : $cardBottomH; 
-  line-height : $cardBottomH;
   margin-left : $cardLeftW;
   
   background    : #393939 image-url("nw_bg.png") 0 center repeat-x;
@@ -20,11 +19,21 @@
   }
   
   a {
-    color     : #1f1f1f;
-    font-size : 16px;
+    color       : #1f1f1f;
+    font-size   : 16px;
+    width       : 16px;
+    height      : 16px;
+    line-height : 16px;
+    margin-top  : ceil( ($cardBottomH - 16) / 2 );
 
     text-decoration : none;
     vertical-align  : middle;
+    display         : inline-block;
+
+    &:hover {
+      @include transform-origin(top, center);
+      @include animation(wiggle .3s ease-out);
+    }
   }
 
   .github:hover   { color : #5791ca; }

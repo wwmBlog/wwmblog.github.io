@@ -14,12 +14,13 @@ define(function(require){
                      .children(".loading-wrap").remove();
 
       var $c = self.$container;
-      
+
+      self.ready = true;
       self.onLoadImage( url, img.width, img.height );
     }
     img.src = url;
 
-    this.images      = [ img ];
+    this.ready       = false;
     this.imgWidth    = 0;
     this.imgHeight   = 0;
     this.imgLeft     = 0;
@@ -72,7 +73,6 @@ define(function(require){
     this.$container[0].className = cName;
     var tag       = "<span class='puzzle-item " + cName + "' style='{#s}' data-index='{#i}' />";
     var html      = "";
-    var randomArr = this.random();
 
     for ( var i = this.TILE_COUNT - 1; i >= 0; --i ) {
       html += tag
@@ -82,11 +82,10 @@ define(function(require){
     $(html).appendTo( this.$container );
   }
 
-  Puzzle.prototype.itemPos = function ( index ) {
-    var a = { 
-        x : index % this.COLUMN_COUNT * this.TILE_SIZE
-      , y : Math.floor( index / this.COLUMN_COUNT ) * this.TILE_SIZE
-    };
+  Puzzle.prototype.itemPos = function ( index, a ) {
+    if ( !a ) { a = {}; }
+    a['x'] = index % this.COLUMN_COUNT * this.TILE_SIZE;
+    a['y'] = Math.floor( index / this.COLUMN_COUNT ) * this.TILE_SIZE;
     return a;
   }
 
@@ -145,6 +144,9 @@ define(function(require){
   }
 
   Puzzle.prototype.random = function () {
+
+    if ( !this.ready ) { return; }
+
     var len        = this.TILE_COUNT - 1;
     var r          = new Array( len );
     var parity     = 0;
@@ -168,6 +170,14 @@ define(function(require){
     }
 
     r.splice( Math.floor( Math.random() * (len + 1) ), 0, this.TILE_COUNT - 1);
+
+    var pos    = { x : 0, y : 0};
+    var $tiles = this.$container.toggleClass("random", true)
+                                .children(".puzzle-item");
+    for ( i = 0; i < $tiles.length; ++i ) {
+      this.itemPos( r[i], pos );
+      $tiles.eq(i).transform("translate(" + pos.x + "px, " + pos.y + "px)");
+    }
     return r;
   }
 
@@ -190,7 +200,7 @@ define(function(require){
       console.log("Something Bad Happens.");
     } else {
       var p = new Puzzle( url, $el );
-      $el.on("click", function(){ p.solve( p.random() ); });
+      $el.on("click", function(){ p.random(); });
     }
 
   });  

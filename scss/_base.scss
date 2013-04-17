@@ -46,6 +46,8 @@ q { &:before { content : ""; } &:after { content : ""; } }
 
 .wwmicn { 
   font-family : "wwmregular";
+  font-weight : normal;
+  font-style  : normal;
 }
 body, .font-title {
   font-family : "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", sans-serif;
@@ -53,4 +55,12 @@ body, .font-title {
 
 .mh100p {
   min-height : 100%;
+}
+
+.sprite {
+  background   : inline-image("sprite.png") no-repeat;
+  @include retina() {
+    background-image : inline-image("sprite@2x.png");
+    @include background-size(image-width("sprite.png") auto);
+  }
 }

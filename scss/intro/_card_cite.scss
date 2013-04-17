@@ -10,29 +10,17 @@
   background : #eeebdf image-url("noise.png") repeat;
   overflow   : hidden;
 
-  &:before, &:after {
-    @extend .wwmicn;
-    content  : "\201c";
-    position : absolute;
-    top      : -5px;
-    left     : -5px;
-    height   : 40px;
-    
-    color       : #3a3a3a;
-    font-size   : 70px;
-    
-    pointer-events : none;
-  }
-
   &:before {
-    text-shadow : 0 1px 1px #fff;
-  }
-
-  &:after {
-    // grandient text effect
-    background : -webkit-linear-gradient(top, #101010, #363636);
-    -webkit-text-fill-color : transparent;
-    -webkit-background-clip : text;
+    @extend .sprite;
+    
+    content  : " ";
+    display  : block;
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    width    : 38px;
+    height   : 30px;
+    background-position: 8px -49px;
   }
 }
 

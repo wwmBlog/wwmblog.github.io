@@ -3,9 +3,11 @@
   width    : $cardLeftW;
   float    : left;
   position : relative;
+  cursor   : pointer;
 
   background    : #7c7c7c;
   border-radius : 0 0 0 4px;
+  
 }
 
 $puzzleSize        : 30px;
@@ -17,8 +19,8 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   height     : 100%;
   background : image-url("avatar.jpg") no-repeat;
   padding    : $puzzlePaddingTop $puzzlePaddingLeft;
-  cursor     : hand;
   
+  @include user-select( none );
   @include box-sizing( border-box );
 
   @include retina() {
@@ -27,6 +29,14 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   }
 
   .ready & { display : block; }
+
+  &:before {
+    width      : $puzzleSize * 4;
+    height     : $puzzleSize * 4;
+    background : #7c7c7c;
+    content    : " ";
+    display    : block;
+  }
 }
 
 .puzzle-item {
@@ -35,12 +45,45 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   height   : $puzzleSize;
   left     : $puzzlePaddingLeft; 
   top      : $puzzlePaddingTop;
+  
+  @include transition(all 0.3s ease-in-out);
 }
 
-.puzzle-item[data-index="15"] {
+.random .puzzle-item[data-index="15"] {
   background : #7c7c7c !important;
 }
 
 .puzzle-item[data-index="0"] {
   z-index : 20;
+}
+
+#W_playGame {
+  width       : 100%;
+  height      : 100%;
+  position    : absolute;
+  left        : 0;
+  top         : 0;
+  z-index     : 30;
+  font-size   : 12px;
+  color       : #fff;
+  text-align  : center;
+  background  : rgba(0,0,0,0.6);
+  padding     : 5px;
+  padding-top : $cardLowerH / 2 - 12;
+  
+  display : none;
+
+  @include box-sizing( border-box );
+  
+  &:before {
+    height : 2em;
+    content : "I want to play \a a game";
+    background : #333;
+    padding : 5px;
+    border-radius : 4px;
+  }
+
+  .card-left:hover & {
+    display : block;
+  }
 }
