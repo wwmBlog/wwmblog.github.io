@@ -989,17 +989,14 @@ footer {
 
 /* line 1, ../scss/intro/_card_link.scss */
 .card-bottom {
-  width: 222px;
-  height: 51px;
+  width: 198px;
+  height: 33px;
   margin-left: 138px;
   background: #393939 url('../img/nw_bg.png') 0 center repeat-x;
   border-radius: 0 0 4px 0;
   text-align: right;
-  padding: 0 1em;
+  padding: 18px 12px 0 12px;
   cursor: default;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -1014,20 +1011,17 @@ footer {
     background-size: 230px auto;
   }
 }
-/* line 21, ../scss/intro/_card_link.scss */
+/* line 20, ../scss/intro/_card_link.scss */
 .card-bottom a {
   color: #1f1f1f;
   font-size: 16px;
   width: 16px;
   height: 16px;
   line-height: 16px;
-  margin-top: 18px;
-  text-decoration: none;
-  vertical-align: middle;
   display: inline-block;
   -webkit-font-smoothing: antialiased;
 }
-/* line 36, ../scss/intro/_card_link.scss */
+/* line 31, ../scss/intro/_card_link.scss */
 .card-bottom a:hover {
   -webkit-transform-origin: top center;
   -moz-transform-origin: top center;
@@ -1039,27 +1033,27 @@ footer {
   -o-animation: wiggle 0.3s ease-out;
   animation: wiggle 0.3s ease-out;
 }
-/* line 42, ../scss/intro/_card_link.scss */
+/* line 37, ../scss/intro/_card_link.scss */
 .card-bottom .github:hover {
   color: #5791ca;
 }
-/* line 43, ../scss/intro/_card_link.scss */
+/* line 38, ../scss/intro/_card_link.scss */
 .card-bottom .dribbble:hover {
   color: #cb416f;
 }
-/* line 44, ../scss/intro/_card_link.scss */
+/* line 39, ../scss/intro/_card_link.scss */
 .card-bottom .twitter:hover {
   color: #00acee;
 }
-/* line 45, ../scss/intro/_card_link.scss */
+/* line 40, ../scss/intro/_card_link.scss */
 .card-bottom .fanfou:hover {
   color: #1ac0fa;
 }
-/* line 46, ../scss/intro/_card_link.scss */
+/* line 41, ../scss/intro/_card_link.scss */
 .card-bottom .v2ex:hover {
   color: #d9d9dc;
 }
-/* line 47, ../scss/intro/_card_link.scss */
+/* line 42, ../scss/intro/_card_link.scss */
 .card-bottom .mail:hover {
   color: #d53c36;
 }
