@@ -21,13 +21,15 @@ define(function(require, exports, module){
     this.group       = null;
 
     this.dots        = [];
-    this.maskDots    = [];
+    this.dotData     = [];
   }
 
-  Graph.prototype.vertexSize = 10;
-  Graph.prototype.draw       = draw;
-  Graph.prototype.animate    = animate;
-  Graph.prototype.getGroup   = function () { return this.group; }
+  Graph.prototype.vertexSize  = 10;
+  Graph.prototype.maskDotSize = 14 / 2;
+  Graph.prototype.draw        = draw;
+  Graph.prototype.animate     = animate;
+  Graph.prototype.updateMask  = updateMask;
+  Graph.prototype.getGroup    = function () { return this.group; }
 
   function draw () {
 
@@ -36,12 +38,12 @@ define(function(require, exports, module){
       this.group.remove();
     }
 
-    this.dots        = [];
-    this.maskDots    = [];
+    this.dots = [];
 
-    var canvas = this.canvas;
-    var mask   = canvas.mask();
-    var group  = canvas.group();
+    var maskDots = [];
+    var canvas   = this.canvas;
+    var mask     = canvas.clip();
+    var group    = canvas.group();
 
     // Draw dots
     var ds = this.data.data;
@@ -60,14 +62,9 @@ define(function(require, exports, module){
       this.dots.push( dot );
       group.add( dot );
 
-      // Dot for the mask
-      var maskDot = dot.clone().attr({
-                        fill : "#000"
-                      , rx   : this.vertexSize / 2 + 2
-                      , ry   : this.vertexSize / 2 + 2
-                      , transform : "" });
-      mask.add( maskDot );
-      this.maskDots.push( maskDot );
+      // Remeber each vertex's position
+      // So that we can update the mask(clip).
+      maskDots.push( pos );
 
       // Update the polygon string
       polygonString.push( pos.x + "," + pos.y );
@@ -76,21 +73,14 @@ define(function(require, exports, module){
     var polygon = canvas.polygon(polygonString.join(" "), true).attr(this.effect);
     group.add(polygon);
 
-    // Deal with masks.
-    var bbox = polygon.bbox();
-    var sw   = this.data.strokeWidth;
-    bbox.width  += sw * 2 + 2;
-    bbox.height += sw * 2 + 2;
-    bbox.x      -= sw + 1;
-    bbox.y      -= sw + 1;
-
-    mask.add( canvas.rect( bbox.width, bbox.height ).move( bbox.x, bbox.y ).fill( "#fff" ), 0 );
-
-    polygon.maskWith( mask );
-
-    this.group       = group;
     this.polygonMask = mask;
+    this.group       = group;
     this.polygon     = polygon;
+
+
+    // Deal with masks.
+    this.updateMask( maskDots );
+    polygon.clipWith( mask );
 
     // Transform the whole group
     this.canvas.moveToCenter( this.group );
@@ -101,16 +91,22 @@ define(function(require, exports, module){
     // Ensure that all elements are ready.
     if ( !this.polygon ) { this.draw(); }
 
+    this.dotData = [];
+
     // Prepare
     for ( var i = 0; i < this.dots.length; ++i )
     {
       var dot = this.dots[i];
       var x   = parseInt(dot.attr("cx"));
       var y   = parseInt(dot.attr("cy"));
-      dot.data("toX",    x)
-         .data("toY",    y)
-         .data("toDis",  Math.sqrt(x*x+y*y))
-         .center( 0, 0 );
+
+      this.dotData[i] = {
+          toX   : x
+        , toY   : y
+        , toDis : Math.sqrt( x*x + y*y )
+      };
+
+      dot.center( 0, 0 );
     }
 
     // Animation
@@ -121,27 +117,76 @@ define(function(require, exports, module){
 
     $.genericAnimate(DISTANCE, DURATION, function( unit, p ){
       var dots          = self.dots;
-      var maskdots      = self.maskDots;
-      var polygonString = [];
+      var maskdots      = new Array( dots.length );
+      var polygonString = new Array( dots.length );
 
       for ( var i = 0; i < dots.length; ++i ) {
-        var dot = dots[i];
-        var pp  = unit / dot.data("toDis");
+        var dot  = dots[i];
+        var data = self.dotData[i];
+        var pp   = unit / data.toDis;
         if ( pp > 1 ) { pp = 1; }
-        var toX = dot.data("toX") * pp;
-        var toY = dot.data("toY") * pp;
+        var toX = data.toX * pp;
+        var toY = data.toY * pp;
 
         dot.center( toX, toY );
-        maskdots[i].center( toX, toY );
 
-        polygonString.push( toX + "," + toY );
+        maskdots[i] = { x : toX, y : toY };
+
+        polygonString[i] = toX + "," + toY;
       }
+
+      self.updateMask( maskdots );
 
       // Deal with polygon
       self.polygon.attr("points", polygonString.join(" "));
     });
 
     return this;
+  }
+
+  function updateMask( dots ) {
+
+    // Generate a path for the mask
+    // In chrome, if the clipPath element contains several elements,
+    // it will first render the clipPath to a bitmap then apply the bitmap
+    // to the target. The bitmap is render at 1x even if in retina display.
+    // So we need to only generate one element for the clippath
+    var clippath = this.polygonMask.children()[0];
+    if ( clippath == undefined ) {
+      clippath = this.canvas.path().attr("clip-rule", "evenodd");
+      this.polygonMask.add( clippath );
+    }
+
+    // Everything is trasformed from the origin of the svg to the center.
+    // We need to shift the clippath, because the clippath is applied 
+    // before the elements are trasformed.
+    var offsetX = -this.canvas.CENTER;
+    var offsetY = -this.canvas.CENTER;
+
+    var bbox = this.canvas.boundingRect();
+    var path = ["M", bbox.x+offsetX, bbox.y+offsetY,
+                "l", bbox.width,  0,
+                     0, bbox.height,
+                     -bbox.width, 0,
+                     0, -bbox.height].join(" ");
+
+    // Create holes for vertex
+    /* d="
+        M cx cy
+        m x = -r, y = 0
+        a r,r 0 1,0 (r * 2),0
+        a r,r 0 1,0 -(r * 2),0
+     */
+    var vr = this.maskDotSize;
+    for ( var i = 0; i < dots.length; ++i ) {
+      var dot = dots[i];
+      path += [" M", dot.x, dot.y,
+                "m", -vr, 0,
+                "a", vr, vr, "0 1 0", vr * 2, 0,
+                "a", vr, vr, "0 1 0", -vr* 2, 0].join(" ");
+    }
+
+    clippath.attr("d", path);
   }
 
 });
