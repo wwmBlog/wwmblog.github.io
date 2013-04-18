@@ -14,7 +14,6 @@ define(function( require, exports, module ){
     canvas.data      = data;
     canvas.unitAngle = 360 / data.labels.length;
     canvas.maxValue  = 5;
-    canvas.bgGroup   = null;
 
     canvas.firstRender = true;
 
@@ -31,8 +30,6 @@ define(function( require, exports, module ){
     canvas.moveToCenter   = moveToCenter;
     canvas.vertexPosition = vertexPosition;
     canvas.setup          = setup;
-    canvas.boundingRect   = boundingRect;
-
     
 
     canvas.EVT_RESIZE   = "resize";
@@ -107,7 +104,6 @@ define(function( require, exports, module ){
       group.add( text );
     }
 
-    this.bgGroup = group;
     this.moveToCenter( group );
   }
   function renderGraphs () {
@@ -145,16 +141,6 @@ define(function( require, exports, module ){
     var y = - Math.floor( sin(a) * this.RADIUS * p );
 
     return { x : x, y : y };
-  }
-  function boundingRect () {
-    if ( this.bgGroup ) {
-      return this.bgGroup.bbox();
-    }
-
-    var bbox = this.canvas.node.getBoundingClientRect();
-    bbox['x'] = 0;
-    bbox['y'] = 0;
-    return bbox;
   }
 
   /* Helpers */

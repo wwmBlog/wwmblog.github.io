@@ -157,18 +157,12 @@ define(function(require, exports, module){
       this.polygonMask.add( clippath );
     }
 
-    // Everything is trasformed from the origin of the svg to the center.
-    // We need to shift the clippath, because the clippath is applied 
-    // before the elements are trasformed.
-    var offsetX = -this.canvas.CENTER;
-    var offsetY = -this.canvas.CENTER;
-
-    var bbox = this.canvas.boundingRect();
-    var path = ["M", bbox.x+offsetX, bbox.y+offsetY,
-                "l", bbox.width,  0,
-                     0, bbox.height,
-                     -bbox.width, 0,
-                     0, -bbox.height].join(" ");
+    var minX = 999999999;
+    var minY = 999999999;
+    var maxX = -99999999;
+    var maxY = -99999999;
+    var path = "";
+    var vr   = this.maskDotSize;
 
     // Create holes for vertex
     /* d="
@@ -177,14 +171,22 @@ define(function(require, exports, module){
         a r,r 0 1,0 (r * 2),0
         a r,r 0 1,0 -(r * 2),0
      */
-    var vr = this.maskDotSize;
     for ( var i = 0; i < dots.length; ++i ) {
       var dot = dots[i];
       path += [" M", dot.x, dot.y,
                 "m", -vr, 0,
                 "a", vr, vr, "0 1 0", vr * 2, 0,
                 "a", vr, vr, "0 1 0", -vr* 2, 0].join(" ");
+
+      if ( dot.x < minX ) { minX = dot.x; } else if ( dot.x > maxX ) { maxX = dot.x; }
+      if ( dot.y < minY ) { minY = dot.y; } else if ( dot.y > maxY ) { maxY = dot.y; }
     }
+
+    path = ["M", minX, minY,
+            "L", maxX, minY,
+                 maxX, maxY,
+                 minX, maxY,
+            "Z"].join(" ") + path;
 
     clippath.attr("d", path);
   }
