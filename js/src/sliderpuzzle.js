@@ -28,6 +28,7 @@ define(function(require){
     this.url         = url;
     this.stylesheet  = undefined;
     this.$container  = container;
+    this.emptyPos    = 0;
 
     Puzzle.ID += 1;
   }
@@ -71,14 +72,15 @@ define(function(require){
     
     /* Create tile elements */
     this.$container[0].className = cName;
-    var tag       = "<span class='puzzle-item " + cName + "' style='{#s}' data-index='{#i}' />";
+    var tag       = "<span class='puzzle-item " + cName + "' style='{#s}' data-idx='{#i}' />";
     var html      = "";
 
-    for ( var i = this.TILE_COUNT - 1; i >= 0; --i ) {
+    for ( var i = 0; i < this.TILE_COUNT; ++i ) {
       html += tag
                 .replace("{#s}", this.itemStyle( i ) )
                 .replace("{#i}", i);
     }
+
     $(html).appendTo( this.$container );
   }
 
@@ -115,7 +117,7 @@ define(function(require){
   // can be used by the element.
   Puzzle.prototype.prepareCSS   = function () {
     // We need to define background and backgroundSize
-    var cName  = "puzzle-item" + Puzzle.ID;
+    var cName  = "pzli" + Puzzle.ID;
     var bgsize = "";
     var bgpos  = "";
 
@@ -172,21 +174,51 @@ define(function(require){
     r.splice( Math.floor( Math.random() * (len + 1) ), 0, this.TILE_COUNT - 1);
 
     var pos    = { x : 0, y : 0};
-    var $tiles = this.$container.toggleClass("random", true)
+    var $tiles = this.$container.addClass("random")
                                 .children(".puzzle-item");
     for ( i = 0; i < $tiles.length; ++i ) {
       this.itemPos( r[i], pos );
-      $tiles.eq(i).transform("translate(" + pos.x + "px, " + pos.y + "px)");
+      $tiles.eq(i)
+            .data("pos", r[i])
+            .transform("translate(" + pos.x + "px, " + pos.y + "px)");
     }
-    return r;
+
+    this.emptyPos = r[ $tiles.length - 1 ];
+
+    var self = this;
+    setTimeout( function(){ self.$container.removeClass("random"); }, 300 );
   }
 
   Puzzle.prototype.solve = function ( layoutArr ) {
 
   }
 
-  Puzzle.prototype.slide = function () {
+  // Finds out pos2 is in which direction of pos1
+  Puzzle.prototype.direction = function ( pos1, pos2 ) {
+    // Left   : x = -1
+    // Right  : x = 1
+    // Top    : y = -1
+    // Bottom : y = 1
+    var c  = this.COLUMN_COUNT;
+    var y1 = Math.floor( pos1 / c );
+    var y2 = Math.floor( pos2 / c );
+    var x1 = pos1 % c;
+    var x2 = pos2 % c;
+    var r  = { x : x2 - x1, y : y2 - y1 };
+    r.adjoining = Math.abs( r.x ) + Math.abs( r.y ) == 1;
+    return r;
+  }
 
+  Puzzle.prototype.slide = function ( element ) {
+    var $el = $(element);
+    var pos = $el.data("pos");
+    if ( !this.direction( this.emptyPos, pos ).adjoining ) return;
+
+    var newPos = this.itemPos( this.emptyPos );
+    $el.data("pos", this.emptyPos)
+       .transform("translate(" + newPos.x + "px, " + newPos.y + "px)");
+
+    this.emptyPos = pos;
   }
 
   $(function(){
@@ -200,7 +232,16 @@ define(function(require){
       console.log("Something Bad Happens.");
     } else {
       var p = new Puzzle( url, $el );
-      $el.on("click", function(){ p.random(); });
+      $("#W_playGame").on("click", function(){ 
+        p.random();
+        $(".card-left").addClass("playing");
+        return false;
+      });
+
+      $el.on("click", ".puzzle-item", function(){
+        p.slide( this );
+        return false;
+      });
     }
 
   });  

@@ -3,7 +3,6 @@
   width    : $cardLeftW;
   float    : left;
   position : relative;
-  cursor   : pointer;
 
   background    : #7c7c7c;
   border-radius : 0 0 0 4px;
@@ -45,16 +44,17 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   height   : $puzzleSize;
   left     : $puzzlePaddingLeft; 
   top      : $puzzlePaddingTop;
+  cursor   : pointer;
   
-  @include transition(all 0.3s ease-in-out);
-}
+  @include transition(all .15s ease-in-out);
 
-.random .puzzle-item[data-index="15"] {
-  background : #7c7c7c !important;
-}
+  .playing &[data-idx="15"] {
+    display : none;
+  }
 
-.puzzle-item[data-index="0"] {
-  z-index : 20;
+  .random & {
+    @include transition-duration(.3s);
+  }
 }
 
 #W_playGame {
@@ -68,22 +68,41 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   color       : #fff;
   text-align  : center;
   background  : rgba(0,0,0,0.6);
-  padding     : 5px;
-  padding-top : $cardLowerH / 2 - 12;
   
-  display : none;
+  opacity : 0;
+  @include transition(opacity 0.3s ease-in-out);
 
-  @include box-sizing( border-box );
-  
+  &:before, &:after {
+    font-family : 'wwmregular';
+    content     : "\F119";
+    color       : #fff;
+    font-size   : 24px;
+    width       : 40px;
+    height      : 40px;
+    line-height : 40px;
+    text-align  : center;
+    display     : block;
+    position    : absolute;
+    left        : 50%;
+    top         : 50%;
+    margin      : -20px 0 0 -20px;
+  }
+
   &:before {
-    height : 2em;
-    content : "I want to play \a a game";
-    background : #333;
-    padding : 5px;
-    border-radius : 4px;
+    background    : #333;
+    border-radius : 50%;
+  }
+
+  &:after {
+    content : "\F120";
+    color   : #9a9a9a;
   }
 
   .card-left:hover & {
-    display : block;
+    opacity : 1;
+  }
+
+  .card-left.playing & {
+    display : none;
   }
 }

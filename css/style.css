@@ -1064,12 +1064,11 @@ footer {
   width: 138px;
   float: left;
   position: relative;
-  cursor: pointer;
   background: #7c7c7c;
   border-radius: 0 0 0 4px;
 }
 
-/* line 17, ../scss/intro/_card_puzzle.scss */
+/* line 16, ../scss/intro/_card_puzzle.scss */
 #W_puzzle {
   display: none;
   height: 100%;
@@ -1092,11 +1091,11 @@ footer {
     background-size: 138px auto;
   }
 }
-/* line 31, ../scss/intro/_card_puzzle.scss */
+/* line 30, ../scss/intro/_card_puzzle.scss */
 .ready #W_puzzle {
   display: block;
 }
-/* line 33, ../scss/intro/_card_puzzle.scss */
+/* line 32, ../scss/intro/_card_puzzle.scss */
 #W_puzzle:before {
   width: 120px;
   height: 120px;
@@ -1105,27 +1104,29 @@ footer {
   display: block;
 }
 
-/* line 42, ../scss/intro/_card_puzzle.scss */
+/* line 41, ../scss/intro/_card_puzzle.scss */
 .puzzle-item {
   position: absolute;
   width: 30px;
   height: 30px;
   left: 9px;
   top: 7px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
-
-/* line 52, ../scss/intro/_card_puzzle.scss */
-.random .puzzle-item[data-index="15"] {
-  background: #7c7c7c !important;
+/* line 51, ../scss/intro/_card_puzzle.scss */
+.playing .puzzle-item[data-idx="15"] {
+  display: none;
 }
-
-/* line 56, ../scss/intro/_card_puzzle.scss */
-.puzzle-item[data-index="0"] {
-  z-index: 20;
+/* line 55, ../scss/intro/_card_puzzle.scss */
+.random .puzzle-item {
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 /* line 60, ../scss/intro/_card_puzzle.scss */
@@ -1140,24 +1141,45 @@ footer {
   color: #fff;
   text-align: center;
   background: rgba(0, 0, 0, 0.6);
-  padding: 5px;
-  padding-top: 55px;
-  display: none;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
-/* line 78, ../scss/intro/_card_puzzle.scss */
-#W_playGame:before {
-  height: 2em;
-  content: "I want to play \a a game";
-  background: #333;
-  padding: 5px;
-  border-radius: 4px;
-}
-/* line 86, ../scss/intro/_card_puzzle.scss */
-.card-left:hover #W_playGame {
+/* line 75, ../scss/intro/_card_puzzle.scss */
+#W_playGame:before, #W_playGame:after {
+  font-family: 'wwmregular';
+  content: "\F119";
+  color: #fff;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
   display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -20px 0 0 -20px;
+}
+/* line 91, ../scss/intro/_card_puzzle.scss */
+#W_playGame:before {
+  background: #333;
+  border-radius: 50%;
+}
+/* line 96, ../scss/intro/_card_puzzle.scss */
+#W_playGame:after {
+  content: "\F120";
+  color: #9a9a9a;
+}
+/* line 101, ../scss/intro/_card_puzzle.scss */
+.card-left:hover #W_playGame {
+  opacity: 1;
+}
+/* line 105, ../scss/intro/_card_puzzle.scss */
+.card-left.playing #W_playGame {
+  display: none;
 }
 
 /* line 3, ../scss/_page_1_skill.scss */
