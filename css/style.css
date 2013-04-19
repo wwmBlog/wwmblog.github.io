@@ -1183,7 +1183,7 @@ footer {
   padding-bottom: 100%;
 }
 /* line 23, ../scss/_page_1_skill.scss */
-.chart-wrap legend {
+.chart-wrap figcaption {
   position: absolute;
   bottom: -20px;
   color: #7f7f7f;
@@ -1275,7 +1275,7 @@ article dfn:hover {
   padding-bottom: 20px;
 }
 /* line 17, ../scss/_page_2_timeline.scss */
-.page2 legend {
+.page2 figcaption {
   position: absolute;
   bottom: 0;
   color: #7f7f7f;
