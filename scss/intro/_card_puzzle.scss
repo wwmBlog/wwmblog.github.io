@@ -99,6 +99,10 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
     color   : #9a9a9a;
   }
 
+  .loading-wrap + #W_puzzle + & {
+    display : none;
+  }
+
   .card-left:hover & {
     opacity : 1;
   }

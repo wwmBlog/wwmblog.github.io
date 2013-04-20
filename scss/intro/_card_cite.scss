@@ -1,3 +1,5 @@
+$cardMidMargin : 10px;
+
 .card-mid {
   position    : relative;
   width       : $cardRightW;
@@ -7,17 +9,16 @@
 }
 
 .cite-con {
-  background : #eeebdf image-url("noise.png") repeat;
   overflow   : hidden;
 
-  &:before {
+  &:after {
     @extend .sprite;
     
     content  : " ";
     display  : block;
     position : absolute;
     top      : 0;
-    left     : 0;
+    left     : $cardMidMargin;
     width    : 38px;
     height   : 30px;
     background-position: 8px -49px;
@@ -28,12 +29,20 @@
 
   @include perspective(500px);
 
+  height      : 100%;
+  width       : 100%;
+  padding     : 0 $cardMidMargin;
+  margin-left : -$cardMidMargin;
+  overflow    : hidden;
+  
   .cite-con {
-    width    : 100%;
-    height   : 100%;
     position : absolute;
     top      : 0;
     left     : 0;
+    width    : 100%;
+    height   : 100%;
+    padding  : 0 $cardMidMargin;
+    @include box-sizing( border-box );
   }
 
   .head {
@@ -133,13 +142,14 @@
 .cite-wrap {
   @extend .font-cursive;
   
-  padding     : 0 10px;
-  text-indent : 30px;
-  text-align  : left;
-  color       : #452705;
-  text-shadow : 0 1px 1px #fff;
-  height      : 100%;
-  position    : relative;
+  height       : 100%;
+  padding      : 0 10px;
+  text-indent  : 30px;
+  text-align   : left;
+  color        : #452705;
+  text-shadow  : 0 1px 1px #fff;
+  position     : relative;
+  background   : #eeebdf image-url("noise.png") repeat;
   
   .cite {
     padding-top : 20px;

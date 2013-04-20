@@ -5,6 +5,8 @@ $contentWidth : 270px;
 $submitWidth  : 80px;
 $emailWidth   : $contentWidth - $submitWidth - $inputMargin;
 
+$inputIconSize : 28px;
+
 $inputBG         : #06aa92;
 $inputColor      : #227569;
 $inputColorFocus : #fff;
@@ -13,7 +15,7 @@ $submitBG    : #ffc130;
 $submitColor : #665F4F;
 
 .page4 {
-  padding     : 0 0 8px 0;
+  padding     : 8px 0 14px 0;
   background  : #06c9ac;
   z-index     : 4;
   
@@ -26,8 +28,7 @@ $submitColor : #665F4F;
   }
 
   form {
-    height : $inputHeight;
-    width  : $inputMargin * 3 + $contentWidth + $emailWidth + $submitWidth;
+    width  : $inputMargin * 2 + $contentWidth + $emailWidth + $submitWidth;
     margin : auto;
   }
 
@@ -57,16 +58,16 @@ $submitColor : #665F4F;
     left        : 0;
     top         : 0;
     text-align  : center;
-    width       : 30px;
+    width       : $inputIconSize + 2;
     color       : $inputColor;
   }
 
   .content {
-    input { width : $contentWidth - 32px - 5px; }
+    input { width : $contentWidth - $inputIconSize - 5px; }
   }
 
   .email {
-    input { width : $emailWidth - 28px -5px; }
+    input { width : $emailWidth - $inputIconSize - 5px; }
   }
 }
 
@@ -75,7 +76,7 @@ $submitColor : #665F4F;
     background  : $inputBG;
     color       : $inputColor;
     line-height : $inputHeight \9;
-    padding     : 0 5px 0 28px;
+    padding     : 0 5px 0 $inputIconSize;
     border-radius : 2px;
 
     &:focus {
@@ -90,8 +91,8 @@ $submitColor : #665F4F;
 }
 
 .submit {
-  margin        : 0;
-  overflow      : hidden;
+  margin   : 0 !important;
+  overflow : hidden;
   
   input {
     background    : $submitBG;
@@ -106,7 +107,7 @@ $submitColor : #665F4F;
 
   label {
     color      : $submitColor;
-    width      : 28px;
+    width      : $inputIconSize;
     text-align : right;
     cursor     : pointer;
     
@@ -120,6 +121,18 @@ $submitColor : #665F4F;
     label {
       @include transition(all ease-in-out 0.35s);
       @include transform(translate($inputHeight, -$inputHeight));
+    }
+  }
+}
+
+@media (max-width:550px) {
+  .page4 {
+    form {
+      width : $contentWidth;
+    }
+
+    .content {
+      margin : 0 0 8px 0;
     }
   }
 }

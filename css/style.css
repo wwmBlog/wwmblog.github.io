@@ -211,12 +211,12 @@ q:after {
 }
 
 /* line 54, ../scss/_base.scss */
-.sprite, .cite-con:before, .skill-legend {
+.sprite, .cite-con:after, .skill-legend {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAABMCAYAAAB6dgdeAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAIGNIUk0AAG11AABzoAAA/N0AAINkAABw6AAA7GgAADA+AAAQkOTsmeoAAALVSURBVHja7JlNaxNRFIafe2esrZgaFUmlurAWqraigrgQwYUW/AEi6EJcCNKNLl0IrvoD3Ij4GxS6EsWVG7HLKqQKLWKlRhBJxcSoATMuegLxMpM7nxkXc2BIZu688+Sc+3HO3CjmPQzbApwEXhHSvDtENu1z7SxwFBglQzPBx4AJ+T4zKPA4cKrnfErCnil4O3AOUEZfT2UJ1sAsMOzTPpMl+AywJ6B9FNiXFXin5Z7z0vcjaYNfW+4ZAo4DVyQ6pTTALrAGbITw3AGOAIeA98ASUE/isQe8iaiZBC4CF4CxJNNpBWjF0I/JVIwN7kT0GqAGPAZWk65c74AfITR/gEXgCdBMY8lsA0/lM8jqwIJEx0szSdSB5xL6fzKfwBaSjGRbWqwBL3rOmxLWRQkzac1jP1uV0boLeAn8TnvJdPu0LQ2yEBiYKS+Np3he7FAfBg4An+T4mrXHXfBPybvd3PsLWO/5Ic2swA3j+rAkgkk5/yY/YB34bFlkEoFNK8sxLYvLFxn1H5OO6nYEL7RkpYNpTadGRG0pL/BoWuCoI3ebZeULDf4eQ1/Kw+NE4U7Sx4k8dmOCN4Bq3HrLBLcl724NuLcDfACWpVhINR83fcAt4K0cLVIyE9wAdveUQMviZSfrCqQuXlWlHzMsBDyPPCy30qcAF+ACXIALcAH+D1/My+VyEequjQCXgAdsbjXVpBL1gBshnt1X7yqlTMFe4C5wGdgR8NDTwMOAtlB6E3wLmMe+I3si4Hpovau1hs1/X+4DcyG7aMIcpFH1WimFUuq2UmpOvgcdVaXUdaXUfqVUyWiLrq9UKtOyn9HvXfcRcFV2g0yLpXe11jctojXgWgAUIJbe1VrPWvrjnuWdKZbe1VqPW4TPLO2x9K7jOEMW4YqlPZa+O53o806cZHM8UG8Dd/+XMudslCXZV28DZ2au4zj5gHPzuAAPDOxTCBQeZ2J/BwAKbpkUKDR7KwAAAABJRU5ErkJggg==') no-repeat;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (min-device-pixel-ratio: 2) {
   /* line 4, ../scss/_base.scss */
-  .sprite, .cite-con:before, .skill-legend {
+  .sprite, .cite-con:after, .skill-legend {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAACYCAYAAAC4cYqKAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAIGNIUk0AAG11AABzoAAA/N0AAINkAABw6AAA7GgAADA+AAAQkOTsmeoAAAV4SURBVHja7J07bBxFGMd/s147+DCWicEPAohHCDgnFCREKEAKCnJEGsQbZDoKCgo6HhItoqKhhI4Kikg0ICSQkCWIFCkUJBEhPIJ4OSZx5CDnbNlH4qPY7+TT4bvb3dnH7N73SaeTz7fz3999M983Mzs7a3i7QUi7B1gGLpCCNd4iE/NCfu9G4CGgSsEtDPA1wCwwANwJVMoMbICDwEjL92fKDPwAcHPbZzMRmkKhgG8H7tvm84pU7VIBjwEHuhxXLRPwIHAIGOpy3IS8SgF8QDzcy6plAN4H3BHy2EKmqFbgXcD+iMfOFBV4BHhU8m4UK1yK8uQ1Kz2qqFa4FOUBD0tfOa5ViwZ8vWUZE8DjwK1FAT6RQDlTwGPA08Bul9u1B/wOXEqovHEZbDwH7JURlnPADeBkwuWOSmyYk/74kGtp6WdgLYXyhyW3z8n7sCvAm8CpFHWGxNNz4vnrXOhp/QDUU9YbkLb9vLT1nXkC1wU6K93dwDMS3afyGjyckuqdpU2xNYWUuvltf69JALs7I/1zwDxQywsYSVF7YgwkothV4LjUqEaW1Wk74EvSGbktJc1l4Ct5z9z8Dp+fSAG4IR49Lh52YsajaecT7n3VgM+AY3nCdvMwcnIVSR829gtwFNhwoWvp9/j/vEDfFKPsOvCNADs1eOhmm8AXMQLMOeCIa7BhgJue+hxYDZlujkl7reGghR2orwp0vUe6+USCXQNHLcrMxLJU781t0s1JgV3GcfNitM15F9NNUlG6U5oZkaGdM+kmTWCA7yioFfbCdlwzjUajr4D7zsN9B7wVtIzJ7ywybFbtUfopgpV2C5JzN8rrYfEzwTTqXulBLQn8XzJG3iw68FaUDqr0oS4zHf8Ci/IDLCTajcyxSncb4QwSXBJtXhZdE883f4C1IlbplQjHVghmN/e0DC6a1X8RuFIEYJsx7E553Stt/e+WH+CiK0PG9jY8TnBRO2nbaKn6C/+rSTm24csp6ewgWP/VXAP2YV4pr72nVSf9K4jgyOXStL3caqMKnCNwrd+q9Ip6WIOWtY3kNRbPC9gjw2UOvYBLnYs7VavSpqY8gZ3ycK3fPLzSb8ClzcV+Dm34KnAWOF124MsC+SOwnldPqxNwXQboOyzLbxBM8XwP/IkD0zzdLpfWLIDXgZ/Eoys4ZH6PKjgesbwlgTxLQWYt40Tq1iB0AcetG3CvquhEEErbww0JPqddCUJJt2Hng1DSwEuSUn51NQhFNV3jocAKrMAKrMAKrMAKrMAKrMAKrMAKrMAKrMAKrMAKrMAKrMAKrMAKrMAKrMAKXAYzY2Nj6uEym59AGRPAgwS30VaBW4BpglV8Q8C1BIvXjgAvpMAQST9OlTYEjzR5FjhMsF9AmC0iLsrJ2a6isdL3TfjtLEaBl4BXgLtinOgNBBuEnokJmoh+GOBh4FXgDey3V98fAzhR/V5teBZ4n+BBNUnYvojfT1y/k4cHgHeA10h2y9awwKnpbwdckYh2OIWIGqbtparfDlwh2PLtkZTS4GQI2FT1/bZw/0GCYn8AHwNfE6zCXaL7zSOZ6Ld6+GXgxQSEFoHXgY+ItjFgJvpmcnISgq1Yz2B/89RR4En5NaNYZvpND7+ZgNi3BPu9x7mrLTN9Mz09PUqwjYzNMxhq0pf9LWYPKjN93xjzBPYPnHg3JixApvq+Meagpdg68J7F8Znq+8aY+y0FPwX+sTg+U33fGLPLUvBLy+Mz1fc9z7Mdgdg+rylT/Sjj4U6W1eNOEtG3Bb5CvjduRda3BV7N2buR9W2B836yZSVr4EF6T8qluQdsZP0kglahTIFLD+x5nnpYgRVYgRVYgRVYgTOx/lvjoVVagbUNq4cV2GH7bwAIEDLSV00oCAAAAABJRU5ErkJggg==');
     -webkit-background-size: 30px auto;
     -moz-background-size: 30px auto;
@@ -718,7 +718,7 @@ footer {
   background: #c6ff00;
 }
 
-/* line 1, ../scss/intro/_card_cite.scss */
+/* line 3, ../scss/intro/_card_cite.scss */
 .card-mid {
   position: relative;
   width: 222px;
@@ -727,40 +727,48 @@ footer {
   opacity: 0.99;
 }
 
-/* line 9, ../scss/intro/_card_cite.scss */
+/* line 11, ../scss/intro/_card_cite.scss */
 .cite-con {
-  background: #eeebdf url('../img/noise.png') repeat;
   overflow: hidden;
 }
-/* line 13, ../scss/intro/_card_cite.scss */
-.cite-con:before {
+/* line 14, ../scss/intro/_card_cite.scss */
+.cite-con:after {
   content: " ";
   display: block;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 10px;
   width: 38px;
   height: 30px;
   background-position: 8px -49px;
 }
 
-/* line 27, ../scss/intro/_card_cite.scss */
+/* line 28, ../scss/intro/_card_cite.scss */
 #W_citeCarousel {
   -webkit-perspective: 500px;
   -moz-perspective: 500px;
   -ms-perspective: 500px;
   -o-perspective: 500px;
   perspective: 500px;
-}
-/* line 31, ../scss/intro/_card_cite.scss */
-#W_citeCarousel .cite-con {
-  width: 100%;
   height: 100%;
+  width: 100%;
+  padding: 0 10px;
+  margin-left: -10px;
+  overflow: hidden;
+}
+/* line 38, ../scss/intro/_card_cite.scss */
+#W_citeCarousel .cite-con {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-/* line 39, ../scss/intro/_card_cite.scss */
+/* line 48, ../scss/intro/_card_cite.scss */
 #W_citeCarousel .head {
   z-index: 3;
   -webkit-backface-visibility: hidden;
@@ -769,7 +777,7 @@ footer {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-/* line 44, ../scss/intro/_card_cite.scss */
+/* line 53, ../scss/intro/_card_cite.scss */
 #W_citeCarousel .tail {
   z-index: 4;
   -webkit-backface-visibility: hidden;
@@ -778,14 +786,14 @@ footer {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-/* line 50, ../scss/intro/_card_cite.scss */
+/* line 59, ../scss/intro/_card_cite.scss */
 #W_citeCarousel.cite-play .head {
   -webkit-animation: flipHead 0.5s linear both;
   -moz-animation: flipHead 0.5s linear both;
   -o-animation: flipHead 0.5s linear both;
   animation: flipHead 0.5s linear both;
 }
-/* line 53, ../scss/intro/_card_cite.scss */
+/* line 62, ../scss/intro/_card_cite.scss */
 #W_citeCarousel.cite-play .tail {
   z-index: 2;
   -webkit-animation: flipTail 0.5s linear both;
@@ -795,30 +803,30 @@ footer {
 }
 
 @-webkit-keyframes flipHead {
-  /* line 61, ../scss/intro/_card_cite.scss */
+  /* line 70, ../scss/intro/_card_cite.scss */
   0% {
     -webkit-transform: rotateX(0deg);
   }
 
-  /* line 62, ../scss/intro/_card_cite.scss */
+  /* line 71, ../scss/intro/_card_cite.scss */
   100% {
     -webkit-transform: rotateX(180deg);
   }
 }
 
 @-webkit-keyframes flipTail {
-  /* line 66, ../scss/intro/_card_cite.scss */
+  /* line 75, ../scss/intro/_card_cite.scss */
   0% {
     z-index: 2;
     -webkit-transform: rotateX(-180deg);
   }
 
-  /* line 70, ../scss/intro/_card_cite.scss */
+  /* line 79, ../scss/intro/_card_cite.scss */
   50% {
     z-index: 4;
   }
 
-  /* line 73, ../scss/intro/_card_cite.scss */
+  /* line 82, ../scss/intro/_card_cite.scss */
   100% {
     z-index: 4;
     -webkit-transform: rotateX(0deg);
@@ -826,30 +834,30 @@ footer {
 }
 
 @-moz-keyframes flipHead {
-  /* line 79, ../scss/intro/_card_cite.scss */
+  /* line 88, ../scss/intro/_card_cite.scss */
   0% {
     -moz-transform: rotateX(0deg);
   }
 
-  /* line 80, ../scss/intro/_card_cite.scss */
+  /* line 89, ../scss/intro/_card_cite.scss */
   100% {
     -moz-transform: rotateX(180deg);
   }
 }
 
 @-moz-keyframes flipTail {
-  /* line 84, ../scss/intro/_card_cite.scss */
+  /* line 93, ../scss/intro/_card_cite.scss */
   0% {
     z-index: 2;
     -moz-transform: rotateX(-180deg);
   }
 
-  /* line 88, ../scss/intro/_card_cite.scss */
+  /* line 97, ../scss/intro/_card_cite.scss */
   50% {
     z-index: 4;
   }
 
-  /* line 91, ../scss/intro/_card_cite.scss */
+  /* line 100, ../scss/intro/_card_cite.scss */
   100% {
     z-index: 4;
     -moz-transform: rotateX(0deg);
@@ -857,30 +865,30 @@ footer {
 }
 
 @-o-keyframes flipHead {
-  /* line 97, ../scss/intro/_card_cite.scss */
+  /* line 106, ../scss/intro/_card_cite.scss */
   0% {
     -o-transform: rotateX(0deg);
   }
 
-  /* line 98, ../scss/intro/_card_cite.scss */
+  /* line 107, ../scss/intro/_card_cite.scss */
   100% {
     -o-transform: rotateX(180deg);
   }
 }
 
 @-o-keyframes flipTail {
-  /* line 102, ../scss/intro/_card_cite.scss */
+  /* line 111, ../scss/intro/_card_cite.scss */
   0% {
     z-index: 2;
     -o-transform: rotateX(-180deg);
   }
 
-  /* line 106, ../scss/intro/_card_cite.scss */
+  /* line 115, ../scss/intro/_card_cite.scss */
   50% {
     z-index: 4;
   }
 
-  /* line 109, ../scss/intro/_card_cite.scss */
+  /* line 118, ../scss/intro/_card_cite.scss */
   100% {
     z-index: 4;
     -o-transform: rotateX(0deg);
@@ -888,62 +896,63 @@ footer {
 }
 
 @keyframes flipHead {
-  /* line 115, ../scss/intro/_card_cite.scss */
+  /* line 124, ../scss/intro/_card_cite.scss */
   0% {
     transform: rotateX(0deg);
   }
 
-  /* line 116, ../scss/intro/_card_cite.scss */
+  /* line 125, ../scss/intro/_card_cite.scss */
   100% {
     transform: rotateX(180deg);
   }
 }
 
 @keyframes flipTail {
-  /* line 120, ../scss/intro/_card_cite.scss */
+  /* line 129, ../scss/intro/_card_cite.scss */
   0% {
     z-index: 2;
     transform: rotateX(-180deg);
   }
 
-  /* line 124, ../scss/intro/_card_cite.scss */
+  /* line 133, ../scss/intro/_card_cite.scss */
   50% {
     z-index: 4;
   }
 
-  /* line 127, ../scss/intro/_card_cite.scss */
+  /* line 136, ../scss/intro/_card_cite.scss */
   100% {
     z-index: 4;
     transform: rotateX(0deg);
   }
 }
 
-/* line 133, ../scss/intro/_card_cite.scss */
+/* line 142, ../scss/intro/_card_cite.scss */
 .cite-wrap {
+  height: 100%;
   padding: 0 10px;
   text-indent: 30px;
   text-align: left;
   color: #452705;
   text-shadow: 0 1px 1px white;
-  height: 100%;
   position: relative;
+  background: #eeebdf url('../img/noise.png') repeat;
 }
-/* line 144, ../scss/intro/_card_cite.scss */
+/* line 154, ../scss/intro/_card_cite.scss */
 .cite-wrap .cite {
   padding-top: 20px;
 }
-/* line 147, ../scss/intro/_card_cite.scss */
+/* line 157, ../scss/intro/_card_cite.scss */
 .cite-wrap .cite.single-bold {
   font-size: 18px;
   padding-top: 30px;
 }
-/* line 153, ../scss/intro/_card_cite.scss */
+/* line 163, ../scss/intro/_card_cite.scss */
 .cite-wrap .cite-src {
   position: absolute;
   bottom: 5px;
   right: 10px;
 }
-/* line 158, ../scss/intro/_card_cite.scss */
+/* line 168, ../scss/intro/_card_cite.scss */
 .cite-wrap .cite-src:before {
   content: " - ";
 }
@@ -1136,10 +1145,14 @@ footer {
   color: #9a9a9a;
 }
 /* line 102, ../scss/intro/_card_puzzle.scss */
+.loading-wrap + #W_puzzle + #W_playGame {
+  display: none;
+}
+/* line 106, ../scss/intro/_card_puzzle.scss */
 .card-left:hover #W_playGame {
   opacity: 1;
 }
-/* line 106, ../scss/intro/_card_puzzle.scss */
+/* line 110, ../scss/intro/_card_puzzle.scss */
 .card-left.playing #W_playGame {
   display: none;
 }
@@ -1378,13 +1391,13 @@ article dfn:hover {
   height: 100px;
 }
 
-/* line 15, ../scss/_page_4_contact.scss */
+/* line 17, ../scss/_page_4_contact.scss */
 .page4 {
-  padding: 0 0 8px 0;
+  padding: 8px 0 14px 0;
   background: #06c9ac;
   z-index: 4;
 }
-/* line 20, ../scss/_page_4_contact.scss */
+/* line 22, ../scss/_page_4_contact.scss */
 .page4 h1 {
   text-align: center;
   height: 40px;
@@ -1392,20 +1405,19 @@ article dfn:hover {
   font-size: 24px;
   color: #a5eddf;
 }
-/* line 28, ../scss/_page_4_contact.scss */
+/* line 30, ../scss/_page_4_contact.scss */
 .page4 form {
-  height: 32px;
-  width: 568px;
+  width: 554px;
   margin: auto;
 }
-/* line 34, ../scss/_page_4_contact.scss */
+/* line 35, ../scss/_page_4_contact.scss */
 .page4 div {
   height: 32px;
   position: relative;
   float: left;
   margin-right: 14px;
 }
-/* line 41, ../scss/_page_4_contact.scss */
+/* line 42, ../scss/_page_4_contact.scss */
 .page4 input {
   background: none;
   border: none;
@@ -1417,7 +1429,7 @@ article dfn:hover {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-/* line 52, ../scss/_page_4_contact.scss */
+/* line 53, ../scss/_page_4_contact.scss */
 .page4 label {
   font-size: 16px;
   height: 32px;
@@ -1429,16 +1441,16 @@ article dfn:hover {
   width: 30px;
   color: #227569;
 }
-/* line 65, ../scss/_page_4_contact.scss */
+/* line 66, ../scss/_page_4_contact.scss */
 .page4 .content input {
-  width: 233px;
+  width: 237px;
 }
-/* line 69, ../scss/_page_4_contact.scss */
+/* line 70, ../scss/_page_4_contact.scss */
 .page4 .email input {
-  width: 148px -5px;
+  width: 143px;
 }
 
-/* line 74, ../scss/_page_4_contact.scss */
+/* line 75, ../scss/_page_4_contact.scss */
 .txt-input input {
   background: #06aa92;
   color: #227569;
@@ -1446,22 +1458,22 @@ article dfn:hover {
   padding: 0 5px 0 28px;
   border-radius: 2px;
 }
-/* line 81, ../scss/_page_4_contact.scss */
+/* line 82, ../scss/_page_4_contact.scss */
 .txt-input input:focus {
   background: #047968;
   color: white;
 }
-/* line 85, ../scss/_page_4_contact.scss */
+/* line 86, ../scss/_page_4_contact.scss */
 .txt-input input:focus + label {
   color: white;
 }
 
-/* line 92, ../scss/_page_4_contact.scss */
+/* line 93, ../scss/_page_4_contact.scss */
 .submit {
-  margin: 0;
+  margin: 0 !important;
   overflow: hidden;
 }
-/* line 96, ../scss/_page_4_contact.scss */
+/* line 97, ../scss/_page_4_contact.scss */
 .submit input {
   background: #ffc130;
   border-radius: 4px;
@@ -1472,7 +1484,7 @@ article dfn:hover {
   font-size: 16px;
   cursor: pointer;
 }
-/* line 107, ../scss/_page_4_contact.scss */
+/* line 108, ../scss/_page_4_contact.scss */
 .submit label {
   color: #665f4f;
   width: 28px;
@@ -1480,11 +1492,11 @@ article dfn:hover {
   cursor: pointer;
   text-shadow: -32px 32px #665f4f;
 }
-/* line 117, ../scss/_page_4_contact.scss */
+/* line 118, ../scss/_page_4_contact.scss */
 .submit:hover input {
   background: #fcb100;
 }
-/* line 120, ../scss/_page_4_contact.scss */
+/* line 121, ../scss/_page_4_contact.scss */
 .submit:hover label {
   -webkit-transition: all ease-in-out;
   -webkit-transition-delay: 0.35s;
@@ -1496,4 +1508,15 @@ article dfn:hover {
   -ms-transform: translate(32px, -32px);
   -o-transform: translate(32px, -32px);
   transform: translate(32px, -32px);
+}
+
+@media (max-width: 550px) {
+  /* line 130, ../scss/_page_4_contact.scss */
+  .page4 form {
+    width: 270px;
+  }
+  /* line 134, ../scss/_page_4_contact.scss */
+  .page4 .content {
+    margin: 0 0 8px 0;
+  }
 }
