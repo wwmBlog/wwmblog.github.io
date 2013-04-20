@@ -1112,10 +1112,10 @@ footer {
   left: 9px;
   top: 7px;
   cursor: pointer;
-  -webkit-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 /* line 51, ../scss/intro/_card_puzzle.scss */
 .playing .puzzle-item[data-idx="15"] {
@@ -1141,13 +1141,14 @@ footer {
   color: #fff;
   text-align: center;
   background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out;
   -moz-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
 }
-/* line 75, ../scss/intro/_card_puzzle.scss */
+/* line 76, ../scss/intro/_card_puzzle.scss */
 #W_playGame:before, #W_playGame:after {
   font-family: 'wwmregular';
   content: "\F119";
@@ -1163,21 +1164,21 @@ footer {
   top: 50%;
   margin: -20px 0 0 -20px;
 }
-/* line 91, ../scss/intro/_card_puzzle.scss */
+/* line 92, ../scss/intro/_card_puzzle.scss */
 #W_playGame:before {
   background: #333;
   border-radius: 50%;
 }
-/* line 96, ../scss/intro/_card_puzzle.scss */
+/* line 97, ../scss/intro/_card_puzzle.scss */
 #W_playGame:after {
   content: "\F120";
   color: #9a9a9a;
 }
-/* line 101, ../scss/intro/_card_puzzle.scss */
+/* line 102, ../scss/intro/_card_puzzle.scss */
 .card-left:hover #W_playGame {
   opacity: 1;
 }
-/* line 105, ../scss/intro/_card_puzzle.scss */
+/* line 106, ../scss/intro/_card_puzzle.scss */
 .card-left.playing #W_playGame {
   display: none;
 }

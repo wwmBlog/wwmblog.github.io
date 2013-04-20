@@ -46,7 +46,7 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   top      : $puzzlePaddingTop;
   cursor   : pointer;
   
-  @include transition(all .15s ease-in-out);
+  @include transition(all .1s ease-in-out);
 
   .playing &[data-idx="15"] {
     display : none;
@@ -68,6 +68,7 @@ $puzzlePaddingTop  : ($cardLowerH - $puzzleSize * 4) / 2;
   color       : #fff;
   text-align  : center;
   background  : rgba(0,0,0,0.6);
+  cursor      : pointer;
   
   opacity : 0;
   @include transition(opacity 0.3s ease-in-out);

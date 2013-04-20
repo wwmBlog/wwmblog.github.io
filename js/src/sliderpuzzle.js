@@ -151,12 +151,10 @@ define(function(require){
 
     var len        = this.TILE_COUNT - 1;
     var r          = new Array( len );
-    var parity     = 0;
     var switch_idx = 0;
     var t;
     for ( var i = 0; i < len; ++i ) {
       switch_idx  = Math.floor( Math.random() * (len - i) ) + i;
-      parity     += switch_idx - i;
 
       t = r[ switch_idx ];
 
@@ -164,26 +162,32 @@ define(function(require){
       r[ i ]          = t    === undefined ? switch_idx : t;
     }
 
-    // We need even parity
-    if ( parity % 2 == 1 ) {
-      t    = r[0];
-      r[0] = r[1];
-      r[1] = t;
+    // Count the parity
+    var parity = 0;
+    for ( i = 0; i < len; ++i ) {
+      t = r[i];
+      for ( var j = i+1; j < len; ++j ) {
+        if ( t > r[j] ) { ++parity; }
+      }
     }
+    console.log( r, parity );
+    // Insert the empty square to odd row if parity is odd.
+    this.emptyPos = Math.floor( Math.random() * this.COLUMN_COUNT ) + 
+                      this.COLUMN_COUNT *
+                      ( Math.floor( Math.random() * this.COLUMN_COUNT / 2 ) * 2 + (parity + 1) % 2 );
+    r.splice( this.emptyPos, 0, len );
 
-    r.splice( Math.floor( Math.random() * (len + 1) ), 0, this.TILE_COUNT - 1);
+    console.log ( r );
 
-    var pos    = { x : 0, y : 0};
+    var pos    = { x : 0, y : 0 };
     var $tiles = this.$container.addClass("random")
                                 .children(".puzzle-item");
     for ( i = 0; i < $tiles.length; ++i ) {
-      this.itemPos( r[i], pos );
-      $tiles.eq(i)
-            .data("pos", r[i])
+      this.itemPos( i, pos );
+      $tiles.eq( r[i] )
+            .data("pos", i)
             .transform("translate(" + pos.x + "px, " + pos.y + "px)");
     }
-
-    this.emptyPos = r[ $tiles.length - 1 ];
 
     var self = this;
     setTimeout( function(){ self.$container.removeClass("random"); }, 300 );
@@ -221,6 +225,32 @@ define(function(require){
     this.emptyPos = pos;
   }
 
+  Puzzle.prototype.checkDone = function () {
+    var $tiles = this.$container.children(".puzzle-item");
+
+    var done = true;
+
+    // Don't check the last tile, since last tile is empty
+    // Note: This code will break if $tiles[$tiles.length - 1] != emptyTile
+    for ( var i = $tiles.length - 2; i >= 0; --i ) {
+      var $t = $tiles.eq(i);
+      if ( $t.data("idx") != $t.data("pos") ) {
+        done = false;
+        break;
+      }
+    }
+
+    if ( done ) {
+      $(".card-left").removeClass("playing");
+
+      i = this.TILE_COUNT - 1;
+      var pos = this.itemPos( i );
+      this.$container.children(".puzzle-item").eq(i)
+          .data("pos", i)
+          .transform("translate(" + pos.x + "px, " + pos.y + "px)");
+    }
+  }
+
   $(function(){
 
     var $el = $("#W_puzzle");
@@ -240,6 +270,7 @@ define(function(require){
 
       $el.on("click", ".puzzle-item", function(){
         p.slide( this );
+        p.checkDone();
         return false;
       });
     }
