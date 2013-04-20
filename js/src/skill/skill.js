@@ -11,11 +11,5 @@ define(function(require){
 
 
   var chartW  = new ScrollWatcher( ".page1" );
-  chartW.on("scrollabove", onShown)
-  function onShown () { 
-    chart.render();
-    chartW.off("scrollabove", onShown);
-    console.log(" Scrolled Into ");
-  }
-
+  chartW.one("scrollabove", function(){ chart.render(); console.log(" scrolled into "); });
 });

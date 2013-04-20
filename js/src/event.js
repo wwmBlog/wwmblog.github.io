@@ -33,6 +33,15 @@ define(function(require, exports){
     }
   }
 
+  EventTarget.prototype.one = function(event, handler) {
+    var self    = this;
+    var wrapper = function( evt ) {
+      self.off( event, wrapper );
+      handler( evt );
+    }
+    self.on( event, wrapper );
+  }
+
   EventTarget.prototype.trigger = function(event, eventObj) {
     if ( typeof event != "string" ) { return; }
     var handlers = this.__handlers[event];

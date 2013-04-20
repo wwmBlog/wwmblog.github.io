@@ -108,9 +108,11 @@ define(function( require, exports, module ){
   }
   function renderGraphs () {
     for ( var i = 0; i < this.graphs.length; ++i ) {
-      var g = this.graphs[i].draw();
+      var g = this.graphs[i];
       if ( this.firstRender ) {
         g.animate();
+      } else {
+        g.draw();
       }
     }
   }

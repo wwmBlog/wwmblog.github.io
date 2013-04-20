@@ -65,6 +65,15 @@ define(function(require, exports, module){
     this.emmiter.on( event, callback );
     return this;
   }
+  ScrollWatcher.prototype.one = function ( event, callback ) {
+    var self    = this;
+    var wrapper = function( evt ) {
+      self.off( event, wrapper );
+      callback( evt );
+    }
+    self.on( event, wrapper );
+    return this;
+  }
   ScrollWatcher.prototype.off = function ( event, callback ) {
     this.emmiter.off( event, callback );
     if ( this.emmiter.handlerCount() == 0 ) {

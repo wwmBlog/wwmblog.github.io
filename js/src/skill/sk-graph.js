@@ -24,43 +24,64 @@ define(function(require, exports, module){
     this.dotData     = [];
   }
 
-  Graph.prototype.vertexSize  = 10;
+  Graph.prototype.vertexSize  = 10 / 2;
   Graph.prototype.maskDotSize = 14 / 2;
   Graph.prototype.draw        = draw;
+  Graph.prototype.init        = init;
   Graph.prototype.animate     = animate;
   Graph.prototype.updateMask  = updateMask;
   Graph.prototype.getGroup    = function () { return this.group; }
 
-  function draw () {
-
+  function init ( force ) {
     if ( this.polygon ) {
-      this.polygonMask.remove();
-      this.group.remove();
+      if ( force ) {
+        this.polygonMask.remove();
+        this.group.remove();
+      } else {
+        return;
+      }
     }
 
     this.dots = [];
 
+    var canvas   = this.canvas;
+    var group    = canvas.group();
+
+    // Draw dots
+    var ds = this.data.data;
+    for ( var i = 0; i < ds.length; ++i )
+    {
+      if ( ds[i] == null ) { continue; }
+      var dot = canvas.circle(0,0).center(0,0);
+
+      this.dots.push( dot );
+      group.add( dot );
+    }
+
+    this.polygonMask = canvas.clip();
+    this.polygon     = canvas.polygon().clipWith( this.polygonMask );
+    this.group       = group.add( this.polygon );
+
+    // Transform the whole group
+    this.canvas.moveToCenter( this.group );
+  }
+
+  function draw () {
+
+    this.init( true );
+
     var maskDots = [];
     var canvas   = this.canvas;
-    var mask     = canvas.clip();
-    var group    = canvas.group();
 
     // Draw dots
     var ds = this.data.data;
     var polygonString = [];
 
-    for ( var i = 0; i < ds.length; ++i )
+    for ( var i = 0, j = 0; i < ds.length; ++i )
     {
       if ( ds[i] == null ) { continue; }
 
       var pos = canvas.vertexPosition( i, ds[i].v );
-
-      var dot = canvas.circle(this.vertexSize, this.vertexSize)
-                      .center(pos.x, pos.y)
-                      .fill(this.data.stroke || "#000");
-
-      this.dots.push( dot );
-      group.add( dot );
 
       // Remeber each vertex's position
       // So that we can update the mask(clip).
@@ -68,45 +89,47 @@ define(function(require, exports, module){
 
       // Update the polygon string
       polygonString.push( pos.x + "," + pos.y );
+
+      this.dots[j]
+          .attr({ rx : this.vertexSize, ry : this.vertexSize })
+          .center(pos.x, pos.y)
+          .fill(this.data.stroke || "#000");
+
+      ++j;
     }
 
-    var polygon = canvas.polygon(polygonString.join(" "), true).attr(this.effect);
-    group.add(polygon);
-
-    this.polygonMask = mask;
-    this.group       = group;
-    this.polygon     = polygon;
-
+    this.polygon.attr("points", polygonString.join(" ")).attr(this.effect);
 
     // Deal with masks.
     this.updateMask( maskDots );
-    polygon.clipWith( mask );
-
-    // Transform the whole group
-    this.canvas.moveToCenter( this.group );
 
     return this;
   }
   function animate() {
     // Ensure that all elements are ready.
-    if ( !this.polygon ) { this.draw(); }
+    this.init();
 
     this.dotData = [];
+    this.polygon.attr(this.effect);
 
     // Prepare
-    for ( var i = 0; i < this.dots.length; ++i )
+    var ds = this.data.data;
+    for ( var i = 0, j = 0; i < ds.length; ++i )
     {
-      var dot = this.dots[i];
-      var x   = parseInt(dot.attr("cx"));
-      var y   = parseInt(dot.attr("cy"));
+      if ( ds[i] == null ) { continue; }
 
-      this.dotData[i] = {
-          toX   : x
-        , toY   : y
-        , toDis : Math.sqrt( x*x + y*y )
+      this.dots[j]
+          .attr({ rx : this.vertexSize, ry : this.vertexSize })
+          .fill(this.data.stroke || "#000");
+
+      var pos = this.canvas.vertexPosition( i, ds[i].v );
+      this.dotData[j] = {
+          toX   : pos.x
+        , toY   : pos.y
+        , toDis : Math.sqrt( pos.x*pos.x + pos.y*pos.y )
       };
 
-      dot.center( 0, 0 );
+      ++j;
     }
 
     // Animation
