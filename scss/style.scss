@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Bad+Script);
-
 @import "compass/css3";
 @import "compass/css3/user-interface";
 @import "font";
@@ -30,9 +28,10 @@ $pageMaxWidth : 90%;
   width      : $pageWidth;
 }
 
-@import "base.scss";
-@import "misc.scss";
-@import "page_0_intro.scss";
-@import "page_1_skill.scss";
-@import "page_2_timeline.scss";
-@import "page_3_about.scss";
+@import "base";
+@import "misc";
+@import "page_0_intro";
+@import "page_1_skill";
+@import "page_2_timeline";
+@import "page_3_about";
+@import "page_4_contact";

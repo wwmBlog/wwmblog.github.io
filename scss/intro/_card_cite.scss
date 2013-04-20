@@ -131,12 +131,13 @@
 }
 
 .cite-wrap {
+  @extend .font-cursive;
+  
   padding     : 0 10px;
   text-indent : 30px;
   text-align  : left;
   color       : #452705;
   text-shadow : 0 1px 1px #fff;
-  font        : 12px/1.2em "Apple Chancery", "Segoe Script", "Bad Script", cursive;
   height      : 100%;
   position    : relative;
   

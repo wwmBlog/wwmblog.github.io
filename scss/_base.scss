@@ -43,14 +43,8 @@ q { &:before { content : ""; } &:after { content : ""; } }
   background : #4BA9FF;
 }
 
-
-.wwmicn { 
-  font-family : "wwmregular";
-  font-weight : normal;
-  font-style  : normal;
-}
-body, .font-title {
-  font-family : "Hiragino Sans GB", "Hiragino Sans GB W3", "Helvetica", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", sans-serif;
+body {
+  @extend .font-def;
 }
 
 .mh100p {

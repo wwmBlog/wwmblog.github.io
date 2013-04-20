@@ -30,14 +30,14 @@
           <div id="W_playGame"></div>
         </section>
         <section class="card-mid cite-con" id="W_citeCarousel">
-          <div class="cite-wrap">
+<!--           <div class="cite-wrap">
             <p class="cite">Never commit to memory what can be easily looked up in books</p>
             <p class="cite-src">Albert Einstein</p>
           </div>
           <div class="cite-wrap">
             <p class="cite single-bold">溃退吧，过时的人啊</p>
             <p class="cite-src">鲁鲁修·VI·布里塔尼亚</p>
-          </div>
+          </div> -->
         </section>
         <address class="card-bottom wwmicn">
           <a href="https://github.com/warwithinme/" class="github">&#61712;</a>
@@ -52,21 +52,22 @@
   </div>
 
   <section class="logo-wrap">
-<!--     <h1 class="logo page-title font-title">
-      <p class="l1"><b>W</b>ar<b>W</b>ithin<b>M</b>e</p>
+    <h1 class="logo page-title font-def">
+      <div class="l1"><b>W</b>ar<b>W</b>ithin<b>M</b>e</div>
+    </h1>
+<!--     <h1 class="logo page-title font-def">
+      <p class="l2">我的人生的时间轴</p>
+      <p class="l2s">String of my life</p>
     </h1> -->
-    <!-- <h1 class="logo page-title font-title">
-        <p class="l2">我的人生的时间轴</p>
-        <p class="l2s">String of my life</p>
-        </h1> -->
   </section>
 
   <section class="page-wrap page1">
     <div class="page clearfix">
       <aside class="chart-wrap">
         <div class="chart">
-          <figure id="W_skillChart"></figure>
-          <figcaption><span class="skill-legend" id="W_lgdPro">PRO</span><span class="skill-legend" id="W_lgdBasic">BASIC</span></figcaption>
+          <figure id="W_skillChart">
+            <figcaption><span class="skill-legend" id="W_lgdPro">PRO</span><span class="skill-legend" id="W_lgdBasic">BASIC</span></figcaption>
+          </figure>
         </div>
       </aside>
       <article>
@@ -84,33 +85,38 @@
   </section>
   <section class="page-wrap page2">
     <div class="page" id="W_timelineContainer">
-      <figure id="W_timeline"></figure>
-      <figcaption><span id="W_lgdTL">当前世界线</span><span id="W_lgdTLAlt">平行世界线</span></figcaption>
+      <figure id="W_timeline">
+        <figcaption><span id="W_lgdTL">当前世界线</span><span id="W_lgdTLAlt">平行世界线</span></figcaption>
+      </figure>
     </div>
   </section>
-  <section class="page-wrap page3">
-    <div class="page">
-      <form class="contact clearfix" action="">
-        <textarea class="content" name="content" id="content" cols="30" rows="10"></textarea>
-        <label for="content" class="wwmicn content-lbl">&#61718;</label>
-        <div class="email">
-          <input id="email" type="email">
-          <label for="email" class="wwmicn">&#61720;</label>
-        </div>
-        <div class="submit">
-          <label for="submit" class="wwmicn">&#61719;</label>
-          <input id="submit" type="submit" value="发送">
-        </div>
-      </form>
-    </div>
+  <section class="page-wrap page3"><div class="page"></div></section>
+  
+  <section class="page-wrap page4">
+    <nav class="shortcut-nav clearfix">
+      <kbd id="W_vimJ" class="sc-button underline">J</kbd>
+      <kbd id="W_vimK" class="sc-button">K</kbd>
+    </nav>
+    
+    <h1 class="font-econo">Why not get in touch (with me) ?</h1>
+    <form class="contact" action="">
+      <div class="content txt-input">
+        <input id="content">
+        <label for="content" class="wwmicn">&#61718;</label>
+      </div>
+      <div class="email txt-input">
+        <input id="email" type="email">
+        <label for="email" class="wwmicn">&#61720;</label>
+      </div>
+      <div class="submit">
+        <label for="submit" class="wwmicn">&#61719;</label>
+        <input id="submit" type="submit" value="发送">
+      </div>
+    </form>
   </section>
 
   <footer class="wwmicn">
-    <div class="shortcut-nav clearfix">
-      <kbd><a id="W_vimJ" class="sc-button underline">J</a></kbd>
-      <kbd><a id="W_vimK" class="sc-button">K</a></kbd>
-    </div>
-    <div class="footer-wrap"><p class="copyright font-title">&copy;你可以随意复制我的网站，只需标明出处。</p><q>不要随波俗流</q></div>
+    <div class="footer-wrap"><p class="copyright font-def">&copy;你可以随意复制我的网站，只需标明出处。</p><q>不要随波俗流</q></div>
   </footer>
 
   <script type="text/javascript" src="js/libs/sea.js" id="seajsnode"></script>

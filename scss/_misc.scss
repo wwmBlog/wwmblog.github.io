@@ -90,7 +90,7 @@
   
   &.sticky {
     position : absolute;
-    top      : 0px - (26+4*2+1*2) - 10px;
+    top      : -55px;
     bottom   : auto;
   }
   
@@ -153,7 +153,7 @@
 $footerHeight : 54px;
 footer {
   position   : relative;
-  z-index    : 10;
+  z-index    : 3;
   height     : $footerHeight;
   background : #262626 inline-image("zigzag.png") repeat-x;
   

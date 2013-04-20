@@ -71,7 +71,7 @@ define(function(require){
     logoW.on("scrollabove", function(){ $(".logo-wrap").addClass("fixed"); })
          .on("scrollinto",  function(){ $(".logo-wrap").removeClass("fixed"); });
 
-    var shortcutW = new ScrollWatcher( "footer", 10 );
+    var shortcutW = new ScrollWatcher( ".page4", 0 );
     shortcutW.on("scrollinto",  function(){ $(".shortcut-nav").toggleClass("sticky", true);  })
              .on("scrollbelow", function(){ $(".shortcut-nav").toggleClass("sticky", false); });
 

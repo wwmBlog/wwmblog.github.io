@@ -1,0 +1,125 @@
+$inputHeight : 32px;
+$inputMargin : 14px;
+
+$contentWidth : 270px;
+$submitWidth  : 80px;
+$emailWidth   : $contentWidth - $submitWidth - $inputMargin;
+
+$inputBG         : #06aa92;
+$inputColor      : #227569;
+$inputColorFocus : #fff;
+
+$submitBG    : #ffc130;
+$submitColor : #665F4F;
+
+.page4 {
+  padding     : 0 0 8px 0;
+  background  : #06c9ac;
+  z-index     : 4;
+  
+  h1 {
+    text-align  : center;
+    height      : 40px;
+    line-height : 36px;
+    font-size   : 24px;
+    color       : #a5eddf;
+  }
+
+  form {
+    height : $inputHeight;
+    width  : $inputMargin * 3 + $contentWidth + $emailWidth + $submitWidth;
+    margin : auto;
+  }
+
+  div {
+    height       : $inputHeight;
+    position     : relative;
+    float        : left;
+    margin-right : 14px;
+  }
+
+  input {
+    background : none;
+    border     : none;
+    font-size  : 12px;
+    height     : $inputHeight;
+    padding    : 0;
+    display    : block;
+    
+    @include box-sizing( content-box );
+  }
+
+  label {
+    font-size   : 16px;
+    height      : $inputHeight;
+    line-height : $inputHeight;
+    position    : absolute;
+    left        : 0;
+    top         : 0;
+    text-align  : center;
+    width       : 30px;
+    color       : $inputColor;
+  }
+
+  .content {
+    input { width : $contentWidth - 32px - 5px; }
+  }
+
+  .email {
+    input { width : $emailWidth - 28px -5px; }
+  }
+}
+
+.txt-input {
+  input {
+    background  : $inputBG;
+    color       : $inputColor;
+    line-height : $inputHeight \9;
+    padding     : 0 5px 0 28px;
+    border-radius : 2px;
+
+    &:focus {
+      background : darken( $inputBG, 10% );
+      color      : $inputColorFocus;
+      
+      + label {
+        color : $inputColorFocus;
+      }
+    }
+  }
+}
+
+.submit {
+  margin        : 0;
+  overflow      : hidden;
+  
+  input {
+    background    : $submitBG;
+    border-radius : 4px;
+    color         : $submitColor;
+    padding       : 0 0 0 14px;
+    width         : $submitWidth - 14;
+    text-align    : center;
+    font-size     : 16px;
+    cursor        : pointer;
+  }
+
+  label {
+    color      : $submitColor;
+    width      : 28px;
+    text-align : right;
+    cursor     : pointer;
+    
+    text-shadow : -$inputHeight $inputHeight $submitColor;
+  }
+
+  &:hover {
+    input {
+      background : darken( $submitBG, 10% );
+    }
+    label {
+      @include transition(all ease-in-out 0.35s);
+      @include transform(translate($inputHeight, -$inputHeight));
+    }
+  }
+}
