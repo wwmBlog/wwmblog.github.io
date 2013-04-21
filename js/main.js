@@ -66,10 +66,10 @@ define(function(require){
   ;(function(){
 
     var ScrollWatcher = require("src/scrollwatcher.js");
-    var logoOffset  = $(".logo-wrap").height() + 5;
+    var logoOffset  = $(".logo").height() + 4;
     var logoW = new ScrollWatcher( ".intro-wrap-holder", -logoOffset );
-    logoW.on("scrollabove", function(){ $(".logo-wrap").addClass("fixed"); })
-         .on("scrollinto",  function(){ $(".logo-wrap").removeClass("fixed"); });
+    logoW.on("scrollabove", function(){ $(".top-line").show(); })
+         .on("scrollinto",  function(){ $(".top-line").hide(); });
 
     var shortcutW = new ScrollWatcher( ".page4", 0 );
     shortcutW.on("scrollinto",  function(){ $(".shortcut-nav").toggleClass("sticky", true);  })

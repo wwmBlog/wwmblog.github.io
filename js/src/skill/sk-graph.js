@@ -199,16 +199,19 @@ define(function(require, exports, module){
       path += [" M", dot.x, dot.y,
                 "m", -vr, 0,
                 "a", vr, vr, "0 1 0", vr * 2, 0,
-                "a", vr, vr, "0 1 0", -vr* 2, 0].join(" ");
+                "a", vr, vr, "0 1 0", -vr* 2, 0,
+                "z"].join(" ");
 
-      if ( dot.x < minX ) { minX = dot.x; } else if ( dot.x > maxX ) { maxX = dot.x; }
-      if ( dot.y < minY ) { minY = dot.y; } else if ( dot.y > maxY ) { maxY = dot.y; }
+      if ( dot.x < minX ) { minX = dot.x; }
+      if ( dot.x > maxX ) { maxX = dot.x; }
+      if ( dot.y < minY ) { minY = dot.y; }
+      if ( dot.y > maxY ) { maxY = dot.y; }
     }
 
-    path = ["M", minX, minY,
-            "L", maxX, minY,
-                 maxX, maxY,
-                 minX, maxY,
+    path = ["M", minX - vr, minY - vr,
+            "L", maxX + vr, minY - vr,
+                 maxX + vr, maxY + vr,
+                 minX - vr, maxY + vr,
             "Z"].join(" ") + path;
 
     clippath.attr("d", path);

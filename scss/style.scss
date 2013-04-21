@@ -15,10 +15,9 @@ $pageMaxWidth : 90%;
 
 // General Page
 .page-wrap {
-  position   : relative;
-  z-index    : 3;
-  background : $mainBGColor;
-  padding    : 150px 0;
+  position         : relative;
+  z-index          : 3;
+  background-color : $mainBGColor;
 }
 
 .page {

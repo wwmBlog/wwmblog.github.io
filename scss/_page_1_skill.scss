@@ -2,6 +2,8 @@ $softTextColor : #413d32;
 
 .page1 {
   color       : $softTextColor;
+  font-size   : 12px;
+  padding     : 100px 0 30px 0;
   
   .page {
     width : 800px;
@@ -11,7 +13,7 @@ $softTextColor : #413d32;
 .chart-wrap {
   max-width : 100%;
   width     : 400px;
-  margin    : 0 0 20px 20px;
+  margin    : -50px 0 20px 20px;
   float     : right;
   
   .chart {
@@ -61,18 +63,19 @@ $softTextColor : #413d32;
   }
 }
 
-article dfn {
-  background : #333;
-  color      : #eee;
-  margin     : 0 2px;
-  padding    : 4px; 
-
-  @include animation(breath infinite 1.2s ease-in-out alternate);
+article .skill-em {
+  background  : #333;
+  color       : #eee;
+  margin      : 0 2px;
+  padding     : 4px; 
+  line-height : 28px;
+  // @include animation(breath infinite 1.2s ease-in-out alternate);
   
-  &:hover {
-    background : #7f7f7f;
-    @include animation(none);
-  }
+}
+
+a.skill-em:hover {
+  background : #7f7f7f;
+  // @include animation(none);
 }
 
 [data-faq] {

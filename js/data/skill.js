@@ -1,7 +1,6 @@
 define({
 
-    labels   : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "奥丁加快递"]
-  // , labels   : ["C++", "Hack精神", "Python", "Flash", "Web", "基本专业技能", "Photoshop", "问题解决", "Obj-C", "创造力"]
+    labels : ["C++", "创造力", "Python", "Tooling", "问题解决", "Flash", "基本专业技能", "Obj-C", "Web", "Happy Hack"]
   , datasets : [
     {
         fill          : "#e05146"
@@ -10,19 +9,19 @@ define({
       , strokeWidth   : 1
       , data : [
           null
-        , { v : 2, extra : "" }
+        , { v : 3 }
 
         , null
         , null
 
-        , { v : 3, extra : "" }
+        , { v : 3 }
         , null
 
-        , { v : 4, extra : "" }
+        , { v : 4 }
         , null
 
         , null
-        , { v : 3, extra : "" }
+        , { v : 4 }
       ]
     }
     , {
@@ -31,19 +30,19 @@ define({
       , stroke        : "#0084ff"
       , strokeWidth   : 1
       , data : [
-          { v : 4, extra : "" }
+          { v : 4 }
         , null
 
-        , { v : 1, extra : "" }
-        , { v : 3, extra : "" }
+        , { v : 1 }
+        , { v : 3 }
 
         , null
-        , { v : 4, extra : "" }
+        , { v : 4 }
 
         , null
-        , { v : 4, extra : "" }
+        , { v : 3 }
 
-        , { v : 3, extra : "" }
+        , { v : 4 }
         , null
       ]
     }

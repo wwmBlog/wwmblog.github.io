@@ -118,11 +118,10 @@
 .page-wrap {
   position: relative;
   z-index: 3;
-  background: #ecece4;
-  padding: 150px 0;
+  background-color: #ecece4;
 }
 
-/* line 24, ../scss/style.scss */
+/* line 23, ../scss/style.scss */
 .page {
   background: #ecece4;
   margin: 0 auto;
@@ -226,79 +225,38 @@ q:after {
 }
 
 /* line 4, ../scss/_misc.scss */
-.logo-wrap {
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  height: 76px;
-  pointer-events: none;
-}
-/* line 12, ../scss/_misc.scss */
-.logo-wrap.fixed {
-  position: fixed;
-  margin: 0;
-  top: 4px;
-}
-/* line 17, ../scss/_misc.scss */
-.logo-wrap.fixed:before {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  top: -4px;
-  left: 0;
-  content: " ";
-  display: block;
-  background: url('../img/bg.png') repeat;
-}
-
-/* line 29, ../scss/_misc.scss */
 .logo {
   height: 76px;
-  padding-left: 72.89474px;
-  background: url('../img/logo.svg') no-repeat;
-  background-position: 0 5px;
+  background-image: url('../img/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center 5px;
   -webkit-background-size: auto 66px;
   -moz-background-size: auto 66px;
   -o-background-size: auto 66px;
   background-size: auto 66px;
 }
 
-/* line 41, ../scss/_misc.scss */
-.page-title {
-  color: #7f7f7f;
-  font-size: 18px;
-  margin: 0 auto;
-  max-width: 90%;
-  width: 1000px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+/* line 17, ../scss/_misc.scss */
+.topline {
+  background: url('../img/bg.png') repeat;
+  position: fixed;
+  top: 0;
+  height: 4px;
+  width: 100%;
+  z-index: 100;
 }
-/* line 50, ../scss/_misc.scss */
-.page-title .l1 {
-  line-height: 20px;
-  padding-top: 28px;
-}
-/* line 55, ../scss/_misc.scss */
-.page-title .l2 {
-  font-size: 16px;
-  line-height: 20px;
-  height: 20px;
-  padding-top: 20px;
-}
-/* line 62, ../scss/_misc.scss */
-.page-title .l2s {
-  font-size: 12px;
-  line-height: 16px;
-  height: 16px;
-}
-/* line 68, ../scss/_misc.scss */
-.page-title b {
-  font-weight: normal;
-  color: #333;
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (min-device-pixel-ratio: 2) {
+  /* line 4, ../scss/_base.scss */
+  .topline {
+    background-image: url('../img/bg@2x.png');
+    -webkit-background-size: 141px, auto;
+    -moz-background-size: 141px, auto;
+    -o-background-size: 141px, auto;
+    background-size: 141px, auto;
+  }
 }
 
-/* line 77, ../scss/_misc.scss */
+/* line 36, ../scss/_misc.scss */
 .shortcut-nav {
   position: fixed;
   bottom: 19px;
@@ -308,13 +266,13 @@ q:after {
   border-radius: 2px;
   padding: 4px 4px;
 }
-/* line 91, ../scss/_misc.scss */
+/* line 50, ../scss/_misc.scss */
 .shortcut-nav.sticky {
   position: absolute;
   top: -55px;
   bottom: auto;
 }
-/* line 97, ../scss/_misc.scss */
+/* line 56, ../scss/_misc.scss */
 .shortcut-nav .sc-button {
   position: relative;
   float: left;
@@ -342,7 +300,7 @@ q:after {
   -moz-user-select: none;
   user-select: none;
 }
-/* line 124, ../scss/_misc.scss */
+/* line 83, ../scss/_misc.scss */
 .shortcut-nav .sc-button:active, .shortcut-nav .sc-button.active {
   margin-top: 1px;
   height: 23px;
@@ -350,11 +308,11 @@ q:after {
   -moz-box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
   box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
 }
-/* line 132, ../scss/_misc.scss */
+/* line 91, ../scss/_misc.scss */
 .shortcut-nav .underline:active:after, .shortcut-nav .underline.active:after {
   bottom: 4px;
 }
-/* line 136, ../scss/_misc.scss */
+/* line 95, ../scss/_misc.scss */
 .shortcut-nav .underline:after {
   content: " ";
   width: 0.4em;
@@ -367,7 +325,7 @@ q:after {
   margin-left: -0.2em;
 }
 
-/* line 154, ../scss/_misc.scss */
+/* line 113, ../scss/_misc.scss */
 footer {
   position: relative;
   z-index: 3;
@@ -385,7 +343,7 @@ footer {
   }
 }
 
-/* line 166, ../scss/_misc.scss */
+/* line 125, ../scss/_misc.scss */
 .footer-wrap {
   height: 54px;
   line-height: 56px;
@@ -398,7 +356,7 @@ footer {
   padding: 0 1em 0 3em;
 }
 
-/* line 179, ../scss/_misc.scss */
+/* line 138, ../scss/_misc.scss */
 .copyright {
   font-size: 12px;
   float: left;
@@ -406,28 +364,28 @@ footer {
 }
 
 @media (max-width: 500px) {
-  /* line 186, ../scss/_misc.scss */
+  /* line 145, ../scss/_misc.scss */
   .footer-wrap {
     padding: 0 1em;
   }
 
-  /* line 189, ../scss/_misc.scss */
+  /* line 148, ../scss/_misc.scss */
   .copyright {
     line-height: 64px;
   }
 }
 @media (max-width: 410px) {
-  /* line 194, ../scss/_misc.scss */
+  /* line 153, ../scss/_misc.scss */
   .footer-wrap {
     padding: 0 8px;
   }
 
-  /* line 197, ../scss/_misc.scss */
+  /* line 156, ../scss/_misc.scss */
   .footer-wrap q {
     font-size: 18px;
   }
 }
-/* line 204, ../scss/_misc.scss */
+/* line 163, ../scss/_misc.scss */
 .loading-wrap {
   width: 100%;
   height: 20px;
@@ -437,7 +395,7 @@ footer {
   text-align: center;
 }
 
-/* line 212, ../scss/_misc.scss */
+/* line 171, ../scss/_misc.scss */
 .loading {
   width: 10px;
   height: 10px;
@@ -451,14 +409,14 @@ footer {
   -o-animation: loading 0.5s cubic-bezier(0.3, 0.6, 1, 0.5) alternate infinite;
   animation: loading 0.5s cubic-bezier(0.3, 0.6, 1, 0.5) alternate infinite;
 }
-/* line 223, ../scss/_misc.scss */
+/* line 182, ../scss/_misc.scss */
 .loading.no2 {
   -webkit-animation-delay: 0.2s;
   -moz-animation-delay: 0.2s;
   -o-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
-/* line 224, ../scss/_misc.scss */
+/* line 183, ../scss/_misc.scss */
 .loading.no3 {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
@@ -467,14 +425,14 @@ footer {
 }
 
 @-webkit-keyframes loading {
-  /* line 227, ../scss/_misc.scss */
+  /* line 186, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 232, ../scss/_misc.scss */
+  /* line 191, ../scss/_misc.scss */
   100% {
     background: #777;
     top: 8px;
@@ -484,14 +442,14 @@ footer {
 }
 
 @-moz-keyframes loading {
-  /* line 240, ../scss/_misc.scss */
+  /* line 199, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 245, ../scss/_misc.scss */
+  /* line 204, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -500,14 +458,14 @@ footer {
 }
 
 @-o-keyframes loading {
-  /* line 252, ../scss/_misc.scss */
+  /* line 211, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 257, ../scss/_misc.scss */
+  /* line 216, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -516,14 +474,14 @@ footer {
 }
 
 @keyframes loading {
-  /* line 264, ../scss/_misc.scss */
+  /* line 223, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 269, ../scss/_misc.scss */
+  /* line 228, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -1160,26 +1118,28 @@ footer {
 /* line 3, ../scss/_page_1_skill.scss */
 .page1 {
   color: #413d32;
+  font-size: 12px;
+  padding: 100px 0 30px 0;
 }
-/* line 6, ../scss/_page_1_skill.scss */
+/* line 8, ../scss/_page_1_skill.scss */
 .page1 .page {
   width: 800px;
 }
 
-/* line 11, ../scss/_page_1_skill.scss */
+/* line 13, ../scss/_page_1_skill.scss */
 .chart-wrap {
   max-width: 100%;
   width: 400px;
-  margin: 0 0 20px 20px;
+  margin: -50px 0 20px 20px;
   float: right;
 }
-/* line 17, ../scss/_page_1_skill.scss */
+/* line 19, ../scss/_page_1_skill.scss */
 .chart-wrap .chart {
   position: relative;
   width: 100%;
   padding-bottom: 100%;
 }
-/* line 23, ../scss/_page_1_skill.scss */
+/* line 25, ../scss/_page_1_skill.scss */
 .chart-wrap figcaption {
   position: absolute;
   bottom: -20px;
@@ -1195,7 +1155,7 @@ footer {
   margin: auto;
 }
 
-/* line 38, ../scss/_page_1_skill.scss */
+/* line 40, ../scss/_page_1_skill.scss */
 .skill-legend {
   display: inline-block;
   height: 20px;
@@ -1203,17 +1163,17 @@ footer {
   padding-left: 22px;
 }
 
-/* line 46, ../scss/_page_1_skill.scss */
+/* line 48, ../scss/_page_1_skill.scss */
 #W_lgdPro {
   margin-right: 15px;
 }
 
-/* line 47, ../scss/_page_1_skill.scss */
+/* line 49, ../scss/_page_1_skill.scss */
 #W_lgdBasic {
   background-position: 0 -19px;
 }
 
-/* line 49, ../scss/_page_1_skill.scss */
+/* line 51, ../scss/_page_1_skill.scss */
 #W_skillChart {
   position: absolute;
   width: 100%;
@@ -1221,7 +1181,7 @@ footer {
 }
 
 @media (max-width: 600px) {
-  /* line 56, ../scss/_page_1_skill.scss */
+  /* line 58, ../scss/_page_1_skill.scss */
   .chart-wrap {
     float: none;
     margin-left: auto;
@@ -1229,27 +1189,21 @@ footer {
     margin-bottom: 60px;
   }
 }
-/* line 64, ../scss/_page_1_skill.scss */
-article dfn {
+/* line 66, ../scss/_page_1_skill.scss */
+article .skill-em {
   background: #333;
   color: #eee;
   margin: 0 2px;
   padding: 4px;
-  -webkit-animation: breath infinite 1.2s ease-in-out alternate;
-  -moz-animation: breath infinite 1.2s ease-in-out alternate;
-  -o-animation: breath infinite 1.2s ease-in-out alternate;
-  animation: breath infinite 1.2s ease-in-out alternate;
-}
-/* line 72, ../scss/_page_1_skill.scss */
-article dfn:hover {
-  background: #7f7f7f;
-  -webkit-animation: none;
-  -moz-animation: none;
-  -o-animation: none;
-  animation: none;
+  line-height: 28px;
 }
 
-/* line 79, ../scss/_page_1_skill.scss */
+/* line 76, ../scss/_page_1_skill.scss */
+a.skill-em:hover {
+  background: #7f7f7f;
+}
+
+/* line 82, ../scss/_page_1_skill.scss */
 [data-faq]:before {
   content: attr(data-faq);
   display: block;

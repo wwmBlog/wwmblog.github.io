@@ -1,75 +1,34 @@
 @import "mixin";
 
 // ---------- Logo / Title
-.logo-wrap {
-  position : absolute;
-  z-index  : 100;
-  width    : 100%;
-  height   : $firstPageBottomHeight;
-  
-  pointer-events : none;
-  
-  &.fixed {
-    position : fixed;
-    margin   : 0;
-    top      : 4px;
-    
-    &:before {
-      position   : absolute;
-      width      : 100%;
-      height     : 4px;
-      top        : -4px;
-      left       : 0;
-      content    : " ";
-      display    : block;
-      background : image-url("bg.png") repeat;
-    }
-  }
-}
-.logo {
+.logo {  
   $svgBGWidth  : 200;
   $svgBGHeight : 228;
+  $bgmargin    : floor(($firstPageBottomHeight - 66) / 2);
   
-  height       : $firstPageBottomHeight;
-  padding-left : 66 / $svgBGHeight * $svgBGWidth + 15px;
+  height              : $firstPageBottomHeight;
+  background-image    : image-url("logo.svg");
+  background-repeat   : no-repeat;
+  background-position : center $bgmargin;
 
-  background : image-url("logo.svg") no-repeat;
-  background-position : 0 floor(($firstPageBottomHeight - 66) / 2);
   @include background-size(auto 66px);
 }
 
-.page-title {
-  color     : #7f7f7f;
-  font-size : 18px;
-  margin    : 0 auto;
-  max-width : 90%;
-  width     : 1000px;
+.topline {
+  background     : image-url("bg.png") repeat;
+  position       : fixed;
+  top            : 0;
+  height         : 4px;
+  width          : 100%;
+  z-index        : 100;
   
-  @include box-sizing( border-box );
-  
-  .l1 {
-    line-height : 20px;
-    padding-top : ($firstPageBottomHeight - 20) / 2;
-  }
-
-  .l2 {
-    font-size   : 16px;
-    line-height : 20px;
-    height      : 20px;
-    padding-top : ($firstPageBottomHeight - 20 - 16) / 2;
-  }
-
-  .l2s {
-    font-size   : 12px;
-    line-height : 16px;
-    height      : 16px;
-  }
-
-  b {
-    font-weight : normal;
-    color       : #333;
+  @include retina() {
+    background-image : image-url("bg@2x.png");
+    @include background-size( image-width("bg.png"), auto );
   }
 }
+
+
 
 // Logo / Title ----------
 
