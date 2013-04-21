@@ -115,7 +115,7 @@
 }
 
 /* line 17, ../scss/style.scss */
-.page-wrap {
+.page-wrap, .logo {
   position: relative;
   z-index: 3;
   background-color: #ecece4;
@@ -127,6 +127,55 @@
   margin: 0 auto;
   max-width: 90%;
   width: 1000px;
+}
+
+/* line 30, ../scss/style.scss */
+.page-title {
+  text-align: center;
+  padding-bottom: 40px;
+  color: #5E5B58;
+  text-shadow: 0 1px white;
+  font-size: 0;
+}
+/* line 38, ../scss/style.scss */
+.page-title h1 {
+  font-family: Kai, "楷体", KaiTi, "楷体_GB2312", "Arial", sans-serif;
+  font-weight: bold;
+}
+/* line 43, ../scss/style.scss */
+.page-title h2 {
+  font-family: Economica, Tahoma, Geneva, sans-serif;
+  font-weight: bold;
+}
+/* line 48, ../scss/style.scss */
+.page-title:before, .page-title:after {
+  content: " ";
+  display: inline-block;
+  height: 1px;
+  vertical-align: middle;
+  background: #85817d;
+  width: 80px;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #ecece4), color-stop(100%, #85817d));
+  background-image: -webkit-linear-gradient(left top, #ecece4, #85817d);
+  background-image: -moz-linear-gradient(left top, #ecece4, #85817d);
+  background-image: -o-linear-gradient(left top, #ecece4, #85817d);
+  background-image: linear-gradient(left top, #ecece4, #85817d);
+}
+/* line 59, ../scss/style.scss */
+.page-title:after {
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #85817d), color-stop(100%, #ecece4));
+  background-image: -webkit-linear-gradient(left top, #85817d, #ecece4);
+  background-image: -moz-linear-gradient(left top, #85817d, #ecece4);
+  background-image: -o-linear-gradient(left top, #85817d, #ecece4);
+  background-image: linear-gradient(left top, #85817d, #ecece4);
+}
+
+/* line 64, ../scss/style.scss */
+.title-wrap {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  margin: 0 5px;
 }
 
 /* line 9, ../scss/_base.scss */
@@ -236,7 +285,7 @@ q:after {
   background-size: auto 66px;
 }
 
-/* line 17, ../scss/_misc.scss */
+/* line 19, ../scss/_misc.scss */
 .topline {
   background: url('../img/bg.png') repeat;
   position: fixed;
@@ -256,7 +305,7 @@ q:after {
   }
 }
 
-/* line 36, ../scss/_misc.scss */
+/* line 37, ../scss/_misc.scss */
 .shortcut-nav {
   position: fixed;
   bottom: 19px;
@@ -266,13 +315,13 @@ q:after {
   border-radius: 2px;
   padding: 4px 4px;
 }
-/* line 50, ../scss/_misc.scss */
+/* line 51, ../scss/_misc.scss */
 .shortcut-nav.sticky {
   position: absolute;
   top: -55px;
   bottom: auto;
 }
-/* line 56, ../scss/_misc.scss */
+/* line 57, ../scss/_misc.scss */
 .shortcut-nav .sc-button {
   position: relative;
   float: left;
@@ -300,7 +349,7 @@ q:after {
   -moz-user-select: none;
   user-select: none;
 }
-/* line 83, ../scss/_misc.scss */
+/* line 84, ../scss/_misc.scss */
 .shortcut-nav .sc-button:active, .shortcut-nav .sc-button.active {
   margin-top: 1px;
   height: 23px;
@@ -308,11 +357,11 @@ q:after {
   -moz-box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
   box-shadow: 0 1px 3px rgba(16, 16, 16, 0.3), inset 0 -1px #c5c5c5;
 }
-/* line 91, ../scss/_misc.scss */
+/* line 92, ../scss/_misc.scss */
 .shortcut-nav .underline:active:after, .shortcut-nav .underline.active:after {
   bottom: 4px;
 }
-/* line 95, ../scss/_misc.scss */
+/* line 96, ../scss/_misc.scss */
 .shortcut-nav .underline:after {
   content: " ";
   width: 0.4em;
@@ -325,7 +374,7 @@ q:after {
   margin-left: -0.2em;
 }
 
-/* line 113, ../scss/_misc.scss */
+/* line 114, ../scss/_misc.scss */
 footer {
   position: relative;
   z-index: 3;
@@ -343,7 +392,7 @@ footer {
   }
 }
 
-/* line 125, ../scss/_misc.scss */
+/* line 126, ../scss/_misc.scss */
 .footer-wrap {
   height: 54px;
   line-height: 56px;
@@ -356,7 +405,7 @@ footer {
   padding: 0 1em 0 3em;
 }
 
-/* line 138, ../scss/_misc.scss */
+/* line 139, ../scss/_misc.scss */
 .copyright {
   font-size: 12px;
   float: left;
@@ -364,28 +413,28 @@ footer {
 }
 
 @media (max-width: 500px) {
-  /* line 145, ../scss/_misc.scss */
+  /* line 146, ../scss/_misc.scss */
   .footer-wrap {
     padding: 0 1em;
   }
 
-  /* line 148, ../scss/_misc.scss */
+  /* line 149, ../scss/_misc.scss */
   .copyright {
     line-height: 64px;
   }
 }
 @media (max-width: 410px) {
-  /* line 153, ../scss/_misc.scss */
+  /* line 154, ../scss/_misc.scss */
   .footer-wrap {
     padding: 0 8px;
   }
 
-  /* line 156, ../scss/_misc.scss */
+  /* line 157, ../scss/_misc.scss */
   .footer-wrap q {
     font-size: 18px;
   }
 }
-/* line 163, ../scss/_misc.scss */
+/* line 164, ../scss/_misc.scss */
 .loading-wrap {
   width: 100%;
   height: 20px;
@@ -395,7 +444,7 @@ footer {
   text-align: center;
 }
 
-/* line 171, ../scss/_misc.scss */
+/* line 172, ../scss/_misc.scss */
 .loading {
   width: 10px;
   height: 10px;
@@ -409,14 +458,14 @@ footer {
   -o-animation: loading 0.5s cubic-bezier(0.3, 0.6, 1, 0.5) alternate infinite;
   animation: loading 0.5s cubic-bezier(0.3, 0.6, 1, 0.5) alternate infinite;
 }
-/* line 182, ../scss/_misc.scss */
+/* line 183, ../scss/_misc.scss */
 .loading.no2 {
   -webkit-animation-delay: 0.2s;
   -moz-animation-delay: 0.2s;
   -o-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
-/* line 183, ../scss/_misc.scss */
+/* line 184, ../scss/_misc.scss */
 .loading.no3 {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
@@ -425,14 +474,14 @@ footer {
 }
 
 @-webkit-keyframes loading {
-  /* line 186, ../scss/_misc.scss */
+  /* line 187, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 191, ../scss/_misc.scss */
+  /* line 192, ../scss/_misc.scss */
   100% {
     background: #777;
     top: 8px;
@@ -442,14 +491,14 @@ footer {
 }
 
 @-moz-keyframes loading {
-  /* line 199, ../scss/_misc.scss */
+  /* line 200, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 204, ../scss/_misc.scss */
+  /* line 205, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -458,14 +507,14 @@ footer {
 }
 
 @-o-keyframes loading {
-  /* line 211, ../scss/_misc.scss */
+  /* line 212, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 216, ../scss/_misc.scss */
+  /* line 217, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -474,14 +523,14 @@ footer {
 }
 
 @keyframes loading {
-  /* line 223, ../scss/_misc.scss */
+  /* line 224, ../scss/_misc.scss */
   60% {
     top: 4px;
     height: 10px;
     width: 10px;
   }
 
-  /* line 228, ../scss/_misc.scss */
+  /* line 229, ../scss/_misc.scss */
   100% {
     top: 8px;
     height: 8px;
@@ -1144,7 +1193,7 @@ footer {
   position: absolute;
   bottom: -20px;
   color: #7f7f7f;
-  background: #dfdfda;
+  background: #f7f7f7;
   border-radius: 4px;
   padding: 8px 10px;
   font-size: 12px;
@@ -1230,7 +1279,7 @@ a.skill-em:hover {
   position: absolute;
   bottom: 0;
   color: #7f7f7f;
-  background: #dfdfda;
+  background: #f7f7f7;
   border-radius: 4px;
   padding: 8px 12px;
   font-size: 12px;

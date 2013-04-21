@@ -27,6 +27,47 @@ $pageMaxWidth : 90%;
   width      : $pageWidth;
 }
 
+.page-title {
+  text-align     : center;
+  
+  padding-bottom : 40px;
+  color          : #5E5B58;
+  text-shadow    : 0 1px #fff;
+  font-size      : 0;
+  
+  h1 {
+    font-family : Kai, "楷体", KaiTi, "楷体_GB2312", "Arial", sans-serif;
+    font-weight : bold;
+  } 
+
+  h2 {
+    font-family : Economica, Tahoma, Geneva, sans-serif;
+    font-weight : bold;
+  }
+
+  &:before, &:after {
+    content        : " ";
+    display        : inline-block;
+    height         : 1px;
+    vertical-align : middle;
+    background     : lighten(#5E5B58, 15%);
+    width          : 80px;
+    
+    @include background-image(linear-gradient(left top, $mainBGColor, lighten(#5E5B58, 15%)));
+  }
+
+  &:after {
+    @include background-image(linear-gradient(left top, lighten(#5E5B58, 15%), $mainBGColor));
+  }
+}
+
+.title-wrap {
+  display        : inline-block;
+  vertical-align : middle;
+  font-size      : 12px;
+  margin         : 0 5px;
+}
+
 @import "base";
 @import "misc";
 @import "page_0_intro";

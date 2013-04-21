@@ -1,7 +1,9 @@
 @import "mixin";
 
-// ---------- Logo / Title
-.logo {  
+// ---------- Logo
+.logo {
+  @extend .page-wrap;
+  
   $svgBGWidth  : 200;
   $svgBGHeight : 228;
   $bgmargin    : floor(($firstPageBottomHeight - 66) / 2);
@@ -27,10 +29,9 @@
     @include background-size( image-width("bg.png"), auto );
   }
 }
+// Logo ----------
 
 
-
-// Logo / Title ----------
 
 // --------- J, K Navigation
 .shortcut-nav {
