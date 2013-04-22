@@ -3,13 +3,14 @@ $dotColor        : #838383;
 $dotColorAlt     : #f88953;
 
 .page2 {
+  padding : 120px 0 200px 0;
+
   .page {
     width          : auto;
     max-width      : 100%;
     height         : 300px;
     position       : relative;
     overflow       : hidden;
-    padding-bottom : 20px;
   }
 
   figcaption {

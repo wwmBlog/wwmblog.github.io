@@ -112,6 +112,7 @@ define(function(require){
       if ( toScrollY == -1 ) {
         toScrollY = dirDown ? document.documentElement.scrollHeight - window.innerHeight : 0;
       }
+
       if ( toScrollY != scrollY ) {
         scrolling = true;
 

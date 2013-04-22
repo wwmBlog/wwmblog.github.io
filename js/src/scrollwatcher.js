@@ -28,8 +28,15 @@ define(function(require, exports, module){
     // string    : selector string to select the element
     // dom       : the element
     // zepto_obj : the element
-    
-    this.offset  = offset || 0;
+
+    if ( typeof offset == "string" ) {
+      this.fromBottom = offset[0] == '-';
+      this.offset     = parseInt( offset );
+    } else {
+      this.fromBottom = offset < 0;
+      this.offset     = offset || 0;
+    }
+
     this.element = watchElement;
     this.emmiter = new EventTarget();
     this.watchY  = 0;
@@ -98,9 +105,9 @@ define(function(require, exports, module){
   ScrollWatcher.prototype.update = function () {
     this.watchY = this.element.offset().top;
 
-    if ( this.offset < 0 ) {
+    if ( this.fromBottom ) {
       this.watchY += theHeight.apply( this.element ) + this.offset;
-    } else if ( this.offset > 0 ) {
+    } else {
       this.watchY += this.offset;
     }
 

@@ -10,6 +10,6 @@ define(function(require){
                     .on("autoresize", function(){ chart.render( chart.EVT_RESIZE ); });
 
 
-  var chartW  = new ScrollWatcher( ".page1" );
+  var chartW  = new ScrollWatcher( ".logo", -1 );
   chartW.one("scrollabove", function(){ chart.render(); console.log(" scrolled into "); });
 });
