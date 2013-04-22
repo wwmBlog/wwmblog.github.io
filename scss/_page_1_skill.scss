@@ -62,21 +62,6 @@ $softTextColor : #413d32;
   }
 }
 
-article .skill-em {
-  background  : #333;
-  color       : #eee;
-  margin      : 0 2px;
-  padding     : 4px; 
-  line-height : 28px;
-  // @include animation(breath infinite 1.2s ease-in-out alternate);
-  
-}
-
-a.skill-em:hover {
-  background : #7f7f7f;
-  // @include animation(none);
-}
-
 [data-faq] {
   &:before {
     content      : attr(data-faq);

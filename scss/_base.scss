@@ -14,11 +14,10 @@ html, body {
 
 h1, h2, h3, h4, h5, h6, p, input, figure { margin : 0; font-weight : normal; }
 em, strong, dfn, code, samp, kbd, var { font-style : normal; }
-a        { text-decoration : none; }
-dfn      { cursor : pointer;       }
-address  { font-style : normal;    }
-textarea { resize  : none;         }
-textarea:focus, input:focus { outline : none; }
+a           { text-decoration : none; }
+dfn         { cursor : pointer;       }
+address     { font-style : normal;    }
+input:focus { outline : none; }
 q { &:before { content : ""; } &:after { content : ""; } }
 
 .clearfix:after {
@@ -45,10 +44,6 @@ q { &:before { content : ""; } &:after { content : ""; } }
 
 body {
   @extend .font-def;
-}
-
-.mh100p {
-  min-height : 100%;
 }
 
 .sprite {

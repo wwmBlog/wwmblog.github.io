@@ -14,7 +14,7 @@ $inputColorFocus : #fff;
 $submitBG    : #ffc130;
 $submitColor : #665F4F;
 
-.page4 {
+.page3 {
   padding     : 8px 0 14px 0;
   background  : #06c9ac;
   z-index     : 4;
@@ -126,7 +126,7 @@ $submitColor : #665F4F;
 }
 
 @media (max-width:550px) {
-  .page4 {
+  .page3 {
     form {
       width : $contentWidth;
     }

@@ -71,7 +71,7 @@ define(function(require){
     logoW.on("scrollabove", function(){ $(".top-line").show(); })
          .on("scrollinto",  function(){ $(".top-line").hide(); });
 
-    var shortcutW = new ScrollWatcher( ".page4", 0 );
+    var shortcutW = new ScrollWatcher( ".page3", 0 );
     shortcutW.on("scrollinto",  function(){ $(".shortcut-nav").toggleClass("sticky", true);  })
              .on("scrollbelow", function(){ $(".shortcut-nav").toggleClass("sticky", false); });
 
@@ -80,7 +80,7 @@ define(function(require){
       
       if ( toggleItem ) {
         $(toggleItem).toggleClass("active", true);
-        setTimeout( function(){ $(toggleItem).toggleClass("active", false); }, 200);
+        setTimeout( function(){ $(toggleItem).toggleClass("active", false); }, 200 );
       }
 
       if ( scrolling ) { return; }
@@ -131,9 +131,16 @@ define(function(require){
       var kc = evt.which || evt.keyCode;
       if ( kc == 106 /* j */) { pageDown( true ); } else 
       if ( kc == 107 /* k */) { pageUp  ( true ); }
+    }).on("keydown", function( evt ){ 
+      var kc = evt.which || evt.keyCode;
+      if ( kc == 80 /* p */ && evt.metaKey ) {
+        $("#W_ctrlP").toggleClass("active", true);
+        setTimeout( function(){ $("#W_ctrlP").toggleClass("active", false); }, 200 );
+      }
     });
     $("#W_vimJ").on("click", pageDown);
     $("#W_vimK").on("click", pageUp);
+    $("#W_ctrlP").on("click", function(){ window.print(); });
   })();
 
 });
