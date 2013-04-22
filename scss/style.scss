@@ -18,10 +18,11 @@ $pageMaxWidth : 90%;
   position         : relative;
   z-index          : 3;
   background-color : $mainBGColor;
+  padding          : 70px 0;
 }
 
 .page {
-  background : $mainBGColor;
+  // background : $mainBGColor;
   margin     : 0 auto;
   max-width  : $pageMaxWidth;
   width      : $pageWidth;

@@ -8,7 +8,9 @@
   $svgBGHeight : 228;
   $bgmargin    : floor(($firstPageBottomHeight - 66) / 2);
   
-  height              : $firstPageBottomHeight;
+  height  : $firstPageBottomHeight;
+  padding : 0;
+  
   background-image    : image-url("logo.svg");
   background-repeat   : no-repeat;
   background-position : center $bgmargin;
