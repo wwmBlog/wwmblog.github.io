@@ -11,8 +11,11 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-  <script type="text/javascript">if(navigator.userAgent.match(/Mac/)){document.body.className+="mac";}</script>
+<body class="desktop">
+  <script type="text/javascript">
+    var ua=navigator.userAgent,c=ua.match(/Mac/)?"mac ":"";
+    document.body.className=c+(ua.match(/(Mac)|(Win)|(Linux)/i)?"desktop":"mobile");
+  </script>
   <div class="intro-wrap-holder"></div>
   <div class="intro-wrap">
     <div class="card-vam">

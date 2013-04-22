@@ -112,12 +112,23 @@
 }
 
 #W_ctrlP {
+  display : none;
   &:before {
     content : "Ctrl+P";
   }
 
   .mac &:before {
     content : "\2318+P";
+  }
+
+  .desktop & {
+    display : block;
+  }
+}
+
+@media (max-width:550px) {
+  .mobile .shortcut-nav {
+    display : none;
   }
 }
 
@@ -282,8 +293,10 @@ footer {
   line-height : 28px;
 }
 
-a.emphasize:hover {
-  background : #7f7f7f;
+a.emphasize {
+  &:hover, &:active {
+    background : #7f7f7f;
+  }
 }
 // Emphasize ----------
 
