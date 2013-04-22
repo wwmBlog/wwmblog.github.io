@@ -124,7 +124,7 @@
 // J, K Navigation ---------
 
 // ---------- Footer
-$footerHeight : 54px;
+$footerHeight : 85px;
 footer {
   position   : relative;
   z-index    : 3;
@@ -137,23 +137,47 @@ footer {
   }
 }
 
+.footer-left {
+  float       : left;
+  padding-top : floor(($footerHeight - 44px) / 2) + 1;
+  text-align  : left;
+  
+  color       : lighten(#262626, 10%);
+  
+  p {
+    line-height    : 1em;
+    vertical-align : text-bottom;
+  }
+
+  .credit {
+    font-size      : 12px;
+    vertical-align : text-bottom;
+    background     : #3e3e3e;
+    color          : #888;
+    padding        : 4px;
+    margin-right   : 4px;
+    
+    &:hover {
+      background : darken(#3e3e3e, 18%);
+    }
+  }
+}
+
 .footer-wrap {
   height      : $footerHeight;
-  line-height : $footerHeight + floor(image-height("zigzag.png") / 2);
+  line-height : $footerHeight + image-height("zigzag.png") + 1;
   overflow    : hidden;
   white-space : nowrap;
-  padding     : 0 1em 0 3em;
+  padding     : 0 18px 0 3em;
   
   text-align : right;
   color      : #686868;
   font-size  : 24px;
-  padding    : 0 1em 0 3em;
 }
 
 .copyright {
-  font-size : 12px;
-  float : left;
-  color : lighten(#262626, 10%);
+  font-size  : 12px;
+  margin-top : 8px;
 }
 
 @media (max-width:500px) {
