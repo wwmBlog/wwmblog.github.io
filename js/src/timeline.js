@@ -269,5 +269,5 @@ define(function(require){
 
   redrawTimeline();
 
-  $(window).on("resize", redrawTimeline).on("scroll", arrageDots);
+  $(window).on("debouncedResize", redrawTimeline).on("scroll", arrageDots);
 });
