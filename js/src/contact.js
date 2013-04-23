@@ -16,7 +16,7 @@ define(function(require){
 
     // Check for repeating.
     if ( lastContent == d.content ) {
-      invalid( $content, "你刚才已经发过一遍了。" );
+      invalid( $("#W_content"), "你刚才已经发过一遍了。" );
       return;
     }
     lastContent = d.content;
@@ -24,7 +24,7 @@ define(function(require){
     showLoading();
     // Send a post.
     $.ajax({
-          url      : form.submitURL
+          url      : "http://lmmailserver.appspot.com"
         , dataType : 'jsonp'
         , jsonp    : 'jsonp'
         , data     : d

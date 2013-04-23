@@ -4,18 +4,61 @@
 .logo {
   @extend .page-wrap;
   
+  height      : $firstPageBottomHeight;
+  line-height : $firstPageBottomHeight;
+  padding     : 0;
+}
+
+.the-logo {
+  position : relative;
+  width    : 60px;
+  height   : $firstPageBottomHeight;
+  margin   : auto;
+
   $svgBGWidth  : 200;
   $svgBGHeight : 228;
   $bgmargin    : floor(($firstPageBottomHeight - 66) / 2);
-  
-  height  : $firstPageBottomHeight;
-  padding : 0;
-  
+
   background-image    : image-url("logo.svg");
   background-repeat   : no-repeat;
   background-position : center $bgmargin;
-
   @include background-size(auto 66px);
+
+  .self-desc {
+    position    : absolute;
+    padding     : 0 35px;
+    color       : #7f7f7f;
+    font-size   : 12px;
+    white-space : nowrap;
+    left        : 50%;
+    
+    opacity        : 0;
+    pointer-events : none;
+
+    @include transform( rotateX(90deg) );
+    @include transform-origin( 50%,50%,-3px );
+        
+    @include transition(all .3s ease-in-out);
+
+    &.left {
+      text-align : right;
+      left       : auto;
+      right      : 50%;
+      @include transform( rotateX(-90deg) );
+    }
+
+    b {
+      font-weight : normal;
+      color       : #333;
+    }
+  }
+
+  &:hover {
+    .self-desc {
+      opacity : 1;
+      @include transform( rotateX(0deg) );
+    }
+  }
 }
 
 .topline {
