@@ -5,6 +5,7 @@ define(function(require){
   require("src/skill/skill.js");
   require("src/timeline.js");
   require("src/sliderpuzzle.js");
+  require("src/contact.js");
 
 
   /* -- Intro Page -- */

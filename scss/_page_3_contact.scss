@@ -111,7 +111,7 @@ $submitColor : #665F4F;
     text-align : right;
     cursor     : pointer;
     
-    text-shadow : -$inputHeight $inputHeight $submitColor;
+    text-shadow : -$inputHeight + 10 $inputHeight $submitColor;
   }
 
   &:hover {
@@ -120,9 +120,42 @@ $submitColor : #665F4F;
     }
     label {
       @include transition(all ease-in-out 0.35s);
-      @include transform(translate($inputHeight, -$inputHeight));
+      @include transform(translate($inputHeight - 10, -$inputHeight));
     }
   }
+}
+
+.contacting {
+  &:before {
+    width      : 100%;
+    height     : 100%;
+    background : rgba(0,0,0,0.01);
+    opacity    : 0.01;
+    position   : absolute;
+    top        : 0;
+    left       : 0;
+    content    : " ";
+    z-index    : 999;
+  }
+  .submit label {
+    @include animation(posting 0.7s linear infinite);
+  }
+}
+@-webkit-keyframes posting {
+  0%   { -webkit-transform : translate(0, 0); }
+  100% { -webkit-transform : translate($inputHeight - 10, -$inputHeight); }
+}
+@-moz-keyframes posting {
+  0%   { -moz-transform : translate(0, 0); }
+  100% { -moz-transform : translate($inputHeight - 10, -$inputHeight); }
+}
+@-o-keyframes posting {
+  0%   { -o-transform : translate(0, 0); }
+  100% { -o-transform : translate($inputHeight - 10, -$inputHeight); }
+}
+@keyframes posting {
+  0%   { transform : translate(0, 0); }
+  100% { transform : translate($inputHeight - 10, -$inputHeight); }
 }
 
 @media (max-width:550px) {
