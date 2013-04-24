@@ -8,25 +8,25 @@ define(function(require){
   $("#W_content").on("invalid", function(){ invalid( $(this), "请输入5个字以上有意义的内容。" ); return false; });
   $("#W_contact").on("submit", function( evt ){
 
-    if ( contacting ) { return; }
+    if ( contacting ) { return false; }
 
     // Validate
     var d = validate();
-    if ( !d ) { return; }
+    if ( !d ) { return false; }
 
     // Check for repeating.
     if ( lastContent == d.content ) {
       invalid( $("#W_content"), "你刚才已经发过一遍了。" );
-      return;
+      return false;
     }
     lastContent = d.content;
 
     showLoading();
     // Send a post.
     $.ajax({
-          url      : "http://lmmailserver.appspot.com"
+          url      : "http://lmmail.herokuapp.com"
         , dataType : 'jsonp'
-        , jsonp    : 'jsonp'
+        , type     : "POST"
         , data     : d
         , success  : onSendSuccess
         , error    : onSendSuccess
@@ -69,6 +69,6 @@ define(function(require){
   {
     var e = "失败了，不如你直接发邮件给我吧：liangmorr@gmail.com";
     var s = "发送成功，我会尽快回复你的。";
-    invalid( $("#W_submit"), data && data.result == "success" ? s : e );
+    invalid( $("#W_submit"), data && data.result == "Success" ? s : e );
   }
 });
