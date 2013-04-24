@@ -1493,33 +1493,33 @@ a.emphasize:hover, a.emphasize:active {
     border-width: 4px;
   }
 }
-/* line 19, ../scss/_page_3_contact.scss */
+/* line 22, ../scss/_page_3_contact.scss */
 .page3 {
   padding: 8px 0 20px 0;
-  background: #06c9ac;
+  background: #333745;
   z-index: 4;
 }
-/* line 24, ../scss/_page_3_contact.scss */
+/* line 27, ../scss/_page_3_contact.scss */
 .page3 h1 {
   text-align: center;
   height: 40px;
   line-height: 36px;
   font-size: 24px;
-  color: #80FFEB;
+  color: #8B91A7;
 }
-/* line 32, ../scss/_page_3_contact.scss */
+/* line 35, ../scss/_page_3_contact.scss */
 .page3 form {
   width: 554px;
   margin: auto;
 }
-/* line 37, ../scss/_page_3_contact.scss */
+/* line 40, ../scss/_page_3_contact.scss */
 .page3 div {
   height: 32px;
   position: relative;
   float: left;
   margin-right: 14px;
 }
-/* line 44, ../scss/_page_3_contact.scss */
+/* line 47, ../scss/_page_3_contact.scss */
 .page3 input {
   background: none;
   border: none;
@@ -1531,7 +1531,7 @@ a.emphasize:hover, a.emphasize:active {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-/* line 55, ../scss/_page_3_contact.scss */
+/* line 58, ../scss/_page_3_contact.scss */
 .page3 label {
   font-size: 16px;
   height: 32px;
@@ -1541,45 +1541,45 @@ a.emphasize:hover, a.emphasize:active {
   top: 0;
   text-align: center;
   width: 30px;
-  color: #227569;
+  color: #616779;
 }
-/* line 68, ../scss/_page_3_contact.scss */
+/* line 71, ../scss/_page_3_contact.scss */
 .page3 .content input {
   width: 237px;
 }
-/* line 72, ../scss/_page_3_contact.scss */
+/* line 75, ../scss/_page_3_contact.scss */
 .page3 .email input {
   width: 143px;
 }
 
-/* line 77, ../scss/_page_3_contact.scss */
+/* line 80, ../scss/_page_3_contact.scss */
 .txt-input input {
-  background: #06aa92;
-  color: #227569;
+  background: #404452;
+  color: #616779;
   line-height: 32px \9;
   padding: 0 5px 0 28px;
   border-radius: 2px;
 }
-/* line 84, ../scss/_page_3_contact.scss */
+/* line 87, ../scss/_page_3_contact.scss */
 .txt-input input:focus {
-  background: #047968;
+  background: #1d2028;
   color: white;
 }
-/* line 88, ../scss/_page_3_contact.scss */
+/* line 91, ../scss/_page_3_contact.scss */
 .txt-input input:focus + label {
   color: white;
 }
 
-/* line 95, ../scss/_page_3_contact.scss */
+/* line 98, ../scss/_page_3_contact.scss */
 .submit {
   margin: 0 !important;
   overflow: hidden;
 }
-/* line 99, ../scss/_page_3_contact.scss */
+/* line 102, ../scss/_page_3_contact.scss */
 .submit input {
-  background: #80f7e5;
+  background: #41ccb4;
   border-radius: 4px;
-  color: #3f8076;
+  color: #1a6d5f;
   padding: 0 0 0 14px;
   width: 66px;
   text-align: center;
@@ -1590,20 +1590,20 @@ a.emphasize:hover, a.emphasize:active {
   -o-transition: all 0.1s linear;
   transition: all 0.1s linear;
 }
-/* line 112, ../scss/_page_3_contact.scss */
+/* line 115, ../scss/_page_3_contact.scss */
 .submit label {
-  color: #3f8076;
+  color: #1a6d5f;
   width: 28px;
   text-align: right;
   cursor: pointer;
-  text-shadow: -22px 32px #3f8076;
+  text-shadow: -22px 32px #1a6d5f;
 }
-/* line 122, ../scss/_page_3_contact.scss */
+/* line 125, ../scss/_page_3_contact.scss */
 .submit:hover input {
   color: #209684;
   background: #effffd;
 }
-/* line 126, ../scss/_page_3_contact.scss */
+/* line 129, ../scss/_page_3_contact.scss */
 .submit:hover label {
   color: #209684;
   text-shadow: -22px 32px #209684;
@@ -1619,7 +1619,7 @@ a.emphasize:hover, a.emphasize:active {
   transform: translate(22px, -32px);
 }
 
-/* line 136, ../scss/_page_3_contact.scss */
+/* line 139, ../scss/_page_3_contact.scss */
 .contacting:before {
   width: 100%;
   height: 100%;
@@ -1631,7 +1631,7 @@ a.emphasize:hover, a.emphasize:active {
   content: " ";
   z-index: 999;
 }
-/* line 147, ../scss/_page_3_contact.scss */
+/* line 150, ../scss/_page_3_contact.scss */
 .contacting .submit label {
   -webkit-animation: posting 0.7s linear infinite;
   -moz-animation: posting 0.7s linear infinite;
@@ -1640,63 +1640,63 @@ a.emphasize:hover, a.emphasize:active {
 }
 
 @-webkit-keyframes posting {
-  /* line 152, ../scss/_page_3_contact.scss */
+  /* line 155, ../scss/_page_3_contact.scss */
   0% {
     -webkit-transform: translate(0, 0);
   }
 
-  /* line 153, ../scss/_page_3_contact.scss */
+  /* line 156, ../scss/_page_3_contact.scss */
   100% {
     -webkit-transform: translate(22px, -32px);
   }
 }
 
 @-moz-keyframes posting {
-  /* line 156, ../scss/_page_3_contact.scss */
+  /* line 159, ../scss/_page_3_contact.scss */
   0% {
     -moz-transform: translate(0, 0);
   }
 
-  /* line 157, ../scss/_page_3_contact.scss */
+  /* line 160, ../scss/_page_3_contact.scss */
   100% {
     -moz-transform: translate(22px, -32px);
   }
 }
 
 @-o-keyframes posting {
-  /* line 160, ../scss/_page_3_contact.scss */
+  /* line 163, ../scss/_page_3_contact.scss */
   0% {
     -o-transform: translate(0, 0);
   }
 
-  /* line 161, ../scss/_page_3_contact.scss */
+  /* line 164, ../scss/_page_3_contact.scss */
   100% {
     -o-transform: translate(22px, -32px);
   }
 }
 
 @keyframes posting {
-  /* line 164, ../scss/_page_3_contact.scss */
+  /* line 167, ../scss/_page_3_contact.scss */
   0% {
     transform: translate(0, 0);
   }
 
-  /* line 165, ../scss/_page_3_contact.scss */
+  /* line 168, ../scss/_page_3_contact.scss */
   100% {
     transform: translate(22px, -32px);
   }
 }
 
 @media (max-width: 550px) {
-  /* line 170, ../scss/_page_3_contact.scss */
+  /* line 173, ../scss/_page_3_contact.scss */
   .page3 h1 {
     font-size: 20px;
   }
-  /* line 173, ../scss/_page_3_contact.scss */
+  /* line 176, ../scss/_page_3_contact.scss */
   .page3 form {
     width: 270px;
   }
-  /* line 176, ../scss/_page_3_contact.scss */
+  /* line 179, ../scss/_page_3_contact.scss */
   .page3 .content {
     margin: 0 0 8px 0;
   }

@@ -5,20 +5,23 @@ $contentWidth : 270px;
 $submitWidth  : 80px;
 $emailWidth   : $contentWidth - $submitWidth - $inputMargin;
 
+$contactBG : #333745;
+
 $inputIconSize : 28px;
 
-$inputBG         : #06aa92;
-$inputColor      : #227569;
+$inputBG         : #404452;
+$inputBGFocus    : #1d2028;
+$inputColor      : #616779;
 $inputColorFocus : #fff;
 
-$submitBG         : #80F7E5;
+$submitBG         : #41ccb4;
 $submitBGHover    : #EFFFFD;
-$submitColor      : #3F8076;
+$submitColor      : #1a6d5f;
 $submitColorHover : #209684;
 
 .page3 {
   padding     : 8px 0 20px 0;
-  background  : #06c9ac;
+  background  : $contactBG;
   z-index     : 4;
   
   h1 {
@@ -26,7 +29,7 @@ $submitColorHover : #209684;
     height      : 40px;
     line-height : 36px;
     font-size   : 24px;
-    color       : #80FFEB;
+    color       : #8B91A7;
   }
 
   form {
@@ -82,7 +85,7 @@ $submitColorHover : #209684;
     border-radius : 2px;
 
     &:focus {
-      background : darken( $inputBG, 10% );
+      background : $inputBGFocus;
       color      : $inputColorFocus;
       
       + label {
