@@ -11,11 +11,13 @@ $inputBG         : #06aa92;
 $inputColor      : #227569;
 $inputColorFocus : #fff;
 
-$submitBG    : #ffc130;
-$submitColor : #665F4F;
+$submitBG         : #80F7E5;
+$submitBGHover    : #EFFFFD;
+$submitColor      : #3F8076;
+$submitColorHover : #209684;
 
 .page3 {
-  padding     : 8px 0 14px 0;
+  padding     : 8px 0 20px 0;
   background  : #06c9ac;
   z-index     : 4;
   
@@ -24,7 +26,7 @@ $submitColor : #665F4F;
     height      : 40px;
     line-height : 36px;
     font-size   : 24px;
-    color       : #a5eddf;
+    color       : #80FFEB;
   }
 
   form {
@@ -103,6 +105,8 @@ $submitColor : #665F4F;
     text-align    : center;
     font-size     : 16px;
     cursor        : pointer;
+    
+    @include transition(all .1s linear);
   }
 
   label {
@@ -116,9 +120,12 @@ $submitColor : #665F4F;
 
   &:hover {
     input {
-      background : darken( $submitBG, 10% );
+      color      : $submitColorHover;
+      background : $submitBGHover;
     }
     label {
+      color       : $submitColorHover;
+      text-shadow : -$inputHeight + 10 $inputHeight $submitColorHover;
       @include transition(all ease-in-out 0.35s);
       @include transform(translate($inputHeight - 10, -$inputHeight));
     }

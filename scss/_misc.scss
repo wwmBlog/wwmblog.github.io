@@ -178,16 +178,26 @@
 // J, K Navigation ---------
 
 // ---------- Footer
-$footerHeight : 85px;
+$footerHeight : 81px;
 footer {
   position   : relative;
-  z-index    : 3;
+  z-index    : 5;
   height     : $footerHeight;
-  background : #262626 inline-image("zigzag.png") repeat-x;
+  background : #262626;
   
-  @include retina() {
-    background-image : inline-image("zigzag@2x.png");
-    @include background-size(image-width("zigzag.png"), auto);
+  &:before {
+    position   : absolute;
+    top        : 0 - image-height("zigzag.png") / 2;
+    content    : " ";
+    display    : block;
+    width      : 100%;
+    height     : image-height("zigzag.png");
+    background : inline-image("zigzag.png") repeat-x;
+
+    @include retina() {
+      background-image : inline-image("zigzag@2x.png");
+      @include background-size(image-width("zigzag.png"), auto);
+    }
   }
 }
 
