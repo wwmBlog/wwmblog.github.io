@@ -3,7 +3,7 @@ define(function(require, exports, module){
   require("libs/zepto.js");
 
   module.exports = {
-      show : show  // ( element:Dom )
+      show : show  // ( element:Dom, config:Object|Function, pos:{x,y} )
     , hide : hide  // ( void )
     , auto : auto  // ( selector:String, config:Object|Function, tracking:Boolean )
   };
@@ -31,7 +31,7 @@ define(function(require, exports, module){
 
   function show( element, config, pos ) {
 
-    tipElement = element;
+    tipElement = element.length ? element[0] : element;
 
     // Configs
     if ( typeof config == "function" ) {

@@ -256,12 +256,17 @@ q:after {
 }
 
 /* line 40, ../scss/_base.scss */
+.tac {
+  text-align: center;
+}
+
+/* line 44, ../scss/_base.scss */
 ::selection {
   color: #eee;
   background: #4BA9FF;
 }
 
-/* line 49, ../scss/_base.scss */
+/* line 53, ../scss/_base.scss */
 .sprite, .cite-con:after, .skill-legend {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAABMCAYAAAB6dgdeAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAIGNIUk0AAG11AABzoAAA/N0AAINkAABw6AAA7GgAADA+AAAQkOTsmeoAAALVSURBVHja7JlNaxNRFIafe2esrZgaFUmlurAWqraigrgQwYUW/AEi6EJcCNKNLl0IrvoD3Ij4GxS6EsWVG7HLKqQKLWKlRhBJxcSoATMuegLxMpM7nxkXc2BIZu688+Sc+3HO3CjmPQzbApwEXhHSvDtENu1z7SxwFBglQzPBx4AJ+T4zKPA4cKrnfErCnil4O3AOUEZfT2UJ1sAsMOzTPpMl+AywJ6B9FNiXFXin5Z7z0vcjaYNfW+4ZAo4DVyQ6pTTALrAGbITw3AGOAIeA98ASUE/isQe8iaiZBC4CF4CxJNNpBWjF0I/JVIwN7kT0GqAGPAZWk65c74AfITR/gEXgCdBMY8lsA0/lM8jqwIJEx0szSdSB5xL6fzKfwBaSjGRbWqwBL3rOmxLWRQkzac1jP1uV0boLeAn8TnvJdPu0LQ2yEBiYKS+Np3he7FAfBg4An+T4mrXHXfBPybvd3PsLWO/5Ic2swA3j+rAkgkk5/yY/YB34bFlkEoFNK8sxLYvLFxn1H5OO6nYEL7RkpYNpTadGRG0pL/BoWuCoI3ebZeULDf4eQ1/Kw+NE4U7Sx4k8dmOCN4Bq3HrLBLcl724NuLcDfACWpVhINR83fcAt4K0cLVIyE9wAdveUQMviZSfrCqQuXlWlHzMsBDyPPCy30qcAF+ACXIALcAH+D1/My+VyEequjQCXgAdsbjXVpBL1gBshnt1X7yqlTMFe4C5wGdgR8NDTwMOAtlB6E3wLmMe+I3si4Hpovau1hs1/X+4DcyG7aMIcpFH1WimFUuq2UmpOvgcdVaXUdaXUfqVUyWiLrq9UKtOyn9HvXfcRcFV2g0yLpXe11jctojXgWgAUIJbe1VrPWvrjnuWdKZbe1VqPW4TPLO2x9K7jOEMW4YqlPZa+O53o806cZHM8UG8Dd/+XMudslCXZV28DZ2au4zj5gHPzuAAPDOxTCBQeZ2J/BwAKbpkUKDR7KwAAAABJRU5ErkJggg==') no-repeat;
 }
@@ -663,10 +668,13 @@ footer:before {
 .tooltip {
   position: absolute;
   max-width: 200px;
-  padding: 3px 5px;
+  padding: 5px;
   z-index: 999;
   left: 0;
   top: 0;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   background: #313030;
   border-radius: 3px;
   color: #f0f0f0;
@@ -681,7 +689,7 @@ footer:before {
   -o-transition-property: -o-transform, opacity;
   transition-property: transform, opacity;
 }
-/* line 22, ../scss/misc/_tooltip.scss */
+/* line 24, ../scss/misc/_tooltip.scss */
 .tooltip.top {
   -webkit-transform: translate(0, -10px);
   -moz-transform: translate(0, -10px);
@@ -689,13 +697,13 @@ footer:before {
   -o-transform: translate(0, -10px);
   transform: translate(0, -10px);
 }
-/* line 23, ../scss/misc/_tooltip.scss */
+/* line 25, ../scss/misc/_tooltip.scss */
 .tooltip.top .arrow {
   bottom: -6px;
   border-bottom-width: 0;
   border-top-color: #313030;
 }
-/* line 31, ../scss/misc/_tooltip.scss */
+/* line 33, ../scss/misc/_tooltip.scss */
 .tooltip.bottom {
   -webkit-transform: translate(0, 10px);
   -moz-transform: translate(0, 10px);
@@ -703,13 +711,13 @@ footer:before {
   -o-transform: translate(0, 10px);
   transform: translate(0, 10px);
 }
-/* line 32, ../scss/misc/_tooltip.scss */
+/* line 34, ../scss/misc/_tooltip.scss */
 .tooltip.bottom .arrow {
   top: -6px;
   border-top-width: 0;
   border-bottom-color: #313030;
 }
-/* line 40, ../scss/misc/_tooltip.scss */
+/* line 42, ../scss/misc/_tooltip.scss */
 .tooltip.left {
   -webkit-transform: translate(-10px, 0);
   -moz-transform: translate(-10px, 0);
@@ -717,7 +725,7 @@ footer:before {
   -o-transform: translate(-10px, 0);
   transform: translate(-10px, 0);
 }
-/* line 41, ../scss/misc/_tooltip.scss */
+/* line 43, ../scss/misc/_tooltip.scss */
 .tooltip.left .arrow {
   right: -6px;
   top: 50%;
@@ -725,7 +733,7 @@ footer:before {
   border-right-width: 0;
   border-left-color: #313030;
 }
-/* line 50, ../scss/misc/_tooltip.scss */
+/* line 52, ../scss/misc/_tooltip.scss */
 .tooltip.right {
   -webkit-transform: translate(10px, 0);
   -moz-transform: translate(10px, 0);
@@ -733,7 +741,7 @@ footer:before {
   -o-transform: translate(10px, 0);
   transform: translate(10px, 0);
 }
-/* line 51, ../scss/misc/_tooltip.scss */
+/* line 53, ../scss/misc/_tooltip.scss */
 .tooltip.right .arrow {
   left: -6px;
   top: 50%;
@@ -741,7 +749,7 @@ footer:before {
   border-left-width: 0;
   border-right-color: #313030;
 }
-/* line 62, ../scss/misc/_tooltip.scss */
+/* line 64, ../scss/misc/_tooltip.scss */
 .tooltip.shown {
   opacity: 1;
   -webkit-transform: translate(0, 0);
@@ -750,20 +758,32 @@ footer:before {
   -o-transform: translate(0, 0);
   transform: translate(0, 0);
 }
-/* line 67, ../scss/misc/_tooltip.scss */
+/* line 69, ../scss/misc/_tooltip.scss */
 .tooltip.no-animate {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -o-transition: none !important;
   transition: none !important;
 }
-/* line 71, ../scss/misc/_tooltip.scss */
+/* line 73, ../scss/misc/_tooltip.scss */
 .tooltip .arrow {
   content: " ";
   position: absolute;
   width: 0px;
   height: 0px;
   border: 6px solid transparent;
+}
+/* line 81, ../scss/misc/_tooltip.scss */
+.tooltip a {
+  display: inline-block;
+  padding: 2px;
+  background: #171717;
+  border-radius: 2px;
+  color: silver;
+}
+/* line 89, ../scss/misc/_tooltip.scss */
+.tooltip a:hover {
+  color: #41ccb4;
 }
 
 /* line 10, ../scss/_misc.scss */

@@ -37,6 +37,10 @@ q { &:before { content : ""; } &:after { content : ""; } }
   }
 }
 
+.tac {
+  text-align : center;
+}
+
 ::selection {
   color      : #eee;
   background : #4BA9FF;
