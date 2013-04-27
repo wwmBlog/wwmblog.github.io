@@ -270,4 +270,16 @@ define(function(require){
   redrawTimeline();
 
   $(window).on("debouncedResize", redrawTimeline).on("scroll", arrageDots);
+
+  // Tooptip
+  var Tooltip = require("src/tooltip.js");
+  Tooltip.auto( ".tl_dot", function( element ){
+    var $e = $(element);
+    if ( $e.hasClass("start") ) {
+      return { content : "abc", side : "right" };
+    } else if ( $e.hasClass("end") ) {
+      return { content : "ddd", side : "left" };
+    }
+    return { content : "fasjdkfs" };
+  } );
 });

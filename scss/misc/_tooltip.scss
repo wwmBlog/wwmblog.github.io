@@ -1,0 +1,78 @@
+$tooltipColor : #313030;
+$tooltipArrowSize : 6px;
+
+
+.tooltip {
+  position  : absolute;
+  max-width : 200px;
+  padding   : 3px 5px;
+  z-index   : 999;
+  left      : 0;
+  top       : 0;
+
+  background    : $tooltipColor;
+  border-radius : 3px;
+  color         : #f0f0f0;
+  font-size     : 12px;
+  opacity       : 0;
+
+  @include transition( all .2s ease-out );
+  @include transition-property( transform, opacity );
+  
+  &.top    {
+    .arrow {
+      bottom : -$tooltipArrowSize;
+
+      border-bottom-width : 0; 
+      border-top-color    : $tooltipColor;
+    }
+    @include transform( translate(0, -10px) );
+  }
+  &.bottom {
+    .arrow {
+      top : -$tooltipArrowSize;
+
+      border-top-width    : 0; 
+      border-bottom-color : $tooltipColor; 
+    }
+    @include transform( translate(0,  10px) );
+  }
+  &.left   {
+    .arrow {
+      right      : -$tooltipArrowSize;
+      top        : 50%;
+      margin-top : -$tooltipArrowSize;
+
+      border-right-width : 0; 
+      border-left-color  : $tooltipColor; 
+    }
+    @include transform( translate(-10px, 0) ); }
+  &.right  {
+    .arrow {
+      left       : -$tooltipArrowSize;
+      top        : 50%;
+      margin-top : -$tooltipArrowSize;
+      
+      border-left-width  : 0; 
+      border-right-color : $tooltipColor;
+    }
+    @include transform( translate( 10px, 0) );
+  }
+
+  &.shown {
+    opacity : 1;
+    @include transform( translate(0, 0) );
+  }
+
+  &.no-animate {
+    @include transition ( none !important );
+  }
+
+  .arrow {
+    content  : " ";
+    position : absolute;
+    width    : 0px;
+    height   : 0px;
+    border   : $tooltipArrowSize solid transparent;
+  }
+}

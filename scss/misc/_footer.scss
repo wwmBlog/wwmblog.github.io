@@ -1,0 +1,84 @@
+// ---------- Footer
+$footerHeight : 81px;
+footer {
+  position   : relative;
+  z-index    : 5;
+  height     : $footerHeight;
+  background : #262626;
+  
+  &:before {
+    position   : absolute;
+    top        : 0 - image-height("zigzag.png") / 2;
+    content    : " ";
+    display    : block;
+    width      : 100%;
+    height     : image-height("zigzag.png");
+    background : inline-image("zigzag.png") repeat-x;
+
+    @include retina() {
+      background-image : inline-image("zigzag@2x.png");
+      @include background-size(image-width("zigzag.png"), auto);
+    }
+  }
+}
+
+.footer-left {
+  float       : left;
+  padding-top : floor(($footerHeight - 44px) / 2) + 1;
+  text-align  : left;
+  
+  color       : lighten(#262626, 10%);
+  
+  p {
+    line-height    : 1em;
+    vertical-align : text-bottom;
+  }
+
+  .credit {
+    font-size      : 12px;
+    vertical-align : text-bottom;
+    background     : #3e3e3e;
+    color          : #888;
+    padding        : 4px;
+    margin-right   : 4px;
+    
+    &:hover {
+      background : darken(#3e3e3e, 18%);
+    }
+  }
+}
+
+.footer-wrap {
+  height      : $footerHeight;
+  line-height : $footerHeight + floor( image-height("zigzag.png") / 2 );
+  overflow    : hidden;
+  white-space : nowrap;
+  padding     : 0 18px 0 3em;
+  
+  text-align : right;
+  color      : #686868;
+  font-size  : 24px;
+}
+
+.copyright {
+  font-size  : 12px;
+  margin-top : 8px;
+}
+
+@media (max-width:500px) {
+  .footer-wrap {
+    padding : 0 1em;
+  }
+  .copyright {
+    line-height : 64px;
+  }
+}
+@media (max-width:410px) {
+  .footer-wrap {
+    padding : 0 8px;
+  }
+  .footer-wrap q {
+    font-size : 18px;
+  }
+}
+// Footer ----------
