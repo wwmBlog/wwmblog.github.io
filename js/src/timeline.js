@@ -108,13 +108,19 @@ define(function(require){
     $betaStartLine  = canvas.path().fill("#cbcbcb").back();
 
     // Start Dot
-    var d = $("<span class='tl_dot start'></span>").appendTo($container).data("desc", data.start);
+    var d = $("<span class='tl_dot start'></span>")
+                .appendTo($container)
+                .data("desc", data.start.desc)
+                .data("y", data.start.y);
     $currents.push( d );
 
     addDots( data.current, $currents, $container );
 
     // End Dot
-    d = $("<span class='tl_dot end'></span>"  ).appendTo($container).data("desc", data.end);
+    d = $("<span class='tl_dot end'></span>")
+                .appendTo($container)
+                .data("desc", data.end.desc)
+                .data("y", data.end.y);
     $currents.push( d );
 
   })();
@@ -274,12 +280,18 @@ define(function(require){
   // Tooptip
   var Tooltip = require("src/tooltip.js");
   Tooltip.auto( ".tl_dot", function( element ){
-    var $e = $(element);
+    var $e  = $(element);
+    var cfg = {};
+    cfg['content'] = "<span class='tl_year'>" 
+                        + $e.data("y")
+                        + "</span><span class='tl_desc'>"
+                        + $e.data("desc")
+                        + "</span>";
     if ( $e.hasClass("start") ) {
-      return { content : "abc", side : "right" };
+      cfg['side'] = "right";
     } else if ( $e.hasClass("end") ) {
-      return { content : "ddd", side : "left" };
+      cfg['side'] = "left";
     }
-    return { content : "fasjdkfs" };
+    return cfg;
   } );
 });

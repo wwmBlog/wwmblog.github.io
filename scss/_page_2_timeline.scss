@@ -125,3 +125,15 @@ $n_dotSize_2         : -$dotSize / 2;
     &:hover { border-width : $dotHoverBorderSize / 2; }
   }
 }
+
+.tl_year {
+  padding        : 0 3px;
+  border-radius  : 2px;
+  background     : #ecece4;
+  color          : #333745;
+  height         : 1.4em;
+  line-height    : 1.4em;
+  margin-right   : 5px;
+  display        : inline-block;
+  font-family    : Tahoma, Helvetica, Verdana, Geneva, sans-serif;
+}

@@ -1672,6 +1672,19 @@ a.emphasize:hover, a.emphasize:active {
     border-width: 4px;
   }
 }
+/* line 129, ../scss/_page_2_timeline.scss */
+.tl_year {
+  padding: 0 3px;
+  border-radius: 2px;
+  background: #ecece4;
+  color: #333745;
+  height: 1.4em;
+  line-height: 1.4em;
+  margin-right: 5px;
+  display: inline-block;
+  font-family: Tahoma, Helvetica, Verdana, Geneva, sans-serif;
+}
+
 /* line 22, ../scss/_page_3_contact.scss */
 .page3 {
   padding: 8px 0 20px 0;
