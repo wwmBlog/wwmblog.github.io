@@ -113,12 +113,14 @@ $submitColorHover : #209684;
   }
 
   label {
-    color      : $submitColor;
-    width      : $inputIconSize;
-    text-align : right;
-    cursor     : pointer;
+    color          : $submitColor;
+    width          : $inputIconSize;
+    text-align     : right;
+    cursor         : pointer;
+    pointer-events : none;
     
     text-shadow : -$inputHeight + 10 $inputHeight $submitColor;
+
   }
 
   &:hover {

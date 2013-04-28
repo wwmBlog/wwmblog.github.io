@@ -11,8 +11,13 @@ define(function(require){
     Tooltip.hide( this );
   })
 
-  $("#W_email"  ).on("invalid", function(){ invalid( $(this), "请输入你的Email。" ); return false; });
-  $("#W_content").on("invalid", function(){ invalid( $(this), "请输入5个字以上有意义的内容。" ); return false; });
+  $("#W_email")
+    .on("invalid", function(){ invalid( $(this), "请输入你的Email。" ); return false; })
+    .on("keyup", onInputChange);
+  $("#W_content")
+    .on("invalid", function(){ invalid( $(this), "请输入5个字以上有意义的内容。" ); return false; })
+    .on("keyup", onInputChange);
+
   $("#W_contact").on("submit", function( evt ){
 
     Tooltip.hide( $("#W_submit")[0] );
@@ -46,6 +51,19 @@ define(function(require){
     return false;
   });
 
+  function onInputChange () {
+    var value = $(this).val();
+    if ( this.id == "W_email" ) {
+      if ( /[\w\d_\.\-]+@([\w\d_\-]+\.)+[\w\d]{2,4}/.test(emailVal) ) {
+        Tooltip.hide(this);
+      }
+    } else if ( this.id == "W_content" ) {
+      if ( value.length > 5 ) {
+        Tooltip.hide(this);
+      }
+    }
+  }
+
   function validate() {
     // Validate
     var $email     = $("#W_email");
@@ -66,14 +84,11 @@ define(function(require){
     return { "email" : emailVal, "content": contentVal };
   }
 
+  var invalidTM = null;
   function invalid ( $target, error ) {
-    // TODO : Show customize popup;
-    // If the error is shown on submit button, it is auto-closed.
-    console.log( "Error : " + error );
-    Tooltip.show( $target[0], { content : error, margin : 30 } );
-
-    if ( $target.attr("id") == "W_submit" ) {
-      setTimeout( function(){ Tooltip.hide($target[0]); }, 2000 );
+    if ( invalidTM == null ) {
+      Tooltip.show( $target[0], { content : error, margin : 30, extraClass : "error" } );
+      invalidTM = setTimeout( function(){ invalidTM = null; }, 50 );
     }
   }
 
@@ -82,8 +97,16 @@ define(function(require){
 
   function onSendSuccess ( data ) 
   {
-    var e = "<div class='tac'>失败了，不如你直接发邮件给我吧：<a href='mailto:liangmorr@gmail.com'>liangmorr@gmail.com</a></div>";
-    var s = "发送成功，我会尽快回复你的。";
-    invalid( $("#W_submit"), data && data.result == "Success" ? s : e );
+    var e = data && data.result == "Success" ?
+              "发送成功，我会尽快回复你的。" :
+              "失败了，不如你直接发邮件给我吧：<a href='mailto:liangmorr@gmail.com'>liangmorr@gmail.com</a>"
+
+    Tooltip.show( $("#W_submit")[0], { 
+        content    : e
+      , margin     : 30
+      , extraClass : data && data.result == "Success" ? "success" : "error"
+    });
+
+    setTimeout( function(){ Tooltip.hide($("#W_submit")[0]); }, 2000 );
   }
 });

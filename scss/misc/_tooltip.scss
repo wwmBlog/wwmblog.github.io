@@ -1,16 +1,15 @@
-$tooltipColor : #313030;
+$tooltipColor : #333745;
 $tooltipArrowSize : 6px;
 
 
 .tooltip {
-  position  : absolute;
-  max-width : 200px;
-  padding   : 5px;
-  z-index   : 999;
-  left      : 0;
-  top       : 0;
-  
-  @include box-shadow( 0 1px 4px rgba(0, 0, 0, 0.4) );
+  position   : absolute;
+  max-width  : 230px;
+  padding    : 5px;
+  z-index    : 999;
+  left       : 0;
+  top        : 0;
+  text-align : center;
 
   background    : $tooltipColor;
   border-radius : 3px;
@@ -79,15 +78,51 @@ $tooltipArrowSize : 6px;
   }
 
   a {
-    display : inline-block;
-    padding : 2px;
-
-    background    : darken($tooltipColor, 10%);
-    border-radius : 2px;
-    color : silver;
+    display       : inline-block;
+    color         : #fff;
+    border-bottom : 1px dotted #fff;
 
     &:hover {
-      color : #41ccb4;
+      color : #0096ff;
+      border-bottom-color : #0096ff;
+    }
+  }
+
+  &.error {
+    $tooltipColor_Error : #fb5556;
+    color      : #f5e9df;
+    background : $tooltipColor_Error;
+    
+    &.top .arrow {
+      border-top-color : $tooltipColor_Error;
+    }
+    &.bottom .arrow {
+      border-bottom-color : $tooltipColor_Error; 
+    }
+    &.left .arrow {
+      border-left-color  : $tooltipColor_Error; 
+    }
+    &.right .arrow {
+      border-right-color : $tooltipColor_Error;
+    }
+  }
+
+  &.success {
+    $tooltipColor_Error : #4fc265;
+    color      : #f5e9df;
+    background : $tooltipColor_Error;
+    
+    &.top .arrow {
+      border-top-color : $tooltipColor_Error;
+    }
+    &.bottom .arrow {
+      border-bottom-color : $tooltipColor_Error; 
+    }
+    &.left .arrow {
+      border-left-color  : $tooltipColor_Error; 
+    }
+    &.right .arrow {
+      border-right-color : $tooltipColor_Error;
     }
   }
 }

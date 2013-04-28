@@ -9,9 +9,10 @@ define(function(require, exports, module){
   };
 
   var defaultOpts = {
-      content  : ""
-    , side     : "top"
-    , margin   : 25
+      content    : ""
+    , side       : "top"
+    , margin     : 25
+    , extraClass : ""
   };
 
   var TIP_EDGE   = 10;
@@ -31,6 +32,8 @@ define(function(require, exports, module){
 
   function show( element, config, pos ) {
 
+    console.log("[Showing] for element", element);
+
     tipElement = element.length ? element[0] : element;
 
     // Configs
@@ -39,12 +42,14 @@ define(function(require, exports, module){
     }
     config = $.extend({}, defaultOpts, config);
 
-    var old_gravity = $tipDom.attr("class").replace(/(tooltip|shown|\s)/g, "");
+    var old_gravity = $tipDom.attr("class").replace(/left|right|top|bottom/);
     var noReset     = !$tipDom.hasClass("shown");
+
+    old_gravity = old_gravity ? old_gravity[0] : "";
 
     // Clean up
     $tipDom
-      .removeClass( old_gravity + ' shown')
+      .attr( "class", "tooltip " + config.extraClass )
       .children('.tip-content')
       .html( typeof config.content == "function" ? config.content(element) : config.content )
 
@@ -60,11 +65,15 @@ define(function(require, exports, module){
            .css({left:posObj.aL, top:posObj.aT});
 
     var height = $tipDom[0].offsetHeight;
+
     $tipDom.removeClass("no-animate").toggleClass("shown", true);
+    console.log("[Showing] did happen", $tipDom.attr("class"));
   }
 
   function hide( element ) {
+    console.log("[Hiding] for element ", element);
     if ( tipElement != element ) { return; }
+    console.log("[Hiding] did happen");
     $tipDom.removeClass("shown");
   }
 

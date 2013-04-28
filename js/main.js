@@ -95,8 +95,8 @@ define(function(require){
       if ( dirDown ) {
         for ( ; i < $pages.length; ++i ) {
           offset = $pages.eq(i).offset();
-          if ( scrollY < offset.top ) {
-            toScrollY = offset.top;
+          if ( scrollY < Math.round( offset.top ) ) {
+            toScrollY = Math.round( offset.top );
             break;
           }
         } 
