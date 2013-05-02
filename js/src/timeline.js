@@ -53,7 +53,7 @@ define(function(require){
 
         var r    = range( min, size, h_half);
         var id   = nextID();
-        var $dot = $("<span class='tl_dot'></span>")
+        var $dot = $("<span class='tl-dot'></span>")
                         .appendTo($container)
                         .data("id", id)
                         .css( "left", c.left );
@@ -105,7 +105,7 @@ define(function(require){
       {
         var c    = target[i];
         var id   = nextID();
-        var $dot = $("<span class='tl_dot alt'></span>")
+        var $dot = $("<span class='tl-dot alt'></span>")
                           .appendTo($container)
                           .data( "id", id )
                           .css( "left", c.left );
@@ -130,7 +130,7 @@ define(function(require){
 
     // Start Dot
     var id = nextID();
-    var d  = $("<span class='tl_dot start'></span>")
+    var d  = $("<span class='tl-dot start'></span>")
                 .appendTo($container)
                 .data("id", id);
 
@@ -142,7 +142,7 @@ define(function(require){
 
     // End Dot
     id = nextID();
-    d  = $("<span class='tl_dot end'></span>")
+    d  = $("<span class='tl-dot end'></span>")
                 .appendTo($container)
                 .data("id", id);
 
@@ -309,12 +309,12 @@ define(function(require){
 
   // Tooptip
   var Tooltip = require("src/tooltip.js");
-  Tooltip.auto( ".tl_dot", function( element ){
+  Tooltip.auto( ".tl-dot", function( element ){
     var $e   = $(element);
     var cfg  = {};
     var data = timeline_data[$e.data("id")];
-    cfg['content']  = data['icn'] ? ("<p class='tl_icon'>" + data['icn'] + "</p>") : "";
-    cfg['content'] += "<p class='tl_desc'><span class='tl_year'>" 
+    cfg['content']  = data['icn'] ? ("<p class='tl-icon'>" + data['icn'] + "</p>") : "";
+    cfg['content'] += "<p class='tl-desc'><span class='tip-tag'>" 
                         + data['y']
                         + "</span><span>"
                         + data['desc']

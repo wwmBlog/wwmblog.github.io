@@ -30,6 +30,7 @@ define(function( require, exports, module ){
     canvas.moveToCenter   = moveToCenter;
     canvas.vertexPosition = vertexPosition;
     canvas.setup          = setup;
+    canvas.getData        = getData;
     
 
     canvas.EVT_RESIZE   = "resize";
@@ -143,6 +144,18 @@ define(function( require, exports, module ){
     var y = - Math.floor( sin(a) * this.RADIUS * p );
 
     return { x : x, y : y };
+  }
+
+  function getData( vetexElement ) {
+    for ( var i = 0; i < this.graphs.length; ++i )
+    {
+      var d = this.graphs[i].getData( vetexElement );
+      if ( d ) { 
+        d['name'] = this.data.labels[d.idx];
+        return d;
+      }
+    }
+    return null;
   }
 
   /* Helpers */

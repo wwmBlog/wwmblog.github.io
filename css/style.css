@@ -38,7 +38,7 @@
 }
 
 /* line 36, ../scss/_font.scss */
-.wwmicn, .tl_icon {
+.wwmicn, .sk-tip-lv:before, .sk-tip-lv:after, .tl-icon {
   font-family: "wwmregular";
   -webkit-font-smoothing: antialiased;
 }
@@ -858,6 +858,17 @@ footer:before {
   border-right-color: #4fc265;
 }
 
+/* line 131, ../scss/misc/_tooltip.scss */
+.tip-tag {
+  padding: 0 3px;
+  border-radius: 2px;
+  background: #ecece4;
+  color: #333745;
+  margin-right: 5px;
+  display: inline-block;
+  font-family: Tahoma, Helvetica, Verdana, Geneva, sans-serif;
+}
+
 /* line 10, ../scss/_misc.scss */
 .emphasize {
   background: #333;
@@ -1576,12 +1587,76 @@ a.emphasize:hover, a.emphasize:active {
   content: attr(data-faq);
   display: block;
   margin: 1.2em 0 0.2em 0;
-  border-left: 4px solid #ad8d6b;
+  border-left: 4px solid #cacac0;
   padding-left: 0.5em;
   line-height: 1.8em;
   color: #42413F;
   text-shadow: 0 1px white;
   font-weight: bold;
+}
+
+/* line 80, ../scss/_page_1_skill.scss */
+.sk-tip-desc {
+  min-width: 120px;
+  text-align: left;
+}
+
+/* line 85, ../scss/_page_1_skill.scss */
+.sk-tip-lv {
+  text-align: center;
+  border-top: 1px solid #272c31;
+  padding-top: 4px;
+  margin: 10px 10px 0;
+  line-height: 1.4em;
+}
+/* line 92, ../scss/_page_1_skill.scss */
+.sk-tip-lv:before {
+  color: #FF9537;
+}
+/* line 97, ../scss/_page_1_skill.scss */
+.sk-tip-lv:after {
+  color: #20252B;
+}
+/* line 103, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv1:before {
+  content: "\F11B";
+}
+/* line 104, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv1:after {
+  content: "\F11B\F11B\F11B\F11B";
+}
+/* line 107, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv2:before {
+  content: "\F11B\F11B";
+}
+/* line 108, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv2:after {
+  content: "\F11B\F11B\F11B";
+}
+/* line 111, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv3:before {
+  content: "\F11B\F11B\F11B";
+}
+/* line 112, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv3:after {
+  content: "\F11B\F11B";
+}
+/* line 115, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv4:before {
+  content: "\F11B\F11B\F11B\F11B";
+}
+/* line 116, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv4:after {
+  content: "\F11B";
+}
+/* line 119, ../scss/_page_1_skill.scss */
+.sk-tip-lv.lv5:before {
+  content: "\F11B\F11B\F11B\F11B\F11B";
+}
+
+/* line 124, ../scss/_page_1_skill.scss */
+.skill .tip-tag {
+  padding: 2px 3px;
 }
 
 /* line 5, ../scss/_page_2_timeline.scss */
@@ -1636,11 +1711,11 @@ a.emphasize:hover, a.emphasize:active {
 }
 /* line 53, ../scss/_page_2_timeline.scss */
 #W_lgdTLAlt:before {
-  background: #f88953;
+  background: #ff9537;
 }
 
 /* line 66, ../scss/_page_2_timeline.scss */
-.tl_dot {
+.tl-dot {
   position: absolute;
   display: block;
   border-radius: 50%;
@@ -1660,74 +1735,62 @@ a.emphasize:hover, a.emphasize:active {
   transition: border-width 0.2s ease-in-out;
 }
 /* line 83, ../scss/_page_2_timeline.scss */
-.tl_dot.start, .tl_dot.end {
+.tl-dot.start, .tl-dot.end {
   border-width: 16px;
   width: 32px;
   height: 32px;
   margin: -16px 0 0 -16px;
 }
 /* line 90, ../scss/_page_2_timeline.scss */
-.tl_dot.end {
+.tl-dot.end {
   left: 100%;
   margin-left: -16px;
 }
 /* line 95, ../scss/_page_2_timeline.scss */
-.tl_dot.alt {
-  border-color: #f88953;
+.tl-dot.alt {
+  border-color: #ff9537;
 }
 /* line 96, ../scss/_page_2_timeline.scss */
-.tl_dot:hover {
+.tl-dot:hover {
   border-width: 3px;
 }
 
 @media (max-width: 530px) {
   /* line 108, ../scss/_page_2_timeline.scss */
-  .tl_dot {
+  .tl-dot {
     border-width: 8px;
     width: 16px;
     height: 16px;
     margin: -8px 0 0 -8px;
   }
   /* line 114, ../scss/_page_2_timeline.scss */
-  .tl_dot.start, .tl_dot.end {
+  .tl-dot.start, .tl-dot.end {
     border-width: 12px;
     width: 24px;
     height: 24px;
     margin: -12px 0 0 -12px;
   }
   /* line 121, ../scss/_page_2_timeline.scss */
-  .tl_dot.end {
+  .tl-dot.end {
     left: 100%;
     margin-left: -12px;
   }
   /* line 125, ../scss/_page_2_timeline.scss */
-  .tl_dot:hover {
+  .tl-dot:hover {
     border-width: 4px;
   }
 }
 /* line 129, ../scss/_page_2_timeline.scss */
-.tl_icon {
+.tl-icon {
   font-size: 16px;
   line-height: 1em;
   margin-bottom: 3px;
-  -webkit-font-smoothing: antialiased;
 }
 
-/* line 137, ../scss/_page_2_timeline.scss */
-.tl_desc {
+/* line 136, ../scss/_page_2_timeline.scss */
+.tl-desc {
   height: 1.2em;
   line-height: 1.2em;
-}
-
-/* line 142, ../scss/_page_2_timeline.scss */
-.tl_year {
-  padding: 0 3px;
-  border-radius: 2px;
-  background: #ecece4;
-  color: #333745;
-  margin-right: 5px;
-  display: inline-block;
-  font-family: Tahoma, Helvetica, Verdana, Geneva, sans-serif;
 }
 
 /* line 22, ../scss/_page_3_contact.scss */

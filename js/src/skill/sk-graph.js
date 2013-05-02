@@ -30,6 +30,7 @@ define(function(require, exports, module){
   Graph.prototype.init        = init;
   Graph.prototype.animate     = animate;
   Graph.prototype.updateMask  = updateMask;
+  Graph.prototype.getData     = getData;
   Graph.prototype.getGroup    = function () { return this.group; }
 
   function init ( force ) {
@@ -52,7 +53,7 @@ define(function(require, exports, module){
     for ( var i = 0; i < ds.length; ++i )
     {
       if ( ds[i] == null ) { continue; }
-      var dot = canvas.circle(0,0).center(0,0);
+      var dot = canvas.circle(0,0).center(0,0).data("idx", i);
 
       this.dots.push( dot );
       group.add( dot );
@@ -215,6 +216,21 @@ define(function(require, exports, module){
             "Z"].join(" ") + path;
 
     clippath.attr("d", path);
+  }
+
+  function getData ( element ) {
+    var parent = element.parentNode || element.parentElement;
+    if ( parent != this.group.node ) {
+      return null;
+    }
+
+    var idx = parseInt( element.getAttribute('data-idx') );
+    if ( !isNaN(idx) ) {
+      var d = $.extend( {}, this.data.data[idx] );
+      d['idx'] = idx;
+      return d;
+    }
+    return null;
   }
 
 });

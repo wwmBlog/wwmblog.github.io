@@ -68,11 +68,60 @@ $softTextColor : #413d32;
     content      : attr(data-faq);
     display      : block;
     margin       : 1.2em 0 .2em 0;
-    border-left  : 4px solid #AD8D6B;
+    border-left  : 4px solid #CACAC0;
     padding-left : 0.5em;
     line-height  : 1.8em;
     color        : #42413F;
     text-shadow  : 0 1px #fff;
     font-weight  : bold;
+  }
+}
+
+.sk-tip-desc {
+  min-width   : 120px;
+  text-align  : left;
+}
+
+.sk-tip-lv {
+  text-align  : center;
+  border-top  : 1px solid #272C31;
+  padding-top : 4px;
+  margin      : 10px 10px 0;
+  line-height : 1.4em;
+  
+  &:before {
+    @extend .wwmicn;
+    color : #FF9537;
+  }
+
+  &:after {
+    @extend .wwmicn;
+    color : #20252B;
+  }
+
+  &.lv1 {
+    &:before { content : "\F11B"; }
+    &:after  { content : "\F11B\F11B\F11B\F11B"; }
+  }
+  &.lv2 {
+    &:before { content : "\F11B\F11B"; }
+    &:after  { content : "\F11B\F11B\F11B"; }
+  }
+  &.lv3 {
+    &:before { content : "\F11B\F11B\F11B"; }
+    &:after  { content : "\F11B\F11B"; }
+  }
+  &.lv4 {
+    &:before { content : "\F11B\F11B\F11B\F11B"; }
+    &:after  { content : "\F11B"; }
+  }
+  &.lv5 {
+    &:before { content : "\F11B\F11B\F11B\F11B\F11B"; }
+  }
+}
+
+.skill {
+  .tip-tag {
+    padding : 2px 3px;
   }
 }

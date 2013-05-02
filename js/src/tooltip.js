@@ -21,6 +21,7 @@ define(function(require, exports, module){
   var tipElement    = null;
   var $tipDom       = $tipDom = $("<div class='tooltip top'><div class='tip-content'></div><span class='arrow'></span></div>").appendTo("body");
   var isTouchDevice = !!('ontouchstart' in window);
+  var lastPosObject = null;
 
   // Features :
   // 1. Show / Hide on mouseenter and mouseleave
@@ -30,15 +31,26 @@ define(function(require, exports, module){
   // 5. Any change to screen hides the popup.
   // 6. Only one popup at a time.
 
-  function show( element, config, pos ) {
-
-    tipElement = element.length ? element[0] : element;
+  function show( element, config, pos, updatePositionOnly ) {
 
     // Configs
     if ( typeof config == "function" ) {
       config = config( element );
     }
     config = $.extend({}, defaultOpts, config);
+
+
+    // Just update the tooltip position.
+    // Need to specify a new position(pos) for the tooltip.
+    if ( updatePositionOnly ) {
+      if ( tipElement == element && lastPosObject && pos ) {
+        lastPosObject = _updatePos( $tipDom, lastPosObject, pos );
+      }
+      return;
+    }
+
+    tipElement = element.length ? element[0] : element;
+
 
     var old_gravity = $tipDom.attr("class").replace(/left|right|top|bottom/);
     var noReset     = !$tipDom.hasClass("shown");
@@ -53,6 +65,7 @@ define(function(require, exports, module){
 
     // Get the gravity
     var posObj = _position( $tipDom, element, config, pos );
+    lastPosObject = posObj;
 
     if ( noReset ) {
       noReset = !( old_gravity && old_gravity != posObj.g );
@@ -62,6 +75,7 @@ define(function(require, exports, module){
            .children(".arrow")
            .css({left:posObj.aL, top:posObj.aT});
 
+    // Trigger re-layout
     var height = $tipDom[0].offsetHeight;
 
     $tipDom.removeClass("no-animate").toggleClass("shown", true);
@@ -86,18 +100,41 @@ define(function(require, exports, module){
 
       if ( tracking ) {
         $("body").on("mousemove", selector, function( evt ){
-          show(evt.target, config, { x : evt.pageX, y : evt.pageY });
+          show(evt.target, config, { x : evt.pageX, y : evt.pageY }, true);
           return false;
         });
       }
     }
+  }
+
+  function _updatePos( $tip, posObj, pos ) {
+
+    var xoff, yoff;
+
+    if ( posObj.g == "left" || posObj.g == "right" ) {
+      xoff = pos.x - posObj.baseline;
+      yoff = pos.y - posObj.baselineAlt;
+      posObj.baseline    = pos.x;
+      posObj.baselineAlt = pos.y;
+    } else {
+      yoff = pos.y - posObj.baseline;
+      xoff = pos.x - posObj.baselineAlt;
+      posObj.baseline    = pos.y;
+      posObj.baselineAlt = pos.x;
+    }
+
+    xoff += parseInt($tip.css("left"));
+    yoff += parseInt($tip.css("top"));
+
+    $tip.css({ left:xoff, top:yoff });
+    return posObj;
   }
   
 
   // Get the right position for the element.
   function _position( $tip, element, config, pos ) {
 
-    var elementOffset = $(element).offset();
+    var elementOffset = pos ? { left:pos.x, top:pos.y, width:0, height:0 } : $(element).offset();
     var tipOffset     = $tip.offset();
 
     var docEl      = document.documentElement;
@@ -114,8 +151,8 @@ define(function(require, exports, module){
     var posObj   = { g : "left", aL : undefined, aT : undefined };
 
     if ( "left" == config.side || "right" == config.side ) {
-      baseline    = pos ? pos.x : Math.round( elementOffset.left + elementOffset.width  / 2 );
-      baselineAlt = pos ? pos.y : Math.round( elementOffset.top  + elementOffset.height / 2 );
+      baseline    = Math.round( elementOffset.left + elementOffset.width  / 2 );
+      baselineAlt = Math.round( elementOffset.top  + elementOffset.height / 2 );
       measurement = tipOffset.width + config.margin;
 
       position.y = baselineAlt - Math.floor( tipOffset.height / 2 );
@@ -161,8 +198,8 @@ define(function(require, exports, module){
     }
 
     if ( "bottom" == config.side || "top" == config.side ) {
-      baseline    = pos ? pos.y : Math.round( elementOffset.top  + elementOffset.height / 2 );
-      baselineAlt = pos ? pos.x : Math.round( elementOffset.left + elementOffset.width  / 2 );
+      baseline    = Math.round( elementOffset.top  + elementOffset.height / 2 );
+      baselineAlt = Math.round( elementOffset.left + elementOffset.width  / 2 );
       measurement = tipOffset.height + config.margin;
       posObj.g    = "top";
 
@@ -237,7 +274,10 @@ define(function(require, exports, module){
       posObj.aL = baselineAlt - position.x - ARROW_SIZE;
     }
 
-    $tip.css({ "left": position.x, "top": position.y });
+    $tip.css({ left:position.x, top:position.y });
+
+    posObj.baseline    = baseline;
+    posObj.baselineAlt = baselineAlt;
 
     return posObj;
   }

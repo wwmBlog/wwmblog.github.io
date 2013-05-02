@@ -1,6 +1,6 @@
 $timelineBGColor : #dcdcd5;
 $dotColor        : #838383;
-$dotColorAlt     : #f88953;
+$dotColorAlt     : #FF9537;
 
 .page2 {
   padding : 80px 0 200px 0;
@@ -63,7 +63,7 @@ $dotSize_2           : $dotSize / 2;
 $n_dotEndPointSize_2 : -$dotEndPointSize / 2;
 $n_dotSize_2         : -$dotSize / 2;
 
-.tl_dot {
+.tl-dot {
   position      : absolute;
   display       : block;
   border-radius : 50%;
@@ -105,7 +105,7 @@ $n_dotSize_2         : -$dotSize / 2;
   $n_dotEndPointSize_2 : -$dotEndPointSize / 2;
   $n_dotSize_2         : -$dotSize / 2;
 
-  .tl_dot {
+  .tl-dot {
     border-width : $dotSize_2;
     width        : $dotSize;
     height       : $dotSize;
@@ -126,25 +126,14 @@ $n_dotSize_2         : -$dotSize / 2;
   }
 }
 
-.tl_icon {
+.tl-icon {
   @extend .wwmicn;
   font-size     : 16px;
   line-height   : 1em;
   margin-bottom : 3px;
-  -webkit-font-smoothing: antialiased;
 }
 
-.tl_desc {
+.tl-desc {
   height      : 1.2em;
   line-height : 1.2em;
-}
-
-.tl_year {
-  padding        : 0 3px;
-  border-radius  : 2px;
-  background     : #ecece4;
-  color          : #333745;
-  margin-right   : 5px;
-  display        : inline-block;
-  font-family    : Tahoma, Helvetica, Verdana, Geneva, sans-serif;
 }
