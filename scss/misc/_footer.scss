@@ -65,7 +65,7 @@ footer {
   margin-top : 8px;
 }
 
-@media (max-width:500px) {
+@media (max-width:600px) {
   .footer-wrap {
     padding : 0 1em;
   }
@@ -73,12 +73,20 @@ footer {
     line-height : 64px;
   }
 }
-@media (max-width:410px) {
+@media (max-width:560px) {
   .footer-wrap {
     padding : 0 8px;
   }
+}
+@media (max-width:510px) {
+  .footer-wrap {
+    line-height : 124px;
+  }
   .footer-wrap q {
     font-size : 18px;
+  }
+  .footer-left {
+    width : 200px;
   }
 }
 // Footer ----------

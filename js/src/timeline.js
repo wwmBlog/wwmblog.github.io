@@ -14,8 +14,19 @@ define(function(require){
   var $alphaStartLine;
   var $betaStartLine;
 
+  var timeline_data = {};
+
   // Part of the timeline is rendered using CSS
   var $container = $("#W_timelineContainer");
+
+  function nextID() {
+    if ( nextID.id ) {
+      ++nextID.id;
+      return "tl-" + nextID.id;
+    }
+    nextID.id = 100;
+    return nextID();
+  }
 
   // Init necessary elements.
   ;(function(){
@@ -40,15 +51,22 @@ define(function(require){
           restrict = true;
         }
 
-        var r = range( min, size, h_half);
+        var r    = range( min, size, h_half);
+        var id   = nextID();
         var $dot = $("<span class='tl_dot'></span>")
                         .appendTo($container)
-                        .data("y", c.y)
-                        .data("desc", c.desc)
-                        .data("maxT", r.max)
-                        .data("minT", r.min)
-                        .data("midT", r.mid)
+                        .data("id", id)
                         .css( "left", c.left );
+
+        timeline_data[id] = {
+            y    : c.y
+          , desc : c.desc
+          , maxT : r.max
+          , minT : r.min
+          , midT : r.mid
+          , icn  : c.icon
+        };
+
         collection.push($dot);
 
         if ( c.alpha ) { $alphaStartDot = $dot; }
@@ -85,12 +103,15 @@ define(function(require){
     function addAltDots( target, collection, $container ) {
       for ( var i = 0; i < target.length; ++i )
       {
-        var c = target[i];
+        var c    = target[i];
+        var id   = nextID();
         var $dot = $("<span class='tl_dot alt'></span>")
                           .appendTo($container)
-                          .data("y", c.y)
-                          .data("desc", c.desc)
+                          .data( "id", id )
                           .css( "left", c.left );
+
+        timeline_data[id] = { y : c.y, desc : c.desc, icn : c.icon };
+
         collection.push($dot);
 
         if ( i != 0 ) {
@@ -108,19 +129,25 @@ define(function(require){
     $betaStartLine  = canvas.path().fill("#cbcbcb").back();
 
     // Start Dot
-    var d = $("<span class='tl_dot start'></span>")
+    var id = nextID();
+    var d  = $("<span class='tl_dot start'></span>")
                 .appendTo($container)
-                .data("desc", data.start.desc)
-                .data("y", data.start.y);
+                .data("id", id);
+
+    timeline_data[id] = { y : data.start.y, desc : data.start.desc, icn : data.start.icon };
+
     $currents.push( d );
 
     addDots( data.current, $currents, $container );
 
     // End Dot
-    d = $("<span class='tl_dot end'></span>")
+    id = nextID();
+    d  = $("<span class='tl_dot end'></span>")
                 .appendTo($container)
-                .data("desc", data.end.desc)
-                .data("y", data.end.y);
+                .data("id", id);
+
+    timeline_data[id] = { y : data.end.y, desc : data.end.desc, icn : data.end.icon };
+
     $currents.push( d );
 
   })();
@@ -131,7 +158,7 @@ define(function(require){
   var tlBottom = 0;
   var tlState  = -2;
 
-  function redrawTimeline () {
+  function redrawTimeline ( force ) {
     var offset = $container.offset();
     var wh     = window.innerHeight;
     var space  = wh - offset.height;
@@ -140,6 +167,8 @@ define(function(require){
     if ( space < 200 ) { space = 200; }
     tlTop    = offset.top - space;
     tlBottom = offset.top + offset.height + space - wh;
+
+    if ( force ) { tlState = -2; }
 
     arrageDots();
   }
@@ -164,15 +193,16 @@ define(function(require){
 
     for ( var i = 1; i < $currents.length - 1; ++i ) {
       var $dot = $currents[i];
-      var midT = $dot.data("midT");
+      var data = timeline_data[$dot.data("id")];
+      var midT = data["midT"];
       var endT;
       if ( tlState < 0.05 && tlState > -0.05 ) {
         $dot.css("top", midT);
       } else if ( tlState < 0 ) {
-        endT = $dot.data("minT");
+        endT = data["minT"];
         $dot.css("top", Math.floor(midT + (midT - endT) * tlState) );
       } else {
-        endT = $dot.data("maxT");
+        endT = data["maxT"];
         $dot.css("top", Math.floor(midT + (endT - midT) * tlState) );
       }
     }
@@ -275,18 +305,20 @@ define(function(require){
 
   redrawTimeline();
 
-  $(window).on("debouncedResize", redrawTimeline).on("scroll", arrageDots);
+  $(window).on("debouncedResize", function(){ redrawTimeline(true); }).on("scroll", arrageDots);
 
   // Tooptip
   var Tooltip = require("src/tooltip.js");
   Tooltip.auto( ".tl_dot", function( element ){
-    var $e  = $(element);
-    var cfg = {};
-    cfg['content'] = "<span class='tl_year'>" 
-                        + $e.data("y")
-                        + "</span><span class='tl_desc'>"
-                        + $e.data("desc")
-                        + "</span>";
+    var $e   = $(element);
+    var cfg  = {};
+    var data = timeline_data[$e.data("id")];
+    cfg['content']  = data['icn'] ? ("<p class='tl_icon'>" + data['icn'] + "</p>") : "";
+    cfg['content'] += "<p class='tl_desc'><span class='tl_year'>" 
+                        + data['y']
+                        + "</span><span>"
+                        + data['desc']
+                        + "</span></p>";
     if ( $e.hasClass("start") ) {
       cfg['side'] = "right";
     } else if ( $e.hasClass("end") ) {

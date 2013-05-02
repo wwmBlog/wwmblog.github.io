@@ -37,9 +37,10 @@ q { &:before { content : ""; } &:after { content : ""; } }
   }
 }
 
-.tac {
-  text-align : center;
-}
+.tac  { text-align : center; }
+.mg0  { margin : 0 !important; }
+.pdl0 { padding-left : 0 !important; }
+.pdr0 { padding-right: 0 !important; }
 
 ::selection {
   color      : #eee;

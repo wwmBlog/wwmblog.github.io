@@ -32,8 +32,6 @@ define(function(require, exports, module){
 
   function show( element, config, pos ) {
 
-    console.log("[Showing] for element", element);
-
     tipElement = element.length ? element[0] : element;
 
     // Configs
@@ -67,13 +65,10 @@ define(function(require, exports, module){
     var height = $tipDom[0].offsetHeight;
 
     $tipDom.removeClass("no-animate").toggleClass("shown", true);
-    console.log("[Showing] did happen", $tipDom.attr("class"));
   }
 
   function hide( element ) {
-    console.log("[Hiding] for element ", element);
     if ( tipElement != element ) { return; }
-    console.log("[Hiding] did happen");
     $tipDom.removeClass("shown");
   }
 
@@ -83,11 +78,9 @@ define(function(require, exports, module){
       $("body").on("touchend",   selector, function( evt ){ show(evt.target, config); return false; });
     } else {
       $("body").on("mouseenter", selector, function( evt ){ 
-                  console.log("MouseEnter");
                   show(evt.target, config); return false;
                 })
                .on("mouseleave", selector, function( evt ){
-                  console.log("MouseOut");
                   hide(evt.target);         return false; 
                 });
 
