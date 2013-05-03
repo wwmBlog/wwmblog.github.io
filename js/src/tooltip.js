@@ -6,6 +6,7 @@ define(function(require, exports, module){
       show : show  // ( element:Dom, config:Object|Function, pos:{x,y} )
     , hide : hide  // ( void )
     , auto : auto  // ( selector:String, config:Object|Function, tracking:Boolean )
+    , hideOnClick : hideOnClick
   };
 
   var defaultOpts = {
@@ -31,7 +32,7 @@ define(function(require, exports, module){
   // 5. Any change to screen hides the popup.
   // 6. Only one popup at a time.
 
-  function show( element, config, pos, updatePositionOnly ) {
+  function show( element, config, pos ) {
 
     // Configs
     if ( typeof config == "function" ) {
@@ -42,8 +43,8 @@ define(function(require, exports, module){
 
     // Just update the tooltip position.
     // Need to specify a new position(pos) for the tooltip.
-    if ( updatePositionOnly ) {
-      if ( tipElement == element && lastPosObject && pos ) {
+    if ( tipElement == element ) {
+      if ( lastPosObject && pos ) {
         lastPosObject = _updatePos( $tipDom, lastPosObject, pos );
       }
       return;
@@ -81,15 +82,36 @@ define(function(require, exports, module){
     $tipDom.removeClass("no-animate").toggleClass("shown", true);
   }
 
-  function hide( element ) {
-    if ( tipElement != element ) { return; }
+  function hide( element, force ) {
+    if ( tipElement != element && !force ) { return; }
     $tipDom.removeClass("shown");
+    tipElement = null;
+  }
+
+  function hideOnClick() {
+
+    function doHide ( evt ) { 
+      hide( null, true );
+      hideOnClick.__bindNextHide = false;
+    }
+
+    var evt = isTouchDevice ? "touchend" : "click";
+    if ( !hideOnClick.__bindNextHide ) {
+      hideOnClick.__bindNextHide = true;
+      $("body").one(evt, doHide);
+    }
   }
 
   // config : function ( element ) { return {}; }
   function auto( selector, config, tracking ) {
     if ( isTouchDevice ) {
-      $("body").on("touchend",   selector, function( evt ){ show(evt.target, config); return false; });
+      $(selector).on("touchend", selector, function( evt ){ 
+        if ( tipElement != evt.target ) {
+          show(evt.target, config);
+          hideOnClick();
+        }
+        return false;
+      });
     } else {
       $("body").on("mouseenter", selector, function( evt ){ 
                   show(evt.target, config); return false;
@@ -100,7 +122,7 @@ define(function(require, exports, module){
 
       if ( tracking ) {
         $("body").on("mousemove", selector, function( evt ){
-          show(evt.target, config, { x : evt.pageX, y : evt.pageY }, true);
+          show(evt.target, config, { x : evt.pageX, y : evt.pageY });
           return false;
         });
       }

@@ -11,7 +11,7 @@ define(function(require){
 
 
   var chartW  = new ScrollWatcher( ".logo", -1 );
-  chartW.one("scrollabove", function(){ chart.render(); console.log(" scrolled into "); });
+  chartW.one("scrollabove", function(){ chart.render(); });
 
 
   var Tooltip = require("src/tooltip.js");
@@ -21,7 +21,6 @@ define(function(require){
     , extraClass : "skill"
     , content    : function ( element ) {
         var data = chart.getData( element );
-        console.log( data );
         var html = "<p class='sk-tip-desc'><span class='tip-tag'>" 
                       + data.name
                       + "</span>"
@@ -33,13 +32,31 @@ define(function(require){
       }
   };
 
-  // Popup interaction
-  $("#W_skillChart")
-    .on("mouseover", "ellipse", function( evt ){
-      Tooltip.show( evt.target, tooltipOption, { x:evt.pageX, y:evt.pageY } );
-    })
-    .on("mousemove", "ellipse", function( evt ){ 
-      Tooltip.show( evt.target, tooltipOption, { x:evt.pageX, y:evt.pageY }, true );
-    })
-    .on("mouseout",  "ellipse", function( evt ){ Tooltip.hide( evt.target ); });
+  if ( !!('ontouchstart' in window) )
+  {
+    var __bindNextHide = false;
+    $("#W_skillChart").on("touchend", "ellipse", function( evt ) {
+      var winScrollY = window.scrollTop  || window.scrollY;
+      var winScrollX = window.scrollLeft || window.scrollX;
+      var rect       = evt.target.getBoundingClientRect();
+      var pos        = {  x : Math.round(rect.width  / 2 + rect.left) + winScrollX
+                        , y : Math.round(rect.height / 2 + rect.top ) + winScrollY
+                       };
+      console.log(evt);
+      Tooltip.show( evt.target, tooltipOption, pos );
+      Tooltip.hideOnClick();
+      return false;
+    });
+
+  } else {
+    // Popup interaction
+    $("#W_skillChart")
+      .on("mouseover", "ellipse", function( evt ){
+        Tooltip.show( evt.target, tooltipOption, { x:evt.pageX, y:evt.pageY } );
+      })
+      .on("mousemove", "ellipse", function( evt ){ 
+        Tooltip.show( evt.target, tooltipOption, { x:evt.pageX, y:evt.pageY } );
+      })
+      .on("mouseout",  "ellipse", function( evt ){ Tooltip.hide( evt.target ); });
+  }
 });
