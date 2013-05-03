@@ -60,7 +60,7 @@ define(function(require, exports, module){
     }
 
     this.polygonMask = canvas.clip();
-    this.polygon     = canvas.polygon().clipWith( this.polygonMask );
+    this.polygon     = canvas.polygon().clipWith( this.polygonMask ).attr("pointer-events", "none");
     this.group       = group.add( this.polygon );
 
     // Transform the whole group
