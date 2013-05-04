@@ -1,7 +1,8 @@
 define(function(require){
 
-  var data = require("data/timeline.js");
-  var SVG  = require("SVG");
+  var data    = require("data/timeline.js");
+  var SVG     = require("SVG");
+  var Tooltip = require("src/tooltip.js");
 
   var canvas       = SVG("W_timeline");
   var $currents    = [];
@@ -175,6 +176,7 @@ define(function(require){
 
   function arrageDots () {
     var scrollY = window.scrollTop || window.scrollY;
+
     if ( scrollY <= tlTop ) {
       if ( tlState == -1 ) {
         return;
@@ -217,6 +219,23 @@ define(function(require){
     }
 
     drawLines();
+
+
+    // Update Dot's Tooltip if it's visible
+    var tipElement = Tooltip.currentTarget();
+    var allDots    = $currents.concat( $alphas, $betas );
+    if ( tipElement ) {
+      for ( i = 0; i < allDots.length; ++i ) {
+        if ( tipElement == allDots[i][0] ) {
+          var tipOffset = allDots[i].offset();
+
+          Tooltip.show(tipElement, null, {
+              x : tipOffset.left + tipOffset.width  / 2
+            , y : tipOffset.top  + tipOffset.height / 2 });
+          break;
+        }
+      }
+    }
   }
 
   function drawLines () {
@@ -308,7 +327,6 @@ define(function(require){
   $(window).on("debouncedResize", function(){ redrawTimeline(true); }).on("scroll", arrageDots);
 
   // Tooptip
-  var Tooltip = require("src/tooltip.js");
   Tooltip.auto( ".tl-dot", function( element ){
     var $e   = $(element);
     var cfg  = {};

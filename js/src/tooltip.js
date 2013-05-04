@@ -6,7 +6,8 @@ define(function(require, exports, module){
       show : show  // ( element:Dom, config:Object|Function, pos:{x,y} )
     , hide : hide  // ( void )
     , auto : auto  // ( selector:String, config:Object|Function, tracking:Boolean )
-    , hideOnClick : hideOnClick
+    , hideOnClick   : hideOnClick
+    , currentTarget : currentTarget
   };
 
   var defaultOpts = {
@@ -101,6 +102,8 @@ define(function(require, exports, module){
       $("body").one(evt, doHide);
     }
   }
+
+  function currentTarget () { return tipElement; }
 
   // config : function ( element ) { return {}; }
   function auto( selector, config, tracking ) {
