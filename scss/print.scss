@@ -1,0 +1,31 @@
+@import "compass/css3";
+@import "compass/css3/user-interface";
+
+// Reset
+div, section {
+  width  : 100%;
+  margin : 0; 
+  float  : none;
+}
+
+// Hide everything non-printable
+.intro-wrap-holder, .intro-wrap, .topline, .the-logo, .page-wrap, footer {
+  display : none;
+}
+
+
+// LOGO
+.logo {
+  float         : right;
+  width         : 70px;
+  height        : 118px;
+  margin-right  : 4em;
+  border-radius : 0 0 4px 4px;
+
+  $svgBGWidth  : 240;
+  $svgBGHeight : 774;
+
+  background : #ecece4 image-url("logo.svg") center -80px no-repeat;
+  @include background-size(60px auto);
+  
+}

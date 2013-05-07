@@ -1,0 +1,25 @@
+/* line 5, ../scss/print.scss */
+div, section {
+  width: 100%;
+  margin: 0;
+  float: none;
+}
+
+/* line 12, ../scss/print.scss */
+.intro-wrap-holder, .intro-wrap, .topline, .the-logo, .page-wrap, footer {
+  display: none;
+}
+
+/* line 18, ../scss/print.scss */
+.logo {
+  float: right;
+  width: 70px;
+  height: 118px;
+  margin-right: 4em;
+  border-radius: 0 0 4px 4px;
+  background: #ecece4 url('../img/logo.svg') center -80px no-repeat;
+  -webkit-background-size: 60px auto;
+  -moz-background-size: 60px auto;
+  -o-background-size: 60px auto;
+  background-size: 60px auto;
+}

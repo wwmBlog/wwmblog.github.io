@@ -131,21 +131,26 @@
   }
 }
 
-/* line 17, ../scss/style.scss */
+/* line 16, ../scss/style.scss */
+.print {
+  display: none;
+}
+
+/* line 19, ../scss/style.scss */
 .page-wrap, .logo {
   position: relative;
   z-index: 3;
   background-color: #ecece4;
 }
 
-/* line 23, ../scss/style.scss */
+/* line 25, ../scss/style.scss */
 .page {
   margin: 0 auto;
   max-width: 90%;
   width: 1000px;
 }
 
-/* line 30, ../scss/style.scss */
+/* line 32, ../scss/style.scss */
 .page-title {
   text-align: center;
   padding-bottom: 40px;
@@ -153,17 +158,17 @@
   text-shadow: 0 1px white;
   font-size: 0;
 }
-/* line 38, ../scss/style.scss */
+/* line 40, ../scss/style.scss */
 .page-title h1 {
   font-family: Kai, "楷体", KaiTi, "楷体_GB2312", "Arial", sans-serif;
   font-weight: bold;
 }
-/* line 43, ../scss/style.scss */
+/* line 45, ../scss/style.scss */
 .page-title h2 {
   font-family: Economica, Tahoma, Geneva, sans-serif;
   font-weight: bold;
 }
-/* line 48, ../scss/style.scss */
+/* line 50, ../scss/style.scss */
 .page-title:before, .page-title:after {
   content: " ";
   display: inline-block;
@@ -177,7 +182,7 @@
   background-image: -o-linear-gradient(left top, #ecece4, #85817d);
   background-image: linear-gradient(left top, #ecece4, #85817d);
 }
-/* line 59, ../scss/style.scss */
+/* line 61, ../scss/style.scss */
 .page-title:after {
   background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #85817d), color-stop(100%, #ecece4));
   background-image: -webkit-linear-gradient(left top, #85817d, #ecece4);
@@ -186,7 +191,7 @@
   background-image: linear-gradient(left top, #85817d, #ecece4);
 }
 
-/* line 64, ../scss/style.scss */
+/* line 66, ../scss/style.scss */
 .title-wrap {
   display: inline-block;
   vertical-align: middle;
@@ -523,11 +528,11 @@ footer:before {
   margin: auto;
   background-image: url('../img/logo.svg');
   background-repeat: no-repeat;
-  background-position: center 5px;
-  -webkit-background-size: auto 66px;
-  -moz-background-size: auto 66px;
-  -o-background-size: auto 66px;
-  background-size: auto 66px;
+  background-position: center 3px;
+  -webkit-background-size: 60px auto;
+  -moz-background-size: 60px auto;
+  -o-background-size: 60px auto;
+  background-size: 60px auto;
 }
 /* line 27, ../scss/misc/_logo.scss */
 .the-logo .self-desc {

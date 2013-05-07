@@ -257,6 +257,7 @@ define(function(require){
     // Init the first puzzle
     var url = window.getComputedStyle($el[0]).backgroundImage;
     var urlextract = /url\((.+)\)$/.exec(url);
+    if ( !urlextract ) { return; }
     if ( urlextract[1] ) url = urlextract[1];
     if ( !url ) { 
       console.log("Something Bad Happens.");

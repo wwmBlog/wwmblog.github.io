@@ -34,7 +34,7 @@ define({
         , null
 
         , { v : 1, desc : "学Python的动机一半是为了打发时间。最大的成果是写了个SublimeText的插件。" } // Python
-        , { v : 3, desc : "合适的工具来完成工作能有效提高工作效率。" } // Tooling
+        , { v : 3, desc : "合适的工具来完成工作能有效提高工作效率。例如我使用SCSS来管理CSS。" } // Tooling
 
         , null
         , { v : 4, desc : "虽然Flash是上一代技术，但是有时候仍能派上用场。而且往往重要的并非技术本身，而是这个技术带给我们的它自身以外的思考。" } // Flash
@@ -42,7 +42,7 @@ define({
         , null
         , { v : 3, desc : "写过一些Obj-C的项目。它让我对编写面向用户的应用有了更深的了解。" } // OC
 
-        , { v : 4, desc : "是很有趣的平台。现在我是一个Full-Time Web Developer。" } // Web
+        , { v : 4, desc : "是很有趣的平台。现在我是一个Full-Time Web开发者 (2012至今)。" } // Web
         , null
       ]
     }

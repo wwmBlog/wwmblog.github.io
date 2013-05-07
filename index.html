@@ -8,7 +8,8 @@
   <title>War Within Me</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
   <link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" media="screen">
+  <link rel="stylesheet" href="css/print.css" media="print" >
 </head>
 
 <body class="desktop">
@@ -82,8 +83,7 @@
       <article>
 <p data-faq="右图各项数据都代表什么？">点击或hover右图的点可以查看详细描述。</p>
 
-<p data-faq="为什么没有满级的能力？">因为我觉得所有能力都是可以精益求精的。</p>
-<p>另外，<span class="emphasize">3级</span>的能力是能用于生产的能力。<span class="emphasize">4级</span>的能力则意味着我在这方面有过经验。</p>
+<p data-faq="为什么没有满级的能力？">因为我觉得所有能力都是可以精益求精的。<br />另外，<span class="emphasize">3级</span>的能力是能用于生产的能力。<span class="emphasize">4级</span>的能力则意味着我在这方面有过经验。</p>
 
 <p data-faq="你的编写程序能力到底如何？">
   <em>Let the code do the talking!</em> 我的<a href="https://github.com/WarWithinMe" class="emphasize" target="_blank">Github仓库</a>有各种代码。如果你想看本站源码，请到<a href="https://github.com/wwmBlog/wwmblog.github.com/tree/v2" class="emphasize" target="_blank">这个仓库</a>。
@@ -146,10 +146,7 @@
     seajs.config({ 
         base  : "./js"
       , shim  : {
-        "SVG" : {
-            src     : "libs/svg.js"
-          , exports : "SVG"
-        }
+        "SVG" : { src : "libs/svg.js", exports : "SVG" }
       }
     });
     seajs.use("main.js");

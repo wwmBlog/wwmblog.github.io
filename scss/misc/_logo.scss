@@ -15,14 +15,14 @@
   height   : $firstPageBottomHeight;
   margin   : auto;
 
-  $svgBGWidth  : 200;
-  $svgBGHeight : 228;
-  $bgmargin    : floor(($firstPageBottomHeight - 66) / 2);
+  $svgBGWidth  : 240;
+  $svgBGHeight : 274;
+  $bgmargin    : floor(($firstPageBottomHeight - 60/240*274) / 2);
 
   background-image    : image-url("logo.svg");
   background-repeat   : no-repeat;
   background-position : center $bgmargin;
-  @include background-size(auto 66px);
+  @include background-size(60px auto);
 
   .self-desc {
     position    : absolute;
