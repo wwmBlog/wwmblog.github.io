@@ -310,3 +310,39 @@ h1 span:before {
 .sec-exp {
   clear: both;
 }
+
+/* line 197, ../scss/print.scss */
+li.exp {
+  margin-left: 5em;
+  border-left: 1px solid #9e9e9e;
+  padding: 0.3em 1em;
+  position: relative;
+  color: #333;
+  font-size: 0.9em;
+}
+/* line 205, ../scss/print.scss */
+li.exp:before {
+  content: " ";
+  display: block;
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  left: -3px;
+  background: #9e9e9e;
+  top: 1em;
+  margin-top: -4px;
+  border-radius: 50%;
+}
+/* line 218, ../scss/print.scss */
+li.exp .exp-year {
+  position: absolute;
+  left: -4.5em;
+  font-size: 0.9em;
+  background: #9e9e9e;
+  color: #fff;
+  padding: 0.3em 0;
+  border-radius: 2px;
+  width: 3.4em;
+  text-align: center;
+  line-height: 1em;
+}
