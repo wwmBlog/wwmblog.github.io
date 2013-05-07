@@ -1,6 +1,7 @@
 define({
 
     labels : ["C++", "创造力", "Python", "Tooling", "问题解决", "Flash", "基本专业技能", "Obj-C", "Web", "Happy Hacking"]
+  , shortLabels : ["C++", "创造力", "Python", "Tooling", "问题解决", "Flash", "专业基础", "Obj-C", "Web", "Hacking"]
   , datasets : [
     {
         fill          : "#e05146"

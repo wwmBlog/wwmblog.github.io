@@ -10,9 +10,10 @@
 .emphasize {
   background  : #333;
   color       : #eee;
-  margin      : 0 2px;
+  margin      : 0 2px 2px;
   padding     : 4px; 
-  line-height : 28px;
+  line-height : 1em;
+  display     : inline-block;
 }
 
 a.emphasize {

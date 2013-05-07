@@ -878,12 +878,13 @@ footer:before {
 .emphasize {
   background: #333;
   color: #eee;
-  margin: 0 2px;
+  margin: 0 2px 2px;
   padding: 4px;
-  line-height: 28px;
+  line-height: 1em;
+  display: inline-block;
 }
 
-/* line 19, ../scss/_misc.scss */
+/* line 20, ../scss/_misc.scss */
 a.emphasize:hover, a.emphasize:active {
   background: #7f7f7f;
 }
