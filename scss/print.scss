@@ -69,31 +69,42 @@ section {
 }
 
 h1 {
-  font-size   : 1.5em;
+  $size : 24px;
+  font-size   : $size;
   font-family : 'Economica', "Helvetica", "Verdana", "Hiragino Sans GB", "Hiragino Sans GB W3", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", serif;
 
   color  : black;
   margin : 0 0 0.5em 0;
   
-  span {
+  .h1-ico {
+    display : inline-block;
+    width   : $size;
+    height  : $size;
+    padding : 0 2px;
     border-bottom : 2px solid black;
+    vertical-align: middle;
 
-    &:before {
-      padding-right : 0.3em;
-      @extend .wwmicn;
-    }
+    background : image-url("print_sprite.png") center 0 no-repeat;
+    @include background-size($size auto);
   }
-  
-}
 
-.ico-bio:before      { content : "\F12B"; }
-.ico-skill:before    { content : "\F12A"; }
-.ico-interest:before { content : "\F11E"; }
-.ico-exp:before      { content : "\F12C"; }
+  .h1-name {
+    display     : inline-block;
+    height      : $size;
+    line-height : $size;
+    border-bottom : 2px solid black;
+    vertical-align: middle;
+  }
+
+  .ico-skill    { background-position : center -1*$size; }
+  .ico-interest { background-position : center -2*$size; }
+  .ico-exp      { background-position : center -3*$size; }
+}
 
 .personal {
   font-size    : 1em;
   padding-left : 1em;
+  margin       : 1em;
   
   li {
     line-height : 2em;
@@ -116,9 +127,11 @@ h1 {
 }
 
 .biography {
-  font-size : 1.3em;
-  padding   : 0 1em;
-  color     : #999;
+  font-size   : 1.2em;
+  color       : #999;
+  margin      : 0;
+  padding     : 0 1em;
+  text-indent : 1em;
 }
 
 .sec-skill {
