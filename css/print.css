@@ -104,7 +104,7 @@ ul, li {
 
 /* line 67, ../scss/print.scss */
 section {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
 
 /* line 71, ../scss/print.scss */
@@ -157,7 +157,7 @@ h1 .ico-exp {
 }
 /* line 109, ../scss/print.scss */
 .personal li {
-  line-height: 2em;
+  line-height: 1.6em;
   font-size: 12px;
 }
 /* line 114, ../scss/print.scss */
