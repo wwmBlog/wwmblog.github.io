@@ -3,7 +3,6 @@ define(function( require, exports, module ){
   module.exports = RadarChart;
 
   var Graph = require("src/skill/sk-graph.js");
-  var SVG   = require("SVG");
 
   function RadarChart ( data, elementID ) {
 

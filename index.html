@@ -177,13 +177,17 @@
     </section>
   </article>
 
-  <script type="text/javascript" src="js/libs/sea.js" id="seajsnode"></script>
+  <script type="text/javascript" src="js/libs/zepto.js"></script>
+  <script type="text/javascript" src="js/libs/svg.js"></script>
+  <script type="text/javascript" src="js/libs/sea-debug.js" id="seajsnode"></script>
   <script type="text/javascript">
     seajs.config({ 
-        base  : "./js"
-      , alias  : {
-        "SVG" : { src : "libs/svg.js", exports : "SVG" }
-      }
+        base  : "./build/js"
+      // , alias : {
+      //     "src/timeline.js"     : "src/combine.js"
+      //   , "src/sliderpuzzle.js" : "src/combine.js"
+      //   , "src/event.js"        : "src/combine.js"
+      // }
     });
     seajs.use("main.js");
   </script>

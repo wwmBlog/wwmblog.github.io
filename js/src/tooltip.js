@@ -1,7 +1,5 @@
 define(function(require, exports, module){
 
-  require("libs/zepto.js");
-
   module.exports = {
       show : show  // ( element:Dom, config:Object|Function, pos:{x,y} )
     , hide : hide  // ( void )

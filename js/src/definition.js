@@ -1,7 +1,5 @@
 define(function(require){
 
-  require("libs/zepto.js");
-
   $("body").on("click", "dfn", function() {
 
     var $t            = $(this);

@@ -1,8 +1,6 @@
 define(function(require){
   /* svg.js Extentions*/
 
-  var SVG = require("SVG");
-
   var SVG_EASE_IN    = {keyTimes:"0; 1",keySplines:".42 0 1 1"};
   var SVG_EASE_OUT   = {keyTimes:"0; 1",keySplines:"0 0 .58 1"};
   var SVG_EASE_INOUT = {keyTimes:"0; 1",keySplines:".42 0 .58 1"};

@@ -1,5 +1,4 @@
 define(function(require){
-  require("libs/zepto.js");
 
   var Tooltip = require("src/tooltip.js");
 

@@ -1,7 +1,5 @@
 define(function(require, exports, module){
 
-  require("libs/zepto.js");
-
   /*
    * == Exports ==========
    */

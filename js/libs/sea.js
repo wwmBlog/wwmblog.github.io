@@ -14,5 +14,3 @@ ya=/\\\\/g,l=e.cache={},F,M={},N={},G={},ba={},va=1,E=2,L=3,ga=4,Ba=5;B.prototyp
 function(a,c){(Q||(Q=[])).push(c)});O({plugins:Q});h=g.getAttribute("data-config");g=g.getAttribute("data-main");h&&j.preload.push(h);g&&e.use(g);if(m&&m.args){g=["define","config","use"];m=m.args;for(h=0;h<m.length;h+=2)e[g[m[h]]].apply(e,m[h+1])}}})(this);
 //@ sourceMappingURL=sea.js.map
 
-(function(d,e){function a(c){if(c){c=c.alias;for(var a in c)(function(b){b.src&&(b.deps&&define(b.src,b.deps),define(a,[d.resolve(b.src)],function(){var a=b.exports;return"function"===typeof a?a():"string"===typeof a?e[a]:a}))})(c[a])}}d.on("config",a);a(d.config.data)})(seajs,"undefined"===typeof global?this:global);
-

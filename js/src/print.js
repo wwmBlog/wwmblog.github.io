@@ -1,7 +1,5 @@
 define(function(require){
 
-  require("libs/zepto.js");
-
   // Bio
   $(".personal .value.name").html("\u6881\u6587\u6d69");
   $(".personal .value.age").html( (new Date()).getUTCFullYear() - 1990 );

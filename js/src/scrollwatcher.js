@@ -6,7 +6,6 @@ define(function(require, exports, module){
   module.exports = ScrollWatcher;
 
   // Requires
-  require("libs/zepto.js");
   require("src/misc.js");
   var EventTarget = require("src/event.js").EventTarget;
 

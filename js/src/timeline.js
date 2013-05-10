@@ -1,7 +1,6 @@
 define(function(require){
 
   var data    = require("data/timeline.js");
-  var SVG     = require("SVG");
   var Tooltip = require("src/tooltip.js");
 
   var canvas       = SVG("W_timeline");

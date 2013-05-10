@@ -1,6 +1,5 @@
 define(function(require){
 
-  require("libs/zepto.js");
   require("src/definition.js");
   require("src/skill/skill.js");
   require("src/timeline.js");
