@@ -33,7 +33,7 @@ module.exports = function(grunt) {
                 // "merge_only"
                 //   Only merged file ( specified in `TARGET's files` ) will be created in `outputPath`
                 // "exclude_merge"
-                //   Build files that will not be merged, then output the merged file.
+                //   Output the merged file. Then output those not merged files.
       }
 
       // Target `main`
@@ -53,12 +53,6 @@ module.exports = function(grunt) {
             { 
               src        : "js/main.js"
             , dest       : "js/main.js"
-            , filter     : "isFile"
-            , concatDeps : true
-          }
-          , { 
-              src        : "js/data/*"
-            , dest       : "js/data/data.js"
             , filter     : "isFile"
             , concatDeps : true
           }

@@ -60,11 +60,9 @@ module.exports = function(grunt) {
     });
     var buildType = 0;
     switch( options.buildType ) {
-      case "merge_only" : buildType = 1; break;
       case "all" :        buildType = 0; break;
-      case "exclude_merge" :
-      default :
-        buildType = 2;
+      case "merge_only" : buildType = 1; break;
+      default :           buildType = 2;
     }
 
 
@@ -137,10 +135,26 @@ module.exports = function(grunt) {
         Concat CMD Files
         The dependency comes first.
      */
+    var mergedFiles = {};
     this.files.forEach(function( file ) {
       var c = concat( file, projectData, file.concatDeps );
-      gFile.write( options.outputPath + file.dest, c );
+      gFile.write( options.outputPath + file.dest, c.content );
+
+      if ( buildType == 2 ) {
+        c.list.forEach( function( v ){ mergedFiles[v] = true; });
+      }
     });
+
+
+    /*
+        Build other non-merged files.
+     */
+    if ( buildType == 2 ) {
+      projectData.scanArray.forEach(function( abspath ){
+        if ( mergedFiles.hasOwnProperty(abspath) ) { return; }
+        gFile.write( options.outputPath + abspath, projectData.content[abspath] );
+      });
+    }
   });
 
 
@@ -494,6 +508,9 @@ module.exports = function(grunt) {
 
 
     // Merge
-    return sortResult.reduce(function(pv, cv){ return pv + projectData.content[cv] + "\n"; }, "");
+    var c = sortResult.reduce(function(pv, cv){ 
+      return pv + projectData.content[cv] + "\n"; }, "");
+
+    return { content : c, list : sortResult };
   }
 }
