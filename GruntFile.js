@@ -59,11 +59,12 @@ module.exports = function(grunt) {
         ]
       }
     }
-    , uglify : {
-      main: {
-        files: {
-          'build/js/main.min.js': ['build/js/main.js']
-        }
+    , uglify : { minify : {
+          expand : true
+        , cwd    : "build/js"
+        , src    : ['*.js', '**/*.js', '!*.min.js', '!**/*.min.js']
+        , dest   : 'build/js'
+        , ext    : '.min.js'
       }
     }
     , cssmin : { minify: {
