@@ -42,9 +42,15 @@ module.exports = function(grunt) {
         //   `dest` is relative to options.outputPath
         //   `concatDeps` ( default:false ): If true, include all dependencies into one file, recursively.
         , files : [
-          { 
+            { 
               src        : "js/main.js"
-            , dest       : "build/main.js"
+            , dest       : "js/main.js"
+            , filter     : "isFile"
+            , concatDeps : true
+          }
+          , { 
+              src        : "js/data/*"
+            , dest       : "js/data/data.js"
             , filter     : "isFile"
             , concatDeps : true
           }

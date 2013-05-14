@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-
+  debugger;
   /* Building for Sea.js
      // Phase Trasform
      1. each TARGET defines a SCHEME of 
@@ -23,28 +23,40 @@ module.exports = function(grunt) {
      the dependencies must comes first.
    */
 
+  var RE_HAS_DEFINE = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*define|(?:^|[^$])\b(def)(ine)\s*\(/g;
+    /**/
+  var RE_DEFINE_DEPS = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*define|(?:^|[^$])\bdefine\s*\(\s*(["']).+?\1\s*(["'])/g;
+    /*'*/
+  var RE_REQUIRE = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*require|(?:^|[^$])\brequire\s*\(\s*(["'])(.+?)\1\s*\)/g;
+    /*"*/
+  var RE_DEFINE = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*define|(?:^|[^$])\b(define)\s*\(\s*({|function)/g;
+
+
   var path  = require("path");
   var gFile = grunt.file;
-
-  var RE_DEFINE_ID = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*define|(?:^|[^$])\bdefine\s*\(\s*(["'])(.+?)\1\s*/g;
-    /*"*/
-  var RE_REQUIRE   = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*require|(?:^|[^$])\brequire\s*\(\s*(["'])(.+?)\1\s*\)/g;
-    /*"*/
-  var RE_DEFINE    = /"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*define|(?:^|[^$])\b(define)\s*\(\s*({|function)/g;
 
 
   grunt.registerMultiTask("build_cmd", function () {
     grunt.log.ok( "Trasforming for target : " + this.target );
 
-    var targetData = {};
-    var options    = this.options({
+    var projectData = {
+        content    : {}
+      , dependency : {} // File's Dependency, abspath to ids
+      , dep_expand : {} // like dependency, abspath to ids
+      , dep_merge  : {} // abspath to abspath
+      , requireMap : {}
+      , scanArray  : []
+      , notCMD     : {}
+      , id2File    : {}
+      , file2Id    : {}
+    };
+    var options     = this.options({
           path       : "."
         , scheme     : null
         , alias      : null 
         , recursive  : true
         , concatDeps : false
     });
-
 
 
     /// MultiTask Setup Code ///
@@ -62,56 +74,165 @@ module.exports = function(grunt) {
     ///////////////////////////
 
 
-
     if ( !gFile.isPathInCwd( options.seajsBasePath) ) {
       grunt.fail.fatal("Seajs Base Path Not Found!");
     }
 
-    /* 
-        Extract ID
-          : loop through every files inside TARGET
+
+    /*
+        Get project files list and add Dependecy-Scanning Tasks
      */
-    gFile.recurse( options.path, 
-      function(abspath, rootdir, subdir, filename)
-      {
-        // Don't extract ID if it's not js file
-        if ( filename.indexOf(".js") != filename.length - 3 || filename.length <= 3 ) { return; }
-        // Don't extract ID for files in subfolder if the TARGET is not recursive.
-        if ( options.recursive === false && subdir ) { return; } 
+    gFile.recurse( options.path, function(abspath, rootdir, subdir, filename) {
+      // Do nothing if it's not js file
+      if ( filename.indexOf(".js") != filename.length - 3 || filename.length <= 3 ) { return; }
+      // Do nothing if file is in subfolder and TARGET is not recursive.
+      if ( options.recursive === false && subdir ) { return; }
 
-        subdir = ensureTrailingSlash( subdir );
-        var content = gFile.read(abspath).toString();
+      subdir = ensureTrailingSlash( subdir );
+      var content = gFile.read(abspath).toString();
 
-        content = transform( options, targetData, content, abspath );
+      projectData.scanArray.push(abspath);
+      projectData.content[abspath] = content;
 
-        gFile.write( options.outputPath + abspath, content );
-      }
-    );
+      scan( options, projectData, content, abspath );
+    });
+
+    console.log( "==== Deps ====" );
+    console.log( projectData.dependency );
+
+    console.log( "==== NotCMD ====" );
+    console.log( projectData.notCMD );
+
+    console.log( "==== Id2File ====" );
+    console.log( projectData.id2File );
+
+    console.log( "==== File2Id ====" );
+    console.log( projectData.file2Id );
+
+
+    /*
+      Substitute Dependency with merge file.
+     */
+    this.files.forEach(function( file ){
+      file.src.forEach(function( value ){
+        projectData.dep_merge[ value ] = file.dest;
+      });
+    });
+    console.log( "==== Dep_Merge ====" );
+    console.log( projectData.dep_merge );
+
+    /*
+       Expand Dependency
+     */
+    // var dependency = projectData.dependency;
+    // for ( var key in dependency ) {
+    //   if ( !dependency.hasOwnProperty( key ) ) return;
+
+    //   var deps      = dependency[key];
+    //   var depMap    = {};
+    //   var scanIndex = 0;
+    //   while ( scanIndex < deps.length ) {
+
+    //     for ( var len = deps.length; scanIndex < len; ++scanIndex ) {
+    //       var depID = deps[scanIndex];
+    //       if ( depMap[depID] ) { continue; }
+
+    //       // This id has not been expanded.
+    //       var abspath = projectData.id2File[ depID ];
+    //       if ( !abspath ) { continue; }
+
+    //       // Circular dependency
+    //       if ( abspath == key ) {
+    //         grunt.fail.warn("Circular dependency found in file : " + abspath);
+    //         continue;
+    //       } 
+
+    //       var depdep = dependency[ abspath ];
+    //       if ( depdep && depdep.length ) {
+    //         deps = deps.concat( depdep );
+    //       }
+    //     }
+    //   }
+
+    //   projectData.dep_expand[key] = dereplicate( deps );
+    // }
+
+    // console.log( "==== Expand Deps ====" );
+    // console.log( projectData.dep_expand );
+
+
+    /*
+       Substitute content
+       Add ID.
+       Add Dependency.
+     */
+    projectData.scanArray.forEach( function( abspath ){
+      var c = transform( options, projectData, projectData.content[abspath], abspath);
+      gFile.write( options.outputPath + abspath, c );
+    });
 
 
     /*
         Concat CMD Files
+        The dependency comes first.
      */
-    this.files.forEach(function( file ){
+    this.files.forEach(function( file ) {
+      var vertex = [].concat( file.src );
+      var revert_dep_map = {};
+      var visited = {};
 
-      // Remap each src
-      file.src.forEach(function( value, index, array ){
+      while ( vertex.length ) {
+        var new_vertex = [];
+        for ( var i = 0; i < vertex.length; ++i ) {
+          var v = vertex[i];
+          if ( visited.hasOwnProperty(v) ) { continue; }
 
-      });
-
-      var content = file.src.filter(function(p) {
-        if ( !grunt.file.exists( p ) ) {
-          grunt.log.warn('Files not found when concating: ' + p);
-          return false;
+          var deps = projectData.dependency[v];
+          if ( deps ) {
+            deps.forEach(function(value, index, array ){ 
+              value = projectData.id2File[value];
+              new_vertex.push( value );
+              if ( !revert_dep_map[value] ) {
+                revert_dep_map[value] = [];
+              }
+              
+              revert_dep_map[value].push( v );
+            });
+          }
         }
-        return true;
-      }).map(function( p ) {
-        // Read and return the file's source.
-        return grunt.file.read(filepath);
-      }).join('\n');
+        vertex = new_vertex;
+      }
+
+      if ( file.concatDeps !== true ) {
+        var files = [].concat( file.src );
+        while ( files.length ) {
+          for ( i = 0; i < files.length; ++i ) {
+
+          }
+        }
+        return;
+      }
 
     });
-    
+    // this.files.forEach(function( file ){
+
+    //   // Remap each src
+    //   file.src.forEach(function( value, index, array ){
+
+    //   });
+
+    //   var content = file.src.filter(function(p) {
+    //     if ( !grunt.file.exists( p ) ) {
+    //       grunt.log.warn('Files not found when concating: ' + p);
+    //       return false;
+    //     }
+    //     return true;
+    //   }).map(function( p ) {
+    //     // Read and return the file's source.
+    //     return grunt.file.read(filepath);
+    //   }).join('\n');
+
+    // });
   });
 
 
@@ -119,6 +240,17 @@ module.exports = function(grunt) {
   ////////////////////
   //// Helpers
   ////////////////////
+  function dereplicate( array ) {
+    var a = {};
+    var b = [];
+    for ( var i = 0, len = array.length; i < len; ++i ) {
+      if ( a[ array[i] ] !== true ) {
+        a[ array[i] ] = true;
+        b.push( array[i] );
+      }
+    }
+    return b;
+  }
   function ensureTrailingSlash ( p ) {
     if ( !p || p.length == 0 ) { return ""; }
     p = path.normalize( p );
@@ -178,14 +310,74 @@ module.exports = function(grunt) {
     }
   }
 
-  function transform(options, targetData, content, abspath) {
-    
-    // Test if the module has already has ID
-    var hasID  = false;
-    content.replace( RE_DEFINE_ID, function(m, m1, m2){ if(m2) { hasID = true; } return m; });
-    if ( hasID ) { return content; }
+  var injectA = "var window={}, require=function(){};\n"
+  + "var define = (function(){\n"
+    + "var deps = null, d = function(i,d,f){\n"
+      + "if ( deps == null ) { deps = []; }\n"
+      + "if ( f ) { deps.push({ id:i, deps:d }) }\n"
+      + "if ( d ) { deps.push({ id:i }) } }\n"
+      + "d.__t_de1_ = function(n) { if(n===false) deps=null; return deps; }; \n"
+      + "return d; })(); \n"
+  + "try{\n\n";
+  var injectB = "\n}catch(e){ define.__t_de1_(false); }\n;\ndefine.__t_de1_();";
 
+  function scan( options, projectData, content, abspath ) {
+    "use strict";
 
+    var define_heads = [];
+
+    var requireMap = projectData.requireMap[abspath] = {};
+
+    // Test if the file is CMD module, and user-defined ID and Depenecies
+    var hasDefine = false;
+    content.replace( RE_HAS_DEFINE, function(m, m1, m2){ if(m2) { hasDefine = true; } return m; });
+    // This `Regex Checking` is not perfect.
+    // e.g. sea-debug.js is not a CMD, but it pass the checking.
+    if ( !hasDefine ) {
+      grunt.log.writeln(colorLog("   - ", "yellow") + "Ignoring none cmd : " + abspath );
+      projectData.notCMD[abspath] = true;
+      return;
+    }
+
+    // Use eval to quickly extract possible user defined id and deps.
+    // If user defines ID and deps. Assume the user knows what
+    // they're doing, thus the ID and deps is not modified.
+    var predefines  = eval( injectA + content + injectB );
+    var predefineID = null;
+    if ( predefines == null ) {
+      // This is 100% not a valid Sea.js module.
+      grunt.log.writeln(colorLog("   - ", "yellow") + "Ignoring none cmd : " + abspath );
+      projectData.notCMD[abspath] = true;
+      return;
+    } else if ( predefines.length ) {
+      grunt.log.writeln(colorLog("   - ", "yellow") + "Found user-defined ID and Deps : " + abspath );
+
+      // If the file already has predefines. Use them, instead of generating.
+      var all_deps = [];
+      var predefine_dep = false;
+      predefines.forEach( function( val ){
+        predefineID = val.id;
+        projectData.id2File[ val.id  ] = abspath;
+        projectData.file2Id[ abspath ] = val.id;
+
+        if ( Array.isArray(val.deps) ) {
+          predefine_dep = true;
+          all_deps = all_deps.concat( val.deps );
+        } else if ( val.deps ) {
+          predefine_dep = true;
+          all_deps.push( val.deps );
+        }
+      });
+
+      if ( predefine_dep ) {
+        projectData.dependency[abspath] = all_deps;
+        return;
+      }
+
+      // User did not define dependency. We need to extract them.
+    }
+
+    // This is a well-formed Sea.js Module. i.e. No id and No deps.
     // Create dependency array
     var requires = [];
     content = content.replace( RE_REQUIRE, function( m, m1, m2, offset, string ){
@@ -212,9 +404,7 @@ module.exports = function(grunt) {
           return m;
         }
 
-        if ( m2.length < 4 || m2.indexOf(".js") != m2.length - 3 ) {
-          m2 += ".js";
-        }
+        if ( m2.length < 4 || m2.indexOf(".js") != m2.length - 3 ) { m2 += ".js"; }
 
         if ( m2[0] == "/" ) {
           // Use ALIAS to get ID for `normal` uri
@@ -252,31 +442,58 @@ module.exports = function(grunt) {
 
           if ( useScheme ) {
             replace = path2id( absM2, options.scheme );
-            requires.push( replace );
           } else {
             replace = options.alias ? options.alias( absM2 ) : null;
-            requires.push( replace ? replace : m2 );
           }
         }
 
-        if ( replace ) {
-          // Return dependency's ID to replace its PATH
-          return 'require("' + replace + '")';
+        // If we have a modified ID, use it, otherwise, use XXX from require(XXX).
+        if ( replace ) { 
+          requireMap[ m2 ] = replace;
+          requires.push( replace );
+        } else {
+          requires.push( m2 );
         }
       }
 
       return m;
     });
+    
+    var thisFile = resolveToBase( abspath, options.seajsBasePath );
+    var thisID   = predefineID ? predefineID : path2id( thisFile, options.scheme );
 
+    projectData.id2File[ thisID  ]  = abspath;
+    projectData.file2Id[ abspath ]  = thisID;
+    projectData.dependency[abspath] = requires;
+  }
+
+  // Note : transform() does not support define("string") syntax.
+  function transform(options, projectData, content, abspath) {
+
+    if ( projectData.notCMD[abspath] ) {
+      return content;
+    }
+    
+    // Substitute require(XXX) to require(ID)
+    var requireMap = projectData.requireMap[ abspath ];
+    content = content.replace( RE_REQUIRE, function( m, m1, m2, offset, string ){
+
+      if ( m2 && requireMap.hasOwnProperty( m2 ) ) {
+        return 'require("' + requireMap[m2] + '")';
+      } else {
+        return m;
+      }
+    });
 
     // Change define(FACTORY) to define(ID,DEPENDENCIES,FACTORY)
-    var thisFile   = resolveToBase( abspath, options.seajsBasePath );
-    console.log( abspath, options.seajsBasePath, thisFile );
-    var newID      = path2id( thisFile, options.scheme );
-    var new_define = "define('" + newID + "'," + JSON.stringify(requires) + ",";
+    var newID      = projectData.file2Id[ abspath ];
+    var new_define = "define('" 
+                        + newID + "',"
+                        + JSON.stringify( getMergedDependency(projectData, abspath, options.seajsBasePath) )
+                        + ",";
 
     grunt.log.writeln( colorLog("   - ", 'blue') 
-                        + "File : [" + thisFile + "]" 
+                        + "File : [" + abspath + "]" 
                         + colorLog(" >>>> ", 'blue') 
                         + "ID : \"" + newID + "\"" );
     
@@ -285,4 +502,62 @@ module.exports = function(grunt) {
     // Write new content
     return content;
   }
+
+  // The dependency array contains file path ( relative to seajs's base )
+  function getMergedDependency( projectData, abspath, seajsBasePath ) {
+    var calc_deps = [];
+    var fileDeps = projectData.dependency[abspath];
+    if ( !fileDeps ) { return calc_deps; }
+
+    fileDeps.forEach(function( a_dep_id ){
+
+      var dep_abs_path = projectData.id2File[ a_dep_id ];
+      if ( projectData.dep_merge.hasOwnProperty(dep_abs_path) ) {
+        dep_abs_path = projectData.dep_merge[ dep_abs_path ];
+      }
+
+      if ( dep_abs_path ) {
+        dep_abs_path = resolveToBase( dep_abs_path, seajsBasePath );
+      }
+
+      calc_deps.push( dep_abs_path ? dep_abs_path : a_dep_id );
+    });
+
+    return dereplicate( calc_deps );
+  }
+
+  function SyncTasks () {
+    this.tasks = [];
+    this.index = -1;
+
+    var endHandler = function(){};
+    var self = this;
+
+    this.next = function () {
+      self.tasks[self.index]( self.done );
+    }
+
+    this.done = function() {
+      ++self.index;
+      if ( self.index >= self.tasks.length ) { 
+        endHandler();
+      } else {
+        setTimeout( self.next, 0 );
+      }
+
+    }
+    this.add    = function( task ) { this.tasks.push( task ); }
+    this.addSub = function( task ) { this.tasks.splice( this.index, 0, task ); }
+    this.start  = function( onFinished ) {
+      if ( this.tasks.length < 1 ) {
+        onFinished.apply( this );
+      } else {
+        this.index = 0;
+        endHandler = onFinished;
+        setTimeout( this.next, 0 );
+      }
+    }
+  }
+
+  
 }
