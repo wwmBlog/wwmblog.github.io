@@ -59,50 +59,26 @@ module.exports = function(grunt) {
         ]
       }
     }
+    , uglify : {
+      main: {
+        files: {
+          'build/js/main.min.js': ['build/js/main.js']
+        }
+      }
+    }
+    , cssmin : { minify: {
+          expand : true
+        , cwd    : "css/"
+        , src    : ['*.css', '!*.min.css']
+        , dest   : 'css/'
+        , ext    : '.min.css'
+      }
+    }
   });
 
-  // grunt.initConfig({
-  //   transport: {
-  //     options: {
-  //       format: 'wwm/{{filename}}',  // id format
-  //     },
-  //     wwm : {
-  //         options : {
-  //         paths : ["js"]
-  //       }
-  //       , files: [{
-  //           cwd  : "js"
-  //         , src  : ["*", "data/*", "src/*"]
-  //         , dest : ".build"
-  //       }]
-  //     }
-  //   },
-
-  //   concat: {
-  //     main: {
-  //       options: {
-  //         relative: true  // this will include relative dependencies
-  //       },
-  //       files: {
-  //         'dist/main.js': ['.build/main.js'],
-  //         'dist/main-debug.js': ['.build/main-debug.js']
-  //       }
-  //     }
-  //   },
-  //   uglify: {
-  //     main: {
-  //       files: {
-  //         'dist/main.js': ['dist/main.js']
-  //       }
-  //     }
-  //   },
-  //   clean: {
-  //     build: ['.build']
-  //   }
-  // })
-
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadTasks('grunt-seajs-build/tasks');
 
-  grunt.registerTask("default", ['seajs_build']);
+  grunt.registerTask("default", ['seajs_build', 'uglify', 'cssmin']);
 }
