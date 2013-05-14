@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   // 2. Load necessary tasks to finish the building.
 
   grunt.initConfig({
-      "build_cmd" : {
+      "seajs_build" : {
         options : { 
           outputPath    : "build"
         , seajsBasePath : "js" // a path that points to the same location as `Sea.js's base`
@@ -101,11 +101,8 @@ module.exports = function(grunt) {
   //   }
   // })
 
-  // grunt.loadNpmTasks('grunt-cmd-transport');
-  // grunt.loadNpmTasks('grunt-cmd-concat');
-  // grunt.loadNpmTasks('grunt-contrib-uglify');
-  // grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadTasks('grunt-seajs-build/tasks');
 
-  grunt.loadTasks("grunt_tasks");
-  grunt.registerTask("default", ['build_cmd']);
+  grunt.registerTask("default", ['seajs_build']);
 }
