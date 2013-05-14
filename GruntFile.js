@@ -26,6 +26,14 @@ module.exports = function(grunt) {
                 // Otherwise, use `scheme` to determine the ID
         , recursive  : true
                 // If true, add ID for files in subfolder.
+        , buildType  : "exclude_merge"
+                // Possible values :
+                // "all"
+                //   Build and output all files in TARGET, then output the merged file.
+                // "merge_only"
+                //   Only merged file ( specified in `TARGET's files` ) will be created in `outputPath`
+                // "exclude_merge"
+                //   Build files that will not be merged, then output the merged file.
       }
 
       // Target `main`

@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-  debugger;
+  
   /* Building for Sea.js
      // Phase Trasform
      1. each TARGET defines a SCHEME of 
@@ -56,7 +56,16 @@ module.exports = function(grunt) {
         , alias      : null 
         , recursive  : true
         , concatDeps : false
+        , buildType  : "exclude_merge"
     });
+    var buildType = 0;
+    switch( options.buildType ) {
+      case "merge_only" : buildType = 1; break;
+      case "all" :        buildType = 0; break;
+      case "exclude_merge" :
+      default :
+        buildType = 2;
+    }
 
 
     /// MultiTask Setup Code ///
@@ -97,18 +106,6 @@ module.exports = function(grunt) {
       scan( options, projectData, content, abspath );
     });
 
-    console.log( "==== Deps ====" );
-    console.log( projectData.dependency );
-
-    console.log( "==== NotCMD ====" );
-    console.log( projectData.notCMD );
-
-    console.log( "==== Id2File ====" );
-    console.log( projectData.id2File );
-
-    console.log( "==== File2Id ====" );
-    console.log( projectData.file2Id );
-
 
     /*
       Substitute Dependency with merge file.
@@ -118,47 +115,6 @@ module.exports = function(grunt) {
         projectData.dep_merge[ value ] = file.dest;
       });
     });
-    console.log( "==== Dep_Merge ====" );
-    console.log( projectData.dep_merge );
-
-    /*
-       Expand Dependency
-     */
-    // var dependency = projectData.dependency;
-    // for ( var key in dependency ) {
-    //   if ( !dependency.hasOwnProperty( key ) ) return;
-
-    //   var deps      = dependency[key];
-    //   var depMap    = {};
-    //   var scanIndex = 0;
-    //   while ( scanIndex < deps.length ) {
-
-    //     for ( var len = deps.length; scanIndex < len; ++scanIndex ) {
-    //       var depID = deps[scanIndex];
-    //       if ( depMap[depID] ) { continue; }
-
-    //       // This id has not been expanded.
-    //       var abspath = projectData.id2File[ depID ];
-    //       if ( !abspath ) { continue; }
-
-    //       // Circular dependency
-    //       if ( abspath == key ) {
-    //         grunt.fail.warn("Circular dependency found in file : " + abspath);
-    //         continue;
-    //       } 
-
-    //       var depdep = dependency[ abspath ];
-    //       if ( depdep && depdep.length ) {
-    //         deps = deps.concat( depdep );
-    //       }
-    //     }
-    //   }
-
-    //   projectData.dep_expand[key] = dereplicate( deps );
-    // }
-
-    // console.log( "==== Expand Deps ====" );
-    // console.log( projectData.dep_expand );
 
 
     /*
@@ -166,9 +122,14 @@ module.exports = function(grunt) {
        Add ID.
        Add Dependency.
      */
-    projectData.scanArray.forEach( function( abspath ){
-      var c = transform( options, projectData, projectData.content[abspath], abspath);
-      gFile.write( options.outputPath + abspath, c );
+    projectData.scanArray.forEach( function( abspath ) {
+      projectData.content[abspath] = transform( options, projectData, projectData.content[abspath], abspath);
+
+      // Write all files
+      if ( buildType == 0 ) {
+        gFile.write( options.outputPath + abspath, projectData.content[abspath] );
+      }
+      
     });
 
 
@@ -177,62 +138,9 @@ module.exports = function(grunt) {
         The dependency comes first.
      */
     this.files.forEach(function( file ) {
-      var vertex = [].concat( file.src );
-      var revert_dep_map = {};
-      var visited = {};
-
-      while ( vertex.length ) {
-        var new_vertex = [];
-        for ( var i = 0; i < vertex.length; ++i ) {
-          var v = vertex[i];
-          if ( visited.hasOwnProperty(v) ) { continue; }
-
-          var deps = projectData.dependency[v];
-          if ( deps ) {
-            deps.forEach(function(value, index, array ){ 
-              value = projectData.id2File[value];
-              new_vertex.push( value );
-              if ( !revert_dep_map[value] ) {
-                revert_dep_map[value] = [];
-              }
-              
-              revert_dep_map[value].push( v );
-            });
-          }
-        }
-        vertex = new_vertex;
-      }
-
-      if ( file.concatDeps !== true ) {
-        var files = [].concat( file.src );
-        while ( files.length ) {
-          for ( i = 0; i < files.length; ++i ) {
-
-          }
-        }
-        return;
-      }
-
+      var c = concat( file, projectData, file.concatDeps );
+      gFile.write( options.outputPath + file.dest, c );
     });
-    // this.files.forEach(function( file ){
-
-    //   // Remap each src
-    //   file.src.forEach(function( value, index, array ){
-
-    //   });
-
-    //   var content = file.src.filter(function(p) {
-    //     if ( !grunt.file.exists( p ) ) {
-    //       grunt.log.warn('Files not found when concating: ' + p);
-    //       return false;
-    //     }
-    //     return true;
-    //   }).map(function( p ) {
-    //     // Read and return the file's source.
-    //     return grunt.file.read(filepath);
-    //   }).join('\n');
-
-    // });
   });
 
 
@@ -526,38 +434,66 @@ module.exports = function(grunt) {
     return dereplicate( calc_deps );
   }
 
-  function SyncTasks () {
-    this.tasks = [];
-    this.index = -1;
+  function concat( file, projectData, concatDeps ) {
 
-    var endHandler = function(){};
-    var self = this;
+    var files = [].concat(file.src);
+    var reverse_dep_map = {};
+    var visited = {};
+    var vertex  = files;
 
-    this.next = function () {
-      self.tasks[self.index]( self.done );
-    }
+    // Finds out which file can be the entry point.
+    var BFS = function ( value, index, array ) {
+      if ( visited.hasOwnProperty(value) ) { return; }
+      visited[value] = true;
 
-    this.done = function() {
-      ++self.index;
-      if ( self.index >= self.tasks.length ) { 
-        endHandler();
-      } else {
-        setTimeout( self.next, 0 );
-      }
+      var deps = projectData.dependency[ value ];
+      if ( !deps ) { return; }
 
-    }
-    this.add    = function( task ) { this.tasks.push( task ); }
-    this.addSub = function( task ) { this.tasks.splice( this.index, 0, task ); }
-    this.start  = function( onFinished ) {
-      if ( this.tasks.length < 1 ) {
-        onFinished.apply( this );
-      } else {
-        this.index = 0;
-        endHandler = onFinished;
-        setTimeout( this.next, 0 );
+      for ( var i = 0; i < deps.length; ++i ) {
+        var depAbsPath = projectData.id2File[ deps[i] ];
+        this.push( depAbsPath );
+        reverse_dep_map[ depAbsPath ] = true;
       }
     }
+
+    while ( vertex.length ) {
+      var new_vertex = [];
+      vertex.forEach(BFS, new_vertex);
+      vertex = new_vertex;
+    }
+
+    var entryFiles = files
+                      .filter(function(v){ return !reverse_dep_map.hasOwnProperty(v); }, reverse_dep_map)
+                      .map(function(v){ return projectData.file2Id[v]; });
+    if ( files.length == 0 ) {
+      grunt.fail.warn("Circular dependency found when merging to : " + file.dest );
+      return;
+    }
+
+    // Topological sort
+    visited = {};
+    var TOPO = function ( value, index, array ) {
+      if ( visited.hasOwnProperty( value ) ) { return; }
+      visited[value] = true;
+
+      var absPath = this.projectData.id2File[value];
+      var deps    = this.projectData.dependency[ absPath ];
+      if ( deps ) { deps.forEach( TOPO, this ); }
+
+      this.push( absPath );
+    }
+    var sortResult = [];
+    sortResult.projectData = projectData;
+    entryFiles.forEach( TOPO, sortResult );
+    delete sortResult.projectData;
+
+
+    if ( !concatDeps ) {
+      sortResult = sortResult.filter(function(v){ return files.indexOf(v) != -1; });
+    }
+
+
+    // Merge
+    return sortResult.reduce(function(pv, cv){ return pv + projectData.content[cv] + "\n"; }, "");
   }
-
-  
 }
