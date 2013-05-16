@@ -3,6 +3,11 @@
 
 @media print {
 
+html, body {
+  height : auto;
+  margin : 8px;
+}
+
 // Reset
 div, section {
   width  : 100%;
@@ -26,8 +31,10 @@ ul, li { list-style : none; margin : 0; padding : 0; }
 
 // LOGO
 .logo {
-  position : relative;
-  float    : right;
+  position   : relative;
+  float      : right;
+  display    : block;
+  background : none;
   
   $triSize : 125px;
 
