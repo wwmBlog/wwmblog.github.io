@@ -86,7 +86,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadTasks('grunt-seajs-build/tasks');
+  grunt.loadNpmTasks('grunt-seajs-build');
 
   grunt.registerTask("default", ['seajs_build', 'uglify', 'cssmin']);
 }

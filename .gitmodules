@@ -1,3 +1,0 @@
-[submodule "grunt-seajs-build"]
-	path = grunt-seajs-build
-	url = git@github.com:WarWithinMe/grunt-seajs-build.git
