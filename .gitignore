@@ -1,5 +1,4 @@
 .DS_Store
 .sass-cache/
 .allow-devtools-edit
-build/
 node_modules
