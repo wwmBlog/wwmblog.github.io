@@ -59,20 +59,27 @@ module.exports = function(grunt) {
         ]
       }
     }
-    , uglify : { minify : {
-          expand : true
-        , cwd    : "build/js"
-        , src    : ['*.js', '**/*.js', '!*.min.js', '!**/*.min.js']
-        , dest   : 'build/js'
-        , ext    : '.min.js'
+    , uglify : { 
+          options : { 
+              mangle : false
+            , compress : false
+          }
+        , minify  : {
+          expand  : true
+        , cwd     : "build/js"
+        , src     : ['*.js', '**/*.js'] 
+        , dest    : 'build/js'
+        , ext     : '.js'
       }
     }
-    , cssmin : { minify: {
+    , cssmin : { 
+        options : { report : "min" }
+      , minify  : {
           expand : true
         , cwd    : "css/"
-        , src    : ['*.css', '!*.min.css']
+        , src    : ['*.css']
         , dest   : 'css/'
-        , ext    : '.min.css'
+        , ext    : '.css'
       }
     }
   });
