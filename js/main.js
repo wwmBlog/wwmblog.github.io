@@ -7,7 +7,6 @@ define(function(require){
   require("src/contact.js");
   require("src/print.js");
 
-
   /* -- Intro Page -- */
   ;(function(){
     // Intro Card Citing Carousel, 2D Version
@@ -136,8 +135,11 @@ define(function(require){
     }).on("keydown", function( evt ){ 
       var kc = evt.which || evt.keyCode;
       if ( kc == 80 /* p */ && evt.metaKey ) {
-        $("#W_ctrlP").toggleClass("active", true);
+        var $p = $("#W_ctrlP").toggleClass("active", true);
+        var Tooltip = require("src/tooltip.js");
+        Tooltip.show( $p[0], {content:"简历"} );
         setTimeout( function(){ $("#W_ctrlP").toggleClass("active", false); }, 200 );
+        setTimeout( function(){ Tooltip.hide( $p[0] ); }, 750 );
       }
     });
     $("#W_vimJ").on("click", pageDown);
