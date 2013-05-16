@@ -142,7 +142,6 @@ define(function(require){
     });
     $("#W_vimJ").on("click", pageDown);
     $("#W_vimK").on("click", pageUp);
-    $("#W_ctrlP").on("click", function(){ window.print(); });
   })();
 
 });

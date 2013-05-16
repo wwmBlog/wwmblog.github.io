@@ -62,7 +62,7 @@
 }
 
 .topline {
-  background     : image-url("bg.png") repeat;
+  background     : image-url("bg.jpg") repeat;
   position       : fixed;
   top            : 0;
   height         : 4px;
@@ -70,8 +70,8 @@
   z-index        : 100;
   
   @include retina() {
-    background-image : image-url("bg@2x.png");
-    @include background-size( image-width("bg.png"), auto );
+    background-image : image-url("bg@2x.jpg");
+    @include background-size( image-width("bg.jpg"), auto );
   }
 }
 // Logo ----------
