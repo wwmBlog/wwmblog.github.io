@@ -59,12 +59,8 @@ module.exports = function(grunt) {
         ]
       }
     }
-    , uglify : { 
-          options : { 
-              mangle : false
-            , compress : false
-          }
-        , minify  : {
+    , uglify : {
+          minify  : {
           expand  : true
         , cwd     : "build/js"
         , src     : ['*.js', '**/*.js'] 
@@ -88,5 +84,26 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-seajs-build');
 
-  grunt.registerTask("default", ['seajs_build', 'uglify', 'cssmin']);
+  grunt.registerTask("wwm_obscure", function(){
+
+    var c = grunt.file.read("build/js/main.js")
+                .replace(/html\((["'])([^\x00-\x80]{3}|\d{11})/g, function(m, m1, m2){
+      if ( m2.match(/\d{11}/) ) {
+        return "html(" + m1 + (m2.match(/\d{1,4}/g).join(m1 + "+" + m1));
+      } else {
+        var unicode = '';
+        for ( var i = 0; i < m2.length; ++i ) {
+          var theU = m2.charCodeAt(i).toString(16).toUpperCase();
+          while (theU.length < 4) { theU = '0' + theU; }
+          unicode += "\\u" + theU;
+        }
+        return "html(" + m1 + unicode;
+      }
+      return m;
+    })
+    grunt.file.write("build/js/main.js", c);
+
+  });
+
+  grunt.registerTask("default", ['seajs_build', 'uglify', 'wwm_obscure', 'cssmin']);
 }
