@@ -146,4 +146,9 @@ define(function(require){
     $("#W_vimK").on("click", pageUp);
   })();
 
+  // Fix Opera Styling
+  if ( navigator.userAgent.match(/opera/i) ) {
+    $("body").addClass("opera");
+    $("footer .wwmfont").html("");
+  }
 });

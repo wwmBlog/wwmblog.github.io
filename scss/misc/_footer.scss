@@ -32,6 +32,10 @@ footer {
   p {
     line-height    : 1em;
     vertical-align : text-bottom;
+    
+    .opera & {
+      vertical-align : middle;
+    }
   }
 
   .credit {
@@ -41,6 +45,10 @@ footer {
     color          : #888;
     padding        : 4px;
     margin-right   : 4px;
+
+    .opera & {
+      vertical-align : middle;
+    }
     
     &:hover {
       background : darken(#3e3e3e, 18%);
@@ -63,6 +71,11 @@ footer {
 .copyright {
   font-size  : 12px;
   margin-top : 8px;
+}
+
+.opera footer .wwmfont:empty {
+  font-family : "wwmsub";
+  content : "\F130\F134\F135\F132\F131\F133";
 }
 
 @media (max-width:600px) {
