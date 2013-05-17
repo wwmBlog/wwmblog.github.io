@@ -1,5 +1,6 @@
 .card-bottom {
-  width       : $cardRightW  - 12 * 2;
+  font-size   : 0;
+  // width       : $cardRightW  - 12 * 2;
   height      : $cardBottomH - 18; 
   margin-left : $cardLeftW;
   
@@ -24,6 +25,7 @@
     height      : 16px;
     line-height : 16px;
     display     : inline-block;
+    margin-left : 4px;
 
     &:hover {
       @include transform-origin(top, center);
