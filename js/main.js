@@ -137,9 +137,9 @@ define(function(require){
       if ( kc == 80 /* p */ && evt.metaKey ) {
         var $p = $("#W_ctrlP").toggleClass("active", true);
         var Tooltip = require("src/tooltip.js");
-        Tooltip.show( $p[0], {content:"简历"} );
+        Tooltip.show( $p[0], {content:"点击下载<br/>我的简历"} );
         setTimeout( function(){ $("#W_ctrlP").toggleClass("active", false); }, 200 );
-        setTimeout( function(){ Tooltip.hide( $p[0] ); }, 750 );
+        setTimeout( function(){ Tooltip.hide( $p[0] ); }, 800 );
       }
     });
     $("#W_vimJ").on("click", pageDown);

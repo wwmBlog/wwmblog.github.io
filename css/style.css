@@ -2040,44 +2040,46 @@ a.emphasize:hover, a.emphasize:active {
   html, body {
     height: auto;
     margin: 8px;
+    line-height: 1.2em;
   }
 
-  /* line 12, ../scss/_print.scss */
+  /* line 14, ../scss/_print.scss */
   div, section {
     width: 100%;
     margin: 0;
     float: none;
   }
 
-  /* line 18, ../scss/_print.scss */
+  /* line 20, ../scss/_print.scss */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* line 25, ../scss/_print.scss */
   h1 {
     margin-top: 0;
   }
 
-  /* line 19, ../scss/_print.scss */
+  /* line 26, ../scss/_print.scss */
   ul, li {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  /* line 21, ../scss/_print.scss */
-  .logo .the-logo, h1 .h1-ico, .biography, .sec-skill .level:before, .sec-skill .level:after, .sec-interest li, li.exp:before, li.exp .exp-year {
-    -webkit-print-color-adjust: exact;
-  }
-
-  /* line 26, ../scss/_print.scss */
-  .intro-wrap-holder, .intro-wrap, .topline, .page-wrap, .logo, footer {
+  /* line 29, ../scss/_print.scss */
+  .intro-wrap-holder, .intro-wrap, .topline, .page-wrap, .logo, .tooltip, footer {
     display: none;
   }
 
-  /* line 30, ../scss/_print.scss */
+  /* line 33, ../scss/_print.scss */
   .print {
     color: #555;
     display: block;
   }
 
-  /* line 37, ../scss/_print.scss */
+  /* line 40, ../scss/_print.scss */
   .logo {
     position: relative;
     float: right;
@@ -2090,7 +2092,7 @@ a.emphasize:hover, a.emphasize:active {
     height: 0;
     -webkit-print-color-adjust: exact;
   }
-  /* line 57, ../scss/_print.scss */
+  /* line 60, ../scss/_print.scss */
   .logo .the-logo {
     position: absolute;
     width: 60px;
@@ -2103,93 +2105,94 @@ a.emphasize:hover, a.emphasize:active {
     -o-background-size: 60px auto;
     background-size: 60px auto;
   }
-  /* line 73, ../scss/_print.scss */
+  /* line 74, ../scss/_print.scss */
   .logo .self-desc {
     display: none;
   }
 
-  /* line 78, ../scss/_print.scss */
+  /* line 79, ../scss/_print.scss */
   section {
     margin-bottom: 1.5em;
   }
 
-  /* line 82, ../scss/_print.scss */
+  /* line 83, ../scss/_print.scss */
   h1 {
-    font-size: 24px;
+    font-size: 1.2em;
     font-family: "Economica", "Helvetica", "Verdana", "Hiragino Sans GB", "Hiragino Sans GB W3", "STHeiti", "微软雅黑", "Microsoft YaHei", "Arial", serif;
     color: black;
     margin: 0 0 0.5em 0;
+    page-break-after: avoid;
   }
-  /* line 90, ../scss/_print.scss */
+  /* line 93, ../scss/_print.scss */
   h1 .h1-ico {
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 1.2em;
+    height: 1.2em;
     padding: 0 2px;
     border-bottom: 2px solid black;
     vertical-align: middle;
     background: url('../img/print_sprite.png') center 0 no-repeat;
-    -webkit-background-size: 24px auto;
-    -moz-background-size: 24px auto;
-    -o-background-size: 24px auto;
-    background-size: 24px auto;
+    -webkit-background-size: 1.2em auto;
+    -moz-background-size: 1.2em auto;
+    -o-background-size: 1.2em auto;
+    background-size: 1.2em auto;
   }
-  /* line 104, ../scss/_print.scss */
+  /* line 105, ../scss/_print.scss */
   h1 .h1-name {
     display: inline-block;
-    height: 24px;
-    line-height: 24px;
+    height: 1.2em;
+    line-height: 1.2em;
     border-bottom: 2px solid black;
     vertical-align: middle;
   }
-  /* line 112, ../scss/_print.scss */
-  h1 .ico-skill {
-    background-position: center -24px;
-  }
   /* line 113, ../scss/_print.scss */
-  h1 .ico-interest {
-    background-position: center -48px;
+  h1 .ico-skill {
+    background-position: center -1.2em;
   }
   /* line 114, ../scss/_print.scss */
+  h1 .ico-interest {
+    background-position: center -2.4em;
+  }
+  /* line 115, ../scss/_print.scss */
   h1 .ico-exp {
-    background-position: center -72px;
+    background-position: center -3.6em;
   }
 
-  /* line 117, ../scss/_print.scss */
+  /* line 118, ../scss/_print.scss */
   .personal {
     font-size: 1em;
     padding-left: 1em;
     margin: 1em;
   }
-  /* line 122, ../scss/_print.scss */
+  /* line 123, ../scss/_print.scss */
   .personal li {
     line-height: 1.6em;
-    font-size: 12px;
+    font-size: 0.8em;
   }
-  /* line 127, ../scss/_print.scss */
+  /* line 128, ../scss/_print.scss */
   .personal .label {
     width: 5em;
     display: inline-block;
     margin-right: 0.8em;
   }
-  /* line 133, ../scss/_print.scss */
+  /* line 134, ../scss/_print.scss */
   .personal .value {
-    color: #333;
+    color: #111;
   }
-  /* line 137, ../scss/_print.scss */
+  /* line 138, ../scss/_print.scss */
   .personal .name:empty::before {
     content: "\6881\6587\6d69";
   }
-  /* line 138, ../scss/_print.scss */
+  /* line 139, ../scss/_print.scss */
   .personal .age:empty::before {
     content: "23";
   }
-  /* line 139, ../scss/_print.scss */
+  /* line 140, ../scss/_print.scss */
   .personal .phone:empty::before {
     content: "13651302717";
   }
 
-  /* line 142, ../scss/_print.scss */
+  /* line 143, ../scss/_print.scss */
   .biography {
     font-size: 1.2em;
     color: #999;
@@ -2198,7 +2201,7 @@ a.emphasize:hover, a.emphasize:active {
     text-indent: 1em;
   }
 
-  /* line 152, ../scss/_print.scss */
+  /* line 151, ../scss/_print.scss */
   .sec-skill {
     float: left;
     width: 66%;
@@ -2207,110 +2210,110 @@ a.emphasize:hover, a.emphasize:active {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 159, ../scss/_print.scss */
+  /* line 158, ../scss/_print.scss */
   .sec-skill .skill-list {
     font-size: 0.8em;
     float: left;
     width: 49%;
     min-width: 12em;
   }
-  /* line 166, ../scss/_print.scss */
+  /* line 165, ../scss/_print.scss */
   .sec-skill .label {
     width: 5em;
     display: inline-block;
     margin: 0 0.5em 0 0;
-    color: #333;
+    color: #111;
     font-weight: bold;
   }
-  /* line 175, ../scss/_print.scss */
+  /* line 174, ../scss/_print.scss */
   .sec-skill .level:before, .sec-skill .level:after {
     font-family: "wwmregular";
     -webkit-font-smoothing: antialiased;
-    color: #333;
+    color: #111;
   }
-  /* line 183, ../scss/_print.scss */
+  /* line 180, ../scss/_print.scss */
   .sec-skill .level:after {
     color: #9e9e9e;
   }
-  /* line 188, ../scss/_print.scss */
+  /* line 185, ../scss/_print.scss */
   .sec-skill .level1:before {
     content: "\F11B";
   }
-  /* line 188, ../scss/_print.scss */
+  /* line 185, ../scss/_print.scss */
   .sec-skill .level1:after {
     content: "\F11B\F11B\F11B\F11B";
   }
-  /* line 189, ../scss/_print.scss */
+  /* line 186, ../scss/_print.scss */
   .sec-skill .level2:before {
     content: "\F11B\F11B";
   }
-  /* line 189, ../scss/_print.scss */
+  /* line 186, ../scss/_print.scss */
   .sec-skill .level2:after {
     content: "\F11B\F11B\F11B";
   }
-  /* line 190, ../scss/_print.scss */
+  /* line 187, ../scss/_print.scss */
   .sec-skill .level3:before {
     content: "\F11B\F11B\F11B";
   }
-  /* line 190, ../scss/_print.scss */
+  /* line 187, ../scss/_print.scss */
   .sec-skill .level3:after {
     content: "\F11B\F11B";
   }
-  /* line 191, ../scss/_print.scss */
+  /* line 188, ../scss/_print.scss */
   .sec-skill .level4:before {
     content: "\F11B\F11B\F11B\F11B";
   }
-  /* line 191, ../scss/_print.scss */
+  /* line 188, ../scss/_print.scss */
   .sec-skill .level4:after {
     content: "\F11B";
   }
-  /* line 192, ../scss/_print.scss */
+  /* line 189, ../scss/_print.scss */
   .sec-skill .level5:before {
     content: "\F11B\F11B\F11B\F11B\F11B";
   }
-  /* line 195, ../scss/_print.scss */
+  /* line 192, ../scss/_print.scss */
   .sec-skill .basic .level1:before {
     content: "\F129";
   }
-  /* line 195, ../scss/_print.scss */
+  /* line 192, ../scss/_print.scss */
   .sec-skill .basic .level1:after {
     content: "\F129\F129\F129\F129";
   }
-  /* line 196, ../scss/_print.scss */
+  /* line 193, ../scss/_print.scss */
   .sec-skill .basic .level2:before {
     content: "\F129\F129";
   }
-  /* line 196, ../scss/_print.scss */
+  /* line 193, ../scss/_print.scss */
   .sec-skill .basic .level2:after {
     content: "\F129\F129\F129";
   }
-  /* line 197, ../scss/_print.scss */
+  /* line 194, ../scss/_print.scss */
   .sec-skill .basic .level3:before {
     content: "\F129\F129\F129";
   }
-  /* line 197, ../scss/_print.scss */
+  /* line 194, ../scss/_print.scss */
   .sec-skill .basic .level3:after {
     content: "\F129\F129";
   }
-  /* line 198, ../scss/_print.scss */
+  /* line 195, ../scss/_print.scss */
   .sec-skill .basic .level4:before {
     content: "\F129\F129\F129\F129";
   }
-  /* line 198, ../scss/_print.scss */
+  /* line 195, ../scss/_print.scss */
   .sec-skill .basic .level4:after {
     content: "\F129";
   }
-  /* line 199, ../scss/_print.scss */
+  /* line 196, ../scss/_print.scss */
   .sec-skill .basic .level5:before {
     content: "\F129\F129\F129\F129\F129";
   }
 
-  /* line 203, ../scss/_print.scss */
+  /* line 200, ../scss/_print.scss */
   .sec-interest {
     float: right;
     width: 33%;
   }
-  /* line 207, ../scss/_print.scss */
+  /* line 204, ../scss/_print.scss */
   .sec-interest li {
     float: left;
     margin: 0 0.3em 0.3em 0;
@@ -2323,38 +2326,39 @@ a.emphasize:hover, a.emphasize:active {
     border-radius: 2px;
   }
 
-  /* line 225, ../scss/_print.scss */
+  /* line 220, ../scss/_print.scss */
   .sec-exp {
     clear: both;
+    page-break-inside: avoid;
   }
 
-  /* line 229, ../scss/_print.scss */
+  /* line 225, ../scss/_print.scss */
   li.exp {
     margin-left: 5em;
     border-left: 1px solid #9e9e9e;
     padding: 0.3em 1em;
     position: relative;
-    color: #333;
+    color: #111;
     font-size: 0.9em;
   }
-  /* line 237, ../scss/_print.scss */
+  /* line 233, ../scss/_print.scss */
   li.exp:before {
     content: " ";
     display: block;
-    width: 5px;
-    height: 5px;
+    width: 0.3em;
+    height: 0.3em;
     position: absolute;
-    left: -3px;
+    left: -0.15em;
     background: #9e9e9e;
     top: 1em;
-    margin-top: -4px;
+    margin-top: -0.2em;
     border-radius: 50%;
   }
-  /* line 252, ../scss/_print.scss */
+  /* line 246, ../scss/_print.scss */
   li.exp .exp-year {
     position: absolute;
     left: -4.5em;
-    font-size: 0.9em;
+    font-size: 0.8em;
     background: #9e9e9e;
     color: #fff;
     padding: 0.3em 0;
