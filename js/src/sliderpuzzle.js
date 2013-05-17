@@ -256,9 +256,9 @@ define(function(require){
     var $el = $("#W_puzzle");
     // Init the first puzzle
     var url = window.getComputedStyle($el[0]).backgroundImage;
-    var urlextract = /url\((.+)\)$/.exec(url);
+    var urlextract = /url\((["']*)(.+)\1\)$/.exec(url);
     if ( !urlextract ) { return; }
-    if ( urlextract[1] ) url = urlextract[1];
+    if ( urlextract[2] ) url = urlextract[2];
     if ( !url ) { 
       console.log("Something Bad Happens.");
     } else {
