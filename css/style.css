@@ -1694,6 +1694,11 @@ a.emphasize:hover, a.emphasize:active {
 }
 
 /* line 29, ../scss/_page_2_timeline.scss */
+#W_timeline {
+  height: 300px;
+}
+
+/* line 33, ../scss/_page_2_timeline.scss */
 #W_lgdTL, #W_lgdTLAlt {
   line-height: 20px;
   padding-left: 16px;
@@ -1701,7 +1706,7 @@ a.emphasize:hover, a.emphasize:active {
   display: inline-block;
   position: relative;
 }
-/* line 37, ../scss/_page_2_timeline.scss */
+/* line 41, ../scss/_page_2_timeline.scss */
 #W_lgdTL:before, #W_lgdTLAlt:before {
   content: " ";
   width: 14px;
@@ -1714,16 +1719,16 @@ a.emphasize:hover, a.emphasize:active {
   left: 0;
 }
 
-/* line 50, ../scss/_page_2_timeline.scss */
+/* line 54, ../scss/_page_2_timeline.scss */
 #W_lgdTLAlt {
   margin-left: 8px;
 }
-/* line 53, ../scss/_page_2_timeline.scss */
+/* line 57, ../scss/_page_2_timeline.scss */
 #W_lgdTLAlt:before {
   background: #ff9537;
 }
 
-/* line 66, ../scss/_page_2_timeline.scss */
+/* line 70, ../scss/_page_2_timeline.scss */
 .tl-dot {
   position: absolute;
   display: block;
@@ -1743,60 +1748,60 @@ a.emphasize:hover, a.emphasize:active {
   -o-transition: border-width 0.2s ease-in-out;
   transition: border-width 0.2s ease-in-out;
 }
-/* line 83, ../scss/_page_2_timeline.scss */
+/* line 87, ../scss/_page_2_timeline.scss */
 .tl-dot.start, .tl-dot.end {
   border-width: 16px;
   width: 32px;
   height: 32px;
   margin: -16px 0 0 -16px;
 }
-/* line 90, ../scss/_page_2_timeline.scss */
+/* line 94, ../scss/_page_2_timeline.scss */
 .tl-dot.end {
   left: 100%;
   margin-left: -16px;
 }
-/* line 95, ../scss/_page_2_timeline.scss */
+/* line 99, ../scss/_page_2_timeline.scss */
 .tl-dot.alt {
   border-color: #ff9537;
 }
-/* line 96, ../scss/_page_2_timeline.scss */
+/* line 100, ../scss/_page_2_timeline.scss */
 .tl-dot:hover {
   border-width: 3px;
 }
 
 @media (max-width: 530px) {
-  /* line 108, ../scss/_page_2_timeline.scss */
+  /* line 112, ../scss/_page_2_timeline.scss */
   .tl-dot {
     border-width: 8px;
     width: 16px;
     height: 16px;
     margin: -8px 0 0 -8px;
   }
-  /* line 114, ../scss/_page_2_timeline.scss */
+  /* line 118, ../scss/_page_2_timeline.scss */
   .tl-dot.start, .tl-dot.end {
     border-width: 12px;
     width: 24px;
     height: 24px;
     margin: -12px 0 0 -12px;
   }
-  /* line 121, ../scss/_page_2_timeline.scss */
+  /* line 125, ../scss/_page_2_timeline.scss */
   .tl-dot.end {
     left: 100%;
     margin-left: -12px;
   }
-  /* line 125, ../scss/_page_2_timeline.scss */
+  /* line 129, ../scss/_page_2_timeline.scss */
   .tl-dot:hover {
     border-width: 4px;
   }
 }
-/* line 129, ../scss/_page_2_timeline.scss */
+/* line 133, ../scss/_page_2_timeline.scss */
 .tl-icon {
   font-size: 16px;
   line-height: 1em;
   margin-bottom: 3px;
 }
 
-/* line 136, ../scss/_page_2_timeline.scss */
+/* line 140, ../scss/_page_2_timeline.scss */
 .tl-desc {
   height: 1.2em;
   line-height: 1.2em;
