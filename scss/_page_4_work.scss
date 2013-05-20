@@ -1,0 +1,60 @@
+.page4 {
+  padding: 80px 0;
+}
+
+$hexagonA : 100px;
+$hexagonS : ceil($hexagonA / 1.73);
+$hexagonMarginT : 20px;
+$hexagonMarginL : 10px;
+
+.work-piece {
+  float        : left;
+  width        : $hexagonA;
+  height       : $hexagonS * 2;
+  margin-top   : -$hexagonMarginT;
+  margin-left  : $hexagonMarginL;
+  
+  &:nth-child(7n+1) { margin-left : 0; }
+  &:nth-child(7n+5) { margin-left : round($hexagonA / 2) + 5px; }
+  
+
+  // DEBUG
+  .wrap1 {
+    height : $hexagonA * 2;
+    width  : $hexagonA;
+    margin-top : -42px;
+    overflow: hidden;
+    @include transform( rotate(120deg) );
+  }
+  .wrap2 {
+    height : $hexagonA * 2;
+    width  : $hexagonA;
+    overflow: hidden;
+    @include transform( rotate(-60deg) );
+  }
+  .work {
+    width  : 100%;
+    height : 100%;
+    background : url(http://lorempixel.com/g/200/200) center center no-repeat;
+    @include transform( rotate(-60deg) );
+  }
+}
+
+.work-heap {
+  margin      : auto;
+  list-style  : none;
+  padding     : 30px 0 150px 0;
+  max-width   : 4 * $hexagonA + 30px;
+}
+
+@media (max-width:480px) {
+  .work-piece {
+    margin-left : 10px !important;
+    
+    &:nth-child(5n+1) { margin-left : 0 !important; }
+    &:nth-child(5n+4) { margin-left : round($hexagonA / 2) + 5px !important; }
+  }
+  .work-heap {
+    max-width : 3 * $hexagonA + 20px;
+  }
+}
