@@ -173,7 +173,17 @@
   font-family: Economica, Tahoma, Geneva, sans-serif;
   font-weight: bold;
 }
-/* line 50, ../scss/style.scss */
+@media (max-width: 410px) {
+  /* line 52, ../scss/style.scss */
+  .page-title h1 {
+    font-size: 14px;
+  }
+  /* line 53, ../scss/style.scss */
+  .page-title h2 {
+    font-size: 12px;
+  }
+}
+/* line 57, ../scss/style.scss */
 .page-title:before, .page-title:after {
   content: " ";
   display: inline-block;
@@ -187,7 +197,7 @@
   background-image: -o-linear-gradient(left top, #ecece4, #85817d);
   background-image: linear-gradient(left top, #ecece4, #85817d);
 }
-/* line 61, ../scss/style.scss */
+/* line 68, ../scss/style.scss */
 .page-title:after {
   background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #85817d), color-stop(100%, #ecece4));
   background-image: -webkit-linear-gradient(left top, #85817d, #ecece4);
@@ -196,7 +206,7 @@
   background-image: linear-gradient(left top, #85817d, #ecece4);
 }
 
-/* line 66, ../scss/style.scss */
+/* line 73, ../scss/style.scss */
 .title-wrap {
   display: inline-block;
   vertical-align: middle;
@@ -2039,27 +2049,32 @@ a.emphasize:hover, a.emphasize:active {
 .page4 {
   padding: 80px 0;
 }
+/* line 4, ../scss/_page_4_work.scss */
+.page4 .page {
+  width: 100%;
+  max-width: 100%;
+}
 
-/* line 10, ../scss/_page_4_work.scss */
+/* line 15, ../scss/_page_4_work.scss */
 .work-piece {
   float: left;
-  width: 100px;
-  height: 116px;
+  width: 120px;
+  height: 140px;
   margin-top: -20px;
   margin-left: 10px;
 }
-/* line 17, ../scss/_page_4_work.scss */
+/* line 22, ../scss/_page_4_work.scss */
 .work-piece:nth-child(7n+1) {
   margin-left: 0;
 }
-/* line 18, ../scss/_page_4_work.scss */
+/* line 23, ../scss/_page_4_work.scss */
 .work-piece:nth-child(7n+5) {
-  margin-left: 55px;
+  margin-left: 65px;
 }
-/* line 22, ../scss/_page_4_work.scss */
+/* line 27, ../scss/_page_4_work.scss */
 .work-piece .wrap1 {
-  height: 200px;
-  width: 100px;
+  height: 240px;
+  width: 120px;
   margin-top: -42px;
   overflow: hidden;
   -webkit-transform: rotate(120deg);
@@ -2068,10 +2083,10 @@ a.emphasize:hover, a.emphasize:active {
   -o-transform: rotate(120deg);
   transform: rotate(120deg);
 }
-/* line 29, ../scss/_page_4_work.scss */
+/* line 34, ../scss/_page_4_work.scss */
 .work-piece .wrap2 {
-  height: 200px;
-  width: 100px;
+  height: 240px;
+  width: 120px;
   overflow: hidden;
   -webkit-transform: rotate(-60deg);
   -moz-transform: rotate(-60deg);
@@ -2079,11 +2094,11 @@ a.emphasize:hover, a.emphasize:active {
   -o-transform: rotate(-60deg);
   transform: rotate(-60deg);
 }
-/* line 35, ../scss/_page_4_work.scss */
+/* line 40, ../scss/_page_4_work.scss */
 .work-piece .work {
   width: 100%;
   height: 100%;
-  background: url(http://lorempixel.com/g/200/200) center center no-repeat;
+  background: url(http://lorempixel.com/g/300/300) center center no-repeat;
   -webkit-transform: rotate(-60deg);
   -moz-transform: rotate(-60deg);
   -ms-transform: rotate(-60deg);
@@ -2091,31 +2106,56 @@ a.emphasize:hover, a.emphasize:active {
   transform: rotate(-60deg);
 }
 
-/* line 43, ../scss/_page_4_work.scss */
+/* line 51, ../scss/_page_4_work.scss */
 .work-heap {
   margin: auto;
   list-style: none;
-  padding: 30px 0 150px 0;
-  max-width: 430px;
+  padding: 30px 200px 150px 0;
+  max-width: 510px;
 }
 
-@media (max-width: 480px) {
-  /* line 51, ../scss/_page_4_work.scss */
+@media (min-width: 381px) and (max-width: 790px) {
+  /* line 63, ../scss/_page_4_work.scss */
   .work-piece {
     margin-left: 10px !important;
   }
-  /* line 54, ../scss/_page_4_work.scss */
+  /* line 66, ../scss/_page_4_work.scss */
   .work-piece:nth-child(5n+1) {
     margin-left: 0 !important;
   }
-  /* line 55, ../scss/_page_4_work.scss */
+  /* line 67, ../scss/_page_4_work.scss */
   .work-piece:nth-child(5n+4) {
-    margin-left: 55px !important;
+    margin-left: 65px !important;
   }
 
-  /* line 57, ../scss/_page_4_work.scss */
+  /* line 69, ../scss/_page_4_work.scss */
   .work-heap {
-    max-width: 320px;
+    max-width: 380px;
+  }
+}
+@media (max-width: 660px) {
+  /* line 75, ../scss/_page_4_work.scss */
+  .work-heap {
+    padding-right: 0;
+  }
+}
+@media (max-width: 380px) {
+  /* line 81, ../scss/_page_4_work.scss */
+  .work-piece {
+    margin-left: 10px !important;
+  }
+  /* line 84, ../scss/_page_4_work.scss */
+  .work-piece:nth-child(4n+1) {
+    margin-left: 0 !important;
+  }
+  /* line 85, ../scss/_page_4_work.scss */
+  .work-piece:nth-child(4n+3) {
+    margin-left: 65px !important;
+  }
+
+  /* line 87, ../scss/_page_4_work.scss */
+  .work-heap {
+    max-width: 315px;
   }
 }
 @media print {

@@ -1,8 +1,13 @@
 .page4 {
   padding: 80px 0;
+  
+  .page {
+    width     : 100%;
+    max-width : 100%;
+  }
 }
 
-$hexagonA : 100px;
+$hexagonA : 120px;
 $hexagonS : ceil($hexagonA / 1.73);
 $hexagonMarginT : 20px;
 $hexagonMarginL : 10px;
@@ -35,19 +40,26 @@ $hexagonMarginL : 10px;
   .work {
     width  : 100%;
     height : 100%;
-    background : url(http://lorempixel.com/g/200/200) center center no-repeat;
+    background : url(http://lorempixel.com/g/300/300) center center no-repeat;
     @include transform( rotate(-60deg) );
   }
 }
 
+$workHeapPaddingR   : 200px;
+$workHeapMarginMinH : 40px;
+
 .work-heap {
   margin      : auto;
   list-style  : none;
-  padding     : 30px 0 150px 0;
+  padding     : 30px $workHeapPaddingR 150px 0;
   max-width   : 4 * $hexagonA + 30px;
 }
 
-@media (max-width:480px) {
+$piece-four-width  : $workHeapMarginMinH * 2 + $hexagonA * 4 + $hexagonMarginL * 3 + $workHeapPaddingR;
+$piece-three-width : $workHeapMarginMinH * 2 + $hexagonA * 3 + $hexagonMarginL * 2 + $workHeapPaddingR;
+$piece-two-width   : $hexagonA * 3 + $hexagonMarginL * 2;
+
+@media (min-width:$piece-two-width + 1) and (max-width:$piece-four-width) {
   .work-piece {
     margin-left : 10px !important;
     
@@ -56,5 +68,23 @@ $hexagonMarginL : 10px;
   }
   .work-heap {
     max-width : 3 * $hexagonA + 20px;
+  }
+}
+
+@media (max-width:$piece-three-width) {
+  .work-heap {
+    padding-right : 0;
+  }
+}
+
+@media (max-width:$piece-two-width) {
+  .work-piece {
+    margin-left : 10px !important;
+    
+    &:nth-child(4n+1) { margin-left : 0 !important; }
+    &:nth-child(4n+3) { margin-left : round($hexagonA / 2) + 5px !important; }
+  }
+  .work-heap {
+    max-width : 2 * $hexagonA + 10px + round($hexagonA / 2) + 5px;
   }
 }

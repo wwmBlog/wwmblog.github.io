@@ -47,6 +47,13 @@ $pageMaxWidth : 90%;
     font-weight : bold;
   }
 
+  @media (max-width:410px) {
+    & {
+      h1 { font-size : 14px; }
+      h2 { font-size : 12px; }
+    }
+  }
+
   &:before, &:after {
     content        : " ";
     display        : inline-block;
