@@ -6,6 +6,7 @@ define(function(require){
   require("src/sliderpuzzle.js");
   require("src/contact.js");
   require("src/print.js");
+  require("src/work.js");
 
   /* -- Intro Page -- */
   ;(function(){

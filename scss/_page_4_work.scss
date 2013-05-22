@@ -19,29 +19,20 @@ $hexagonMarginL : 10px;
   margin-top   : -$hexagonMarginT;
   margin-left  : $hexagonMarginL;
   
-  &:nth-child(7n+1) { margin-left : 0; }
-  &:nth-child(7n+5) { margin-left : round($hexagonA / 2) + 5px; }
+  @include transition(opacity 0.3s linear);
   
+  &:nth-of-type(7n+1) { margin-left : 0; }
+  &:nth-of-type(7n+5) { margin-left : round($hexagonA / 2) + 5px; }
 
-  // DEBUG
-  .wrap1 {
-    height : $hexagonA * 2;
-    width  : $hexagonA;
-    margin-top : -42px;
-    overflow: hidden;
-    @include transform( rotate(120deg) );
+  canvas {
+    width      : $hexagonA;
+    height     : $hexagonS * 2;
+    background : image-url("hexagon.png") no-repeat;
+    @include background-size($hexagonA auto);
   }
-  .wrap2 {
-    height : $hexagonA * 2;
-    width  : $hexagonA;
-    overflow: hidden;
-    @include transform( rotate(-60deg) );
-  }
-  .work {
-    width  : 100%;
-    height : 100%;
-    background : url(http://lorempixel.com/g/300/300) center center no-repeat;
-    @include transform( rotate(-60deg) );
+
+  &.hover {
+    opacity : 1 !important;
   }
 }
 
@@ -49,10 +40,26 @@ $workHeapPaddingR   : 200px;
 $workHeapMarginMinH : 40px;
 
 .work-heap {
-  margin      : auto;
-  list-style  : none;
-  padding     : 30px $workHeapPaddingR 150px 0;
-  max-width   : 4 * $hexagonA + 30px;
+  margin     : auto;
+  list-style : none;
+  padding    : 30px $workHeapPaddingR 150px 0;
+  max-width  : 4 * $hexagonA + 30px;
+  position   : relative;
+  
+  &.hover {
+    .work-piece {
+      opacity : 0.3;
+    }
+  }
+
+  > p {
+    position  : absolute;
+    width     : 220px;
+    right     : -40px;
+    top       : 0;
+    font-size : 12px;
+    color     : #413D32;
+  }
 }
 
 $piece-four-width  : $workHeapMarginMinH * 2 + $hexagonA * 4 + $hexagonMarginL * 3 + $workHeapPaddingR;
@@ -63,8 +70,8 @@ $piece-two-width   : $hexagonA * 3 + $hexagonMarginL * 2;
   .work-piece {
     margin-left : 10px !important;
     
-    &:nth-child(5n+1) { margin-left : 0 !important; }
-    &:nth-child(5n+4) { margin-left : round($hexagonA / 2) + 5px !important; }
+    &:nth-of-type(5n+1) { margin-left : 0 !important; }
+    &:nth-of-type(5n+4) { margin-left : round($hexagonA / 2) + 5px !important; }
   }
   .work-heap {
     max-width : 3 * $hexagonA + 20px;
@@ -81,8 +88,8 @@ $piece-two-width   : $hexagonA * 3 + $hexagonMarginL * 2;
   .work-piece {
     margin-left : 10px !important;
     
-    &:nth-child(4n+1) { margin-left : 0 !important; }
-    &:nth-child(4n+3) { margin-left : round($hexagonA / 2) + 5px !important; }
+    &:nth-of-type(4n+1) { margin-left : 0 !important; }
+    &:nth-of-type(4n+3) { margin-left : round($hexagonA / 2) + 5px !important; }
   }
   .work-heap {
     max-width : 2 * $hexagonA + 10px + round($hexagonA / 2) + 5px;
