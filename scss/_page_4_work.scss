@@ -13,11 +13,14 @@ $hexagonMarginT : 20px;
 $hexagonMarginL : 10px;
 
 .work-piece {
-  float        : left;
-  width        : $hexagonA;
-  height       : $hexagonS * 2;
-  margin-top   : -$hexagonMarginT;
-  margin-left  : $hexagonMarginL;
+
+  float    : left;
+  position : relative;
+
+  width       : $hexagonA;
+  height      : $hexagonS * 2;
+  margin-top  : -$hexagonMarginT;
+  margin-left : $hexagonMarginL;
   
   @include transition(opacity 0.3s linear);
   
@@ -25,14 +28,64 @@ $hexagonMarginL : 10px;
   &:nth-of-type(7n+5) { margin-left : round($hexagonA / 2) + 5px; }
 
   canvas {
+    position   : relative;
     width      : $hexagonA;
     height     : $hexagonS * 2;
-    background : image-url("hexagon.png") no-repeat;
-    @include background-size($hexagonA auto);
   }
 
   &.hover {
     opacity : 1 !important;
+  }
+  &.link-hover {
+    cursor : pointer;
+  }
+}
+
+.work-link {
+
+  @extend .sprite;
+
+  $circleR : 16px;
+  $cos30   : 0.866;
+  $sin30   : 0.5;
+  
+  $centerLength : $hexagonS * $cos30 - $circleR;
+
+  width         : $circleR * 2;
+  height        : $circleR * 2;
+  border-radius : 50%;
+  position      : absolute;
+  
+  $top  : ceil($hexagonS      - $centerLength * $cos30 - $circleR);
+  $left : floor($hexagonA / 2 + $centerLength * $sin30 - $circleR);
+  
+  top  : $top;
+  left : $left;
+
+  .work-piece.hover & {
+    @include transform(translate(10px, -12px));
+  }
+
+  .work-piece.link-hover & {
+    background-position : 0 -32px;
+  }
+
+  -webkit-transition : -webkit-transform .3s ease-in;
+     -moz-transition :    -moz-transform .3s ease-in;
+       -o-transition :      -o-transform .3s ease-in;
+          transition :      -o-transform .3s ease-in;
+}
+
+.work-link-r {
+  display  : none;
+  width    : 16px;
+  height   : 16px;
+  position : absolute;
+  left     : 77px;
+  top      : 5px;
+  
+  .work-piece.link-hover & {
+    display : block;
   }
 }
 

@@ -49,7 +49,7 @@ $introHeight : 14px * 1.5 * 2;
   margin     : auto;
   
   @include transform( translate3d(0,0,0) );
-  @include box-shadow(0 0 20px rgba(0,0,0,0.75));
+  @include new-box-shadow(0 0 20px rgba(0,0,0,0.75));
 }
 
 .card-top {
@@ -61,7 +61,7 @@ $introHeight : 14px * 1.5 * 2;
 
   padding       : floor(($cardTopHeight - $introHeight)/2) 30px;
 
-  @include box-shadow(inset 0 6px 16px 2px rgba(#fff,0.03));
+  @include new-box-shadow(inset 0 6px 16px 2px rgba(#fff,0.03));
   @include background-image(linear-gradient(bottom, color-stops(rgba(white,0.02),rgba(white,0.03))));
   
   .definition {
@@ -121,7 +121,7 @@ $introHeight : 14px * 1.5 * 2;
     right    : 0;
     margin   : auto;
     bottom   : -10px;
-    @include box-shadow(0 0 16px #000);
+    @include new-box-shadow(0 0 16px #000);
   }
 }
 

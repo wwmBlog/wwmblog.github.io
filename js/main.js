@@ -126,8 +126,8 @@ define(function(require){
       }
     }
 
-    function pageUp   ( effect ) { scrollPage( effect ? "#W_vimK" : "", false ); }
-    function pageDown ( effect ) { scrollPage( effect ? "#W_vimJ" : "", true );  }
+    function pageUp   ( effect ) { scrollPage( effect ? "#W_vimK" : "", false ); return false; }
+    function pageDown ( effect ) { scrollPage( effect ? "#W_vimJ" : "", true );  return false; }
 
     $("body").on("keypress", function( evt ){
       var kc = evt.which || evt.keyCode;
@@ -143,8 +143,8 @@ define(function(require){
         setTimeout( function(){ Tooltip.hide( $p[0] ); }, 800 );
       }
     });
-    $("#W_vimJ").on("click", pageDown);
-    $("#W_vimK").on("click", pageUp);
+    $("#W_vimJ").on("touchend click", pageDown);
+    $("#W_vimK").on("touchend click", pageUp);
   })();
 
   // Fix Opera Styling

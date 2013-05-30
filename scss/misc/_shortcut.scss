@@ -37,7 +37,7 @@
     color : #777;
     background-color : #f9f9f9;
 
-    @include box-shadow( 0 1px 3px rgba(16,16,16,.3), inset 0 -2px #c5c5c5, inset 0 -3px #fff );
+    @include new-box-shadow( 0 1px 3px rgba(16,16,16,.3), inset 0 -2px #c5c5c5, inset 0 -3px #fff );
     @include background-image( linear-gradient(bottom, #f4f4f4, #fff) );
     
     font-size   : 12px;
@@ -51,7 +51,7 @@
     &:active, &.active {
       margin-top : 1px;
       height     : 23px;
-      @include box-shadow( 0 1px 3px rgba(16,16,16,.3), inset 0 -1px #c5c5c5 );
+      @include new-box-shadow( 0 1px 3px rgba(16,16,16,.3), inset 0 -1px #c5c5c5 );
     }
   }
 

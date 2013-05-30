@@ -5,11 +5,14 @@ define(function(require){
   var $workHeap = $(".work-heap");
 
   for ( var i = 0; i < data.length; ++i ) {
-    $('<li class="work-piece"><canvas></canvas></li>')
-      .appendTo($workHeap)
-      .data("widx", i);
+    var html = "<li class='work-piece'>";
+    if ( data[i].link ) {
+      html += "<a class='work-link' href='" + data[i].link + "'></a>";
+    }
+    $(html + "<canvas></canvas></li>").appendTo($workHeap).data("widx", i);
   }
 
+  var testInsideLink;
   var testInsideHexagon = function(x, y) {
     var hexagonSize = $(".work-piece").offset();
     hexagonSize.width  /= 2;
@@ -27,13 +30,20 @@ define(function(require){
       return Math.atan2(y, x) < angle;
     }
 
+    testInsideLink = function(x, y) {
+      if ( x > hexagonSize.width && y < hexagonSize.height ) {
+        return Math.pow(x - 92, 2) + Math.pow(y - 20, 2) < 256;
+      }
+      return false;
+    }
+
     return testInsideHexagon(x, y);
   }
 
   var lastInside  = false;
   var heapTimeout = null;
-  function hoverWork( workDom ) {
-    var $dom    = $(workDom).toggleClass("hover", true);
+  function hoverWork( $workDom ) {
+    var $dom    = $workDom.toggleClass("hover", true);
     var theData = data[$dom.data("widx")];
 
     var domPos  = $dom.position();
@@ -53,26 +63,44 @@ define(function(require){
   }
 
   function hoverOutHeap () { $workHeap.toggleClass("hover", false); }
-  function hoverOutWork( workDom ) {
+  function hoverOutWork( $workDom ) {
     $("#W_workDesc").attr("data-faq", "").html("");
 
-    $(workDom).toggleClass("hover", false);
+    $workDom.toggleClass("hover", false);
     if ( !heapTimeout )
       heapTimeout = setTimeout(hoverOutHeap, 200);
   }
   $workHeap.on("mousemove", ".work-piece", function(evt){
     var inside = testInsideHexagon( evt.offsetX, evt.offsetY );
+    var insideLink = false;
+    var $currentTarget = $(evt.currentTarget);
+
+    // Handle the link here.
+    if ( !inside ) {
+      insideLink = $currentTarget.children(".work-link").length > 0;
+      if ( insideLink )
+        inside = insideLink = testInsideLink( evt.offsetX, evt.offsetY );
+    }
+
+    $currentTarget.toggleClass("link-hover", insideLink);
+
     if ( lastInside != inside ) {
       lastInside = inside;
       if ( inside ) {
-        hoverWork( evt.currentTarget );
+        hoverWork( $currentTarget );
       } else {
-        hoverOutWork( evt.currentTarget );
+        hoverOutWork( $currentTarget );
       }
     }
+
   }).on("mouseleave", ".work-piece", function(evt){
     lastInside = false;
-    hoverOutWork( evt.currentTarget );
-  });
+    hoverOutWork( $(evt.currentTarget) );
+  }).on("click", ".work-piece", function(evt){
+    var $currentTarget = $(evt.currentTarget);
+    if ( $currentTarget.hasClass("link-hover") ) {
+      window.open( $currentTarget.children(".work-link").attr("href"), "_blank" );
+    }
+  })
 
 });
