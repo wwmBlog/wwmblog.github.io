@@ -6,6 +6,7 @@
     , "grunt-contrib-uglify" : "~0.2.0"
     , "grunt-contrib-clean"  : "~0.4.0"
     , "grunt-contrib-cssmin" : "*"
+    , "grunt-contrib-concat" : "*"
     , "grunt-seajs-build"    : "*"
   }
 }

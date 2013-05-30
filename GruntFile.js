@@ -78,10 +78,18 @@ module.exports = function(grunt) {
         , ext    : '.css'
       }
     }
+    , concat : {
+        options : { separator: '\n;' }
+      , build : {
+          src  : ['build/js/libs/*.js']
+        , dest : 'build/js/libs.js'
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-seajs-build');
 
   grunt.registerTask("wwm_obscure", function(){
@@ -105,5 +113,5 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask("default", ['seajs_build', 'uglify', 'wwm_obscure', 'cssmin']);
+  grunt.registerTask("default", ['seajs_build', 'uglify', 'wwm_obscure', 'concat', 'cssmin']);
 }
