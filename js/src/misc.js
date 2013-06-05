@@ -219,6 +219,8 @@ define(function(require, exports, module){
       }
     };
 
+    $.easing = function ( t, easing ) { return EASING_FUNC[easing]( t ); }
+
     // duration in ms
     // onFrame = function ( value, position ) {}
     $.genericAnimate = function ( length, duration, easing, onFrame ) {

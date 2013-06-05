@@ -1,6 +1,7 @@
 define(function(require){
 
   var data = require("data/work.js");
+  var Canvas = require("./canvas/canvas.js");
 
   var $workHeap = $(".work-heap");
 
@@ -9,7 +10,13 @@ define(function(require){
     if ( data[i].link ) {
       html += "<a class='work-link' href='" + data[i].link + "'></a>";
     }
-    $(html + "<canvas></canvas></li>").appendTo($workHeap).data("widx", i);
+    var $work = $(html + "<canvas></canvas></li>").appendTo($workHeap).data("widx", i);
+
+    if ( data[i].setupCanvas ) {
+      var canvas = new Canvas( $work.children('canvas')[0] );
+      data[i].canvas = canvas;
+      data[i].setupCanvas(canvas);
+    }
   }
 
   var testInsideLink;
@@ -60,6 +67,10 @@ define(function(require){
       heapTimeout = null;
     }
 
+    if ( theData.canvas ) {
+      theData.canvas.animate();
+    }
+
   }
 
   function hoverOutHeap () { $workHeap.toggleClass("hover", false); }
@@ -68,7 +79,13 @@ define(function(require){
 
     $workDom.toggleClass("hover", false);
     if ( !heapTimeout )
-      heapTimeout = setTimeout(hoverOutHeap, 200);
+      heapTimeout = setTimeout(hoverOutHeap, 150);
+
+    var theData = data[$workDom.data("widx")];
+    if ( theData.canvas ) {
+      theData.canvas.stop();
+      theData.canvas.render();
+    }
   }
   $workHeap.on("mousemove", ".work-piece", function(evt){
     var inside = testInsideHexagon( evt.offsetX, evt.offsetY );

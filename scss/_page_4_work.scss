@@ -22,7 +22,7 @@ $hexagonMarginL : 10px;
   margin-top  : -$hexagonMarginT;
   margin-left : $hexagonMarginL;
   
-  @include transition(opacity 0.3s linear);
+  @include transition(opacity 0.3s linear 0.15s);
   
   &:nth-of-type(7n+1) { margin-left : 0; }
   &:nth-of-type(7n+5) { margin-left : round($hexagonA / 2) + 5px; }
@@ -73,7 +73,7 @@ $hexagonMarginL : 10px;
   -webkit-transition : -webkit-transform .3s ease-in;
      -moz-transition :    -moz-transform .3s ease-in;
        -o-transition :      -o-transform .3s ease-in;
-          transition :      -o-transform .3s ease-in;
+          transition :         transform .3s ease-in;
 }
 
 .work-link-r {
