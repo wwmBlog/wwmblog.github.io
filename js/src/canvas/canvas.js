@@ -19,15 +19,25 @@ define(function(require, exports){
       var ratio = dpr / bsr;
 
 
-      this.ctx         = context;
-      this.duration    = 0;
-      this.rqfID       = null;
-      this.nodes       = [];
-      this.width       = domElement.width;
-      this.height      = domElement.height;
+      this.ctx      = context;
+      this.duration = 0;
+      this.rqfID    = null;
+      this.nodes    = [];
+      var ss = getComputedStyle(domElement);
+      this.width    = parseInt(ss.width) || domElement.width;
+      this.height   = parseInt(ss.height)|| domElement.height;
 
       if ( dpr != bsr ) {
         context.scale( ratio, ratio );
+
+        domElement.width  = this.width * ratio;
+        domElement.height = this.height * ratio;
+
+        domElement.style.width  = this.width + "px";
+        domElement.style.height = this.height + "px";
+
+        this.width  = domElement.width;
+        this.height = domElement.height;
       }
 
       return this;
@@ -111,11 +121,11 @@ define(function(require, exports){
 
   Canvas.prototype.render = function( time, restart ) {
     // Clear of set the background.
+    this.ctx.clearRect(0, 0, this.width, this.height);
+
     if ( this.background ) {
       this.ctx.fillStyle = this.background;
       this.ctx.fillRect(0, 0, this.width, this.height);
-    } else {
-      this.ctx.clearRect(0, 0, this.width, this.height);
     }
 
     // Render all nodes.

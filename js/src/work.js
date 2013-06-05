@@ -1,7 +1,7 @@
 define(function(require){
 
   var data = require("data/work.js");
-  var Canvas = require("./canvas/canvas.js");
+  var Canvas = require("./canvas/hex-canvas.js");
 
   var $workHeap = $(".work-heap");
 
