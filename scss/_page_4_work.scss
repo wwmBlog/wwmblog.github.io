@@ -13,7 +13,7 @@ $hexagonMarginT : 20px;
 $hexagonMarginL : 10px;
 
 .work-piece {
-
+background : rgba(#f00, 0.3);
   float    : left;
   position : relative;
 
@@ -90,7 +90,7 @@ $hexagonMarginL : 10px;
 }
 
 $workHeapPaddingR   : 200px;
-$workHeapMarginMinH : 40px;
+$workHeapMarginMinH : 60px;
 
 .work-heap {
   margin     : auto;
@@ -115,11 +115,12 @@ $workHeapMarginMinH : 40px;
   }
 }
 
-$piece-four-width  : $workHeapMarginMinH * 2 + $hexagonA * 4 + $hexagonMarginL * 3 + $workHeapPaddingR;
-$piece-three-width : $workHeapMarginMinH * 2 + $hexagonA * 3 + $hexagonMarginL * 2 + $workHeapPaddingR;
-$piece-two-width   : $hexagonA * 3 + $hexagonMarginL * 2;
+$piece-four-width    : $workHeapMarginMinH * 2 + $hexagonA * 4 + $hexagonMarginL * 3 + $workHeapPaddingR;
+$piece-three-width   : $workHeapMarginMinH * 2 + $hexagonA * 3 + $hexagonMarginL * 2 + $workHeapPaddingR;
+$piece-two-width     : $hexagonA * 3 + $hexagonMarginL * 2 + 220;
+$piece-three-width-m : $workHeapMarginMinH * 2 + $hexagonA * 3 + $hexagonMarginL * 2;
 
-@media (min-width:$piece-two-width + 1) and (max-width:$piece-four-width) {
+@media (min-width:$piece-three-width + 1) and (max-width:$piece-four-width) {
   .work-piece {
     margin-left : 10px !important;
     
@@ -131,13 +132,7 @@ $piece-two-width   : $hexagonA * 3 + $hexagonMarginL * 2;
   }
 }
 
-@media (max-width:$piece-three-width) {
-  .work-heap {
-    padding-right : 0;
-  }
-}
-
-@media (max-width:$piece-two-width) {
+@media (min-width:$piece-two-width + 1) and (max-width:$piece-three-width) {
   .work-piece {
     margin-left : 10px !important;
     
@@ -148,3 +143,22 @@ $piece-two-width   : $hexagonA * 3 + $hexagonMarginL * 2;
     max-width : 2 * $hexagonA + 10px + round($hexagonA / 2) + 5px;
   }
 }
+
+@media (max-width:$piece-two-width) {
+  .work-piece {
+    margin-left : 10px !important;
+    
+    &:nth-of-type(5n+1) { margin-left : 0 !important; }
+    &:nth-of-type(5n+4) { margin-left : round($hexagonA / 2) + 5px !important; }
+  }
+  .work-heap {
+    max-width     : 3 * $hexagonA + 20px;
+    padding-right : 0;
+    
+    > p {
+      display : none;
+    }
+  }
+}
+
+

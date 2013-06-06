@@ -176,11 +176,11 @@
 @media (max-width: 410px) {
   /* line 52, ../scss/style.scss */
   .page-title h1 {
-    font-size: 14px;
+    font-size: 15px;
   }
   /* line 53, ../scss/style.scss */
   .page-title h2 {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 /* line 57, ../scss/style.scss */
@@ -2053,6 +2053,7 @@ a.emphasize:hover, a.emphasize:active {
 
 /* line 15, ../scss/_page_4_work.scss */
 .work-piece {
+  background: rgba(255, 0, 0, 0.3);
   float: left;
   position: relative;
   width: 120px;
@@ -2150,48 +2151,66 @@ a.emphasize:hover, a.emphasize:active {
   color: #413D32;
 }
 
-@media (min-width: 381px) and (max-width: 790px) {
-  /* line 123, ../scss/_page_4_work.scss */
+@media (min-width: 701px) and (max-width: 830px) {
+  /* line 124, ../scss/_page_4_work.scss */
   .work-piece {
     margin-left: 10px !important;
   }
-  /* line 126, ../scss/_page_4_work.scss */
+  /* line 127, ../scss/_page_4_work.scss */
   .work-piece:nth-of-type(5n+1) {
     margin-left: 0 !important;
   }
-  /* line 127, ../scss/_page_4_work.scss */
+  /* line 128, ../scss/_page_4_work.scss */
   .work-piece:nth-of-type(5n+4) {
     margin-left: 65px !important;
   }
 
-  /* line 129, ../scss/_page_4_work.scss */
+  /* line 130, ../scss/_page_4_work.scss */
   .work-heap {
     max-width: 380px;
   }
 }
-@media (max-width: 660px) {
-  /* line 135, ../scss/_page_4_work.scss */
-  .work-heap {
-    padding-right: 0;
-  }
-}
-@media (max-width: 380px) {
-  /* line 141, ../scss/_page_4_work.scss */
+@media (min-width: 601px) and (max-width: 700px) {
+  /* line 136, ../scss/_page_4_work.scss */
   .work-piece {
     margin-left: 10px !important;
   }
-  /* line 144, ../scss/_page_4_work.scss */
+  /* line 139, ../scss/_page_4_work.scss */
   .work-piece:nth-of-type(4n+1) {
     margin-left: 0 !important;
   }
-  /* line 145, ../scss/_page_4_work.scss */
+  /* line 140, ../scss/_page_4_work.scss */
   .work-piece:nth-of-type(4n+3) {
     margin-left: 65px !important;
   }
 
-  /* line 147, ../scss/_page_4_work.scss */
+  /* line 142, ../scss/_page_4_work.scss */
   .work-heap {
     max-width: 315px;
+  }
+}
+@media (max-width: 600px) {
+  /* line 148, ../scss/_page_4_work.scss */
+  .work-piece {
+    margin-left: 10px !important;
+  }
+  /* line 151, ../scss/_page_4_work.scss */
+  .work-piece:nth-of-type(5n+1) {
+    margin-left: 0 !important;
+  }
+  /* line 152, ../scss/_page_4_work.scss */
+  .work-piece:nth-of-type(5n+4) {
+    margin-left: 65px !important;
+  }
+
+  /* line 154, ../scss/_page_4_work.scss */
+  .work-heap {
+    max-width: 380px;
+    padding-right: 0;
+  }
+  /* line 158, ../scss/_page_4_work.scss */
+  .work-heap > p {
+    display: none;
   }
 }
 @media print {
