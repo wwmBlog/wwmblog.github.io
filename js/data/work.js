@@ -1,7 +1,5 @@
 define(function(require){
 
-  var Rect = require("src/canvas/rect.js");
-
   var data = [
     {
         ttl  : "Code Editor【Flash】"
@@ -38,22 +36,59 @@ define(function(require){
     }
   ];
 
-  data[0].setupCanvas = function( canvas ) {
-    var rect = new Rect(10, 10, 30, 15);
-    rect.attrs.fill = "#ff0000";
 
-    rect
-      .transition({ translate : { x : 10, y : 20 } }, 300 )
-      .delay(100)
-      .transition({ translate : { x : 0, y : 0 } }, 300 )
-      .delay(500)
-      .change({visible:false})
-      .delay(500)
-      .change({visible:true})
+  var Rect = require("src/canvas/rect.js");
+  var Path = require("src/canvas/path.js");
 
-    canvas.background = "#00ffff";
-    canvas.addNode(rect);
-    canvas.render();
+
+  data[3].setupCanvas = function ( canvas ) {
+
+    var els = [];
+    var el;
+
+    // Frame
+    el = Path.RoundRect( 104, 64, 4 );
+    el.attrs.fill = "#254aab";
+    el.attrs.translate = { x : 8, y : 37 };
+    els[0] = el;
+
+    // Input
+    el = new Path("M14 47l92 0l0 12l-92 0l0 -12m0 18l92 0l0 12l-92 0l0 -12");
+    el.attrs.fill = "#4fa9e0";
+    els[1] = el;
+
+    // ID
+    el = new Rect(34, 49, 0, 8);
+    el.attrs.fill = "#cd222b";
+    el.d(80).c({width:10}).d(80).c({width:20})
+      .d(80).c({width:30}).d(80).c({width:40})
+      .d(80).c({width:50}).d(80).c({width:60})
+      .d(80).c({width:70}).d(80);
+    els[2] = el;
+
+    // Password
+    el = new Rect(34, 67, 0, 8);
+    el.attrs.fill = "#cd222b";
+    el.d(640).c({width:10}).d(80).c({width:20})
+      .d(80 ).c({width:30}).d(80).c({width:40})
+      .d(80 ).c({width:50}).d(80).c({width:60})
+      .d(80 ).c({width:70}).d(1000);
+    els[3] = el;
+
+    // Generation
+    var colors = ["#3572cc", "#cd222b", "#ffffff", "#4fa9e0", "#ae141e"];
+    for ( var i = 0; i < 9; ++i ) {
+      el = new Rect(16 + i * 10, 85, 8, 10);
+      el.attrs.visible = false;
+      els[els.length] = el.d(640).c({ visible : true });
+
+      for ( var j = 0; j < 7; ++j ) {
+        el.c({ fill : colors[Math.floor(Math.random()*5)] })
+          .d(80);
+      }
+    }
+
+    canvas.addNode(els).background = "#4fa9e0";
   }
 
   return data;

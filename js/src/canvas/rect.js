@@ -5,18 +5,19 @@ define(function(require){
   function Rect (x, y, width, height) {
     Node.call( this );
 
-    this.x      = x;
-    this.y      = y;
-    this.width  = width;
-    this.height = height;
+    this.attrs.x      = x;
+    this.attrs.y      = y;
+    this.attrs.width  = width;
+    this.attrs.height = height;
   }
 
   Rect.prototype = new Node();
   Rect.prototype.render = function( ctx, attrs ) {
-    ctx.fillRect( this.x, this.y, this.width, this.height );
+    
+    ctx.fillRect( attrs.x, attrs.y, attrs.width, attrs.height );
 
     if ( attrs.lineWidth ) {
-      ctx.strokeRect( this.lineWidth );
+      ctx.strokeRect( attrs.x, attrs.y, attrs.width, attrs.height );
     }
   }
 

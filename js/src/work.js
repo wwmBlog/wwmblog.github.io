@@ -16,6 +16,7 @@ define(function(require){
       var canvas = new Canvas( $work.children('canvas')[0] );
       data[i].canvas = canvas;
       data[i].setupCanvas(canvas);
+      canvas.render();
     }
   }
 

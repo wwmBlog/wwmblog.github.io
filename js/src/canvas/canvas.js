@@ -28,16 +28,13 @@ define(function(require, exports){
       this.height   = parseInt(ss.height)|| domElement.height;
 
       if ( dpr != bsr ) {
-        context.scale( ratio, ratio );
-
         domElement.width  = this.width * ratio;
         domElement.height = this.height * ratio;
 
         domElement.style.width  = this.width + "px";
         domElement.style.height = this.height + "px";
 
-        this.width  = domElement.width;
-        this.height = domElement.height;
+        context.scale( ratio, ratio );
       }
 
       return this;
@@ -71,8 +68,13 @@ define(function(require, exports){
 
   Canvas.prototype.context = function() { return this.ctx; }
   Canvas.prototype.addNode = function( node ) {
-    this.nodes[this.nodes.length] = node;
+    if ( node.length ) {
+      this.nodes = this.nodes.concat( this.nodes, node );
+    } else {
+      this.nodes[this.nodes.length] = node;
+    }
     this.duration = 0;
+    return this;
   };
 
   Canvas.prototype.animate = function() {

@@ -8,9 +8,9 @@ define(function(require){
   function Node() { 
     this.states       = [];
     this.lastStateIdx = -1;
+    this.attrs = {};
   }
 
-  Node.prototype.attrs    = {};
   Node.prototype.needRedraw = function( nextTime ) {
 
     if ( this.lastStateIdx == -1 ) { return true; }
@@ -82,27 +82,27 @@ define(function(require){
       var s  = this.states[currDrawnIdx];
       var to = s.to;
       var e  = $.easing( (time - s.start) / s.length, s.easing );
-      if ( to.rotate ) {
-        newAttr.rotate = newAttr.rotate ? newAttr.rotate : 0;
-        newAttr.rotate = ( to.rotate - newAttr.rotate ) * e + newAttr.rotate;
-      }
-      if ( to.scale ) {
-        newAttr.scale = newAttr.scale ? newAttr.scale : { x : 1, y : 1 };
-        newAttr.scale.x = ( to.scale.x - newAttr.scale.x ) * e + newAttr.scale.x;
-        newAttr.scale.y = ( to.scale.y - newAttr.scale.y ) * e + newAttr.scale.y;
-      }
-      if ( to.translate ) {
-        newAttr.translate = newAttr.translate ? newAttr.translate : { x : 0, y : 0 };
-        newAttr.translate.x = ( to.translate.x - newAttr.translate.x ) * e + newAttr.translate.x;
-        newAttr.translate.y = ( to.translate.y - newAttr.translate.y ) * e + newAttr.translate.y;
-      }
-      if ( to.lineWidth ) {
-        newAttr.lineWidth = newAttr.lineWidth ? newAttr.lineWidth : 0;
-        newAttr.lineWidth = ( to.lineWidth - newAttr.lineWidth ) * e + newAttr.lineWidth;
-      }
-      if ( to.alpha ) {
-        newAttr.alpha = newAttr.alpha === undefined ? newAttr.alpha : 1;
-        newAttr.alpha = ( to.alpha - newAttr.alpha ) * e + newAttr.alpha;
+      for ( i in to ) {
+        switch( i ) {
+          case "scale" :
+            newAttr.scale = newAttr.scale ? newAttr.scale : { x : 1, y : 1 };
+            newAttr.scale.x = ( to.scale.x - newAttr.scale.x ) * e + newAttr.scale.x;
+            newAttr.scale.y = ( to.scale.y - newAttr.scale.y ) * e + newAttr.scale.y;
+            break;
+          case "translate" :
+            newAttr.translate = newAttr.translate ? newAttr.translate : { x : 0, y : 0 };
+            newAttr.translate.x = ( to.translate.x - newAttr.translate.x ) * e + newAttr.translate.x;
+            newAttr.translate.y = ( to.translate.y - newAttr.translate.y ) * e + newAttr.translate.y;
+            break;
+          case "alpha" :
+            newAttr.alpha = newAttr.alpha === undefined ? newAttr.alpha : 1;
+            newAttr.alpha = ( to.alpha - newAttr.alpha ) * e + newAttr.alpha;
+            break;
+          default :
+            newAttr[i] = newAttr[i] ? newAttr[i] : 0;
+            newAttr[i] = ( to[i] - newAttr[i] ) * e + newAttr[i]; 
+            break;
+        }
       }
     }
 
@@ -141,7 +141,7 @@ define(function(require){
 
   Node.prototype.render = function( context, attrs ) {};
 
-  Node.prototype.delay = function( time ) {
+  Node.prototype.d = function( time ) {
     var lastState = this.states[this.states.length - 1];
     var s = {
           start  : lastState ? lastState.start + lastState.length : 0
@@ -153,7 +153,7 @@ define(function(require){
     this.duration = s.start + s.length;
     return this;
   };
-  Node.prototype.transition = function ( props, duration, easing ) {
+  Node.prototype.t = function ( props, duration, easing ) {
     var lastState = this.states[this.states.length - 1];
     var s = {
           start  : lastState ? lastState.start + lastState.length : 0
@@ -168,7 +168,7 @@ define(function(require){
     return this;
   };
 
-  Node.prototype.change = function ( props ) {
+  Node.prototype.c = function ( props ) {
     var lastState = this.states[this.states.length - 1];
     var s = {
           start  : lastState ? lastState.start + lastState.length : 0

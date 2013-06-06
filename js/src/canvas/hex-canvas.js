@@ -7,7 +7,7 @@ define(function(require){
 
     var ctx = c.ctx;
     ctx.beginPath();
-    var hw = c.width / 2;
+    var hw = c.width  / 2;
     var qh = c.height / 4;
     ctx.moveTo( hw, 0);
     ctx.lineTo(c.width, qh );
