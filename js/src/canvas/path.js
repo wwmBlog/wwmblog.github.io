@@ -37,15 +37,17 @@ define(function(require){
     this.path = null;
   }
 
-  Path.prototype.createPath = function() {
+  Path.prototype.createPath = function( ctx, attrs ) {
     this.lastX = 0;
     this.lastY = 0;
 
     this.decodePath();
 
-    this.ctx.beginPath();
+    this.ctx = ctx;
+    ctx.beginPath();
     this.decoded.forEach( execCmd, this );
-    this.ctx.closePath();
+    ctx.closePath();
+    this.ctx = null;
   }
 
   var ExecCmd_Len;
@@ -102,8 +104,8 @@ define(function(require){
         var x1 = this.lastX + ps[ExecCmd_I    ];
         var y1 = this.lastY + ps[ExecCmd_I + 1];
 
-        this.lastX += ps[ExecCmd_I + 2];
-        this.lastY += ps[ExecCmd_I + 3];
+        this.lastX = x1 + ps[ExecCmd_I + 2];
+        this.lastY = y1 + ps[ExecCmd_I + 3];
 
         this.ctx.arcTo( x1, y1, this.lastX, this.lastY, ps[ExecCmd_I + 4] );
       }
@@ -180,50 +182,101 @@ define(function(require){
     }
   }
 
+  var R2D = Math.PI / 180;
+  Path.prototype.arc = function ( ps, r )  {
+
+    // x, y, radius, startAngle, endAngle, anticlockwise
+
+    ExecCmd_I = 0;
+    ExecCmd_Len = ps.length / 6;
+
+    var radius;
+    var endAngle;
+
+    if ( r ) {
+      for ( ; ExecCmd_I < ExecCmd_Len; ++ExecCmd_I ) {
+
+        radius   = ps[ExecCmd_I + 2];
+        endAngle = ps[ExecCmd_I + 4];
+
+        this.lastX += ps[ExecCmd_I    ];
+        this.lastY += ps[ExecCmd_I + 1];
+
+        this.ctx.arc( 
+            this.lastX
+          , this.lastY
+          , radius
+          , ps[ExecCmd_I + 3] * R2D
+          , endAngle * R2D
+          , ps[ExecCmd_I + 5] || 0);
+
+        this.lastX += Math.round(Math.cos( endAngle * R2D ) * radius);
+        this.lastY += Math.round(Math.sin( endAngle * R2D ) * radius);
+      }
+      return;
+    }
+
+    for ( ; ExecCmd_I < ExecCmd_Len; ++ExecCmd_I ) {
+      radius   = ps[ExecCmd_I + 2];
+      endAngle = ps[ExecCmd_I + 4];
+
+      this.ctx.arc( 
+          ps[ExecCmd_I    ]
+        , ps[ExecCmd_I + 1]
+        , radius
+        , ps[ExecCmd_I + 3] * R2D
+        , endAngle * R2D
+        , ps[ExecCmd_I + 5] || 0);
+
+      this.lastX = Math.round(Math.cos( endAngle * R2D ) * radius);
+      this.lastY = Math.round(Math.sin( endAngle * R2D ) * radius);
+    }
+  }
+
   var PathPrototype = Path.prototype;
   CmdMap = {
         m : PathPrototype.moveTo
       , l : PathPrototype.lineTo
-      , a : PathPrototype.arcTo
+      , r : PathPrototype.arcTo
+      , a : PathPrototype.arc
       , c : PathPrototype.bezierTo
       , q : PathPrototype.quadraticTo
   };
 
   Path.prototype.render = function( ctx, attrs ) {
-    this.ctx = ctx;
-    this.createPath();
+    this.createPath( ctx, attrs );
     ctx.fill();
     if ( attrs.lineWidth ) { ctx.stroke(); }
-    this.ctx = null;
   }
 
 
-  function createRoundRectPath () {
-    var ctx = this.ctx;
-    var w   = this.width;
-    var h   = this.height;
-    var r   = this.radius;
-    ctx.beginPath();
+  function createRoundRectPath ( ctx, attrs ) {
+    var w   = attrs.width;
+    var h   = attrs.height;
+    var r   = attrs.radius;
+    var x   = attrs.x || 0;
+    var y   = attrs.y || 0;
 
-    ctx.moveTo ( r, 0 );
-    ctx.lineTo ( w - r, 0 );
-    ctx.arcTo  ( w, 0, w, r, r );
-    ctx.lineTo ( w, h - r );
-    ctx.arcTo  ( w, h, w - r, h, r );
-    ctx.lineTo ( r, h );
-    ctx.arcTo  ( 0, h, 0, h - r, r );
-    ctx.lineTo ( 0, r );
-    ctx.arcTo  ( 0, 0, r, 0, r );
+    ctx.beginPath();
+    ctx.moveTo ( x + r    , y );
+    ctx.lineTo ( x + w - r, y );
+    ctx.arcTo  ( x + w,  y, x + w, y + r, r );
+    ctx.lineTo ( x + w    , y + h - r );
+    ctx.arcTo  ( x + w    , y + h, x + w - r, y + h, r );
+    ctx.lineTo ( x + r    , y + h );
+    ctx.arcTo  ( x        , y + h, x, y + h - r, r );
+    ctx.lineTo ( x        , y + r );
+    ctx.arcTo  ( x        , y    , x + r, y, r );
   }
 
 
   // Generate Round Rect Path Object
   Path.RoundRect = function( width, height, radius ) {
     var rr = new Path();
-    rr.width  = width;
-    rr.height = height;
-    rr.radius = radius;
-    rr.createPath = createRoundRectPath;
+    rr.attrs.width  = width;
+    rr.attrs.height = height;
+    rr.attrs.radius = radius;
+    rr.createPath   = createRoundRectPath;
     return rr;
   }
 

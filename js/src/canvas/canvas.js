@@ -68,7 +68,7 @@ define(function(require, exports){
 
   Canvas.prototype.context = function() { return this.ctx; }
   Canvas.prototype.addNode = function( node ) {
-    if ( node.length ) {
+    if ( node.length !== undefined ) {
       this.nodes = this.nodes.concat( this.nodes, node );
     } else {
       this.nodes[this.nodes.length] = node;

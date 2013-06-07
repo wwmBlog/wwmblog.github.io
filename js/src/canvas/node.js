@@ -95,7 +95,7 @@ define(function(require){
             newAttr.translate.y = ( to.translate.y - newAttr.translate.y ) * e + newAttr.translate.y;
             break;
           case "alpha" :
-            newAttr.alpha = newAttr.alpha === undefined ? newAttr.alpha : 1;
+            newAttr.alpha = newAttr.alpha !== undefined ? newAttr.alpha : 1;
             newAttr.alpha = ( to.alpha - newAttr.alpha ) * e + newAttr.alpha;
             break;
           default :
@@ -119,14 +119,12 @@ define(function(require){
     if ( time === 0 ) { this.restart(); }
 
     var attrs = this.getCurrentAttr( time );
-    if ( attrs.visible === false || attrs.alpha == 0 ) { return; }
-
+    if ( attrs.visible === false || attrs.alpha === 0 ) { return; }
 
     context.fillStyle   = attrs.fill   || "#000000";
     context.strokeStyle = attrs.stroke || "#000000";
     context.lineWidth   = attrs.lineWidth || 1;
-    context.globalAlpha = attrs.alpha === undefined ? attrs.alpha : 1;
-    context.font        = attrs.font;
+    context.globalAlpha = attrs.alpha !== undefined ? attrs.alpha : 1;
 
     if ( attrs.translate ) { context.translate( attrs.translate.x, attrs.translate.y ); }
     if ( attrs.scale     ) { context.scale( attrs.scale.x, attrs.scale.y ); }

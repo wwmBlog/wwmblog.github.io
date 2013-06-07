@@ -71,7 +71,6 @@ define(function(require){
     if ( theData.canvas ) {
       theData.canvas.animate();
     }
-
   }
 
   function hoverOutHeap () { $workHeap.toggleClass("hover", false); }
@@ -101,6 +100,9 @@ define(function(require){
     }
 
     $currentTarget.toggleClass("link-hover", insideLink);
+
+    var theData = data[$currentTarget.data("widx")];
+    if ( theData.onMove ) { theData.onMove(evt.offsetX, evt.offsetY); }
 
     if ( lastInside != inside ) {
       lastInside = inside;
