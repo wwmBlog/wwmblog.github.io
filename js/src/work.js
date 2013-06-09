@@ -60,6 +60,7 @@ define(function(require){
     $("#W_workDesc")
       .attr("data-faq", theData.ttl)
       .html(theData.desc)
+      .attr("data-color", "色板：" + theData.color)
       .css("top", domPos.top);
 
     $workHeap.toggleClass("hover", true);
@@ -75,7 +76,7 @@ define(function(require){
 
   function hoverOutHeap () { $workHeap.toggleClass("hover", false); }
   function hoverOutWork( $workDom ) {
-    $("#W_workDesc").attr("data-faq", "").html("");
+    $("#W_workDesc").attr("data-faq", "").html("").attr("data-color", "");
 
     $workDom.toggleClass("hover", false);
     if ( !heapTimeout )

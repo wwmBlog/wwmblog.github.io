@@ -128,11 +128,11 @@ define(function(require){
 
     if ( attrs.translate ) { context.translate( attrs.translate.x, attrs.translate.y ); }
     if ( attrs.scale     ) { context.scale( attrs.scale.x, attrs.scale.y ); }
-    if ( attrs.rotate    ) { context.rotate( attrs.rotate ); }
+    if ( attrs.rotate    ) { var rrr = attrs.rotate * Math.PI / 180; context.rotate( rrr ); }
 
     this.render( context, attrs );
 
-    if ( attrs.rotate    ) { context.rotate( -attrs.rotate ); }
+    if ( attrs.rotate    ) { context.rotate( -rrr ); }
     if ( attrs.scale     ) { context.scale( 1 / attrs.scale.x, 1/ attrs.scale.y ); }
     if ( attrs.translate ) { context.translate( -attrs.translate.x, -attrs.translate.y ); }
   };
