@@ -27,13 +27,15 @@ define(function(require, exports){
       this.width    = parseInt(ss.width) || domElement.width;
       this.height   = parseInt(ss.height)|| domElement.height;
 
+
+      // BUGFIX : Always set canvas's size to match stylesheet size.
+      domElement.width  = this.width * ratio;
+      domElement.height = this.height * ratio;
+
+      domElement.style.width  = this.width + "px";
+      domElement.style.height = this.height + "px";
+
       if ( dpr != bsr ) {
-        domElement.width  = this.width * ratio;
-        domElement.height = this.height * ratio;
-
-        domElement.style.width  = this.width + "px";
-        domElement.style.height = this.height + "px";
-
         context.scale( ratio, ratio );
       }
 
