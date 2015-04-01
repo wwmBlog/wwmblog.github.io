@@ -48,6 +48,10 @@ define(function(require){
 
     
     return false;
+  }).on("keypress", function( evt ){
+    if ( $(evt.target).is("input") ) {
+      evt.stopPropagation();
+    }
   });
 
   function onInputChange () {
