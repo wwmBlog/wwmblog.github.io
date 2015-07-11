@@ -11,7 +11,7 @@ define(function(require, exports, module){
   };
 
 
-  /* 
+  /*
    * == Debounced Resize Event:( "debouncedResize" )==========
    */
   var resizeDebounceTO = null;
@@ -62,25 +62,21 @@ define(function(require, exports, module){
    * == $.fn.transform ==========
    * Apply transform css to the first element.
    */
+  var theVendor = null;
   $.fn.transform = function ( value ) {
-    var self = arguments.callee;
-    if ( !self.vendors ) { 
-      self.vendors = ["webkitTransform", "MozTransform", "msTransform", "OTransform", "transform"];
-    }
+    var ss = this[0].style;
 
-    var vendors = self.vendors;
-    var ss      = this[0].style;
-
-    if ( vendors.length ) {
+    if ( !theVendor ) {
+      var vendors = ["webkitTransform", "MozTransform", "msTransform", "OTransform", "transform"];
       for ( var i = 0; i < vendors.length; ++i ) {
         if ( ss.hasOwnProperty( vendors[i] ) ) {
-          self.vendors = vendors[i];
+          theVendor = vendors[i];
           break;
         }
       }
     }
 
-    if ( value ) ss[ self.vendors ] = value;
+    if ( value ) ss[ theVendor ] = value;
     return this;
   }
 
@@ -89,7 +85,7 @@ define(function(require, exports, module){
    */
   exps.transformCSS = function ( value ) {
     var self = arguments.callee;
-    if ( !self.prefix ) { 
+    if ( !self.prefix ) {
       var vendors  = ["webkitTransform", "MozTransform", "msTransform", "OTransform", "transform"];
       var prefixes = ["-webkit-transform", "-moz-transform", "-ms-transform", "-o-transform", "transform"];
       var ss       = $("body")[0].style;
@@ -225,7 +221,7 @@ define(function(require, exports, module){
     // onFrame = function ( value, position ) {}
     $.genericAnimate = function ( length, duration, easing, onFrame ) {
 
-      if ( typeof duration == "function" ) { 
+      if ( typeof duration == "function" ) {
         onFrame = duration;
         easing   = "easeInOutCubic";
         duration = 400;
@@ -276,7 +272,7 @@ define(function(require, exports, module){
 
     var isStyleTag = true;
 
-    if ( !$targetEl ) { 
+    if ( !$targetEl ) {
       $targetEl = $("<style type='text/css' />").appendTo("head");
     } else {
       isStyleTag = $targetEl.attr("tagName").toLowerCase() == "style";
